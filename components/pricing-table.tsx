@@ -116,7 +116,6 @@ export function PricingTable({
                   format={{
                     style: "currency",
                     currency: "USD",
-                    trailingZeroDisplay: "stripIfInteger",
                   }}
                   value={isYearly ? plan.price.yearly : plan.price.monthly}
                   className="text-2xl font-bold"
