@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Your Profit Reveal</title>
+  <link rel="stylesheet" href="funnel.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="funnel.js"></script>
+</head>
+<body onload="(function(){
+  logEvent('view_result');
+  const q = getQuery();
+  const score = scoreFromQuery(q);
+  const bucket = bucketFromScore(score);
+  document.getElementById('score').innerText = score + '/100';
+  document.getElementById('bucket').innerText = bucket.label;
+  document.getElementById('pitch').innerText = bucket.pitch;
+  document.getElementById('bucket').style.color = bucket.color;
+})();">
+  <section class="section relative overflow-hidden">
+    <!-- Background Video -->
+    <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover z-0">
+      <source src="../video/wasabi.mp4" type="video/mp4">
+    </video>
+    
+    <!-- Dark Overlay for Text Readability -->
+    <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+    
+    <div class="container max-w-3xl relative z-20">
+      <h1 class="text-4xl font-extrabold mb-2 text-white">Your Wabi-sabi Profit Reveal</h1>
+      <div class="card">
+        <div class="text-2xl font-bold"><span id="score">—</span></div>
+        <div class="mt-2 text-xl"><strong id="bucket">—</strong></div>
+        <p class="mt-3 small" id="pitch"></p>
+      </div>
+
+      <div class="grid grid-2 mt-6">
+        <div class="card">
+          <h3 class="font-semibold mb-2">What This Means</h3>
+          <p class="small">We've estimated your current clarity and leverage. In a 1:1 Growth Session we'll map exact profit levers based on your answers.</p>
+        </div>
+        <div class="card">
+          <h3 class="font-semibold mb-2">Next Steps</h3>
+          <ul class="small list-disc pl-5 space-y-2">
+            <li>Diagnose where value is trapped (ops / offers / traffic / LTV)</li>
+            <li>Design quick wins + systems for compounding growth</li>
+            <li>Prioritized 30-day action plan</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center mt-8">
+        <a class="btn" href="book.html" onclick="logEvent('cta_click','result_book')">Book My Growth Session</a>
+        <div class="mt-3 small">⚡ Limited to 12 businesses per quarter</div>
+      </div>
+
+      <div class="mt-10 text-center small opacity-70">
+        Not ready yet? <a class="reset" href="profit.html">Return to the funnel</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

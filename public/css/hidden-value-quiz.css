@@ -1,0 +1,107 @@
+/* Minimal CSS ID/Class Map (palette + structure) */
+:root {
+  --bg: #0d0f12; /* deep charcoal */
+  --text: #e8ecee;
+  --muted: #a8b3c2;
+  --card: #121620;
+  --border: #2a3142;
+  --plum: #6d597a; /* muted plum */
+  --green: #66c2a6; /* soft greens for balance */
+  --amber: #f3a316; /* warm amber CTA */
+}
+
+.ws-body { background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+.ws-app { max-width: 960px; margin: 0 auto; padding: 24px; }
+.ws-section { margin: 48px 0; }
+.ws-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.mt-2 { margin-top: 8px; }
+
+/* Buttons */
+.ws-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 18px; border-radius:12px; border:1px solid transparent; cursor:pointer; text-decoration:none; }
+.ws-btn-primary { background: var(--amber); color:#0d0f12; font-weight:700; }
+.ws-btn-secondary { background:#1d2330; border-color:#394155; color:var(--text); }
+.ws-btn-ghost { background:transparent; border:1px solid #394155; color:#c9d1d9; }
+.ws-btn:hover { filter: brightness(1.05); }
+
+/* Badges & labels */
+.ws-badges { display:flex; gap:8px; flex-wrap:wrap; margin:12px 0 0; }
+.ws-badge { background:#1f2533; color:#c9d1d9; border:1px solid #2e3649; padding:6px 10px; border-radius:999px; }
+.ws-micro { color: var(--muted); font-size: .9rem; }
+
+/* Progress */
+.ws-progress { position:relative; height:10px; background:#1a202c; border-radius:999px; margin:16px 0 28px; }
+#progressFill { height:100%; width:0%; background: var(--green); border-radius:999px; transition:width .35s ease; }
+#progressLabel { position:absolute; right:0; top:-28px; font-size:.9rem; color:var(--muted); }
+
+/* Q&A */
+.ws-question { font-size:1.25rem; margin:0 0 16px; }
+.ws-answers { display:grid; gap:12px; }
+.ws-answer { text-align:left; background: var(--card); border:1px solid var(--border); border-radius:14px; padding:14px; color:#dfe6ee; }
+.ws-answer:focus, .ws-answer:hover { outline:2px solid var(--green); border-color: var(--green); }
+.ws-answer-title { font-weight:700; }
+.ws-answer-sub { display:block; font-size:.9rem; color:var(--muted); margin-top:4px; }
+.ws-nav { display:flex; justify-content:space-between; gap:12px; margin-top:16px; }
+
+/* Form fields */
+.ws-field input { width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background:#0f131b; color:var(--text); }
+.ws-label { display:block; margin-bottom:6px; color:var(--muted); }
+.ws-check { display:flex; align-items:center; gap:8px; margin:14px 0 0; }
+
+/* Results */
+.ws-result-header { display:grid; gap:14px; }
+.ws-scoreline { display:flex; gap:18px; align-items:end; flex-wrap:wrap; }
+.ws-score-label, .ws-tier-label { font-size:.8rem; color:var(--muted); display:block; }
+.ws-score-value { font-size:2rem; font-weight:800; }
+.ws-tier-badge { padding:6px 10px; border:1px solid #2e3649; border-radius:999px; background:#171c28; }
+.ws-meter { position:relative; height:10px; background:#1a202c; border-radius:999px; }
+.ws-meter-fill { height:100%; background: var(--green); border-radius:999px; transition:width .4s ease; }
+.ws-meter-label { display:block; margin-top:8px; color:var(--muted); }
+
+.ws-result-insight, .ws-result-wins, .ws-result-cta, .ws-result-media { margin-top:28px; }
+.ws-h3 { font-size:1.05rem; color:#dfe6ee; margin:0 0 10px; }
+.ws-list { margin:0; padding-left:18px; }
+.ws-steps { counter-reset: step; list-style:none; padding:0; margin:0; display:grid; gap:10px; }
+.ws-steps li { background: var(--card); border:1px solid var(--border); border-radius:12px; padding:12px; }
+.ws-steps li::before { counter-increment: step; content: counter(step); background:#2a3142; color:#c9d1d9; width:22px; height:22px; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; margin-right:8px; }
+
+.ws-cta-row { display:flex; gap:12px; flex-wrap:wrap; }
+
+.ws-media-grid { display:grid; gap:16px; grid-template-columns: 1.2fr 1fr; }
+.ws-video-frame { aspect-ratio:16 / 9; background:#0f131b; border:1px dashed var(--border); border-radius:12px; }
+.ws-testimonials { display:grid; gap:12px; }
+.ws-quote blockquote { margin:0 0 4px; }
+.ws-result-actions { display:flex; gap:12px; margin-top:18px; }
+
+/* Tier accenting (optional) */
+#resultScreen[data-tier="A"] .ws-tier-badge { background:#2b1d1f; border-color:#51363a; }
+#resultScreen[data-tier="B"] .ws-tier-badge { background:#1f2430; border-color:#384054; }
+#resultScreen[data-tier="C"] .ws-tier-badge { background:#1b2521; border-color:#2f4a41; }
+
+/* Bonsai Animation */
+#bonsaiStage {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.bonsai-tree {
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  transition: all 0.6s ease;
+}
+
+.bonsai-grow {
+  animation: bonsaiGrow 0.8s ease-out;
+}
+
+@keyframes bonsaiGrow {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.9; }
+  100% { transform: scale(1); opacity: 0.7; }
+}
