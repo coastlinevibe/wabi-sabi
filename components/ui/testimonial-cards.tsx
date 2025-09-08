@@ -92,7 +92,10 @@ export function ShuffleCards({ testimonials: customTestimonials }: ShuffleCardsP
 
   const handleShuffle = () => {
     const newPositions = [...positions];
-    newPositions.unshift(newPositions.pop());
+    const poppedItem = newPositions.pop();
+    if (poppedItem) {
+      newPositions.unshift(poppedItem);
+    }
     setPositions(newPositions);
   };
 
