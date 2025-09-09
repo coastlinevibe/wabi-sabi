@@ -4,14 +4,60 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { CTASection } from '@/components/CTASection'
+import { ScrollXCarousel, ScrollXCarouselContainer, ScrollXCarouselProgress, ScrollXCarouselWrap } from "@/components/ui/scroll-x-carousel"
+import {CardHoverReveal, CardHoverRevealContent, CardHoverRevealMain} from '@/components/ui/reveal-on-hover'
+import { Badge } from '@/components/ui/badge'
 
 export default function PortfolioPage() {
   const [mounted, setMounted] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const slides = [
+    {
+      id: 'slide-1',
+      title: 'Agency Transformation',
+      description: 'A profitable creative agency with loyal clients — but manual onboarding, scattered workflows, and a team stretched thin.',
+      services: ['automation', 'workflows', 'optimization'],
+      type: 'Case Study',
+      imageUrl: '/video/wasabi.mp4',
+    },
+    {
+      id: 'slide-2',
+      title: 'D2C Brand Growth',
+      description: 'An e-commerce brand with strong sales, but flat repeat purchases. Ad spend kept climbing to hold revenue steady.',
+      services: ['retention', 'email marketing', 'LTV optimization'],
+      type: 'E-commerce',
+      imageUrl: '/video/wasabi.mp4',
+    },
+    {
+      id: 'slide-3',
+      title: 'SaaS Clarity Unlock',
+      description: 'A fast-growing SaaS company with rising revenue, but no clear dashboards. Decisions were driven by instinct, not data.',
+      services: ['analytics', 'dashboards', 'data insights'],
+      type: 'SaaS',
+      imageUrl: '/video/wasabi.mp4',
+    },
+  ]
 
   useEffect(() => {
     setMounted(true)
     document.title = 'Portfolio | Wabi-Sabi'
   }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % slides.length)
+    }, 4000)
+    return () => clearInterval(timer)
+  }, [slides.length])
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % slides.length)
+  }
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length)
+  }
 
   if (!mounted) {
     return (
@@ -93,7 +139,7 @@ export default function PortfolioPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
       {/* Hero Section - Algolia Style Layout */}
-      <section className="relative min-h-screen flex items-center justify-center bg-slate-950 overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center bg-slate-950 overflow-hidden pt-20">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
           <div className="absolute inset-0 bg-gradient-to-r from-amber-500/5 via-transparent to-green-500/5"></div>
@@ -144,92 +190,156 @@ export default function PortfolioPage() {
               </div>
             </motion.div>
 
-            {/* Right Visual - Beautiful Business Dashboard */}
+            {/* Right Visual - Portfolio Carousel */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               className="relative"
             >
-              {/* Main dashboard container */}
-              <div className="relative">
-                {/* Background person image */}
-                <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-blue-900 via-purple-900 to-slate-900 p-8">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-amber-600/20"></div>
-                  
-                  {/* Simulated person using business dashboard */}
-                  <div className="relative z-10 flex items-center justify-center min-h-[500px]">
-                    <div className="text-center space-y-6">
-                      {/* Avatar placeholder */}
-                      <div className="w-24 h-24 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full mx-auto flex items-center justify-center">
-                        <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
-                          <div className="w-8 h-8 bg-white/40 rounded-full"></div>
-                        </div>
+              {/* 3D Carousel */}
+              <div className="relative w-full h-[70vh] flex items-center justify-center" style={{ perspective: '1000px' }}>
+                {/* Navigation buttons */}
+                <button
+                  onClick={handlePrev}
+                  className="absolute left-4 z-20 p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300 hover:scale-110"
+                  style={{ top: '50%', transform: 'translateY(-50%)' }}
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                
+                <button
+                  onClick={handleNext}
+                  className="absolute right-4 z-20 p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300 hover:scale-110"
+                  style={{ top: '50%', transform: 'translateY(-50%)' }}
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+
+                {/* 3D Carousel Cards */}
+                <div className="relative w-full h-full flex items-center justify-center">
+                  {slides.map((slide, index) => {
+                    const offset = (index - currentIndex + slides.length) % slides.length;
+                    const isCenter = offset === 0;
+                    const isLeft = offset === slides.length - 1 || (offset < 0 && offset > -slides.length / 2);
+                    const isRight = offset === 1 || (offset > 0 && offset < slides.length / 2);
+                    
+                    let transform = '';
+                    let zIndex = 1;
+                    let opacity = 0.4;
+                    
+                    if (isCenter) {
+                      transform = 'translateX(0) translateZ(0) rotateY(0deg) scale(1)';
+                      zIndex = 10;
+                      opacity = 1;
+                    } else if (isLeft) {
+                      transform = 'translateX(-180px) translateZ(-100px) rotateY(25deg) scale(0.85)';
+                      zIndex = 5;
+                      opacity = 0.7;
+                    } else if (isRight) {
+                      transform = 'translateX(180px) translateZ(-100px) rotateY(-25deg) scale(0.85)';
+                      zIndex = 5;
+                      opacity = 0.7;
+                    } else {
+                      transform = 'translateX(0) translateZ(-300px) rotateY(0deg) scale(0.7)';
+                      zIndex = 1;
+                      opacity = 0.3;
+                    }
+
+                    return (
+                      <div
+                        key={slide.id}
+                        className="absolute transition-all duration-700 ease-out"
+                        style={{
+                          transform,
+                          zIndex,
+                          opacity
+                        }}
+                      >
+                        <CardHoverReveal className="w-80 shadow-2xl border-0 rounded-2xl overflow-hidden" style={{ height: '584px' }}>
+                          <CardHoverRevealMain>
+                            <div className="w-full bg-gradient-to-br from-white via-yellow-50 to-green-50 flex flex-col relative" style={{ height: '584px' }}>
+                              {/* Wabi-sabi texture overlay */}
+                              <div className="absolute inset-0 bg-gradient-to-br from-green-100/20 via-yellow-100/30 to-orange-100/25 opacity-70"></div>
+                              
+                              {/* Image box - top 40% */}
+                              <div className="w-full bg-gradient-to-br from-green-200/60 via-yellow-200/50 to-orange-200/40 flex items-center justify-center relative z-10" style={{ height: '234px' }}>
+                                {/* Organic shape background */}
+                                <div className="absolute inset-4 bg-gradient-to-br from-green-300/30 to-yellow-300/40 rounded-[2rem] transform rotate-1"></div>
+                                <div className="w-20 h-20 bg-gradient-to-br from-green-600 to-emerald-700 rounded-full flex items-center justify-center relative z-10 shadow-lg transform -rotate-2">
+                                  <span className="text-white text-xl">📊</span>
+                                </div>
+                              </div>
+                              
+                              {/* Content area - bottom 60% */}
+                              <div className="flex-1 flex items-center justify-center p-6 relative z-10">
+                                <div className="text-center space-y-4">
+                                  {/* Wabi-sabi styled logo with vibrant colors */}
+                                  <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full mx-auto flex items-center justify-center shadow-lg transform rotate-1 relative">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/30 to-transparent rounded-full"></div>
+                                    <span className="text-white text-lg font-bold relative z-10">MK</span>
+                                  </div>
+                                  <div className="text-slate-800">
+                                    <h3 className="text-lg font-semibold text-slate-900 mb-1">{slide.title}</h3>
+                                    <p className="text-green-700 text-sm font-medium bg-green-100/80 px-3 py-1 rounded-full inline-block border border-green-200/50">{slide.type}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </CardHoverRevealMain>
+                          <CardHoverRevealContent className="space-y-4 rounded-2xl bg-[rgba(0,0,0,.5)] backdrop-blur-3xl p-4">
+                            <div className="space-y-2">
+                              <h3 className="text-sm text-white/80">Type</h3>
+                              <div className="flex flex-wrap gap-2">
+                                <Badge className="capitalize rounded-full bg-indigo-500">
+                                  {slide.type}
+                                </Badge>
+                              </div>
+                            </div>
+                            <div className="space-y-2">
+                              <h3 className="text-sm text-white/80">Focus Areas</h3>
+                              <div className="flex flex-wrap gap-2">
+                                {slide.services.map((service) => (
+                                  <Badge
+                                    key={service}
+                                    className="capitalize rounded-full"
+                                    variant={'secondary'}
+                                  >
+                                    {service}
+                                  </Badge>
+                                ))}
+                              </div>
+                            </div>
+                            <div className="space-y-2 mt-2">
+                              <h3 className="text-white capitalize font-medium">
+                                {slide.title}
+                              </h3>
+                              <p className="text-white/80 text-sm">{slide.description}</p>
+                            </div>
+                          </CardHoverRevealContent>
+                        </CardHoverReveal>
                       </div>
-                      
-                      {/* Business owner info */}
-                      <div className="text-white">
-                        <h3 className="text-xl font-semibold">Sarah Chen</h3>
-                        <p className="text-slate-300">Agency Owner</p>
-                      </div>
-                    </div>
-                  </div>
+                    );
+                  })}
                 </div>
 
-                {/* Floating business metrics cards */}
-                <div className="absolute -top-4 -left-4 bg-white rounded-xl p-4 shadow-2xl border border-slate-200 max-w-[200px]">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                      <div className="w-6 h-6 bg-green-500 rounded-full"></div>
-                    </div>
-                    <div>
-                      <div className="text-slate-600 text-xs">Monthly Revenue</div>
-                      <div className="text-lg font-bold text-slate-900">R750k</div>
-                      <div className="text-green-600 text-xs">+42% this quarter</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Search interface card */}
-                <div className="absolute -bottom-6 -right-6 bg-white rounded-xl p-4 shadow-2xl border border-slate-200 max-w-[280px]">
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2 text-slate-600 text-sm">
-                      <div className="w-4 h-4 bg-slate-400 rounded-full"></div>
-                      <span>Discover hidden opportunities</span>
-                    </div>
-                    <div className="bg-slate-50 rounded-lg p-3 border">
-                      <div className="text-slate-500 text-xs mb-1">Search results:</div>
-                      <div className="text-slate-900 font-medium text-sm">Automated client onboarding</div>
-                      <div className="text-amber-600 text-xs font-medium">+15% efficiency gain</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Efficiency metrics */}
-                <div className="absolute top-1/2 -left-8 transform -translate-y-1/2 bg-white rounded-lg p-3 shadow-xl border border-slate-200">
-                  <div className="text-center">
-                    <div className="text-slate-500 text-xs">Time Saved</div>
-                    <div className="text-xl font-bold text-green-600">80+</div>
-                    <div className="text-slate-500 text-xs">hrs/month</div>
-                  </div>
-                </div>
-
-                {/* Profit indicator */}
-                <div className="absolute top-8 right-8 bg-amber-500 text-white rounded-full p-3 shadow-xl">
-                  <div className="w-6 h-6 flex items-center justify-center">
-                    <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
-                  </div>
-                </div>
-
-                {/* Code/Analytics sidebar */}
-                <div className="absolute left-0 top-1/4 bg-slate-800 rounded-r-lg p-4 text-xs font-mono text-green-400 shadow-xl">
-                  <div className="space-y-1">
-                    <div className="text-blue-400">Analytics</div>
-                    <div>Revenue: +42%</div>
-                    <div>Efficiency: +80hrs</div>
-                    <div>Automation: 15 flows</div>
-                    <div className="text-amber-400">Hidden value: R180k</div>
-                  </div>
+                {/* Indicators */}
+                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                  {slides.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentIndex(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        index === currentIndex
+                          ? 'bg-amber-400 scale-125'
+                          : 'bg-white/30 hover:bg-white/50'
+                      }`}
+                    />
+                  ))}
                 </div>
               </div>
             </motion.div>

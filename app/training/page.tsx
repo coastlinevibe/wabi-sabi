@@ -3,8 +3,60 @@
 import { CTASection } from '@/components/CTASection'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { ScrollXCarousel, ScrollXCarouselContainer, ScrollXCarouselProgress, ScrollXCarouselWrap } from "@/components/ui/scroll-x-carousel"
+import {CardHoverReveal, CardHoverRevealContent, CardHoverRevealMain} from '@/components/ui/reveal-on-hover'
+import { Badge } from '@/components/ui/badge'
+import { useState, useEffect } from 'react'
 
 export default function Training() {
+  const [mounted, setMounted] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const slides = [
+    {
+      id: 'slide-1',
+      title: 'AI Essentials',
+      description: 'Gentle introduction to working with what you have — finding the overlooked potential in your current processes and team rhythms.',
+      services: ['prompts', 'automation', 'productivity'],
+      type: 'Branch 1',
+      imageUrl: '/video/wasabi.mp4',
+    },
+    {
+      id: 'slide-2',
+      title: 'Growth in Operations',
+      description: 'Patient cultivation of your existing workflows — accepting their current imperfections while gradually shaping them.',
+      services: ['workflows', 'integration', 'optimization'],
+      type: 'Branch 2',
+      imageUrl: '/video/wasabi.mp4',
+    },
+    {
+      id: 'slide-3',
+      title: 'Leadership Development',
+      description: 'Leadership through the lens of impermanence — building resilient cultures that embrace change and find strength.',
+      services: ['strategy', 'governance', 'leadership'],
+      type: 'Branch 3',
+      imageUrl: '/video/wasabi.mp4',
+    },
+  ]
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % slides.length)
+    }, 4000)
+    return () => clearInterval(timer)
+  }, [slides.length])
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % slides.length)
+  }
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length)
+  }
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
       {/* Hero Section */}
@@ -22,7 +74,7 @@ export default function Training() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="space-y-8"
+              className="space-y-8 mt-[50px]"
             >
               <div className="space-y-6">
                 <motion.h1 
@@ -48,100 +100,161 @@ export default function Training() {
                   </p>
                 </motion.div>
               </div>
+
+              <div className="space-y-6">
+                <p className="text-xl md:text-2xl text-slate-100 leading-relaxed font-light">
+                  Discover gentle ways to shape what you already have with Wabi-Sabi's patient approach to growth
+                </p>
+                
+                <p className="text-lg text-slate-200 leading-loose font-light">
+                  Our learners weren't broken — they were <span className="italic text-amber-200">already capable</span>. But wise leaders know potential often emerges <span className="italic text-amber-300">through small shifts</span>.
+                </p>
+              </div>
+
               
             </motion.div>
             
-            {/* Right Visual - Training Dashboard */}
+            {/* Right Visual - 3D Training Carousel */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative hidden lg:block"
             >
-              <div className="relative w-full h-[600px] bg-gradient-to-br from-blue-600 via-purple-600 to-slate-800 rounded-3xl overflow-hidden shadow-2xl">
-                {/* Background overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-900/40 via-transparent to-slate-900/60"></div>
+              {/* 3D Carousel Container */}
+              <div className="relative w-full h-[600px] flex items-center justify-center perspective-1000">
+                {/* Navigation Buttons */}
+                <button
+                  onClick={handlePrev}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/20 transition-all"
+                >
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
                 
-                {/* Central trainer figure */}
-                <div className="absolute top-8 left-1/2 transform -translate-x-1/2 text-center">
-                  <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
-                    <span className="text-white text-2xl font-bold">MK</span>
-                  </div>
-                  <div className="text-white">
-                    <p className="font-semibold text-lg">Michael Kim</p>
-                    <p className="text-slate-300 text-sm">AI Training Specialist</p>
-                  </div>
-                </div>
-
-                {/* Floating training metrics */}
-                <motion.div
-                  animate={{ y: [-5, 5, -5] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-32 left-8 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg max-w-[200px]"
+                <button
+                  onClick={handleNext}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/20 transition-all"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                    <div>
-                      <p className="text-slate-800 font-semibold text-sm">Training Progress</p>
-                      <p className="text-slate-600 text-xs">87% completion rate</p>
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+
+                {/* 3D Cards */}
+                {mounted && slides.map((slide, index) => {
+                  const isActive = index === currentIndex
+                  const isNext = index === (currentIndex + 1) % slides.length
+                  const isPrev = index === (currentIndex - 1 + slides.length) % slides.length
+                  
+                  let transform = 'translateX(400px) rotateY(-45deg) scale(0.8)'
+                  let zIndex = 1
+                  let opacity = 0.4
+                  
+                  if (isActive) {
+                    transform = 'translateX(0px) rotateY(0deg) scale(1)'
+                    zIndex = 10
+                    opacity = 1
+                  } else if (isPrev) {
+                    transform = 'translateX(-200px) rotateY(25deg) scale(0.85) translateZ(-100px)'
+                    zIndex = 5
+                    opacity = 0.7
+                  } else if (isNext) {
+                    transform = 'translateX(200px) rotateY(-25deg) scale(0.85) translateZ(-100px)'
+                    zIndex = 5
+                    opacity = 0.7
+                  }
+
+                  return (
+                    <div
+                      key={slide.id}
+                      className="absolute transition-all duration-700 ease-out"
+                      style={{
+                        transform,
+                        zIndex,
+                        opacity
+                      }}
+                    >
+                      <CardHoverReveal className="w-80 shadow-2xl border-0 rounded-2xl overflow-hidden" style={{ height: '584px' }}>
+                        <CardHoverRevealMain>
+                          <div className="w-full bg-gradient-to-br from-white via-yellow-50 to-green-50 flex flex-col relative" style={{ height: '584px' }}>
+                            {/* Wabi-sabi texture overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-green-100/20 via-yellow-100/30 to-orange-100/25 opacity-70"></div>
+                            
+                            {/* Image box - top 40% */}
+                            <div className="w-full bg-gradient-to-br from-green-200/60 via-yellow-200/50 to-orange-200/40 flex items-center justify-center relative z-10" style={{ height: '234px' }}>
+                              {/* Organic shape background */}
+                              <div className="absolute inset-4 bg-gradient-to-br from-green-300/30 to-yellow-300/40 rounded-[2rem] transform rotate-1"></div>
+                              <div className="w-20 h-20 bg-gradient-to-br from-green-600 to-emerald-700 rounded-full flex items-center justify-center relative z-10 shadow-lg transform -rotate-2">
+                                <span className="text-white text-xl">🌱</span>
+                              </div>
+                            </div>
+                            
+                            {/* Content area - bottom 60% */}
+                            <div className="flex-1 flex items-center justify-center p-6 relative z-10">
+                              <div className="text-center space-y-4">
+                                {/* Wabi-sabi styled logo with vibrant colors */}
+                                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full mx-auto flex items-center justify-center shadow-lg transform rotate-1 relative">
+                                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/30 to-transparent rounded-full"></div>
+                                  <span className="text-white text-lg font-bold relative z-10">MK</span>
+                                </div>
+                                <div className="text-slate-800">
+                                  <h3 className="text-lg font-semibold text-slate-900 mb-1">{slide.title}</h3>
+                                  <p className="text-green-700 text-sm font-medium bg-green-100/80 px-3 py-1 rounded-full inline-block border border-green-200/50">{slide.type}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </CardHoverRevealMain>
+                        <CardHoverRevealContent className="space-y-4 rounded-2xl bg-[rgba(0,0,0,.5)] backdrop-blur-3xl p-4">
+                          <div className="space-y-2">
+                            <h3 className="text-sm text-white/80">Type</h3>
+                            <div className="flex flex-wrap gap-2">
+                              <Badge className="capitalize rounded-full bg-green-500">
+                                {slide.type}
+                              </Badge>
+                            </div>
+                          </div>
+                          <div className="space-y-2">
+                            <h3 className="text-sm text-white/80">Focus Areas</h3>
+                            <div className="flex flex-wrap gap-2">
+                              {slide.services.map((service) => (
+                                <Badge
+                                  key={service}
+                                  className="capitalize rounded-full"
+                                  variant={'secondary'}
+                                >
+                                  {service}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+                          <div className="space-y-2 mt-2">
+                            <h3 className="text-white capitalize font-medium">
+                              {slide.title}
+                            </h3>
+                            <p className="text-white/80 text-sm">{slide.description}</p>
+                          </div>
+                        </CardHoverRevealContent>
+                      </CardHoverReveal>
                     </div>
-                  </div>
-                </motion.div>
+                  )
+                })}
 
-                {/* Skills development card */}
-                <motion.div
-                  animate={{ y: [5, -5, 5] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-48 right-8 bg-amber-50/95 backdrop-blur-sm rounded-xl p-4 shadow-lg max-w-[180px]"
-                >
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-amber-600 mb-1">156</div>
-                    <p className="text-amber-800 text-xs font-medium">Skills Developed</p>
-                    <p className="text-amber-600 text-xs">+23% this month</p>
-                  </div>
-                </motion.div>
-
-                {/* Learning interface mockup */}
-                <div className="absolute bottom-20 left-8 right-8 bg-slate-800/90 backdrop-blur-sm rounded-xl p-4 shadow-lg">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                    <p className="text-white text-sm font-medium">Current Module: AI Workflow Automation</p>
-                  </div>
-                  <div className="bg-slate-700/50 rounded-lg p-3 mb-3">
-                    <p className="text-slate-300 text-xs">"How to integrate AI into existing processes without disrupting team workflows..."</p>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="flex gap-2">
-                      <div className="w-6 h-1 bg-amber-400 rounded"></div>
-                      <div className="w-6 h-1 bg-amber-400 rounded"></div>
-                      <div className="w-6 h-1 bg-slate-600 rounded"></div>
-                      <div className="w-6 h-1 bg-slate-600 rounded"></div>
-                    </div>
-                    <p className="text-slate-400 text-xs">2 of 4 complete</p>
-                  </div>
-                </div>
-
-                {/* ROI indicator */}
-                <motion.div
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute bottom-8 right-8 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-lg"
-                >
-                  <div className="text-center">
-                    <p className="text-white text-xs font-bold">ROI</p>
-                    <p className="text-white text-xs">340%</p>
-                  </div>
-                </motion.div>
-
-                {/* Code/Analytics sidebar */}
-                <div className="absolute top-32 right-4 w-24 bg-slate-900/80 backdrop-blur-sm rounded-lg p-2 shadow-lg">
-                  <div className="space-y-2">
-                    <div className="h-1 bg-green-400 rounded w-full"></div>
-                    <div className="h-1 bg-amber-400 rounded w-3/4"></div>
-                    <div className="h-1 bg-blue-400 rounded w-1/2"></div>
-                    <div className="h-1 bg-purple-400 rounded w-2/3"></div>
-                  </div>
-                  <p className="text-white text-xs mt-2 text-center">Analytics</p>
+                {/* Dot Indicators */}
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
+                  {slides.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentIndex(index)}
+                      className={`w-3 h-3 rounded-full transition-all ${
+                        index === currentIndex 
+                          ? 'bg-white scale-125' 
+                          : 'bg-white/40 hover:bg-white/60'
+                      }`}
+                    />
+                  ))}
                 </div>
               </div>
             </motion.div>
