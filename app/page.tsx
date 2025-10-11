@@ -332,9 +332,7 @@ Hidden value flows quietly through your business, waiting to be discovered and s
                 Take the Profit Quiz (3 minutes)
               </Link>
               <a
-                href={`https://wa.me/27714329190?text=${encodeURIComponent("Hi! I'm interested in discovering the hidden value in my business.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`/chat/wabi-sabi-business?msg=${encodeURIComponent("Hi! I'm interested in discovering the hidden value in my business.")}`}
                 className="inline-flex items-center px-8 py-4 border border-amber-500/30 text-amber-400 rounded-xl font-semibold hover:bg-amber-500/10 transition-all duration-300"
               >
                 Begin a Conversation

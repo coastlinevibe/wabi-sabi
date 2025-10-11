@@ -33,7 +33,7 @@ export default function PricingAndOffer() {
       shifts: "Includes 3 core shifts/apps",
       examples: ["Client database", "Online payments", "Delivery tracker"],
       retainer: "Optional retainer (hybrid): R7,500 base + 5–10% of profit uplift unlocked",
-      cta: { label: "Book a Discovery Session", href: "#discovery" },
+      cta: { label: "Book a Discovery Session", href: "https://cal.com/riegal-du-toit/30min" },
     },
     {
       name: "Growth",
@@ -44,7 +44,7 @@ export default function PricingAndOffer() {
       shifts: "Includes 6 shifts/apps",
       examples: ["CRM automations", "Referral tracking", "Upsell flows", "Customer portal"],
       retainer: "Optional retainer (hybrid): R15,000 base + 5–10% of profit uplift unlocked",
-      cta: { label: "Book a Discovery Session", href: "#discovery" },
+      cta: { label: "Book a Discovery Session", href: "https://cal.com/riegal-du-toit/30min" },
     },
     {
       name: "Scale",
@@ -55,7 +55,7 @@ export default function PricingAndOffer() {
       shifts: "Includes 12+ shifts/apps",
       examples: ["Multi-team dashboards", "Predictive analytics", "Stock & delivery systems"],
       retainer: "Optional retainer (hybrid): R25,000 base + 5–10% of profit uplift unlocked",
-      cta: { label: "Book a Discovery Session", href: "#discovery" },
+      cta: { label: "Book a Discovery Session", href: "https://cal.com/riegal-du-toit/30min" },
     },
   ];
 
@@ -95,49 +95,34 @@ export default function PricingAndOffer() {
 
         {/* Discovery callout */}
         <div className="mb-10 md:mb-14">
-          <ShineBorder
-            borderRadius={12}
-            borderWidth={2}
-            duration={10}
-            color={["#22c55e", "#16a34a", "#15803d"]}
-            className="bg-slate-800/50 backdrop-blur-sm"
-          >
-            <div className="p-6">
-              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                <div>
-                  <Badge className="bg-amber-100 text-amber-800">Start here</Badge>
-                  <h3 className="mt-3 text-2xl font-bold text-white">Discovery Session — R5,000</h3>
-                  <p className="mt-1 text-slate-300">
-                    Every engagement begins with Discovery. We reveal hidden profit streams and map 10–15 small shifts with
-                    ROI potential. <span className="font-medium text-white">The fee is credited toward any plan you choose.</span>
-                  </p>
-                  <div className="mt-3 inline-flex items-center px-4 py-2 bg-gradient-to-r from-amber-500/20 to-orange-600/20 rounded-xl border border-amber-500/30 text-amber-400 font-medium text-sm">
-                    <span className="text-amber-400/90 text-sm mr-2">⚡</span>
-                    Limited to <span className="text-amber-400 font-semibold mx-1">12 businesses</span> per quarter — We value your time as well as ours.
-                  </div>
+          <div className="bg-slate-800/50 backdrop-blur-sm border-2 border-green-500/30 rounded-xl p-6 hover:border-green-500/50 transition-all duration-300">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              <div>
+                <Badge className="bg-amber-100 text-amber-800">Start here</Badge>
+                <h3 className="mt-3 text-2xl font-bold text-white">Discovery Session — R5,000</h3>
+                <p className="mt-1 text-slate-300">
+                  Every engagement begins with Discovery. We reveal hidden profit streams and map 10–15 small shifts with
+                  ROI potential. <span className="font-medium text-white">The fee is credited toward any plan you choose.</span>
+                </p>
+                <div className="mt-3 inline-flex items-center px-4 py-2 bg-gradient-to-r from-amber-500/20 to-orange-600/20 rounded-xl border border-amber-500/30 text-amber-400 font-medium text-sm">
+                  <span className="text-amber-400/90 text-sm mr-2">⚡</span>
+                  Limited to <span className="text-amber-400 font-semibold mx-1">12 businesses</span> per quarter — We value your time as well as ours.
                 </div>
-                <Button asChild className="mt-2 md:mt-0 bg-green-600 hover:bg-green-700">
-                  <a href="https://cal.com/riegal-du-toit/30min" target="_blank" rel="noopener noreferrer">
-                    Book Discovery <ArrowRight className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
               </div>
+              <Button asChild className="mt-2 md:mt-0 bg-green-600 hover:bg-green-700">
+                <a href="https://cal.com/riegal-du-toit/30min" target="_blank" rel="noopener noreferrer">
+                  Book Discovery <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
             </div>
-          </ShineBorder>
+          </div>
         </div>
 
         {/* Pricing grid */}
         <div className="grid gap-6 md:grid-cols-3">
           {tiers.map((t) => (
             <div key={t.name}>
-              <ShineBorder
-                borderRadius={12}
-                borderWidth={2}
-                duration={10}
-                color={["#22c55e", "#16a34a", "#15803d"]}
-                className="bg-slate-800/50 backdrop-blur-sm h-full"
-              >
-                <div className="p-6 h-full flex flex-col">
+              <div className="bg-slate-800/50 backdrop-blur-sm border-2 border-green-500/30 rounded-xl p-6 h-full flex flex-col hover:border-green-500/50 transition-all duration-300">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-2xl font-bold text-white">{t.name}</h3>
                     {t.highlight ? (
@@ -181,23 +166,12 @@ export default function PricingAndOffer() {
                     </p>
                   </div>
 
-                  <Button 
-                    onClick={t.name === "Foundation" ? handleFoundationClick : undefined}
-                    data-foundation-trigger={t.name === "Foundation" ? "true" : undefined}
-                    className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all mt-auto"
-                  >
-                    {t.name === "Foundation" ? (
-                      <span className="flex items-center justify-center w-full">
-                        {t.cta.label} <ArrowRight className="ml-2 h-4 w-4" />
-                      </span>
-                    ) : (
-                      <a href={t.cta.href} className="flex items-center justify-center w-full">
-                        {t.cta.label} <ArrowRight className="ml-2 h-4 w-4" />
-                      </a>
-                    )}
+                  <Button asChild className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all mt-auto">
+                    <a href={t.cta.href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-full">
+                      {t.cta.label} <ArrowRight className="ml-2 h-4 w-4" />
+                    </a>
                   </Button>
-                </div>
-              </ShineBorder>
+              </div>
             </div>
           ))}
         </div>

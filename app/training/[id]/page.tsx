@@ -55,17 +55,13 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
 
           <div className="mt-6 flex flex-wrap gap-3">
             <a
-              href={`https://wa.me/27714329190?text=${encodeURIComponent(`Hi! I'd like to book the course: ${course.title}`)}`}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`/chat/wabi-sabi-business?msg=${encodeURIComponent(`Hi! I'd like to book the course: ${course.title}`)}`}
               className="rounded-xl bg-gradient-to-r from-cyan-500 to-purple-500 px-5 py-3 font-medium hover:shadow-lg transition-all"
             >
               Book This Course
             </a>
             <a
-              href={`https://wa.me/27714329190?text=${encodeURIComponent(`Hi! Can we customise the course: ${course.title}?`)} `}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`/chat/wabi-sabi-business?msg=${encodeURIComponent(`Hi! Can we customise the course: ${course.title}?`)}`}
               className="rounded-xl bg-slate-800 px-5 py-3 hover:bg-slate-700 transition-all"
             >
               Ask About Customisation
@@ -197,9 +193,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
           </p>
           <div className="mt-6 flex justify-center gap-3">
             <a
-              href={`https://wa.me/27714329190?text=${encodeURIComponent(`Hi! I'd like to book the course: ${course.title}`)}`}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`/chat/wabi-sabi-business?msg=${encodeURIComponent(`Hi! I'd like to book the course: ${course.title}`)}`}
               className="rounded-xl bg-gradient-to-r from-cyan-500 to-purple-500 px-6 py-3 font-medium hover:shadow-lg transition-all"
             >
               Book This Course

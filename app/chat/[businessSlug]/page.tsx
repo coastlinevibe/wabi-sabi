@@ -71,10 +71,22 @@ export default async function ChatPage({ params, searchParams }: ChatPageProps) 
                 setTimeout(() => {
                   const input = document.querySelector('input[placeholder*="Type your message"]');
                   if (input) {
-                    input.value = decodeURIComponent("${encodeURIComponent(prefillMsg)}");
+                    const message = decodeURIComponent("${encodeURIComponent(prefillMsg)}");
+                    
+                    // Set the value using React's property descriptor
+                    const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+                    nativeInputValueSetter.call(input, message);
+                    
+                    // Trigger multiple events to ensure React picks it up
+                    const inputEvent = new Event('input', { bubbles: true });
+                    const changeEvent = new Event('change', { bubbles: true });
+                    
+                    input.dispatchEvent(inputEvent);
+                    input.dispatchEvent(changeEvent);
+                    
                     input.focus();
                   }
-                }, 500);
+                }, 1000);
               });
             `,
           }}

@@ -69,7 +69,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-9 pl-8">
+          <div className="hidden lg:flex items-center space-x-3 ml-1">
             {navItems.map((item) => {
               const isActive = pathname === item.href
               return (
@@ -77,7 +77,7 @@ export function Navbar() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className={`text-sm tracking-[0.12em] uppercase font-semibold transition-colors duration-200 relative group text-white/90 hover:text-amber-200`}
+                    className={`text-sm tracking-[0.1em] uppercase font-semibold transition-colors duration-200 relative group text-white/90 hover:text-amber-200 whitespace-nowrap`}
                   >
                     {item.name}
                     <span className="absolute -bottom-1 left-0 h-0.5 w-2 group-hover:w-full bg-gradient-to-r from-amber-500 via-orange-400 to-amber-300 transition-all duration-300"></span>
@@ -86,7 +86,7 @@ export function Navbar() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`text-sm tracking-[0.12em] uppercase font-semibold transition-colors duration-200 relative group ${
+                    className={`text-sm tracking-[0.1em] uppercase font-semibold transition-colors duration-200 relative group whitespace-nowrap ${
                       isActive 
                         ? 'text-amber-200' 
                         : 'text-white/90 hover:text-amber-200'
@@ -102,49 +102,21 @@ export function Navbar() {
             })}
           </div>
 
-          {/* Desktop CTA & Theme Toggle */}
-          <div className="hidden lg:flex items-center space-x-3">
-            <button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-2 rounded-full hover:bg-white/10 transition-colors duration-200"
-            >
-              {theme === 'dark' ? (
-                <Sun className="w-5 h-5 text-yellow-200" />
-              ) : (
-                <Moon className="w-5 h-5 text-white" />
-              )}
-            </button>
-            
-            <Link
-              href="/work-with-us"
-              className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-2 rounded-lg font-semibold hover:from-amber-600 hover:to-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              Work With Us
-            </Link>
+          {/* Desktop CTA */}
+          <div className="hidden lg:flex items-center">
             <a
               href="https://cal.com/riegal-du-toit/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gradient-to-r from-amber-500 to-orange-400 text-white px-3.5 py-1.5 rounded-lg font-medium text-xs md:text-sm hover:shadow-lg hover:scale-[1.03] transition-all duration-300 flex items-center gap-1.5"
+              className="bg-gradient-to-r from-amber-500 to-orange-400 text-white px-4 py-2 rounded-lg font-medium text-sm hover:shadow-lg hover:scale-[1.03] transition-all duration-300 flex items-center gap-2"
             >
-              <Phone className="w-3.5 h-3.5" />
-              <span className="tracking-[0.08em] uppercase">Book a Growth Session</span>
+              <Phone className="w-4 h-4" />
+              <span className="tracking-[0.1em] uppercase whitespace-nowrap">Book a Growth Session</span>
             </a>
           </div>
 
           {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center space-x-2">
-            <button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-2 rounded-full hover:bg-white/10 transition-colors duration-200"
-            >
-              {theme === 'dark' ? (
-                <Sun className="w-5 h-5 text-yellow-200" />
-              ) : (
-                <Moon className="w-5 h-5 text-white" />
-              )}
-            </button>
-            
+          <div className="lg:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-md text-white hover:text-amber-200 transition-colors duration-200"
@@ -201,7 +173,7 @@ export function Navbar() {
                   className="flex items-center justify-center space-x-2 bg-gradient-to-r from-amber-500 to-orange-400 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
                 >
                   <Phone className="w-4 h-4" />
-                  <span>Book a Growth Session</span>
+                  <span className="tracking-[0.15em]">Book a Growth Session</span>
                 </a>
               </div>
             </div>

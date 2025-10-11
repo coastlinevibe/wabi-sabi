@@ -380,9 +380,7 @@ export function createCaseStudyPage(caseStudyId: CaseStudy["id"]) {
             </p>
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
-                href={`https://wa.me/27714329190?text=${encodeURIComponent("Hi! I'd like to book a working session about automating our operations.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`/chat/wabi-sabi-business?msg=${encodeURIComponent("Hi! I'd like to book a working session about automating our operations.")}`}
                 className={`inline-flex items-center gap-2 rounded-full border border-white/10 bg-gradient-to-r ${accent.button} px-6 py-3 text-sm font-semibold uppercase tracking-[0.24em] text-white`}
               >
               	Book a working session
