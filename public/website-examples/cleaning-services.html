@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FreshStart Cleaning | Residential • Commercial • Deep Cleans</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f0fdfa;
+        --teal: #14b8a6;
+        --cyan: #06b6d4;
+        --slate: #475569;
+        --muted: rgba(71, 85, 105, 0.7);
+        --surface: rgba(255, 255, 255, 0.94);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: 'Nunito', sans-serif;
+        background:
+          radial-gradient(circle at 14% 10%, rgba(20, 184, 166, 0.16), transparent 55%),
+          radial-gradient(circle at 80% 18%, rgba(6, 182, 212, 0.14), transparent 58%),
+          linear-gradient(165deg, #f0fdfa 0%, #e0f2fe 55%, #f0fdfa 100%);
+        color: rgba(30, 41, 59, 0.92);
+        overflow-x: hidden;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        padding: 26px 6vw 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(180deg, rgba(240, 253, 250, 0.96) 0%, rgba(240, 253, 250, 0) 100%);
+        backdrop-filter: blur(10px);
+        z-index: 22;
+      }
+
+      .brand-block {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        flex-wrap: wrap;
+      }
+
+      .crest {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 30% 30%, rgba(20, 184, 166, 0.94), rgba(6, 182, 212, 0.94));
+        display: grid;
+        place-items: center;
+        font-family: 'Poppins', sans-serif;
+        font-size: 24px;
+        color: #f0fdfa;
+        border: 1px solid rgba(20, 184, 166, 0.4);
+        box-shadow: 0 18px 34px rgba(20, 184, 166, 0.28);
+      }
+
+      .brand-copy {
+        font-family: 'Poppins', sans-serif;
+      }
+
+      .brand-copy .eyebrow {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: rgba(71, 85, 105, 0.58);
+      }
+
+      .brand-copy .name {
+        font-size: 32px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(71, 85, 105, 0.18);
+        background: rgba(255, 255, 255, 0.82);
+        color: rgba(71, 85, 105, 0.84);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.03em;
+        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      }
+
+      .back-link:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.96);
+        border-color: rgba(20, 184, 166, 0.36);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+
+      nav a {
+        color: var(--muted);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        transition: color 0.25s ease;
+      }
+
+      nav a:hover {
+        color: rgba(30, 41, 59, 0.88);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 24px;
+        border-radius: 12px;
+        background: linear-gradient(120deg, rgba(224, 242, 254, 0.96), rgba(20, 184, 166, 0.92));
+        color: #0f172a;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 12px 28px rgba(20, 184, 166, 0.28);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 16px 34px rgba(20, 184, 166, 0.36);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 56px;
+        padding: 92px 6vw 72px;
+        align-items: center;
+        position: relative;
+      }
+
+      .hero::after {
+        content: '';
+        position: absolute;
+        inset: 12% auto auto 58%;
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(20, 184, 166, 0.22), transparent 70%);
+        z-index: -1;
+      }
+
+      .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .badge {
+        padding: 8px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(20, 184, 166, 0.28);
+        background: rgba(20, 184, 166, 0.12);
+        color: rgba(20, 184, 166, 0.88);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(46px, 5.2vw, 72px);
+        line-height: 1.06;
+        margin-bottom: 22px;
+      }
+
+      .hero h1 span {
+        color: var(--cyan);
+      }
+
+      .hero p.lead {
+        font-size: clamp(18px, 2.2vw, 22px);
+        color: rgba(71, 85, 105, 0.82);
+        line-height: 1.74;
+        margin-bottom: 34px;
+      }
+
+      .hero-media {
+        position: relative;
+        border-radius: 28px;
+        padding: 28px;
+        background: var(--surface);
+        box-shadow: 0 30px 60px rgba(20, 184, 166, 0.22);
+        overflow: hidden;
+      }
+
+      .hero-media img {
+        width: 100%;
+        border-radius: 18px;
+        object-fit: cover;
+      }
+
+      .hero-media .stamp {
+        position: absolute;
+        bottom: 28px;
+        right: 32px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: rgba(20, 184, 166, 0.88);
+        color: #f0fdfa;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .section {
+        padding: 80px 6vw;
+      }
+
+      .section-header {
+        max-width: 760px;
+        margin: 0 auto 52px;
+        text-align: center;
+      }
+
+      .section-header h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(34px, 4vw, 50px);
+        margin-bottom: 16px;
+      }
+
+      .section-header p {
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 26px;
+      }
+
+      .feature-card {
+        border-radius: 22px;
+        padding: 26px 28px;
+        background: rgba(255, 255, 255, 0.94);
+        border: 1px solid rgba(20, 184, 166, 0.14);
+        box-shadow: 0 16px 38px rgba(20, 184, 166, 0.18);
+        display: grid;
+        gap: 16px;
+        min-height: 210px;
+      }
+
+      .feature-card h3 {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: rgba(71, 85, 105, 0.78);
+        line-height: 1.7;
+      }
+
+      .service-grid {
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .service-card {
+        border-radius: 26px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(20, 184, 166, 0.18);
+        box-shadow: 0 24px 40px rgba(20, 184, 166, 0.2);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .service-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .service-card .content {
+        padding: 24px 26px 30px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .service-card h3 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 22px;
+        margin: 0;
+      }
+
+      .service-card ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+        color: rgba(71, 85, 105, 0.76);
+        font-size: 15px;
+      }
+
+      .numbers-strip {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+        margin-top: 48px;
+      }
+
+      .number-tile {
+        padding: 24px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(20, 184, 166, 0.16);
+        text-align: center;
+        box-shadow: 0 16px 32px rgba(20, 184, 166, 0.18);
+      }
+
+      .number-tile .value {
+        font-family: 'Poppins', sans-serif;
+        font-size: 30px;
+        color: rgba(20, 184, 166, 0.9);
+        margin-bottom: 8px;
+      }
+
+      .cta {
+        padding: 88px 6vw 108px;
+        text-align: center;
+        background: linear-gradient(120deg, rgba(255, 255, 255, 0.94), rgba(20, 184, 166, 0.12));
+        border-top: 1px solid rgba(20, 184, 166, 0.12);
+      }
+
+      .cta h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(34px, 4.2vw, 52px);
+        margin-bottom: 18px;
+      }
+
+      .cta p {
+        color: rgba(71, 85, 105, 0.76);
+        font-size: 18px;
+        line-height: 1.78;
+        max-width: 620px;
+        margin: 0 auto 28px;
+      }
+
+      footer {
+        padding: 32px 6vw 48px;
+        background: rgba(240, 253, 250, 0.94);
+        border-top: 1px solid rgba(20, 184, 166, 0.1);
+      }
+
+      footer .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 28px;
+      }
+
+      footer h4 {
+        margin-bottom: 12px;
+        letter-spacing: 0.08em;
+        font-size: 14px;
+        color: rgba(71, 85, 105, 0.72);
+        text-transform: uppercase;
+      }
+
+      footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+        color: rgba(71, 85, 105, 0.74);
+        font-size: 14px;
+      }
+
+      @media (max-width: 720px) {
+        header {
+          padding-top: 22px;
+        }
+
+        nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero {
+          padding-top: 82px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand-block">
+        <a class="back-link" href="/portfolio#website-gallery">← Back to main site</a>
+        <div class="crest">FS</div>
+        <div class="brand-copy">
+          <div class="eyebrow">FreshStart cleaning</div>
+          <div class="name">Professional Services</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#story">About</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact" class="btn-primary">Book clean</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="story">
+      <div>
+        <div class="hero-badges">
+          <div class="badge">Residential</div>
+          <div class="badge">Commercial</div>
+          <div class="badge">Deep cleans</div>
+        </div>
+        <h1>
+          Spotless spaces for
+          <span>peace of mind.</span>
+        </h1>
+        <p class="lead">
+          FreshStart delivers reliable cleaning for homes, offices, and commercial spaces across South Africa. Book one-off deep cleans,
+          recurring schedules, or move-in prep with vetted teams and eco-friendly products.
+        </p>
+        <a href="#services" class="btn-primary">Explore services</a>
+      </div>
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1400&q=80" alt="Cleaning team" />
+        <div class="stamp">Trusted Teams</div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="section-header">
+        <h2>Services tailored to your space</h2>
+        <p>
+          From weekly home maintenance to post-construction cleans, FreshStart handles every detail. All teams arrive with supplies,
+          checklists, and quality guarantees.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Residential cleans</h3>
+          <p>Weekly, fortnightly, or monthly home cleaning with customisable checklists and preferred product options.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Office & commercial</h3>
+          <p>After-hours cleaning for offices, retail spaces, and medical suites with security protocols.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Deep cleans</h3>
+          <p>Move-in, move-out, and seasonal deep cleans covering carpets, windows, and appliance interiors.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Specialised services</h3>
+          <p>Post-construction cleanup, event prep, and Airbnb turnovers with rapid response teams.</p>
+        </div>
+      </div>
+
+      <div class="service-grid">
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1200&q=80" alt="Home clean" />
+          <div class="content">
+            <h3>Home Maintenance</h3>
+            <ul>
+              <li>Kitchen, bathrooms, and living areas</li>
+              <li>Dusting, vacuuming, and mopping</li>
+              <li>Linen changes and laundry add-ons</li>
+              <li>Eco-friendly product options</li>
+            </ul>
+          </div>
+        </article>
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80" alt="Office clean" />
+          <div class="content">
+            <h3>Office Solutions</h3>
+            <ul>
+              <li>Desks, floors, and common areas</li>
+              <li>Restroom sanitisation and restocking</li>
+              <li>Breakroom and kitchen deep cleans</li>
+              <li>After-hours scheduling available</li>
+            </ul>
+          </div>
+        </article>
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&w=1200&q=80" alt="Deep clean" />
+          <div class="content">
+            <h3>Deep Clean Packages</h3>
+            <ul>
+              <li>Oven, fridge, and appliance interiors</li>
+              <li>Carpet shampooing and window washing</li>
+              <li>Grout scrubbing and tile polishing</li>
+              <li>Move-in/move-out guarantees</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <div class="numbers-strip">
+        <div class="number-tile">
+          <div class="value">2 hours</div>
+          <div>Average response time for same-day booking requests.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">100%</div>
+          <div>Satisfaction guarantee with free re-clean if standards aren't met.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">Eco-safe</div>
+          <div>All products certified non-toxic and biodegradable.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="section-header">
+        <h2>Simple booking, reliable results</h2>
+        <p>
+          Book online, confirm your checklist, and let vetted teams handle the rest. Track arrival times and leave feedback after every
+          clean.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>01 · Book</h3>
+          <p>Choose service type, date, and checklist preferences. Receive instant confirmation with team details.</p>
+        </div>
+        <div class="feature-card">
+          <h3>02 · Clean</h3>
+          <p>Teams arrive on time with supplies, complete checklists, and send progress updates via SMS.</p>
+        </div>
+        <div class="feature-card">
+          <h3>03 · Review</h3>
+          <p>Inspect results, leave feedback, and schedule your next clean with loyalty discounts applied.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Ready for a spotless space?</h2>
+      <p>
+        Tell us about your property, preferred schedule, and any special requests. FreshStart confirms availability and pricing within
+        one hour.
+      </p>
+      <a href="mailto:bookings@freshstartcleaning.co.za" class="btn-primary">Request a quote</a>
+    </section>
+
+    <footer>
+      <div class="grid">
+        <div>
+          <h4>coverage</h4>
+          <ul>
+            <li>FreshStart Cleaning Services</li>
+            <li>Nationwide metro coverage</li>
+            <li>Same-day bookings available</li>
+          </ul>
+        </div>
+        <div>
+          <h4>bookings</h4>
+          <ul>
+            <li>bookings@freshstartcleaning.co.za</li>
+            <li>+27 87 555 3300</li>
+            <li>WhatsApp · FreshStart SA</li>
+          </ul>
+        </div>
+        <div>
+          <h4>follow</h4>
+          <ul>
+            <li>Instagram · @freshstartcleaning</li>
+            <li>Facebook · FreshStart SA</li>
+            <li>LinkedIn · Commercial clients</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

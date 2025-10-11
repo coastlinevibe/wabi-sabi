@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Morning Batch Bakery | Fresh Breads & Pastries</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #fffaf0;
+        --warm: #f59e0b;
+        --accent: #f97316;
+        --sage: #10b981;
+        --ink: #1f2937;
+        --muted: rgba(55, 65, 81, 0.68);
+        --surface: rgba(255, 255, 255, 0.85);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: 'Inter', sans-serif;
+        background:
+          radial-gradient(circle at 12% 10%, rgba(249, 196, 82, 0.18), transparent 55%),
+          radial-gradient(circle at 78% 18%, rgba(246, 133, 27, 0.12), transparent 58%),
+          linear-gradient(165deg, #fff7ec 0%, #fef3c7 55%, #ffe9c9 100%);
+        color: var(--ink);
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        padding: 26px 6vw 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(180deg, rgba(255, 247, 235, 0.95) 0%, rgba(255, 247, 235, 0) 100%);
+        backdrop-filter: blur(10px);
+        z-index: 22;
+      }
+
+      .brand-block {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .crest {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 30% 30%, rgba(249, 196, 82, 0.95), rgba(247, 118, 34, 0.92));
+        display: grid;
+        place-items: center;
+        font-family: 'Playfair Display', serif;
+        font-size: 24px;
+        color: #fffaf0;
+        border: 1px solid rgba(249, 196, 82, 0.4);
+        box-shadow: 0 18px 34px rgba(249, 196, 82, 0.32);
+      }
+
+      .brand-copy {
+        font-family: 'Playfair Display', serif;
+      }
+
+      .brand-copy .eyebrow {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: rgba(88, 64, 36, 0.58);
+      }
+
+      .brand-copy .name {
+        font-size: 32px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(88, 64, 36, 0.18);
+        background: rgba(255, 255, 255, 0.78);
+        color: rgba(88, 64, 36, 0.82);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.03em;
+        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      }
+
+      .back-link:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.92);
+        border-color: rgba(249, 196, 82, 0.4);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+
+      nav a {
+        color: rgba(88, 64, 36, 0.74);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        transition: color 0.25s ease;
+      }
+
+      nav a:hover {
+        color: rgba(49, 46, 38, 0.88);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 24px;
+        border-radius: 12px;
+        background: linear-gradient(120deg, rgba(255, 247, 224, 0.96), rgba(249, 196, 82, 0.92));
+        color: #8a5c2d;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 12px 28px rgba(249, 196, 82, 0.3);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 16px 34px rgba(249, 196, 82, 0.38);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 56px;
+        padding: 92px 6vw 72px;
+        align-items: center;
+        position: relative;
+      }
+
+      .hero::after {
+        content: '';
+        position: absolute;
+        inset: 12% auto auto 58%;
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(249, 196, 82, 0.35), transparent 70%);
+        z-index: -1;
+      }
+
+      .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .badge {
+        padding: 8px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(249, 196, 82, 0.38);
+        background: rgba(249, 196, 82, 0.2);
+        color: rgba(88, 64, 36, 0.88);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(46px, 5.2vw, 72px);
+        line-height: 1.06;
+        margin-bottom: 22px;
+      }
+
+      .hero h1 span {
+        color: var(--accent);
+      }
+
+      .hero p.lead {
+        font-size: clamp(18px, 2.2vw, 22px);
+        color: rgba(88, 64, 36, 0.78);
+        line-height: 1.74;
+        margin-bottom: 34px;
+      }
+
+      .hero-media {
+        position: relative;
+        border-radius: 28px;
+        padding: 28px;
+        background: var(--surface);
+        box-shadow: 0 30px 60px rgba(247, 196, 82, 0.28);
+        overflow: hidden;
+      }
+
+      .hero-media img {
+        width: 100%;
+        border-radius: 18px;
+        object-fit: cover;
+      }
+
+      .hero-media .stamp {
+        position: absolute;
+        bottom: 28px;
+        right: 32px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: rgba(16, 185, 129, 0.85);
+        color: #fefce8;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .section {
+        padding: 80px 6vw;
+      }
+
+      .section-header {
+        max-width: 760px;
+        margin: 0 auto 52px;
+        text-align: center;
+      }
+
+      .section-header h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(34px, 4vw, 50px);
+        margin-bottom: 16px;
+      }
+
+      .section-header p {
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 26px;
+      }
+
+      .feature-card {
+        border-radius: 22px;
+        padding: 26px 28px;
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(248, 196, 112, 0.2);
+        box-shadow: 0 16px 38px rgba(249, 196, 82, 0.22);
+        display: grid;
+        gap: 16px;
+        min-height: 210px;
+      }
+
+      .feature-card h3 {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: rgba(88, 64, 36, 0.76);
+        line-height: 1.7;
+      }
+
+      .product-grid {
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .product-card {
+        border-radius: 26px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.94);
+        border: 1px solid rgba(248, 196, 112, 0.26);
+        box-shadow: 0 24px 40px rgba(249, 196, 82, 0.25);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .product-card .content {
+        padding: 24px 26px 30px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .product-card h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 22px;
+        margin: 0;
+      }
+
+      .product-card ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+        color: rgba(88, 64, 36, 0.7);
+        font-size: 15px;
+      }
+
+      .numbers-strip {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+        margin-top: 48px;
+      }
+
+      .number-tile {
+        padding: 24px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(249, 196, 82, 0.2);
+        text-align: center;
+        box-shadow: 0 16px 32px rgba(249, 196, 82, 0.22);
+      }
+
+      .number-tile .value {
+        font-family: 'Playfair Display', serif;
+        font-size: 30px;
+        color: rgba(247, 118, 34, 0.9);
+        margin-bottom: 8px;
+      }
+
+      .schedule-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 24px;
+        margin-top: 48px;
+      }
+
+      .schedule-card {
+        border-radius: 20px;
+        padding: 24px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(16, 185, 129, 0.18);
+        color: rgba(49, 46, 38, 0.82);
+      }
+
+      .cta {
+        padding: 88px 6vw 108px;
+        text-align: center;
+        background: linear-gradient(120deg, rgba(255, 255, 255, 0.92), rgba(249, 196, 82, 0.22));
+        border-top: 1px solid rgba(248, 196, 112, 0.14);
+      }
+
+      .cta h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(34px, 4.2vw, 52px);
+        margin-bottom: 18px;
+      }
+
+      .cta p {
+        color: rgba(88, 64, 36, 0.72);
+        font-size: 18px;
+        line-height: 1.78;
+        max-width: 620px;
+        margin: 0 auto 28px;
+      }
+
+      footer {
+        padding: 32px 6vw 48px;
+        background: rgba(255, 249, 235, 0.9);
+        border-top: 1px solid rgba(248, 196, 112, 0.12);
+      }
+
+      footer .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 28px;
+      }
+
+      footer h4 {
+        margin-bottom: 12px;
+        letter-spacing: 0.08em;
+        font-size: 14px;
+        color: rgba(88, 64, 36, 0.7);
+        text-transform: uppercase;
+      }
+
+      footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+        color: rgba(98, 70, 38, 0.72);
+        font-size: 14px;
+      }
+
+      @media (max-width: 720px) {
+        header {
+          padding-top: 22px;
+        }
+
+        nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero {
+          padding-top: 82px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand-block">
+        <a class="back-link" href="/portfolio#website-gallery">← Back to main site</a>
+        <div class="crest">MB</div>
+        <div class="brand-copy">
+          <div class="eyebrow">Morning batch bakery</div>
+          <div class="name">Breads & Pastries</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#story">About</a>
+        <a href="#range">Range</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#orders">Orders</a>
+        <a href="#contact" class="btn-primary">Order ahead</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="story">
+      <div>
+        <div class="hero-badges">
+          <div class="badge">Sourdough daily</div>
+          <div class="badge">Seasonal pastries</div>
+          <div class="badge">Wholesale trays</div>
+        </div>
+        <h1>
+          Rise early for
+          <span>small-batch bakes.</span>
+        </h1>
+        <p class="lead">
+          Morning Batch delivers fresh sourdough, laminated pastries, and breakfast favourites every day. We mill local grains, churn
+          our own butter, and shape each loaf by hand for cafés, households, and corporate drop-offs.
+        </p>
+        <a href="#range" class="btn-primary">Explore today’s menu</a>
+      </div>
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=1400&q=80" alt="Bakery counter" />
+        <div class="stamp">Baked at dawn</div>
+      </div>
+    </section>
+
+    <section class="section" id="range">
+      <div class="section-header">
+        <h2>Fresh from the ovens</h2>
+        <p>
+          Daily bakes, weekly specials, and signature staples that balance classic comfort with seasonal flair. Available for pickup or
+          scheduled delivery across major South African metros.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Sourdough loaves</h3>
+          <p>Country, seeded, and rye loaves fermented for 48 hours for better flavour and digestibility.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Pastry table</h3>
+          <p>Croissants, pain au chocolat, danishes, and cruffins laminated with cultured butter.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Breakfast trays</h3>
+          <p>Mini quiches, brioche buns, and breakfast loaf slices ready for boardrooms or brunch tables.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Wholesale supply</h3>
+          <p>Standing orders for cafés and hotels with delivery tracking and invoicing built in.</p>
+        </div>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card">
+          <img src="https://images.unsplash.com/photo-1475856034135-1b633921b4c6?auto=format&fit=crop&w=1200&q=80" alt="Sourdough" />
+          <div class="content">
+            <h3>Sourdough Duo</h3>
+            <ul>
+              <li>Country loaf · seeded loaf</li>
+              <li>48-hour fermentation</li>
+              <li>Delivered sliced or whole</li>
+              <li>Pairs with whipped butter jars</li>
+            </ul>
+          </div>
+        </article>
+        <article class="product-card">
+          <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=1200&q=80" alt="Pastries" />
+          <div class="content">
+            <h3>Pastry Flight</h3>
+            <ul>
+              <li>12-piece mixed croissant selection</li>
+              <li>Seasonal fillings and toppings</li>
+              <li>Optional vegan + gluten-light set</li>
+              <li>Delivered in recyclable trays</li>
+            </ul>
+          </div>
+        </article>
+        <article class="product-card">
+          <img src="https://images.unsplash.com/photo-1455853659719-4b521eebc76d?auto=format&fit=crop&w=1200&q=80" alt="Breakfast" />
+          <div class="content">
+            <h3>Morning Meeting Box</h3>
+            <ul>
+              <li>Savoury danishes • mini quiches</li>
+              <li>Yoghurt pots with granola</li>
+              <li>Fruit skewers and mini muffins</li>
+              <li>Feeds 10 guests comfortably</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <div class="numbers-strip">
+        <div class="number-tile">
+          <div class="value">05:00</div>
+          <div>First trays out the oven daily.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">3 cities</div>
+          <div>Johannesburg, Cape Town, and Durban delivery routes.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">6 chefs</div>
+          <div>Dedicated pastry, bread, and savoury teams behind the bench.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="schedule">
+      <div class="section-header">
+        <h2>Bake schedule & lead times</h2>
+        <p>
+          Plan ahead with our weekly calendar. Standing orders receive priority slots, subscription billing, and delivery alerts via
+          SMS or WhatsApp.
+        </p>
+      </div>
+      <div class="schedule-grid">
+        <div class="schedule-card">
+          <h3>Weekday pickup</h3>
+          <p>Doors open 06:30 – 15:00 weekdays. Pre-order to skip the queue, or grab from the counter while stocks last.</p>
+        </div>
+        <div class="schedule-card">
+          <h3>Weekend markets</h3>
+          <p>Catch us at local markets with exclusive bakes, coffee collabs, and limited-run desserts.</p>
+        </div>
+        <div class="schedule-card">
+          <h3>Corporate orders</h3>
+          <p>Place orders 48 hours ahead. We deliver with insulated transport and set up boardroom spreads.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Ready to order your next box?</h2>
+      <p>
+        Send us your preferred pickup or delivery slot, product selection, and any dietary notes. We confirm within two hours during
+        baking hours.
+      </p>
+      <a href="mailto:orders@morningbatch.co.za" class="btn-primary">Send an order</a>
+    </section>
+
+    <footer>
+      <div class="grid">
+        <div>
+          <h4>visit</h4>
+          <ul>
+            <li>Morning Batch Bakery</li>
+            <li>Open Tuesday – Sunday</li>
+            <li>Retail & wholesale</li>
+          </ul>
+        </div>
+        <div>
+          <h4>orders</h4>
+          <ul>
+            <li>orders@morningbatch.co.za</li>
+            <li>+27 82 555 4410</li>
+            <li>WhatsApp · Morning Batch</li>
+          </ul>
+        </div>
+        <div>
+          <h4>follow</h4>
+          <ul>
+            <li>Instagram · @morningbatchsa</li>
+            <li>TikTok · Bakers at dawn</li>
+            <li>Newsletter · Weekly drop sheet</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

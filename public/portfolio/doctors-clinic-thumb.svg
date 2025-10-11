@@ -1,0 +1,111 @@
+<svg width="640" height="400" viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="400" rx="28" fill="url(#paint0_radial_doctors)"/>
+  <defs>
+    <radialGradient id="paint0_radial_doctors" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(150 68) rotate(22) scale(620 420)">
+      <stop offset="0" stop-color="#0EA5E9" stop-opacity="0.95"/>
+      <stop offset="0.35" stop-color="#06B6D4" stop-opacity="0.75"/>
+      <stop offset="0.65" stop-color="#0F172A" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#F8FAFC"/>
+    </radialGradient>
+  </defs>
+  <g opacity="0.4" filter="url(#filter0_f_doctors)">
+    <ellipse cx="520" cy="76" rx="180" ry="100" fill="#06B6D4" fill-opacity="0.4"/>
+  </g>
+  <g opacity="0.35" filter="url(#filter1_f_doctors)">
+    <ellipse cx="122" cy="322" rx="200" ry="110" fill="#0EA5E9" fill-opacity="0.35"/>
+  </g>
+  
+  <!-- Side Navigation Representation -->
+  <rect x="40" y="60" width="80" height="280" rx="12" fill="rgba(15,23,42,0.9)" stroke="rgba(14,165,233,0.3)" stroke-width="1"/>
+  <rect x="50" y="80" width="60" height="12" rx="6" fill="#0EA5E9"/>
+  <rect x="50" y="100" width="45" height="8" rx="4" fill="rgba(255,255,255,0.6)"/>
+  <rect x="50" y="120" width="50" height="6" rx="3" fill="rgba(255,255,255,0.4)"/>
+  <rect x="50" y="135" width="40" height="6" rx="3" fill="rgba(255,255,255,0.4)"/>
+  <rect x="50" y="150" width="55" height="6" rx="3" fill="rgba(255,255,255,0.4)"/>
+  
+  <!-- Floating Cards -->
+  <g filter="url(#filter2_f_doctors)">
+    <rect x="180" y="120" width="120" height="80" rx="16" fill="rgba(255,255,255,0.95)" stroke="rgba(14,165,233,0.2)" stroke-width="1"/>
+    <circle cx="200" cy="140" r="12" fill="#0EA5E9"/>
+    <rect x="220" y="135" width="60" height="8" rx="4" fill="rgba(15,23,42,0.8)"/>
+    <rect x="220" y="150" width="40" height="6" rx="3" fill="rgba(100,116,139,0.6)"/>
+  </g>
+  
+  <g filter="url(#filter3_f_doctors)">
+    <rect x="350" y="180" width="140" height="90" rx="18" fill="rgba(255,255,255,0.95)" stroke="rgba(6,182,212,0.2)" stroke-width="1"/>
+    <rect x="370" y="200" width="100" height="12" rx="6" fill="rgba(15,23,42,0.9)"/>
+    <rect x="370" y="220" width="60" height="8" rx="4" fill="#06B6D4"/>
+    <rect x="370" y="235" width="80" height="6" rx="3" fill="rgba(100,116,139,0.6)"/>
+    <rect x="370" y="250" width="50" height="6" rx="3" fill="rgba(100,116,139,0.4)"/>
+  </g>
+  
+  <g filter="url(#filter4_f_doctors)">
+    <rect x="220" y="240" width="110" height="75" rx="14" fill="rgba(255,255,255,0.95)" stroke="rgba(14,165,233,0.15)" stroke-width="1"/>
+    <rect x="235" y="255" width="80" height="10" rx="5" fill="rgba(15,23,42,0.8)"/>
+    <rect x="235" y="270" width="50" height="6" rx="3" fill="rgba(100,116,139,0.6)"/>
+    <circle cx="300" cy="290" r="8" fill="#10B981"/>
+  </g>
+  
+  <!-- Main Content Area -->
+  <rect x="140" y="60" width="460" height="280" rx="20" fill="rgba(248,250,252,0.8)" stroke="rgba(226,232,240,0.4)" stroke-width="1"/>
+  
+  <!-- Hero Section Elements -->
+  <rect x="160" y="90" width="200" height="24" rx="12" fill="#0EA5E9"/>
+  <rect x="160" y="125" width="180" height="16" rx="8" fill="rgba(15,23,42,0.8)"/>
+  <rect x="160" y="150" width="220" height="12" rx="6" fill="rgba(100,116,139,0.6)"/>
+  <rect x="160" y="170" width="160" height="12" rx="6" fill="rgba(100,116,139,0.4)"/>
+  
+  <!-- CTA Buttons -->
+  <rect x="160" y="200" width="100" height="32" rx="8" fill="url(#gradient_primary)"/>
+  <rect x="275" y="200" width="100" height="32" rx="8" fill="rgba(255,255,255,0.9)" stroke="rgba(14,165,233,0.3)" stroke-width="1"/>
+  
+  <!-- Component Gallery Preview -->
+  <rect x="400" y="90" width="180" height="120" rx="16" fill="rgba(255,255,255,0.95)" stroke="rgba(14,165,233,0.1)" stroke-width="1"/>
+  <rect x="415" y="105" width="150" height="12" rx="6" fill="rgba(15,23,42,0.7)"/>
+  <rect x="415" y="125" width="100" height="8" rx="4" fill="rgba(100,116,139,0.5)"/>
+  
+  <!-- Mini Dashboard -->
+  <rect x="425" y="145" width="60" height="50" rx="8" fill="rgba(15,23,42,0.9)"/>
+  <rect x="435" y="155" width="40" height="6" rx="3" fill="#0EA5E9"/>
+  <rect x="435" y="165" width="25" height="4" rx="2" fill="rgba(255,255,255,0.6)"/>
+  <rect x="435" y="175" width="30" height="4" rx="2" fill="rgba(255,255,255,0.4)"/>
+  
+  <!-- Stats Grid -->
+  <circle cx="520" cy="155" r="6" fill="#10B981"/>
+  <circle cx="540" cy="155" r="6" fill="#F59E0B"/>
+  <circle cx="520" cy="175" r="6" fill="#06B6D4"/>
+  <circle cx="540" cy="175" r="6" fill="#EF4444"/>
+  
+  <defs>
+    <linearGradient id="gradient_primary" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0EA5E9"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    
+    <filter id="filter0_f_doctors" x="280" y="-84" width="480" height="320" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="30" result="effect1_foregroundBlur_doctors"/>
+    </filter>
+    <filter id="filter1_f_doctors" x="-138" y="152" width="520" height="340" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="35" result="effect1_foregroundBlur_doctors"/>
+    </filter>
+    <filter id="filter2_f_doctors" x="170" y="110" width="140" height="100" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="5" result="effect1_foregroundBlur_doctors"/>
+    </filter>
+    <filter id="filter3_f_doctors" x="340" y="170" width="160" height="110" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="5" result="effect1_foregroundBlur_doctors"/>
+    </filter>
+    <filter id="filter4_f_doctors" x="210" y="230" width="130" height="95" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="5" result="effect1_foregroundBlur_doctors"/>
+    </filter>
+  </defs>
+</svg>

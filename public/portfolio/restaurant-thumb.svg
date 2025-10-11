@@ -1,0 +1,53 @@
+<svg width="640" height="400" viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="400" rx="28" fill="url(#paint0_radial_restaurant)"/>
+  <defs>
+    <radialGradient id="paint0_radial_restaurant" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(120 70) rotate(24) scale(620 420)">
+      <stop offset="0" stop-color="#0EA5E9" stop-opacity="0.9"/>
+      <stop offset="0.32" stop-color="#15803D" stop-opacity="0.68"/>
+      <stop offset="0.64" stop-color="#D97706" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#0B100A"/>
+    </radialGradient>
+  </defs>
+  <g opacity="0.45" filter="url(#filter0_f_restaurant)">
+    <ellipse cx="520" cy="78" rx="220" ry="120" fill="#EAB308" fill-opacity="0.34"/>
+  </g>
+  <g opacity="0.35" filter="url(#filter1_f_restaurant)">
+    <ellipse cx="124" cy="318" rx="220" ry="122" fill="#0F766E" fill-opacity="0.32"/>
+  </g>
+  <rect x="148" y="108" width="344" height="60" rx="20" fill="rgba(11,16,10,0.62)" stroke="rgba(226,235,226,0.16)" stroke-width="1.6"/>
+  <rect x="176" y="120" width="104" height="18" rx="9" fill="#D97706"/>
+  <rect x="296" y="120" width="102" height="18" rx="9" fill="#EAB308"/>
+  <rect x="418" y="120" width="90" height="18" rx="9" fill="rgba(255,255,255,0.28)"/>
+  <g filter="url(#filter2_f_restaurant)">
+    <ellipse cx="352" cy="284" rx="186" ry="108" fill="#15803D" fill-opacity="0.38"/>
+  </g>
+  <path d="M212 202C212 188.745 222.745 178 236 178H492C505.255 178 516 188.745 516 202C516 215.255 505.255 226 492 226H236C222.745 226 212 215.255 212 202Z" fill="rgba(11,16,10,0.6)" stroke="rgba(226,235,226,0.1)" stroke-width="1.4"/>
+  <rect x="234" y="188" width="78" height="24" rx="12" fill="#D97706"/>
+  <rect x="322" y="188" width="78" height="24" rx="12" fill="#0F766E"/>
+  <rect x="410" y="188" width="78" height="24" rx="12" fill="rgba(255,255,255,0.24)"/>
+  <path d="M152 254C152 236.431 165.431 223 183 223H469C486.569 223 500 236.431 500 254C500 271.569 486.569 285 469 285H183C165.431 285 152 271.569 152 254Z" fill="rgba(11,16,10,0.58)" stroke="rgba(226,235,226,0.1)" stroke-width="1.4"/>
+  <rect x="192" y="240" width="114" height="14" rx="7" fill="rgba(255,255,255,0.28)"/>
+  <rect x="192" y="266" width="92" height="8" rx="4" fill="rgba(255,255,255,0.22)"/>
+  <rect x="324" y="240" width="108" height="14" rx="7" fill="#0EA5E9"/>
+  <rect x="324" y="266" width="126" height="8" rx="4" fill="rgba(255,255,255,0.25)"/>
+  <path d="M502 308C502 291.431 515.431 278 532 278C548.569 278 562 291.431 562 308C562 324.569 548.569 338 532 338C515.431 338 502 324.569 502 308Z" fill="rgba(11,16,10,0.64)" stroke="rgba(255,255,255,0.18)" stroke-width="1.6"/>
+  <path d="M532 290L544 324H520L532 290Z" fill="#15803D"/>
+  <path d="M506 322C506 317.029 510.029 313 515 313H549C553.971 313 558 317.029 558 322C558 326.971 553.971 331 549 331H515C510.029 331 506 326.971 506 322Z" stroke="#F3F4F6" stroke-opacity="0.35"/>
+  <defs>
+    <filter id="filter0_f_restaurant" x="240" y="-122" width="560" height="360" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="30" result="effect1_foregroundBlur_restaurant"/>
+    </filter>
+    <filter id="filter1_f_restaurant" x="-180" y="98" width="608" height="440" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="35" result="effect1_foregroundBlur_restaurant"/>
+    </filter>
+    <filter id="filter2_f_restaurant" x="112" y="106" width="480" height="356" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="30" result="effect1_foregroundBlur_restaurant"/>
+    </filter>
+  </defs>
+</svg>

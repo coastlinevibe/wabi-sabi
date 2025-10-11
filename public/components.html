@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Components Library - FlowStack.dev</title>
+    <meta name="description" content="Discover premium UI components and automation modules designed for modern business systems.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'awakening-red': '#dc2626',
+                        'flow-blue': '#1e40af',
+                        'flow-teal': '#0d9488',
+                        'flow-purple': '#7c3aed',
+                        'flow-orange': '#ea580c',
+                        'chaos-gray': '#374151',
+                        'system-green': '#059669'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'sora': ['Sora', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Code Protection Styles */
+        .protected-content {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Disable right-click context menu */
+        .no-context {
+            pointer-events: none;
+        }
+        
+        /* Blur effect for code snippets */
+        .code-blur {
+            filter: blur(2px);
+            transition: filter 0.3s ease;
+        }
+        
+        .code-blur:hover {
+            filter: blur(0px);
+        }
+        
+        /* Custom scrollbar */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 3px;
+        }
+        
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        
+        /* Filter animation */
+        .filter-fade {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .filter-fade.hidden {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        /* Smooth animation system */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+        }
+        .reveal.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .parallax {
+            will-change: transform;
+            transform: translateY(0);
+        }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal,
+            .filter-fade,
+            .parallax {
+                transition: none !important;
+                transform: none !important;
+            }
+        }
+
+        /* Embedded mode: when this HTML is shown under the site's global header/footer */
+        body.embedded { padding-top: 0 !important; }
+        body.embedded nav, body.embedded footer { display: none !important; }
+        body.embedded .sticky { top: 0 !important; }
+    </style>
+</head>
+<body class="bg-gray-50 font-inter pt-16">
+    <script>
+        (function(){
+            try {
+                const params = new URLSearchParams(window.location.search);
+                if (params.get('embed') === '1') {
+                    document.body.classList.add('embedded');
+                }
+            } catch (e) { /* no-op */ }
+        })();
+    </script>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-amber-500/95 to-orange-600/95 backdrop-blur-md shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 lg:h-20">
+                <a href="/" class="group flex items-center gap-2 sm:gap-3">
+                    <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-white/60 shadow-md">
+                        <img src="/images/av2-small.png" alt="Wabi-Sabi logo" class="w-full h-full object-cover" />
+                    </div>
+                    <span class="text-lg sm:text-xl lg:text-2xl font-semibold font-sora text-white tracking-tight drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:-translate-y-0.5">
+                        Wabi
+                        <span class="text-amber-200 ml-1 transition-colors duration-300 group-hover:text-amber-100">
+                            Sabi
+                        </span>
+                    </span>
+                </a>
+
+                <div class="hidden lg:flex items-center space-x-9 pl-8">
+                    <a href="/" class="text-sm tracking-[0.12em] uppercase font-semibold text-white/90 hover:text-amber-200 transition-colors duration-200 relative group">
+                        The System
+                        <span class="absolute -bottom-1 left-0 h-0.5 w-2 group-hover:w-full bg-gradient-to-r from-amber-500 via-orange-400 to-amber-300 transition-all duration-300"></span>
+                    </a>
+                    <a href="/portfolio" class="text-sm tracking-[0.12em] uppercase font-semibold text-white/90 hover:text-amber-200 transition-colors duration-200 relative group">
+                        Portfolio
+                        <span class="absolute -bottom-1 left-0 h-0.5 w-2 group-hover:w-full bg-gradient-to-r from-amber-500 via-orange-400 to-amber-300 transition-all duration-300"></span>
+                    </a>
+                    <a href="/work-with-us#hero" class="text-sm tracking-[0.12em] uppercase font-semibold text-white/90 hover:text-amber-200 transition-colors duration-200 relative group">
+                        Work With Us
+                        <span class="absolute -bottom-1 left-0 h-0.5 w-2 group-hover:w-full bg-gradient-to-r from-amber-500 via-orange-400 to-amber-300 transition-all duration-300"></span>
+                    </a>
+                    <a href="/training" class="text-sm tracking-[0.12em] uppercase font-semibold text-white/90 hover:text-amber-200 transition-colors duration-200 relative group">
+                        Training
+                        <span class="absolute -bottom-1 left-0 h-0.5 w-2 group-hover:w-full bg-gradient-to-r from-amber-500 via-orange-400 to-amber-300 transition-all duration-300"></span>
+                    </a>
+                    <a href="/contact" class="text-sm tracking-[0.12em] uppercase font-semibold text-white/90 hover:text-amber-200 transition-colors duration-200 relative group">
+                        Contact Us
+                        <span class="absolute -bottom-1 left-0 h-0.5 w-2 group-hover:w-full bg-gradient-to-r from-amber-500 via-orange-400 to-amber-300 transition-all duration-300"></span>
+                    </a>
+                    <a href="/components-or-apps" class="text-sm tracking-[0.12em] uppercase font-semibold text-amber-200 transition-colors duration-200 relative group">
+                        Components / Apps
+                        <span class="absolute -bottom-1 left-0 h-0.5 w-full bg-gradient-to-r from-amber-500 via-orange-400 to-amber-300 transition-all duration-300"></span>
+                    </a>
+                </div>
+
+                <div class="hidden lg:flex items-center space-x-3">
+                    <a href="https://cal.com/riegal-du-toit/30min" target="_blank" rel="noopener" class="bg-gradient-to-r from-amber-500 to-orange-400 text-white px-3.5 py-1.5 rounded-lg font-medium text-xs md:text-sm hover:shadow-lg hover:scale-[1.03] transition-all duration-300 flex items-center gap-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h2l3 7-1.34 2.68a1 1 0 00.9 1.45H17" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 3h5v5" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4-4" />
+                        </svg>
+                        <span class="tracking-[0.08em] uppercase">Book a Growth Session</span>
+                    </a>
+                </div>
+
+                <button id="mobileMenuButton" class="lg:hidden p-2 rounded-md text-white hover:text-amber-200 transition-colors duration-200" aria-label="Toggle menu">
+                    <svg id="mobileMenuIcon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden lg:hidden bg-white/95 backdrop-blur-md border-t border-gray-200">
+            <div class="px-4 py-6 space-y-4">
+                <a href="/" class="block font-medium py-2 text-gray-700 hover:text-amber-600 transition-colors">The System</a>
+                <a href="/portfolio" class="block font-medium py-2 text-gray-700 hover:text-amber-600 transition-colors">Portfolio</a>
+                <a href="/work-with-us#hero" class="block font-medium py-2 text-gray-700 hover:text-amber-600 transition-colors">Work With Us</a>
+                <a href="/training" class="block font-medium py-2 text-gray-700 hover:text-amber-600 transition-colors">Training</a>
+                <a href="/contact" class="block font-medium py-2 text-gray-700 hover:text-amber-600 transition-colors">Contact Us</a>
+                <a href="/components-or-apps" class="block font-medium py-2 text-amber-600 transition-colors">Components / Apps</a>
+                <a href="https://cal.com/riegal-du-toit/30min" target="_blank" rel="noopener" class="mt-4 flex items-center justify-center space-x-2 bg-gradient-to-r from-amber-500 to-orange-400 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300">
+                    <span>Book a Growth Session</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 pt-16 pb-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center px-4 py-2 bg-gray-800/50 rounded-full border border-gray-700 mb-6 reveal parallax" data-parallax-speed="0.12">
+                    <span class="w-2 h-2 bg-green-400 rounded-full mr-3"></span>
+                    <span class="text-gray-300 text-sm font-medium">Enterprise Component Library</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 font-sora tracking-tight reveal parallax" data-parallax-speed="0.18">
+                    Production-Ready<br>
+                    <span class="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">Components</span>
+                </h1>
+                <p class="text-xl text-gray-400 mb-12 leading-relaxed max-w-2xl mx-auto reveal parallax" data-parallax-speed="0.22">
+                    Battle-tested components and automation systems built for scale. 
+                    Trusted by enterprise teams to deliver exceptional user experiences.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="text-center reveal parallax" data-parallax-speed="0.08">
+                    <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Lightning Fast</h3>
+                    <p class="text-gray-400 text-sm">Optimized for performance and scalability</p>
+                </div>
+                <div class="text-center reveal parallax" data-parallax-speed="0.06">
+                    <div class="w-12 h-12 bg-teal-500/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Enterprise Grade</h3>
+                    <p class="text-gray-400 text-sm">Built for mission-critical applications</p>
+                </div>
+                <div class="text-center reveal parallax" data-parallax-speed="0.04">
+                    <div class="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Developer First</h3>
+                    <p class="text-gray-400 text-sm">Intuitive APIs and comprehensive docs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Component Preview Modal -->
+    <div id="modalBackdrop" class="hidden fixed inset-0 bg-black/50 z-[100] flex items-center justify-center p-4">
+        <div id="componentModal" class="hidden bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-hidden flex flex-col border border-gray-200/70">
+            <div class="sticky top-0 z-10 px-6 py-4 border-b border-gray-200/70 bg-white/80 backdrop-blur flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <h3 class="text-xl font-semibold text-gray-900 font-sora" data-modal="title">Component Title</h3>
+                    <span class="px-3 py-1 text-xs font-medium rounded-full bg-gray-50 text-gray-700 border border-gray-200" data-modal="complexity">beginner</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="modalFullscreenBtn" class="p-2 rounded-lg hover:bg-gray-100" aria-label="Toggle fullscreen">
+                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V5a1 1 0 011-1h3m8 0h3a1 1 0 011 1v3M5 20h3a1 1 0 001-1v-3" />
+                        </svg>
+                    </button>
+                    <button id="modalCloseBtn" class="p-2 rounded-lg hover:bg-gray-100" aria-label="Close preview">
+                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="relative preview-surface flex-none">
+                <div class="absolute top-3 right-3" data-modal="badge"></div>
+                <img class="w-full object-contain" data-modal="image" src="" alt="" style="min-height:clamp(260px,48vh,560px)" />
+                <div class="w-full flex items-center justify-center p-3 overflow-auto" data-modal="live" style="display:none; min-height:clamp(260px,48vh,560px);"></div>
+            </div>
+            <div class="px-6 py-5 flex-1 min-h-0 overflow-y-auto">
+                <p class="text-gray-600 mb-4" data-modal="desc">Description of the component goes here.</p>
+                <div class="flex flex-wrap gap-2" data-modal="tags"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Section -->
+    <section class="py-8 bg-gray-50 border-b border-gray-200 sticky top-20 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-md">
+                    <div class="relative">
+                        <input id="searchInput" type="text" placeholder="Search components..." class="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" />
+                        <svg class="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M16.65 9.5a7.15 7.15 0 11-14.3 0 7.15 7.15 0 0114.3 0z" />
+                        </svg>
+                    </div>
+                </div>
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap gap-2">
+                    <button class="filter-btn active px-5 py-2.5 rounded-xl font-medium transition-all duration-200 text-sm" data-filter="all">
+                        All
+                    </button>
+                    <button class="filter-btn px-5 py-2.5 rounded-xl font-medium transition-all duration-200 text-sm" data-filter="buttons">
+                        Buttons
+                    </button>
+                    <button class="filter-btn px-5 py-2.5 rounded-xl font-medium transition-all duration-200 text-sm" data-filter="3d">
+                        3D
+                    </button>
+                    <button class="filter-btn px-5 py-2.5 rounded-xl font-medium transition-all duration-200 text-sm" data-filter="tooltips">
+                        Tooltips
+                    </button>
+                    <button class="filter-btn px-5 py-2.5 rounded-xl font-medium transition-all duration-200 text-sm" data-filter="social">
+                        Social Media
+                    </button>
+                    <button class="filter-btn px-5 py-2.5 rounded-xl font-medium transition-all duration-200 text-sm" data-filter="cards">
+                        Cards
+                    </button>
+                    <button class="filter-btn px-5 py-2.5 rounded-xl font-medium transition-all duration-200 text-sm" data-filter="loaders">
+                        Loaders
+                    </button>
+                </div>
+                <!-- Special Tags -->
+                <div class="flex gap-2">
+                    <button class="special-filter px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 border" data-special="hot">
+                        Popular
+                    </button>
+                    <button class="special-filter px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 border" data-special="new">
+                        Latest
+                    </button>
+                    <button class="special-filter px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 border" data-special="premium">
+                        Enterprise
+                    </button>
+                </div>
+                <!-- Preview Theme Toggle -->
+                <div class="flex items-center gap-2 ml-1" id="previewThemeToggle">
+                    <span class="text-sm text-gray-500">Preview</span>
+                    <div class="inline-flex rounded-lg border border-gray-200 overflow-hidden">
+                        <button id="previewLightBtn" type="button" class="px-3 py-1.5 text-sm toggle-btn active">Light</button>
+                        <button id="previewDarkBtn" type="button" class="px-3 py-1.5 text-sm toggle-btn">Dark</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Components Grid -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Results Counter -->
+            <div class="mb-12">
+                <div class="flex items-center justify-between">
+                    <p class="text-gray-500 font-medium" id="resultsCounter">
+                        <span id="resultCount">0</span> components available
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <span class="text-sm text-gray-500">Sort by:</span>
+                        <select id="sortSelect" class="text-sm border border-gray-300 rounded-lg px-3 py-1.5 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option>Most Popular</option>
+                            <option>Newest</option>
+                            <option>Name A-Z</option>
+                            <option>Complexity</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Load Status Banner -->
+                <div id="loadStatus" class="hidden mt-4 text-sm rounded-lg border px-3 py-2"></div>
+            </div>
+
+            <!-- Components Grid -->
+            <div id="componentsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Component cards will be dynamically inserted here -->
+            </div>
+
+            <!-- No Results Message -->
+            <div id="noResults" class="text-center py-20 hidden">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 font-sora">No components found</h3>
+                <p class="text-gray-500">Try adjusting your search criteria or browse all categories</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (hidden on components page) -->
+    <footer class="hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold font-sora mb-4">Wabi Sabi</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Finding beauty in business simplicity. We reveal hidden profit streams through small shifts, patient analysis, and precise automation that honors what already works.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Navigation</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="/" class="hover:text-amber-400 transition-colors">The System</a></li>
+                        <li><a href="/portfolio" class="hover:text-amber-400 transition-colors">Portfolio</a></li>
+                        <li><a href="/training" class="hover:text-amber-400 transition-colors">Training</a></li>
+                        <li><a href="/work-with-us" class="hover:text-amber-400 transition-colors">Work With Us</a></li>
+                        <li><a href="/contact" class="hover:text-amber-400 transition-colors">Contact Us</a></li>
+                        <li><a href="/components-or-apps" class="hover:text-amber-400 transition-colors">Components / Apps</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Contact</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>Cape Town, South Africa</li>
+                        <li>+27 71 432 9190</li>
+                        <li>wabisabiclick2025@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Wabi-Sabi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Code Protection
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+            if (e.keyCode === 123 || 
+                (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) ||
+                (e.ctrlKey && e.keyCode === 85)) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Supabase Client
+        const SUPABASE_URL = 'https://tvknulyomshpevbqsmbj.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR2a251bHlvbXNocGV2YnFzbWJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyOTQ5OTYsImV4cCI6MjA3MTg3MDk5Nn0.ZgW0tre1522qYs8tAhRV0KTLw0PNZ-asC102S8K4dLs';
+        const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+        // Fallback component data (used if Supabase has no rows or errors)
+        const componentsData = [
+            {
+                id: 7,
+                name: "VS Code Card",
+                description: "Interactive card with hover, selection (peer) state, and subtle pulse indicator.",
+                category: "cards",
+                tags: ["card", "hover", "peer", "selection"],
+                special: "new",
+                preview: "", // use fallback demo image
+                complexity: "beginner",
+                demoHtml: `
+                <div class="flex flex-wrap gap-6 justify-center items-center">
+                  <label class="text-gray-400 cursor-pointer">
+                    <input type="checkbox" class="hidden peer" />
+                    <div
+                      class="group flex flex-col gap-4 w-32 h-40 bg-gradient-to-b from-gray-800 to-gray-900 rounded-2xl p-4 shadow-xl border-2 border-transparent transition-all duration-300 ease-in-out hover:border-indigo-500 hover:shadow-indigo-500/20 peer-checked:border-indigo-500 peer-checked:from-indigo-900/50 peer-checked:to-gray-900 peer-checked:translate-y-[-0.5rem]"
+                    >
+                      <div class="relative">
+                        <div
+                          class="w-12 h-12 mx-auto bg-indigo-500/20 rounded-lg border-2 border-indigo-500/40 group-hover:border-indigo-400 group-hover:bg-indigo-500/30 peer-checked:border-indigo-400 peer-checked:bg-indigo-500/30 transition-all duration-300"
+                        >
+                          <div class="flex flex-col gap-1 p-2">
+                            <div class="h-1 w-8 bg-indigo-400/40 rounded-full"></div>
+                            <div class="h-1 w-6 bg-indigo-400/40 rounded-full"></div>
+                            <div class="h-1 w-7 bg-indigo-400/40 rounded-full"></div>
+                          </div>
+                        </div>
+
+                        <div
+                          class="absolute top-0 right-6 w-3 h-3 rounded-full bg-gray-600 group-hover:bg-indigo-400 group-hover:animate-pulse peer-checked:bg-indigo-400 peer-checked:animate-pulse transition-all duration-300"
+                        ></div>
+                      </div>
+
+                      <div class="text-center">
+                        <p
+                          class="font-medium text-sm group-hover:text-indigo-400 peer-checked:text-indigo-400 transition-colors duration-300"
+                        >
+                          VS Code
+                        </p>
+                        <p
+                          class="text-xs mt-1 opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+                        >
+                          Editor
+                        </p>
+                      </div>
+
+                      <div
+                        class="h-1 w-0 bg-indigo-500 rounded-full mx-auto group-hover:w-full peer-checked:w-full transition-all duration-300"
+                      ></div>
+                    </div>
+                  </label>
+                </div>
+                `
+            },
+            {
+                id: 1,
+                name: "Smart Dashboard Card",
+                description: "Adaptive KPI card with sparkline trend, delta badges, and theme-aware layout for analytics.",
+                category: "cards",
+                tags: ["responsive", "charts", "analytics"],
+                special: "hot",
+                preview: "dashboard-card-preview.jpg",
+                complexity: "intermediate"
+            },
+            {
+                id: 2,
+                name: "Automated Contact Form",
+                description: "Accessible contact form with inline validation, spam protection, and Supabase/webhook-ready submit.",
+                category: "cards",
+                tags: ["forms", "validation", "automation"],
+                special: "new",
+                preview: "contact-form-preview.jpg",
+                complexity: "beginner"
+            },
+            {
+                id: 3,
+                name: "Workflow Builder",
+                description: "Drag‑and‑drop nodes, connectors, and conditions to orchestrate business automations end‑to‑end.",
+                category: "cards",
+                tags: ["drag-drop", "workflow", "business"],
+                special: "premium",
+                preview: "workflow-builder-preview.jpg",
+                complexity: "advanced"
+            },
+            {
+                id: 4,
+                name: "Modern Button Set",
+                description: "Accessible button variants (primary/secondary/ghost) with hover, focus, loading, and disabled states.",
+                category: "buttons",
+                tags: ["buttons", "accessibility", "animations"],
+                special: "",
+                preview: "button-set-preview.jpg",
+                complexity: "beginner"
+            },
+            {
+                id: 5,
+                name: "Data Table Pro",
+                description: "Enterprise data table with column sorting, filters, pagination, pinning, and CSV/JSON export.",
+                category: "cards",
+                tags: ["tables", "sorting", "export"],
+                special: "hot",
+                preview: "data-table-preview.jpg",
+                complexity: "intermediate"
+            },
+            {
+                id: 6,
+                name: "Email Automation Engine",
+                description: "Template‑driven campaigns with scheduling, audience segments, and deliverability analytics.",
+                category: "cards",
+                tags: ["email", "templates", "scheduling"],
+                special: "premium",
+                preview: "email-engine-preview.jpg",
+                complexity: "advanced"
+            }
+        ];
+
+        let filteredComponents = [...componentsData];
+        let currentFilter = 'all';
+        let currentSpecial = '';
+        let currentSearch = '';
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', async function() {
+            showLoadingSkeleton();
+            const result = await tryLoadFromLocalJson();
+            filterComponents();
+            setupEventListeners();
+            applyPreviewThemeToAll();
+            hideLoadingSkeleton();
+            showLoadStatus(result);
+        });
+        
+        // Normalize incoming categories into our site taxonomy
+        function normalizeCategory(value, row) {
+            const raw = String(value || row?.directory || row?.subcategory || row?.category || '').trim().toLowerCase();
+            const map = {
+                'button': 'buttons', 'buttons': 'buttons',
+                '3d': '3d', '3-d': '3d',
+                'tooltip': 'tooltips', 'tooltips': 'tooltips',
+                'social': 'social', 'social-media': 'social', 'socialmedia': 'social',
+                'card': 'cards', 'cards': 'cards', 'ui': 'cards', 'dashboard': 'cards', 'dashboards': 'cards', 'forms': 'cards', 'automation': 'cards',
+                'loader': 'loaders', 'loaders': 'loaders', 'spinner': 'loaders'
+            };
+            // exact match or fallback to raw if already in set
+            if (map[raw]) return map[raw];
+            const allowed = new Set(['buttons','3d','tooltips','social','cards','loaders']);
+            if (allowed.has(raw)) return raw;
+            return 'cards';
+        }
+
+        async function tryLoadFromLocalJson() {
+            try {
+                const res = await fetch('data/components.json', { cache: 'no-store' });
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const json = await res.json();
+                const items = Array.isArray(json.items) ? json.items : [];
+                if (items.length === 0) {
+                    console.info('Local components.json has no items; using fallback data.');
+                    return { ok:true, source:'fallback', count:componentsData.length };
+                }
+
+                // Map local items to our card model
+                const mapped = items.map((row, idx) => ({
+                    id: row.id || idx,
+                    name: row.name || slugToTitle(row.id || `Component ${idx+1}`),
+                    description: getCleanDescription(row),
+                    category: normalizeCategory(row.category, row),
+                    tags: [row.category, row.subcategory, row.directory].filter(Boolean),
+                    special: '',
+                    preview: '',
+                    complexity: 'beginner',
+                    demoHtml: buildDemoHtml(row.html, row.css),
+                    tailwind: !!row.tailwind,
+                    js: row.js || ''
+                }));
+
+                componentsData.length = 0;
+                componentsData.push(...mapped);
+                return { ok:true, source:'local', count:mapped.length };
+            } catch (err) {
+                console.warn('Local JSON load error:', err?.message || err);
+                return { ok:false, source:'fallback', count:componentsData.length };
+            }
+        }
+
+        function buildDemoHtml(html, css, tailwind) {
+            if (!html && !css) return '';
+            
+            let demoHtml = '';
+            
+            // Add CSS styles if present
+            if (css) {
+                demoHtml += `<style>${css}</style>`;
+            }
+            
+            // Add HTML content if present
+            if (html) {
+                demoHtml += html;
+            }
+            
+            return demoHtml;
+        }
+
+        // Create a clean, human-readable description from JSON rows
+        function getCleanDescription(row) {
+            try {
+                let d = (row && row.description != null) ? String(row.description) : '';
+                d = d.trim();
+                // Detect obvious code/HTML content or empty description
+                const looksLikeHtml = /<[^>]+>/.test(d) || /(^\s*<!DOCTYPE|^\s*<html|^\s*<body|^\s*<head)/i.test(d);
+                const looksLikeCss = /\{\s*[^}]*\}/.test(d) && /[:;]/.test(d);
+                if (!d || looksLikeHtml || looksLikeCss) {
+                    const name = row?.name || slugToTitle(row?.id || 'Component');
+                    const category = row?.subcategory || row?.category || 'UI';
+                    return `${name} for ${category}: ready-to-use component with clean HTML/CSS demo.`;
+                }
+                // Strip any stray tags and normalize whitespace
+                d = d.replace(/<[^>]*>/g, ' ');
+                d = d.replace(/\s+/g, ' ').trim();
+                // Keep concise
+                if (d.length > 180) d = d.slice(0, 177) + '...';
+                return d || 'Production-ready UI component with live demo.';
+            } catch {
+                const name = row?.name || slugToTitle(row?.id || 'Component');
+                const category = row?.subcategory || row?.category || 'UI';
+                return `${name} for ${category}: production-ready component with live preview.`;
+            }
+        }
+
+        // Renders HTML+CSS inside an isolated iframe to prevent CSS bleed
+        function renderInIframe(container, demoHtml, options = {}) {
+            try {
+                if (!container || !demoHtml) return;
+                const { mode = 'card', allowScripts = false, tailwind = false, js = '' } = options;
+                const iframe = document.createElement('iframe');
+                iframe.setAttribute('sandbox', allowScripts ? 'allow-scripts' : '');
+                iframe.setAttribute('loading', 'lazy');
+                iframe.style.width = '100%';
+                iframe.style.border = '0';
+                iframe.style.overflow = 'hidden';
+                iframe.setAttribute('scrolling', 'no');
+                // Fixed heights to avoid cross-origin measurement
+                if (mode === 'modal') {
+                    iframe.style.minHeight = 'clamp(260px,48vh,560px)';
+                    iframe.style.height = '100%';
+                } else {
+                    iframe.style.height = '256px';
+                }
+
+                const doc = `<!doctype html><html><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  html,body{height:100%;margin:0;padding:0;box-sizing:border-box;overflow:hidden}
+  *,*::before,*::after{box-sizing:inherit}
+  .center-wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:8px;overflow:hidden}
+  /* Normalize excessive top/bottom margins inside demos */
+  body > :first-child{margin-top:0 !important}
+  body > :last-child{margin-bottom:0 !important}
+  </style>
+  ${tailwind ? '<scr' + 'ipt src="https://cdn.tailwindcss.com"></scr' + 'ipt>' : ''}
+  ${js && allowScripts ? `<scr` + `ipt>(function(){ try { ${js} } catch(e){ console.warn('Demo JS error:', e); } })();</scr` + `ipt>` : ''}
+  <scr` + `ipt>
+    // Auto-resize the iframe to content height
+    (function(){
+      function resize(){
+        try {
+          const h = document.documentElement.scrollHeight || document.body.scrollHeight || 0;
+          parent.postMessage({ __fs_demo_resize: h }, '*');
+        } catch(e) {}
+      }
+      new MutationObserver(resize).observe(document.documentElement, { childList:true, subtree:true, attributes:true });
+      window.addEventListener('load', resize);
+      setTimeout(resize, 50);
+    })();
+  </scr` + `ipt>
+</head><body><div class="center-wrap">${demoHtml}</div></body></html>`;
+
+                const isDark = (typeof previewTheme !== 'undefined' && previewTheme === 'dark');
+                const themeBase = `
+                    <style>
+                      html, body { height: 100%; }
+                      body { background: ${isDark ? '#0b1220' : '#ffffff'}; color: ${isDark ? '#e5e7eb' : '#111827'}; }
+                    </style>
+                `;
+
+                container.innerHTML = '';
+                container.appendChild(iframe);
+                // Use srcdoc for isolated content
+                iframe.srcdoc = doc.replace('</head>', `${themeBase}</head>`);
+                // Listen for resize messages from iframe
+                window.addEventListener('message', (ev) => {
+                    const data = ev && ev.data;
+                    if (data && typeof data === 'object' && data.__fs_demo_resize) {
+                        const h = Math.max(160, Math.min(480, Number(data.__fs_demo_resize) || 0));
+                        iframe.style.height = (mode === 'card') ? `${h}px` : `${Math.max(260, h)}px`;
+                    }
+                }, { once: true });
+            } catch (e) {
+                console.warn('Iframe render failed:', e);
+            }
+        }
+
+        // After grid HTML is injected, hydrate any card preview hosts with iframes
+        function hydrateCardPreviews(list = filteredComponents) {
+            try {
+                (list || []).forEach(c => {
+                    if (!c || !c.demoHtml) return;
+                    const host = document.getElementById(`preview-host-${safeDomId(c.id)}-${hashId(c.id)}`);
+                    if (host) {
+                        // Store component id on host for future rehydration (e.g., theme changes)
+                        host.dataset.cid = String(c.id);
+                        host.innerHTML = '';
+                        renderInIframe(host, c.demoHtml, { mode: 'card', tailwind: !!c.tailwind, allowScripts: !!c.tailwind, js: c.js || '' });
+                    }
+                });
+            } catch (e) {
+                console.warn('Hydration failed:', e);
+            }
+        }
+
+        // Rebuild all preview iframes to reflect current theme inside their isolated documents
+        function rehydrateAllPreviews() {
+            try {
+                const hosts = document.querySelectorAll('[id^="preview-host-"]');
+                hosts.forEach(host => {
+                    const cid = host?.dataset?.cid;
+                    if (!cid) return;
+                    const comp = (componentsData || []).find(c => String(c.id) === String(cid));
+                    if (!comp || !comp.demoHtml) return;
+                    host.innerHTML = '';
+                    renderInIframe(host, comp.demoHtml, { mode: 'card', tailwind: !!comp.tailwind, allowScripts: !!comp.tailwind, js: comp.js || '' });
+                });
+            } catch (e) {
+                console.warn('rehydrateAllPreviews error:', e);
+            }
+        }
+
+        // Loading skeleton helpers
+        function showLoadingSkeleton() {
+            const grid = document.getElementById('componentsGrid');
+            const skeleton = Array.from({ length: 6 }).map(() => `
+                <div class="rounded-2xl border border-gray-200 bg-white p-6 animate-pulse">
+                  <div class="h-40 rounded-xl bg-gray-100 mb-6"></div>
+                  <div class="h-4 bg-gray-100 rounded w-2/3 mb-3"></div>
+                  <div class="h-4 bg-gray-100 rounded w-1/2 mb-6"></div>
+                  <div class="flex gap-2 mb-6">
+                    <span class="h-6 w-16 bg-gray-100 rounded"></span>
+                    <span class="h-6 w-12 bg-gray-100 rounded"></span>
+                    <span class="h-6 w-20 bg-gray-100 rounded"></span>
+                  </div>
+                  <div class="h-10 bg-gray-200 rounded-xl"></div>
+                </div>
+            `).join('');
+            grid.innerHTML = skeleton;
+        }
+        function hideLoadingSkeleton() {
+            // no-op; renderComponents will overwrite
+        }
+
+        function showLoadStatus(result) {
+            const el = document.getElementById('loadStatus');
+            if (!el) return;
+            let text = 'Loaded components.';
+            let cls = 'border-emerald-200 bg-emerald-50 text-emerald-700';
+            if (!result || result.ok === false) {
+                text = 'Using fallback data. Could not load from Supabase.';
+                cls = 'border-amber-200 bg-amber-50 text-amber-700';
+            } else if (result.source === 'fallback') {
+                text = 'No local items found. Using fallback sample components.';
+                cls = 'border-amber-200 bg-amber-50 text-amber-700';
+            } else if (result.source === 'local') {
+                text = `Loaded ${result.count || 0} components from local manifest.`;
+            }
+            el.className = `mt-4 text-sm rounded-lg border px-3 py-2 ${cls}`;
+            el.textContent = text;
+            el.classList.remove('hidden');
+            setTimeout(() => el.classList.add('hidden'), 5000);
+        }
+
+        function setupEventListeners() {
+            // Search functionality
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                currentSearch = e.target.value.toLowerCase();
+                filterComponents();
+            });
+
+            // Category filters
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilter = this.dataset.filter;
+                    currentSpecial = ''; // Reset special filter
+                    document.querySelectorAll('.special-filter').forEach(b => b.classList.remove('active'));
+                    filterComponents();
+                });
+            });
+
+            // Special filters
+            document.querySelectorAll('.special-filter').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (this.classList.contains('active')) {
+                        this.classList.remove('active');
+                        currentSpecial = '';
+                    } else {
+                        document.querySelectorAll('.special-filter').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        currentSpecial = this.dataset.special;
+                    }
+                    filterComponents();
+                });
+            });
+
+            // Preview theme toggle
+            const lightBtn = document.getElementById('previewLightBtn');
+            const darkBtn = document.getElementById('previewDarkBtn');
+            if (lightBtn && darkBtn) {
+                lightBtn.addEventListener('click', () => setPreviewTheme('light'));
+                darkBtn.addEventListener('click', () => setPreviewTheme('dark'));
+            }
+        }
+
+        function filterComponents() {
+            filteredComponents = componentsData.filter(component => {
+                // Search filter
+                const matchesSearch = currentSearch === '' || 
+                    component.name.toLowerCase().includes(currentSearch) ||
+                    component.description.toLowerCase().includes(currentSearch) ||
+                    component.tags.some(tag => tag.toLowerCase().includes(currentSearch));
+
+                // Category filter
+                const matchesCategory = currentFilter === 'all' || component.category === currentFilter;
+
+                // Special filter
+                const matchesSpecial = currentSpecial === '' || component.special === currentSpecial;
+
+                return matchesSearch && matchesCategory && matchesSpecial;
+            });
+
+            renderComponents();
+        }
+
+        function renderComponents() {
+            const grid = document.getElementById('componentsGrid');
+            const noResults = document.getElementById('noResults');
+            const resultCount = document.getElementById('resultCount');
+
+            resultCount.textContent = filteredComponents.length;
+
+            if (filteredComponents.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                grid.innerHTML = filteredComponents.map(component => createComponentCard(component)).join('');
+                // Apply theme to newly rendered preview surfaces
+                applyPreviewThemeToAll();
+                // Hydrate demo iframes in cards
+                hydrateCardPreviews();
+                // mark newly inserted cards for reveal animation
+                requestAnimationFrame(() => {
+                    const cards = document.querySelectorAll('#componentsGrid .component-card');
+                    cards.forEach(el => el.classList.add('reveal'));
+                    // Ensure visibility even if observer hasn't fired yet
+                    cards.forEach(el => el.classList.add('in-view'));
+                });
+            }
+        }
+
+        // Monogram tile helper for nicer placeholders
+        function getMonogramTile(text, variant = 'card') {
+            const initials = (text || 'FS')
+                .split(/\s|[-_]/)
+                .filter(Boolean)
+                .slice(0, 2)
+                .map(s => s[0].toUpperCase())
+                .join('');
+            if (variant === 'modal') {
+                return `
+                    <div class="w-40 h-40 rounded-3xl grid place-items-center bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 shadow-inner">
+                        <span class="text-3xl font-semibold text-gray-600 select-none">${initials}</span>
+                    </div>
+                `;
+            }
+            return `
+                <div class="w-20 h-20 rounded-2xl grid place-items-center bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 shadow-sm">
+                    <span class="text-xl font-semibold text-gray-500 select-none">${initials}</span>
+                </div>
+            `;
+        }
+
+        // Ensure any string ID can be used in DOM attributes safely
+        function safeDomId(id) {
+            try { return String(id).replace(/[^a-zA-Z0-9_-]/g, '_'); } catch { return String(id); }
+        }
+        // Tiny deterministic hash to reduce collision risk when sanitizing IDs
+        function hashId(id) {
+            try {
+                let h = 5381; const s = String(id);
+                for (let i = 0; i < s.length; i++) { h = ((h << 5) + h) ^ s.charCodeAt(i); }
+                // Convert to unsigned and base36 for compactness
+                return (h >>> 0).toString(36);
+            } catch { return '0'; }
+        }
+        // Escape HTML to avoid breaking card markup when data contains tags
+        function escapeHtml(str) {
+            const s = String(str ?? '');
+            return s
+              .replace(/&/g, '&amp;')
+              .replace(/</g, '&lt;')
+              .replace(/>/g, '&gt;')
+              .replace(/"/g, '&quot;')
+              .replace(/'/g, '&#039;');
+        }
+
+        function createComponentCard(component) {
+            const specialBadge = component.special ? getSpecialBadge(component.special) : '';
+            const complexityColor = getComplexityColor(component.complexity);
+            const domId = `${safeDomId(component.id)}-${hashId(component.id)}`;
+            const title = escapeHtml(component.name);
+            
+            return `
+                <div class="component-card h-[560px] ml-[-12px] mr-[-12px] flex flex-col overflow-hidden elevated bg-white rounded-2xl border border-gray-200/80 transition-all duration-300 protected-content filter-fade group">
+                    <div class="relative overflow-hidden">
+                        <!-- Preview Surface -->
+                        <div class="preview-surface card-preview relative flex items-center justify-center">
+                            ${component.demoHtml ? `
+                                <div class='max-h-full overflow-hidden p-4 w-full flex items-center justify-center'>
+                                    <div id='preview-host-${domId}' class='w-full'></div>
+                                </div>
+                            ` : `
+                                ${getMonogramTile(component.name, 'card')}
+                            `}
+                            ${specialBadge}
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6 pointer-events-none">
+                                <button class="bg-white text-gray-900 px-6 py-2.5 rounded-xl font-medium hover:bg-gray-50 transition-colors shadow-lg pointer-events-auto" onclick="viewComponent('${component.id}')" aria-label="View details">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 card-body flex-1 flex flex-col overflow-hidden">
+                        <div class="flex items-start justify-between mb-4">
+                            <h3 class="text-xl font-semibold text-gray-900 font-sora leading-tight">${title}</h3>
+                            <span class="px-3 py-1 text-xs font-medium rounded-full ${complexityColor} ml-3 flex-shrink-0">
+                                ${component.complexity}
+                            </span>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            ${component.tags.slice(0, 2).map(tag => `
+                                <span class="tag-pill px-3 py-1 text-xs rounded-lg font-medium">
+                                    ${escapeHtml(tag)}
+                                </span>
+                            `).join('')}
+                            ${component.tags.length > 2 ? `<span class="tag-pill text-gray-500 px-3 py-1 text-xs rounded-lg">+${component.tags.length - 2}</span>` : ''}
+                        </div>
+                        
+                        <div class="flex gap-3 mt-auto">
+                            <button class="cta-btn flex-1 bg-gray-900 hover:bg-gray-800 text-white px-4 py-2.5 rounded-xl font-medium transition-all duration-200" onclick="previewComponent('${component.id}')" aria-label="Open live preview">
+                                Live Preview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getSpecialBadge(special) {
+            const badges = {
+                'hot': '<div class="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-lg text-xs font-semibold">POPULAR</div>',
+                'new': '<div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-lg text-xs font-semibold">LATEST</div>',
+                'premium': '<div class="absolute top-4 right-4 bg-gray-900 text-white px-3 py-1 rounded-lg text-xs font-semibold">ENTERPRISE</div>'
+            };
+            return badges[special] || '';
+        }
+
+        function getComplexityColor(complexity) {
+            const colors = {
+                'beginner': 'bg-emerald-50 text-emerald-700 border border-emerald-200',
+                'intermediate': 'bg-amber-50 text-amber-700 border border-amber-200',
+                'advanced': 'bg-red-50 text-red-700 border border-red-200'
+            };
+            return colors[complexity] || 'bg-gray-50 text-gray-700 border border-gray-200';
+        }
+
+        // Component interaction functions
+        function viewComponent(id) {
+            // Route to the same modal as preview
+            previewComponent(id);
+        }
+
+        // Modal management
+        function previewComponent(id) {
+            const component = componentsData.find(c => String(c.id) === String(id));
+            if (!component) return;
+
+            // Populate modal
+            const modal = document.getElementById('componentModal');
+            modal.querySelector('[data-modal="title"]').textContent = component.name;
+            modal.querySelector('[data-modal="desc"]').textContent = component.description;
+            const img = modal.querySelector('[data-modal="image"]');
+            const liveContainer = modal.querySelector('[data-modal="live"]');
+            // If demoHtml exists, render demo in place of image
+            if (component.demoHtml) {
+                // Show live demo in isolated iframe
+                img.style.display = 'none';
+                liveContainer.style.display = 'flex';
+                liveContainer.innerHTML = '';
+                const host = document.createElement('div');
+                host.className = 'w-full demo-reveal';
+                liveContainer.appendChild(host);
+                renderInIframe(host, component.demoHtml, { mode: 'modal', tailwind: !!component.tailwind, allowScripts: !!component.tailwind });
+            } else {
+                // Friendly fallback: monogram tile and message
+                img.style.display = 'none';
+                liveContainer.style.display = 'flex';
+                liveContainer.innerHTML = `
+                    <div class="w-full h-full flex flex-col items-center justify-center gap-4 py-6">
+                        ${getMonogramTile(component.name, 'modal')}
+                        <p class="text-sm text-gray-500">No live preview yet. Metadata is available below.</p>
+                    </div>
+                `;
+            }
+            img.setAttribute('alt', component.name + ' preview');
+            // Use fallback demo image if preview is missing or fails
+            const defaultDemoDataUrl = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
+                <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600">
+                  <defs>
+                    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+                      <stop offset="0%" stop-color="#1f2937"/>
+                      <stop offset="100%" stop-color="#0ea5e9"/>
+                    </linearGradient>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#g)"/>
+                  <g font-family="Inter,Arial" fill="#ffffff" text-anchor="middle">
+                    <text x="50%" y="45%" font-size="42" opacity="0.9">FlowStack Component Demo</text>
+                    <text x="50%" y="60%" font-size="18" opacity="0.7">Secure preview — code not exposed</text>
+                  </g>
+                </svg>`);
+            img.onerror = () => { img.src = defaultDemoDataUrl; };
+            img.src = component.preview || defaultDemoDataUrl;
+
+            const badge = component.special ? getSpecialBadge(component.special) : '';
+            modal.querySelector('[data-modal="badge"]').innerHTML = badge;
+
+            const complexityColor = getComplexityColor(component.complexity);
+            const complexityEl = modal.querySelector('[data-modal="complexity"]');
+            complexityEl.className = `px-3 py-1 text-xs font-medium rounded-full ${complexityColor}`;
+            complexityEl.textContent = component.complexity;
+
+            const tagsWrap = modal.querySelector('[data-modal="tags"]');
+            tagsWrap.innerHTML = component.tags.map(tag => `<span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-lg font-medium">${tag}</span>`).join('');
+
+            // Old under-content demo removed per request
+
+            // Show modal
+            openModal();
+        }
+
+        function openModal() {
+            const modal = document.getElementById('componentModal');
+            const backdrop = document.getElementById('modalBackdrop');
+            // Make elements participate in layout
+            backdrop.classList.remove('hidden');
+            modal.classList.remove('hidden');
+            // Next frame, add show classes for transitions
+            requestAnimationFrame(() => {
+                backdrop.classList.add('show');
+                modal.classList.add('show');
+            });
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('componentModal');
+            const backdrop = document.getElementById('modalBackdrop');
+            // Start exit animations
+            modal.classList.remove('show');
+            backdrop.classList.remove('show');
+            const onDone = () => {
+                modal.classList.add('hidden');
+                backdrop.classList.add('hidden');
+                modal.removeEventListener('transitionend', onDone);
+                backdrop.removeEventListener('transitionend', onDone);
+            };
+            // Fallback timeout in case transitionend doesn't fire
+            setTimeout(onDone, 450);
+            modal.addEventListener('transitionend', onDone);
+            backdrop.addEventListener('transitionend', onDone);
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // Filter button styling
+        const style = document.createElement('style');
+        style.textContent = `
+            .filter-btn {
+                background: #ffffff;
+                color: #6b7280;
+                border: 1px solid #d1d5db;
+            }
+            
+            .filter-btn:hover {
+                background: #f9fafb;
+                color: #374151;
+                border-color: #9ca3af;
+            }
+            
+            .filter-btn.active {
+                background: #111827;
+                color: white;
+                border-color: #111827;
+            }
+            
+            .special-filter {
+                background: #ffffff;
+                color: #6b7280;
+                border: 1px solid #d1d5db;
+            }
+            
+            .special-filter:hover {
+                background: #f9fafb;
+                color: #374151;
+                border-color: #9ca3af;
+            }
+            
+            .special-filter.active {
+                background: #3b82f6;
+                color: white;
+                border-color: #3b82f6;
+            }
+            
+            .line-clamp-2 {
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Sorting logic
+        let currentSort = 'Most Popular';
+
+        function applySort() {
+            const orderComplexity = { 'beginner': 0, 'intermediate': 1, 'advanced': 2 };
+            switch (currentSort) {
+                case 'Most Popular':
+                    filteredComponents.sort((a, b) => {
+                        const ah = a.special === 'hot' ? 0 : 1;
+                        const bh = b.special === 'hot' ? 0 : 1;
+                        return ah - bh || a.name.localeCompare(b.name);
+                    });
+                    break;
+                case 'Newest':
+                    filteredComponents.sort((a, b) => {
+                        const an = a.special === 'new' ? 0 : 1;
+                        const bn = b.special === 'new' ? 0 : 1;
+                        return an - bn || a.name.localeCompare(b.name);
+                    });
+                    break;
+                case 'Name A-Z':
+                    filteredComponents.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'Complexity':
+                    filteredComponents.sort((a, b) => (orderComplexity[a.complexity] ?? 99) - (orderComplexity[b.complexity] ?? 99) || a.name.localeCompare(b.name));
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe component cards for scroll animations
+        function observeCards() {
+            document.querySelectorAll('.component-card').forEach(card => {
+                card.classList.add('reveal');
+                observer.observe(card);
+            });
+            // Also observe hero reveals
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+        
+        // Call observeCards after rendering and add diagnostics; also sort before render
+        const originalRenderComponents = renderComponents;
+        renderComponents = function() {
+            try { applySort(); } catch(e) {}
+            originalRenderComponents();
+            // Diagnostics (one-session, console-only)
+            try {
+                const grid = document.getElementById('componentsGrid');
+                if (grid) {
+                    const cards = grid.querySelectorAll('.component-card');
+                    console.debug('[components] grid children:', grid.children.length, ' .component-card count:', cards.length);
+                    // Nested card detection
+                    cards.forEach((card, idx) => {
+                        const nested = card.querySelector('.component-card');
+                        if (nested) {
+                            console.warn('[components] Nested card detected at index', idx, card);
+                        }
+                    });
+                    // Duplicate preview-host IDs
+                    const ids = {};
+                    grid.querySelectorAll('[id^="preview-host-"]').forEach(el => {
+                        const id = el.id;
+                        if (ids[id]) {
+                            console.warn('[components] Duplicate preview host id:', id, el);
+                        } else {
+                            ids[id] = true;
+                        }
+                    });
+                }
+            } catch(e) { console.warn('Diagnostics failed:', e); }
+            setTimeout(observeCards, 100);
+        };
+
+        // Parallax system
+        let ticking = false;
+        const parallaxEls = () => Array.from(document.querySelectorAll('[data-parallax-speed]'));
+        function onScroll() {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const y = window.scrollY || window.pageYOffset;
+                    parallaxEls().forEach(el => {
+                        const speed = parseFloat(el.getAttribute('data-parallax-speed')) || 0;
+                        el.style.transform = `translateY(${Math.round(y * speed)}px)`;
+                    });
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Enhance setupEventListeners with sort and modal close handlers
+        const originalSetup = setupEventListeners;
+        setupEventListeners = function() {
+            originalSetup();
+            const sortSelect = document.getElementById('sortSelect');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', (e) => {
+                    currentSort = e.target.value;
+                    filterComponents();
+                });
+            }
+
+            // Modal close events
+            document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+            document.getElementById('modalBackdrop').addEventListener('click', (e) => {
+                if (e.target === e.currentTarget) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            // Fullscreen toggle
+            const fsBtn = document.getElementById('modalFullscreenBtn');
+            if (fsBtn) {
+                fsBtn.addEventListener('click', () => {
+                    const modal = document.getElementById('componentModal');
+                    const entering = !modal.classList.contains('fullscreen');
+                    // Apply scale bump animation depending on direction
+                    if (entering) {
+                        modal.classList.add('fs-anim-in');
+                        setTimeout(() => modal.classList.remove('fs-anim-in'), 420);
+                    } else {
+                        modal.classList.add('fs-anim-out');
+                        setTimeout(() => modal.classList.remove('fs-anim-out'), 420);
+                    }
+                    modal.classList.toggle('fullscreen');
+                });
+            }
+
+            // Preview theme toggle
+            const lightBtn = document.getElementById('previewLightBtn');
+            const darkBtn = document.getElementById('previewDarkBtn');
+            if (lightBtn && darkBtn) {
+                lightBtn.addEventListener('click', () => setPreviewTheme('light'));
+                darkBtn.addEventListener('click', () => setPreviewTheme('dark'));
+            }
+        };
+
+        // Inject sorting into filtering flow (single-pass via renderComponents)
+        const originalFilter = filterComponents;
+        filterComponents = function() {
+            // originalFilter updates filteredComponents and calls renderComponents()
+            // Sorting is now applied inside renderComponents before painting
+            originalFilter();
+        };
+
+        // Modal fullscreen styles
+        const modalStyle = document.createElement('style');
+        modalStyle.textContent = `
+            #componentModal.fullscreen {
+                max-width: none !important;
+                width: 100vw !important;
+                height: 92vh !important;
+                border-radius: 0 !important;
+            }
+            #componentModal.fullscreen img[data-modal="image"] {
+                height: 60vh !important;
+                object-fit: cover;
+            }
+        `;
+        document.head.appendChild(modalStyle);
+
+        // Modal animation styles (backdrop fade, modal scale/slide)
+        const modalAnim = document.createElement('style');
+        modalAnim.textContent = `
+            #modalBackdrop {
+                opacity: 0;
+                transition: opacity 260ms ease;
+            }
+            #modalBackdrop.show {
+                opacity: 1;
+            }
+            #componentModal {
+                opacity: 0;
+                transform: translateY(16px) scale(0.985);
+                transition: opacity 260ms ease, transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+            }
+            #componentModal.show {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            @media (prefers-reduced-motion: reduce) {
+                #modalBackdrop, #componentModal {
+                    transition: none !important;
+                }
+                #componentModal { transform: none !important; opacity: 1 !important; }
+            }
+        `;
+        document.head.appendChild(modalAnim);
+
+        // Preview surface theme styles
+        const themeStyle = document.createElement('style');
+        themeStyle.textContent = `
+            .preview-surface {
+                background: linear-gradient(to bottom right, #f9fafb, #f3f4f6);
+                transition: background-color 240ms ease, background 240ms ease;
+            }
+            .preview-surface.dark {
+                background: linear-gradient(to bottom right, #0b1220, #0f172a);
+            }
+            .preview-surface.light {
+                background: linear-gradient(to bottom right, #f9fafb, #eef2f7);
+            }
+            .toggle-btn { background:#fff; color:#6b7280; }
+            .toggle-btn.active { background:#111827; color:#fff; }
+        `;
+        document.head.appendChild(themeStyle);
+
+        // Demo frame + reveal styles
+        const demoStyle = document.createElement('style');
+        demoStyle.textContent = `
+            .demo-frame {
+                width: 100%;
+                max-height: 58vh;
+                overflow: auto;
+                padding: 0.75rem;
+                border-radius: 0.75rem;
+                background: rgba(255,255,255,0.9);
+                border: 1px solid #e5e7eb;
+                box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            }
+            .preview-surface.dark .demo-frame {
+                background: rgba(15,23,42,0.6);
+                border-color: rgba(255,255,255,0.08);
+                box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+            }
+            @keyframes demoFade {
+                from { opacity: 0; transform: translateY(6px) scale(0.98); }
+                to { opacity: 1; transform: translateY(0) scale(1); }
+            }
+            .demo-reveal { animation: demoFade 380ms cubic-bezier(0.22, 1, 0.36, 1); }
+            @media (prefers-reduced-motion: reduce) {
+                .demo-reveal { animation: none !important; }
+            }
+        `;
+        document.head.appendChild(demoStyle);
+
+        // Card elevated styles (Option A: Clean Elevated)
+        const cardStyle = document.createElement('style');
+        cardStyle.textContent = `
+            .component-card.elevated {
+                position: relative;
+                box-shadow: 0 1px 2px rgba(16,24,40,0.04);
+            }
+            .component-card.elevated::before {
+                content: '';
+                position: absolute; inset: 0; border-radius: 1rem; padding: 1px;
+                background: linear-gradient(180deg, rgba(99,102,241,0.18), rgba(99,102,241,0) 35%),
+                            linear-gradient(180deg, rgba(15,23,42,0.08), rgba(15,23,42,0));
+                -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                -webkit-mask-composite: xor; mask-composite: exclude;
+                pointer-events: none;
+            }
+            .component-card.elevated:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(2,6,23,0.08); }
+            .component-card.elevated:focus-within { box-shadow: 0 0 0 2px rgba(99,102,241,0.25), 0 12px 28px rgba(2,6,23,0.12); }
+
+            /* Card preview glass surface */
+            .card-preview {
+                min-height: 14rem;
+                background: radial-gradient(120% 120% at 50% 0%, rgba(255,255,255,0.35), rgba(255,255,255,0.08) 55%, rgba(255,255,255,0) 70%),
+                            rgba(255,255,255,0.55);
+                backdrop-filter: saturate(125%) blur(2px);
+                border-bottom: 1px solid rgba(226,232,240,0.8);
+                border-top-left-radius: 1rem; border-top-right-radius: 1rem;
+            }
+            .preview-surface.dark.card-preview {
+                background: radial-gradient(120% 120% at 50% 0%, rgba(255,255,255,0.06), rgba(255,255,255,0.02) 55%, rgba(255,255,255,0) 70%),
+                            rgba(2,6,23,0.35);
+                border-color: rgba(255,255,255,0.06);
+            }
+
+            /* Tags */
+            .component-card .tag-pill { background: #f3f4f6; color:#6b7280; border:1px solid #e5e7eb; }
+            .preview-surface.dark ~ .card-body .tag-pill { background: rgba(30,41,59,0.6); color:#9aa3b2; border-color: rgba(148,163,184,0.18); }
+
+            /* CTA button */
+            .component-card .cta-btn { transition: transform .15s ease, box-shadow .2s ease; box-shadow: 0 1px 0 rgba(0,0,0,0.04) inset; }
+            .component-card .cta-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 16px rgba(2,6,23,0.12); }
+            .component-card .cta-btn:active { transform: translateY(0); box-shadow: 0 0 0 rgba(0,0,0,0); }
+        `;
+        document.head.appendChild(cardStyle);
+
+        // Slightly enlarge each component card width (+24px total) while keeping grid alignment
+        try {
+            const cardSizeStyle = document.createElement('style');
+            cardSizeStyle.textContent = `
+                #componentsGrid .component-card { width: calc(100% + 24px); margin-left: -12px; margin-right: -12px; }
+            `;
+            document.head.appendChild(cardSizeStyle);
+        } catch(e) { console.warn('card size style inject failed:', e); }
+
+        // Preview theme logic
+        let previewTheme = (localStorage.getItem('previewTheme') || 'light');
+        function setPreviewTheme(theme) {
+            previewTheme = theme === 'dark' ? 'dark' : 'light';
+            localStorage.setItem('previewTheme', previewTheme);
+            // Update toggle UI
+            const lightBtn = document.getElementById('previewLightBtn');
+            const darkBtn = document.getElementById('previewDarkBtn');
+            if (lightBtn && darkBtn) {
+                lightBtn.classList.toggle('active', previewTheme === 'light');
+                darkBtn.classList.toggle('active', previewTheme === 'dark');
+            }
+            applyPreviewThemeToAll();
+            // Re-render previews so iframe base background matches theme
+            try { rehydrateAllPreviews(); } catch(e) { console.warn('Theme rehydrate failed:', e); }
+        }
+        function applyPreviewThemeToAll() {
+            const elems = document.querySelectorAll('.preview-surface');
+            elems.forEach(el => {
+                el.classList.remove('light', 'dark');
+                el.classList.add(previewTheme);
+            });
+        }
+        // Initialize toggle UI state if present
+        requestAnimationFrame(() => setPreviewTheme(previewTheme));
+
+        // Fullscreen toggle scale animations
+        const fsAnim = document.createElement('style');
+        fsAnim.textContent = `
+            #componentModal {
+                transition: opacity 260ms ease, transform 420ms cubic-bezier(0.22, 1, 0.36, 1), border-radius 420ms ease;
+            }
+            #componentModal.fs-anim-in {
+                animation: fsBumpIn 420ms cubic-bezier(0.22, 1, 0.36, 1);
+            }
+            #componentModal.fs-anim-out {
+                animation: fsBumpOut 420ms cubic-bezier(0.22, 1, 0.36, 1);
+            }
+            @keyframes fsBumpIn {
+                0% { transform: translateY(0) scale(1); }
+                50% { transform: translateY(0) scale(1.02); }
+                100% { transform: translateY(0) scale(1); }
+            }
+            @keyframes fsBumpOut {
+                0% { transform: translateY(0) scale(1); }
+                50% { transform: translateY(0) scale(0.98); }
+                100% { transform: translateY(0) scale(1); }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                #componentModal.fs-anim-in,
+                #componentModal.fs-anim-out { animation: none !important; }
+            }
+        `;
+        document.head.appendChild(fsAnim);
+    </script>
+</body>
+</html>
+
+
+

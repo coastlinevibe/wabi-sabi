@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TorqueCraft Workshop | Automotive & Fabrication Specialists</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: only dark;
+        --bg: #07090c;
+        --steel: #1f2933;
+        --accent: #f59e0b;
+        --cyan: #22d3ee;
+        --muted: rgba(203, 213, 225, 0.76);
+        --surface: rgba(15, 19, 28, 0.82);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: 'Barlow', sans-serif;
+        background:
+          radial-gradient(circle at 15% 12%, rgba(34, 211, 238, 0.18), transparent 55%),
+          radial-gradient(circle at 82% 18%, rgba(245, 158, 11, 0.16), transparent 58%),
+          linear-gradient(160deg, #05070b 0%, #0d1017 55%, #07090c 100%);
+        color: rgba(240, 249, 255, 0.95);
+        overflow-x: hidden;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        padding: 26px 6vw 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(180deg, rgba(7, 10, 15, 0.92) 0%, rgba(7, 10, 15, 0) 100%);
+        backdrop-filter: blur(12px);
+        z-index: 22;
+      }
+
+      .brand-block {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .crest {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        background:
+          linear-gradient(140deg, rgba(34, 211, 238, 0.9), rgba(7, 89, 133, 0.9));
+        display: grid;
+        place-items: center;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 20px;
+        letter-spacing: 0.14em;
+        color: #04121a;
+        border: 1px solid rgba(34, 211, 238, 0.4);
+        box-shadow: 0 18px 34px rgba(34, 211, 238, 0.28);
+      }
+
+      .brand-copy {
+        font-family: 'Orbitron', sans-serif;
+        letter-spacing: 0.08em;
+      }
+
+      .brand-copy .eyebrow {
+        font-size: 12px;
+        text-transform: uppercase;
+        color: rgba(207, 226, 237, 0.54);
+      }
+
+      .brand-copy .name {
+        font-size: 28px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(207, 226, 237, 0.24);
+        background: rgba(23, 30, 37, 0.56);
+        color: rgba(223, 236, 243, 0.86);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.03em;
+        transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      }
+
+      .back-link:hover {
+        transform: translateY(-1px);
+        background: rgba(28, 36, 44, 0.72);
+        border-color: rgba(34, 211, 238, 0.36);
+        color: rgba(248, 253, 255, 0.95);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+
+      nav a {
+        color: var(--muted);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        transition: color 0.25s ease;
+      }
+
+      nav a:hover {
+        color: rgba(248, 253, 255, 0.96);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 24px;
+        border-radius: 14px;
+        background: linear-gradient(120deg, rgba(248, 250, 252, 0.92), rgba(34, 211, 238, 0.92));
+        color: #04121a;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 16px 36px rgba(34, 211, 238, 0.28);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 42px rgba(34, 211, 238, 0.35);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 54px;
+        padding: 92px 6vw 70px;
+        align-items: center;
+        position: relative;
+      }
+
+      .hero::after {
+        content: '';
+        position: absolute;
+        inset: 8% auto auto 55%;
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(34, 211, 238, 0.22), transparent 68%);
+        z-index: -1;
+      }
+
+      .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 26px;
+      }
+
+      .badge {
+        padding: 8px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(245, 158, 11, 0.38);
+        background: rgba(245, 158, 11, 0.16);
+        color: rgba(255, 245, 228, 0.88);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: clamp(48px, 5.4vw, 78px);
+        line-height: 1.05;
+        letter-spacing: 0.06em;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+
+      .hero h1 span {
+        color: var(--cyan);
+      }
+
+      .hero p.lead {
+        font-size: clamp(18px, 2.2vw, 22px);
+        color: rgba(224, 236, 245, 0.88);
+        line-height: 1.74;
+        margin-bottom: 34px;
+      }
+
+      .hero-media {
+        position: relative;
+        border-radius: 28px;
+        padding: 28px;
+        background: var(--surface);
+        box-shadow: 0 30px 60px rgba(4, 6, 10, 0.52);
+        overflow: hidden;
+      }
+
+      .hero-media img {
+        width: 100%;
+        border-radius: 18px;
+        object-fit: cover;
+      }
+
+      .hero-media .stamp {
+        position: absolute;
+        bottom: 28px;
+        right: 32px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.78);
+        color: rgba(233, 247, 255, 0.9);
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .section {
+        padding: 80px 6vw;
+      }
+
+      .section-header {
+        max-width: 760px;
+        margin: 0 auto 52px;
+        text-align: center;
+      }
+
+      .section-header h2 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: clamp(34px, 4vw, 52px);
+        letter-spacing: 0.08em;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+      }
+
+      .section-header p {
+        color: rgba(205, 220, 232, 0.76);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 28px;
+      }
+
+      .feature-card {
+        border-radius: 22px;
+        padding: 26px 28px;
+        background: rgba(18, 25, 33, 0.66);
+        border: 1px solid rgba(107, 114, 128, 0.18);
+        box-shadow: 0 20px 42px rgba(3, 5, 8, 0.45);
+        display: grid;
+        gap: 16px;
+        min-height: 220px;
+      }
+
+      .feature-card h3 {
+        margin: 0;
+        font-size: 20px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: rgba(204, 219, 232, 0.8);
+        line-height: 1.72;
+      }
+
+      .services-grid {
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .service-card {
+        border-radius: 24px;
+        overflow: hidden;
+        background: rgba(10, 14, 20, 0.78);
+        border: 1px solid rgba(34, 211, 238, 0.16);
+        box-shadow: 0 26px 48px rgba(4, 6, 10, 0.46);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .service-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .service-card .content {
+        padding: 26px 28px 30px;
+        display: grid;
+        gap: 14px;
+      }
+
+      .service-card h3 {
+        margin: 0;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 22px;
+        letter-spacing: 0.08em;
+      }
+
+      .service-card ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 12px;
+        color: rgba(210, 224, 236, 0.82);
+        font-size: 15px;
+      }
+
+      .numbers-strip {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+        margin-top: 46px;
+      }
+
+      .number-tile {
+        padding: 24px;
+        border-radius: 20px;
+        background: rgba(10, 14, 20, 0.66);
+        border: 1px solid rgba(107, 114, 128, 0.2);
+        text-align: center;
+        box-shadow: 0 16px 32px rgba(4, 6, 10, 0.4);
+      }
+
+      .number-tile .value {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 30px;
+        letter-spacing: 0.08em;
+        color: rgba(34, 211, 238, 0.9);
+        margin-bottom: 8px;
+      }
+
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 26px;
+        margin-top: 50px;
+      }
+
+      .process-card {
+        border-radius: 22px;
+        padding: 26px;
+        background: rgba(13, 17, 24, 0.72);
+        border: 1px solid rgba(245, 158, 11, 0.22);
+        display: grid;
+        gap: 12px;
+      }
+
+      .cta {
+        padding: 90px 6vw 108px;
+        text-align: center;
+        background: linear-gradient(125deg, rgba(34, 211, 238, 0.12), rgba(245, 158, 11, 0.12));
+        border-top: 1px solid rgba(148, 163, 184, 0.08);
+      }
+
+      .cta h2 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: clamp(36px, 4.2vw, 56px);
+        letter-spacing: 0.1em;
+        margin-bottom: 18px;
+        text-transform: uppercase;
+      }
+
+      .cta p {
+        color: rgba(213, 225, 235, 0.86);
+        font-size: 18px;
+        line-height: 1.78;
+        max-width: 640px;
+        margin: 0 auto 28px;
+      }
+
+      footer {
+        padding: 32px 6vw 48px;
+        background: rgba(4, 7, 11, 0.94);
+        border-top: 1px solid rgba(148, 163, 184, 0.06);
+      }
+
+      footer .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 28px;
+      }
+
+      footer h4 {
+        margin-bottom: 12px;
+        letter-spacing: 0.08em;
+        font-size: 14px;
+        color: rgba(203, 213, 225, 0.74);
+        text-transform: uppercase;
+      }
+
+      footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+        color: rgba(191, 203, 218, 0.72);
+        font-size: 14px;
+        letter-spacing: 0.03em;
+      }
+
+      @media (max-width: 720px) {
+        header {
+          padding-top: 22px;
+        }
+
+        nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero {
+          padding-top: 80px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand-block">
+        <a class="back-link" href="/portfolio#website-gallery">← Back to main site</a>
+        <div class="crest">TC</div>
+        <div class="brand-copy">
+          <div class="eyebrow">TorqueCraft workshop</div>
+          <div class="name">Auto & Fabrication</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#story">About</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#trade">Trade</a>
+        <a href="#contact" class="btn-primary">Book inspection</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="story">
+      <div>
+        <div class="hero-badges">
+          <div class="badge">Diagnostic lab</div>
+          <div class="badge">CNC fabrication</div>
+          <div class="badge">Fleet-ready</div>
+        </div>
+        <h1>
+          Precision builds for
+          <span>every garage.</span>
+        </h1>
+        <p class="lead">
+          TorqueCraft keeps South African drivers moving with advanced diagnostics, performance upgrades, and safety-first repairs. From
+          after-hours call-outs to custom CNC brackets, our team delivers workshop reliability with showroom finish.
+        </p>
+        <a href="#services" class="btn-primary">View service range</a>
+      </div>
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1400&q=80" alt="Workshop floor" />
+        <div class="stamp">Quality Checked</div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="section-header">
+        <h2>Workshop services engineered for uptime</h2>
+        <p>
+          We combine skilled technicians, OEM-spec diagnostics, and locally sourced components to keep cars, bakkies, and fleets on the
+          road. Each job includes transparent estimates and follow-up safety reports.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Advanced diagnostics</h3>
+          <p>OEM and aftermarket scanning across major brands, backed by repair roadmaps and live data logging.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Mechanical rebuilds</h3>
+          <p>Engine, gearbox, and suspension repairs with torque specs calibrated to manufacturer standards.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Fabrication lab</h3>
+          <p>CNC brackets, intercooler piping, and custom mounts for performance and commercial builds.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Fleet maintenance</h3>
+          <p>Scheduled services, safety inspections, and downtime tracking for national fleet managers.</p>
+        </div>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1486927181919-3ac1fc3a8082?auto=format&fit=crop&w=1200&q=80" alt="Diagnostics" />
+          <div class="content">
+            <h3>Diagnostics Lab</h3>
+            <ul>
+              <li>Live data analysis with BOSCH, Launch, and Autel suites</li>
+              <li>Hybrid & EV systems testing</li>
+              <li>Service light reset and module coding</li>
+              <li>Report delivery with next-step recommendations</li>
+            </ul>
+          </div>
+        </article>
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80" alt="Fabrication" />
+          <div class="content">
+            <h3>Fabrication Studio</h3>
+            <ul>
+              <li>TIG/MIG welding with QA testing</li>
+              <li>Aluminium and stainless custom work</li>
+              <li>Protective coatings and powder finish</li>
+              <li>Performance upgrades installed in-house</li>
+            </ul>
+          </div>
+        </article>
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80" alt="Fleet" />
+          <div class="content">
+            <h3>Fleet Response</h3>
+            <ul>
+              <li>Monthly service plans with KPIs</li>
+              <li>On-site breakdown response teams</li>
+              <li>Parts sourcing with supplier partnerships</li>
+              <li>Driver safety briefings and reports</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <div class="numbers-strip">
+        <div class="number-tile">
+          <div class="value">24/7</div>
+          <div>Emergency hotline for fleet support and weekend call-outs.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">12 bays</div>
+          <div>Dedicated work bays with lifts, alignment rig, and fabrication cell.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">50 km</div>
+          <div>Complimentary collection radius for service bookings.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="section-header">
+        <h2>Process built for clarity</h2>
+        <p>
+          Every job follows a documented workflow so you always know what’s happening, when parts arrive, and when your vehicle rolls out.
+        </p>
+      </div>
+      <div class="process-grid">
+        <div class="process-card">
+          <h3>01 · Intake</h3>
+          <p>Book online, drop off, or request a collection. Receive digital job cards with inspection photos.</p>
+        </div>
+        <div class="process-card">
+          <h3>02 · Diagnostics</h3>
+          <p>Technicians confirm faults, share quotes, and get your go-ahead before the first bolt is loosened.</p>
+        </div>
+        <div class="process-card">
+          <h3>03 · Repair & QA</h3>
+          <p>Specialists execute repairs, keep you updated, and run post-job tests with live results.</p>
+        </div>
+        <div class="process-card">
+          <h3>04 · Handover</h3>
+          <p>Collect or schedule delivery. Receive a service report, maintenance reminders, and warranty details.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Ready for your next service window?</h2>
+      <p>
+        Send through your vehicle details, desired booking slot, and any notes. The TorqueCraft team replies within two hours during
+        business days.
+      </p>
+      <a href="mailto:bookings@torquecraft.co.za" class="btn-primary">Request a booking</a>
+    </section>
+
+    <footer>
+      <div class="grid">
+        <div>
+          <h4>find us</h4>
+          <ul>
+            <li>TorqueCraft Workshop</li>
+            <li>Open Monday – Saturday</li>
+            <li>National support line</li>
+          </ul>
+        </div>
+        <div>
+          <h4>bookings</h4>
+          <ul>
+            <li>bookings@torquecraft.co.za</li>
+            <li>+27 10 555 8800</li>
+            <li>WhatsApp · TorqueCraft SA</li>
+          </ul>
+        </div>
+        <div>
+          <h4>follow</h4>
+          <ul>
+            <li>Instagram · @torquecraftsa</li>
+            <li>Facebook · TorqueCraft Workshop</li>
+            <li>YouTube · Build stories</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

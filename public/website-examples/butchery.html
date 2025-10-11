@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bushveld Block & Boma | Premium Game Butchery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Staatliches&family=Source+Sans+3:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: only dark;
+        --bg: #0f0b0a;
+        --bg-textured: linear-gradient(155deg, rgba(27, 21, 18, 0.92), rgba(10, 9, 10, 0.94));
+        --accent-rust: #c2410c;
+        --accent-ochre: #eab308;
+        --forest: #166534;
+        --muted: rgba(218, 210, 204, 0.74);
+        --surface: rgba(32, 24, 22, 0.8);
+        --surface-light: rgba(41, 31, 29, 0.76);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: 'Source Sans 3', sans-serif;
+        background:
+          radial-gradient(circle at 12% 8%, rgba(234, 179, 8, 0.14), transparent 55%),
+          radial-gradient(circle at 80% 16%, rgba(194, 65, 12, 0.18), transparent 60%),
+          var(--bg-textured);
+        color: rgba(250, 246, 239, 0.96);
+        overflow-x: hidden;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        padding: 26px 6vw 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(180deg, rgba(15, 11, 10, 0.95) 0%, rgba(15, 11, 10, 0) 100%);
+        backdrop-filter: blur(14px);
+        z-index: 22;
+      }
+
+      .brand-block {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        flex-wrap: wrap;
+      }
+
+      .crest {
+        width: 52px;
+        height: 52px;
+        border-radius: 15px;
+        background:
+          linear-gradient(135deg, rgba(234, 179, 8, 0.9), rgba(194, 65, 12, 0.9));
+        display: grid;
+        place-items: center;
+        font-family: 'Staatliches', sans-serif;
+        font-size: 24px;
+        letter-spacing: 0.1em;
+        color: #120805;
+        border: 1px solid rgba(234, 179, 8, 0.45);
+        box-shadow: 0 18px 32px rgba(194, 65, 12, 0.28);
+      }
+
+      .brand-copy {
+        font-family: 'Staatliches', sans-serif;
+        letter-spacing: 0.08em;
+      }
+
+      .brand-copy .eyebrow {
+        font-size: 14px;
+        text-transform: uppercase;
+        color: rgba(235, 224, 214, 0.56);
+      }
+
+      .brand-copy .name {
+        font-size: 32px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(235, 224, 214, 0.24);
+        background: rgba(36, 26, 23, 0.62);
+        color: rgba(244, 236, 224, 0.86);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.03em;
+        transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      }
+
+      .back-link:hover {
+        transform: translateY(-1px);
+        background: rgba(43, 31, 28, 0.72);
+        border-color: rgba(234, 179, 8, 0.36);
+        color: rgba(255, 248, 238, 0.96);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+
+      nav a {
+        color: var(--muted);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.04em;
+        transition: color 0.25s ease;
+      }
+
+      nav a:hover {
+        color: rgba(255, 250, 240, 0.96);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 24px;
+        border-radius: 999px;
+        background: linear-gradient(120deg, rgba(255, 239, 210, 0.94), rgba(234, 88, 12, 0.94));
+        color: #211109;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 16px 34px rgba(234, 88, 12, 0.32);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 40px rgba(234, 88, 12, 0.38);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 56px;
+        padding: 94px 6vw 70px;
+        align-items: center;
+        position: relative;
+      }
+
+      .hero::after {
+        content: '';
+        position: absolute;
+        inset: 12% auto auto 60%;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(22, 101, 52, 0.22), transparent 65%);
+        z-index: -1;
+      }
+
+      .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .badge {
+        padding: 8px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(194, 65, 12, 0.38);
+        background: rgba(194, 65, 12, 0.16);
+        color: rgba(255, 240, 226, 0.9);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        font-family: 'Staatliches', sans-serif;
+        font-size: clamp(48px, 5.4vw, 78px);
+        line-height: 1;
+        letter-spacing: 0.05em;
+        margin-bottom: 22px;
+        text-transform: uppercase;
+      }
+
+      .hero h1 span {
+        color: var(--accent-ochre);
+      }
+
+      .hero p.lead {
+        font-size: clamp(18px, 2.1vw, 22px);
+        color: rgba(241, 232, 220, 0.88);
+        line-height: 1.72;
+        margin-bottom: 34px;
+      }
+
+      .hero-media {
+        position: relative;
+        border-radius: 28px;
+        padding: 28px;
+        background: var(--surface);
+        box-shadow: 0 30px 60px rgba(9, 6, 5, 0.52);
+        overflow: hidden;
+      }
+
+      .hero-media img {
+        width: 100%;
+        border-radius: 18px;
+        object-fit: cover;
+      }
+
+      .hero-media .stamp {
+        position: absolute;
+        bottom: 28px;
+        right: 32px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: rgba(12, 74, 36, 0.82);
+        color: rgba(235, 250, 241, 0.92);
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .section {
+        padding: 80px 6vw;
+      }
+
+      .section-header {
+        max-width: 760px;
+        margin: 0 auto 52px;
+        text-align: center;
+      }
+
+      .section-header h2 {
+        font-family: 'Staatliches', sans-serif;
+        font-size: clamp(34px, 4vw, 52px);
+        letter-spacing: 0.08em;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+      }
+
+      .section-header p {
+        color: rgba(229, 222, 215, 0.74);
+        font-size: 18px;
+        line-height: 1.78;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 28px;
+      }
+
+      .feature-card {
+        border-radius: 24px;
+        padding: 26px 28px;
+        background: rgba(34, 25, 23, 0.64);
+        border: 1px solid rgba(235, 224, 214, 0.12);
+        box-shadow: 0 20px 42px rgba(7, 5, 4, 0.42);
+        display: grid;
+        gap: 16px;
+        min-height: 220px;
+      }
+
+      .feature-card h3 {
+        margin: 0;
+        font-size: 20px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: rgba(230, 223, 216, 0.8);
+        line-height: 1.72;
+      }
+
+      .cut-showcase {
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .cut-card {
+        border-radius: 26px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        background: rgba(36, 27, 25, 0.68);
+        border: 1px solid rgba(194, 65, 12, 0.18);
+        box-shadow: 0 26px 48px rgba(9, 6, 5, 0.46);
+      }
+
+      .cut-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+      }
+
+      .cut-card .content {
+        padding: 26px 28px 30px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .cut-card h3 {
+        margin: 0;
+        font-family: 'Staatliches', sans-serif;
+        font-size: 24px;
+        letter-spacing: 0.08em;
+      }
+
+      .cut-card p {
+        margin: 0;
+        color: rgba(232, 224, 217, 0.8);
+        line-height: 1.66;
+      }
+
+      .cut-card .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(235, 224, 214, 0.62);
+      }
+
+      .numbers-strip {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+        margin-top: 48px;
+      }
+
+      .number-tile {
+        padding: 24px;
+        border-radius: 20px;
+        background: rgba(30, 22, 20, 0.66);
+        border: 1px solid rgba(235, 224, 214, 0.16);
+        text-align: center;
+        box-shadow: 0 16px 36px rgba(7, 5, 4, 0.4);
+      }
+
+      .number-tile .value {
+        font-family: 'Staatliches', sans-serif;
+        font-size: 32px;
+        letter-spacing: 0.08em;
+        color: rgba(234, 179, 8, 0.9);
+        margin-bottom: 8px;
+      }
+
+      .supply-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 26px;
+        margin-top: 48px;
+      }
+
+      .supply-card {
+        border-radius: 22px;
+        padding: 26px;
+        background: rgba(26, 35, 26, 0.6);
+        border: 1px solid rgba(22, 101, 52, 0.3);
+        color: rgba(233, 248, 237, 0.92);
+      }
+
+      .delivery-strip {
+        margin-top: 52px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 28px;
+      }
+
+      .delivery-card {
+        border-radius: 22px;
+        padding: 26px;
+        background: rgba(34, 28, 24, 0.62);
+        border: 1px solid rgba(194, 65, 12, 0.22);
+        display: grid;
+        gap: 16px;
+      }
+
+      .testimonial-strip {
+        margin-top: 52px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+      }
+
+      .testimonial {
+        border-radius: 20px;
+        padding: 24px;
+        background: rgba(20, 16, 14, 0.72);
+        border: 1px solid rgba(234, 88, 12, 0.18);
+      }
+
+      .testimonial p {
+        margin: 0;
+        line-height: 1.72;
+        color: rgba(236, 228, 220, 0.82);
+      }
+
+      .testimonial .name {
+        margin-top: 16px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(234, 179, 8, 0.82);
+      }
+
+      .cta {
+        padding: 90px 6vw 108px;
+        text-align: center;
+        background: linear-gradient(130deg, rgba(234, 88, 12, 0.16), rgba(234, 179, 8, 0.12));
+        border-top: 1px solid rgba(235, 224, 214, 0.08);
+      }
+
+      .cta h2 {
+        font-family: 'Staatliches', sans-serif;
+        font-size: clamp(36px, 4.4vw, 56px);
+        letter-spacing: 0.1em;
+        margin-bottom: 18px;
+      }
+
+      .cta p {
+        color: rgba(235, 224, 214, 0.86);
+        font-size: 18px;
+        line-height: 1.78;
+        max-width: 640px;
+        margin: 0 auto 28px;
+      }
+
+      footer {
+        padding: 32px 6vw 48px;
+        background: rgba(10, 8, 7, 0.95);
+        border-top: 1px solid rgba(235, 224, 214, 0.05);
+      }
+
+      footer .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 28px;
+      }
+
+      footer h4 {
+        margin-bottom: 12px;
+        letter-spacing: 0.1em;
+        font-size: 14px;
+        color: rgba(235, 224, 214, 0.74);
+        text-transform: uppercase;
+      }
+
+      footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+        color: rgba(222, 212, 204, 0.7);
+        font-size: 14px;
+        letter-spacing: 0.04em;
+      }
+
+      @media (max-width: 720px) {
+        header {
+          padding-top: 22px;
+        }
+
+        nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero {
+          padding-top: 78px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand-block">
+        <a class="back-link" href="/portfolio#website-gallery">← Back to main site</a>
+        <div class="crest">BB</div>
+        <div class="brand-copy">
+          <div class="eyebrow">Bushveld block & boma</div>
+          <div class="name">Premium Butchery</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#story">Story</a>
+        <a href="#cuts">Cuts</a>
+        <a href="#supply">Supply</a>
+        <a href="#trade">Trade</a>
+        <a href="#contact" class="btn-primary">Order custom cut</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="story">
+      <div>
+        <div class="hero-badges">
+          <div class="badge">Field-raised game</div>
+          <div class="badge">Dry-aged beef</div>
+          <div class="badge">Biltong atelier</div>
+        </div>
+        <h1>
+          Bushveld cuts for
+          <span>serious carnivores.</span>
+        </h1>
+        <p class="lead">
+          Bushveld Block & Boma curates ethically harvested game, pasture beef, and artisanal charcuterie. Our master butchers dry-age,
+          spice, and smoke every cut with mopane chips, offering chef-grade portions for homes, lodges, and field kitchens.
+        </p>
+        <a href="#cuts" class="btn-primary">Explore signature cuts</a>
+      </div>
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1553163147-622ab57be1c7?auto=format&fit=crop&w=1400&q=80" alt="Butchery counter" />
+        <div class="stamp">Bushveld Provenance</div>
+      </div>
+    </section>
+
+    <section class="section" id="cuts">
+      <div class="section-header">
+        <h2>Signature cuts from veld to counter</h2>
+        <p>
+          Our four-week dry-age program and spice atelier bring out the terroir of Limpopo grasslands. Choose from curated boxes or
+          bespoke breakdowns for your menu.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Dry-aged beef vault</h3>
+          <p>Nguni and Bonsmara loins aged 28+ days with consistent marbling, hand-cut to your specification.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Field game specialists</h3>
+          <p>Springbok, kudu, and eland prepared nose-to-tail with traceable provenance certificates.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Charcuterie lab</h3>
+          <p>Biltong, droëwors, and smoked sausages crafted with heritage spice blends and mopane wood profiles.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Chef consultation</h3>
+          <p>Menu planning, portion sizing, and yield forecasting delivered by our executive butcher team.</p>
+        </div>
+      </div>
+
+      <div class="cut-showcase">
+        <article class="cut-card">
+          <img src="https://images.unsplash.com/photo-1460400408855-36abd76648b9?auto=format&fit=crop&w=1200&q=80" alt="Dry aged beef" />
+          <div class="content">
+            <h3>Nguni Tomahawk</h3>
+            <p>Grass-fed, bone-in tomahawk aged 32 days with chilli-honey baste kit and herb butter.</p>
+            <div class="meta">
+              <span>2.2kg avg</span>
+              <span>chef grade</span>
+              <span>48 hrs notice</span>
+            </div>
+          </div>
+        </article>
+        <article class="cut-card">
+          <img src="https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&w=1200&q=80" alt="Game meat" />
+          <div class="content">
+            <h3>Karoo Venison Trio</h3>
+            <p>Springbok loin medallions, kudu fillet, and eland ribeye with spice rubs and pairing notes.</p>
+            <div class="meta">
+              <span>1.8kg set</span>
+              <span>traceable</span>
+              <span>custom spice</span>
+            </div>
+          </div>
+        </article>
+        <article class="cut-card">
+          <img src="https://images.unsplash.com/photo-1588165330996-3e9009d2434c?auto=format&fit=crop&w=1200&q=80" alt="Charcuterie" />
+          <div class="content">
+            <h3>Biltong Atelier Box</h3>
+            <p>Hand-cut biltong, chilli snapsticks, and mopane-smoked droëwors packed for retail shelves or lodge minibars.</p>
+            <div class="meta">
+              <span>6 item mix</span>
+              <span>vacuum sealed</span>
+              <span>weekly drops</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="numbers-strip">
+        <div class="number-tile">
+          <div class="value">28 days</div>
+          <div>Minimum dry-age cycle for premium beef quarters.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">12 farmers</div>
+          <div>Exclusive supply network across Limpopo and Mpumalanga.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">48 hrs</div>
+          <div>Lead time for custom breakdown orders and lodge deliveries.</div>
+        </div>
+      </div>
+
+      <div class="testimonial-strip">
+        <div class="testimonial">
+          <p>
+            “Our lodge chefs love the consistency. The game cuts arrive pristine and portioned exactly as we briefed.”
+          </p>
+          <div class="name">Marula Dunes Lodge · Hoedspruit</div>
+        </div>
+        <div class="testimonial">
+          <p>
+            “Their biltong atelier keeps our deli shelves stocked with hero products customers drive across town for.”
+          </p>
+          <div class="name">The Pantry Co. · Polokwane</div>
+        </div>
+        <div class="testimonial">
+          <p>
+            “Hands-on butchers, impeccable traceability, and flavour profiles that make menu engineering simple.”
+          </p>
+          <div class="name">Chef Lerato Masondo · Sandton</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="supply">
+      <div class="section-header">
+        <h2>Supply chain anchored in the veld</h2>
+        <p>
+          Bushveld Block & Boma partners with conservation-led farms, certified abattoirs, and cold-chain logistics teams to guarantee
+          freshness, welfare, and compliance.
+        </p>
+      </div>
+      <div class="supply-grid">
+        <div class="supply-card">
+          <h3>Farm network</h3>
+          <p>Audited, hormone-free livestock and free-roaming game reserves supplying seasonal harvest schedules.</p>
+        </div>
+        <div class="supply-card">
+          <h3>Cold chain mastery</h3>
+          <p>0°C to 2°C climate-controlled rooms, tracked deliveries, and HACCP traceability from hoof to hook.</p>
+        </div>
+        <div class="supply-card">
+          <h3>Cut room technology</h3>
+          <p>German band saws, vacuum tumblers, and rapid chill tunnels for optimal yield and texture.</p>
+        </div>
+      </div>
+
+      <div class="delivery-strip" id="trade">
+        <div class="delivery-card">
+          <h3>Hospitality supply</h3>
+          <p>Weekly standing orders for lodges, hotels, and safari camps with on-site portioning on request.</p>
+        </div>
+        <div class="delivery-card">
+          <h3>Retail & deli</h3>
+          <p>White-label biltong, ready-to-grill marinated packs, and merch kits for gourmet grocers.</p>
+        </div>
+        <div class="delivery-card">
+          <h3>Home carnivore club</h3>
+          <p>Monthly subscription boxes featuring rotating cuts, rubs, and chef pairing suggestions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Book a butchery consult</h2>
+      <p>
+        Share your menu needs, portion goals, and schedule. Our executive butcher team will confirm availability, pricing, and delivery
+        slots within one business day.
+      </p>
+      <a href="mailto:orders@bushveldblock.co.za" class="btn-primary">Schedule consultation</a>
+    </section>
+
+    <footer>
+      <div class="grid">
+        <div>
+          <h4>find us</h4>
+          <ul>
+            <li>Bushveld Block & Boma</li>
+            <li>Lephalale · Limpopo</li>
+            <li>South Africa</li>
+          </ul>
+        </div>
+        <div>
+          <h4>orders</h4>
+          <ul>
+            <li>orders@bushveldblock.co.za</li>
+            <li>+27 15 603 8810</li>
+            <li>Cold room open 07:00 – 18:00</li>
+          </ul>
+        </div>
+        <div>
+          <h4>follow</h4>
+          <ul>
+            <li>Instagram · @bushveldblock</li>
+            <li>Pinterest · Butcher inspiration</li>
+            <li>Journal · Field notes & recipes</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

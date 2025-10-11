@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IronWorks Hardware Depot | Industrial Tools • Building Supplies • Trade Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --steel: #2d3748;
+        --rust: #e53e3e;
+        --copper: #dd6b20;
+        --iron: #1a202c;
+        --concrete: #f7fafc;
+        --warning: #ffd700;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Roboto Condensed', sans-serif;
+        background: var(--concrete);
+        color: var(--iron);
+        overflow-x: hidden;
+      }
+
+      /* Industrial Grid Layout */
+      .container {
+        display: grid;
+        grid-template-areas: 
+          "sidebar header header"
+          "sidebar hero hero"
+          "sidebar content content"
+          "sidebar footer footer";
+        grid-template-columns: 300px 1fr 1fr;
+        grid-template-rows: 80px 1fr auto auto;
+        min-height: 100vh;
+      }
+
+      /* Vertical Sidebar Navigation */
+      .sidebar {
+        grid-area: sidebar;
+        background: linear-gradient(180deg, var(--steel) 0%, var(--iron) 100%);
+        position: relative;
+        box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+      }
+
+      .sidebar::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(180deg, var(--rust), var(--copper));
+      }
+
+      .sidebar-brand {
+        padding: 40px 20px;
+        text-align: center;
+        border-bottom: 2px solid rgba(229, 62, 62, 0.3);
+      }
+
+      .brand-logo {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--rust), var(--copper));
+        border-radius: 50%;
+        margin: 0 auto 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 36px;
+        color: white;
+        box-shadow: 0 8px 25px rgba(229, 62, 62, 0.4);
+      }
+
+      .brand-name {
+        font-family: 'Bebas Neue', cursive;
+        font-size: 28px;
+        color: white;
+        letter-spacing: 2px;
+      }
+
+      .brand-tagline {
+        font-size: 12px;
+        color: #a0aec0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .sidebar-menu {
+        padding: 40px 0;
+      }
+
+      .menu-section {
+        margin-bottom: 40px;
+      }
+
+      .menu-title {
+        padding: 0 20px 16px;
+        font-size: 12px;
+        color: #718096;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+      }
+
+      .menu-item {
+        display: block;
+        padding: 16px 20px;
+        color: #cbd5e0;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        border-left: 4px solid transparent;
+      }
+
+      .menu-item:hover {
+        background: rgba(229, 62, 62, 0.1);
+        color: white;
+        border-left-color: var(--rust);
+        transform: translateX(8px);
+      }
+
+      .menu-item.active {
+        background: rgba(229, 62, 62, 0.2);
+        color: white;
+        border-left-color: var(--rust);
+      }
+
+      .menu-icon {
+        display: inline-block;
+        width: 20px;
+        margin-right: 12px;
+        text-align: center;
+      }
+
+      /* Header with Tool Bar */
+      .header {
+        grid-area: header;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        position: relative;
+      }
+
+      .header::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--rust), var(--copper), var(--warning));
+      }
+
+      .search-bar {
+        display: flex;
+        align-items: center;
+        background: #f7fafc;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 12px 16px;
+        width: 400px;
+        transition: all 0.3s ease;
+      }
+
+      .search-bar:focus-within {
+        border-color: var(--rust);
+        box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+      }
+
+      .search-input {
+        border: none;
+        background: none;
+        outline: none;
+        flex: 1;
+        font-size: 16px;
+        margin-left: 12px;
+      }
+
+      .header-actions {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .back-link {
+        padding: 12px 24px;
+        background: var(--steel);
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+      }
+
+      .back-link:hover {
+        background: var(--iron);
+        transform: translateY(-2px);
+      }
+
+      .cart-btn {
+        position: relative;
+        padding: 12px;
+        background: var(--rust);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: all 0.3s ease;
+      }
+
+      .cart-btn:hover {
+        background: #c53030;
+        transform: scale(1.1);
+      }
+
+      .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: var(--warning);
+        color: var(--iron);
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      /* Hero Section with Product Showcase */
+      .hero {
+        grid-area: hero;
+        padding: 60px 40px;
+        background: 
+          linear-gradient(135deg, rgba(229, 62, 62, 0.1), rgba(221, 107, 32, 0.1)),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23e2e8f0" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      }
+
+      .hero-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .hero-text h1 {
+        font-family: 'Bebas Neue', cursive;
+        font-size: clamp(48px, 6vw, 84px);
+        line-height: 0.9;
+        margin-bottom: 24px;
+        color: var(--iron);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .hero-text .highlight {
+        color: var(--rust);
+        position: relative;
+      }
+
+      .hero-text .highlight::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background: linear-gradient(90deg, var(--rust), var(--copper));
+        opacity: 0.3;
+      }
+
+      .hero-description {
+        font-size: 20px;
+        color: #4a5568;
+        margin-bottom: 32px;
+        line-height: 1.6;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-bottom: 40px;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        border-top: 4px solid var(--rust);
+      }
+
+      .stat-number {
+        font-family: 'Bebas Neue', cursive;
+        font-size: 32px;
+        color: var(--rust);
+        margin-bottom: 8px;
+      }
+
+      .stat-label {
+        font-size: 14px;
+        color: #718096;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .hero-cta {
+        display: flex;
+        gap: 20px;
+      }
+
+      .btn-primary {
+        padding: 16px 32px;
+        background: linear-gradient(135deg, var(--rust), var(--copper));
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(229, 62, 62, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(229, 62, 62, 0.4);
+      }
+
+      .btn-secondary {
+        padding: 16px 32px;
+        background: white;
+        color: var(--steel);
+        text-decoration: none;
+        border-radius: 8px;
+        border: 2px solid var(--steel);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background: var(--steel);
+        color: white;
+      }
+
+      /* Product Showcase */
+      .product-showcase {
+        position: relative;
+        height: 400px;
+        perspective: 1000px;
+      }
+
+      .product-carousel {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        animation: rotateProducts 20s linear infinite;
+      }
+
+      @keyframes rotateProducts {
+        0% { transform: rotateY(0deg); }
+        100% { transform: rotateY(360deg); }
+      }
+
+      .product-card {
+        position: absolute;
+        width: 200px;
+        height: 280px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #e2e8f0;
+        transition: all 0.3s ease;
+      }
+
+      .product-card:nth-child(1) {
+        transform: rotateY(0deg) translateZ(250px);
+      }
+
+      .product-card:nth-child(2) {
+        transform: rotateY(72deg) translateZ(250px);
+      }
+
+      .product-card:nth-child(3) {
+        transform: rotateY(144deg) translateZ(250px);
+      }
+
+      .product-card:nth-child(4) {
+        transform: rotateY(216deg) translateZ(250px);
+      }
+
+      .product-card:nth-child(5) {
+        transform: rotateY(288deg) translateZ(250px);
+      }
+
+      .product-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--rust), var(--copper));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        color: white;
+        margin-bottom: 16px;
+      }
+
+      .product-name {
+        font-weight: 600;
+        margin-bottom: 8px;
+        text-align: center;
+        color: var(--iron);
+      }
+
+      .product-price {
+        font-family: 'Bebas Neue', cursive;
+        font-size: 24px;
+        color: var(--rust);
+      }
+
+      /* Content Section */
+      .content {
+        grid-area: content;
+        padding: 80px 40px;
+      }
+
+      .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .category-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        transition: all 0.4s ease;
+        border: 1px solid #e2e8f0;
+      }
+
+      .category-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        border-color: var(--rust);
+      }
+
+      .category-header {
+        padding: 30px;
+        background: linear-gradient(135deg, var(--steel), var(--iron));
+        color: white;
+        text-align: center;
+      }
+
+      .category-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--rust);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        margin: 0 auto 16px;
+      }
+
+      .category-title {
+        font-family: 'Bebas Neue', cursive;
+        font-size: 24px;
+        margin-bottom: 8px;
+        letter-spacing: 1px;
+      }
+
+      .category-count {
+        font-size: 14px;
+        opacity: 0.8;
+      }
+
+      .category-body {
+        padding: 30px;
+      }
+
+      .category-items {
+        list-style: none;
+      }
+
+      .category-items li {
+        padding: 8px 0;
+        border-bottom: 1px solid #e2e8f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .category-items li:last-child {
+        border-bottom: none;
+      }
+
+      .item-name {
+        color: var(--steel);
+        font-weight: 500;
+      }
+
+      .item-stock {
+        font-size: 12px;
+        padding: 4px 8px;
+        background: #f0fff4;
+        color: #22543d;
+        border-radius: 4px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .container {
+          grid-template-areas: 
+            "header"
+            "hero"
+            "content"
+            "footer";
+          grid-template-columns: 1fr;
+          grid-template-rows: auto auto 1fr auto;
+        }
+        
+        .sidebar {
+          display: none;
+        }
+        
+        .hero-content {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        
+        .product-showcase {
+          height: 300px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-stats {
+          grid-template-columns: 1fr;
+        }
+        
+        .hero-cta {
+          flex-direction: column;
+        }
+        
+        .categories-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Vertical Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="brand-logo">⚒️</div>
+          <div class="brand-name">IronWorks</div>
+          <div class="brand-tagline">Hardware Depot</div>
+        </div>
+        
+        <nav class="sidebar-menu">
+          <div class="menu-section">
+            <div class="menu-title">Shop Categories</div>
+            <a href="#tools" class="menu-item active">
+              <span class="menu-icon">🔨</span>
+              Power Tools
+            </a>
+            <a href="#hardware" class="menu-item">
+              <span class="menu-icon">🔩</span>
+              Hardware & Fasteners
+            </a>
+            <a href="#building" class="menu-item">
+              <span class="menu-icon">🧱</span>
+              Building Materials
+            </a>
+            <a href="#electrical" class="menu-item">
+              <span class="menu-icon">⚡</span>
+              Electrical Supplies
+            </a>
+            <a href="#plumbing" class="menu-item">
+              <span class="menu-icon">🚿</span>
+              Plumbing & Pipes
+            </a>
+            <a href="#safety" class="menu-item">
+              <span class="menu-icon">🦺</span>
+              Safety Equipment
+            </a>
+          </div>
+          
+          <div class="menu-section">
+            <div class="menu-title">Services</div>
+            <a href="#delivery" class="menu-item">
+              <span class="menu-icon">🚚</span>
+              Bulk Delivery
+            </a>
+            <a href="#rental" class="menu-item">
+              <span class="menu-icon">📅</span>
+              Tool Rental
+            </a>
+            <a href="#trade" class="menu-item">
+              <span class="menu-icon">👷</span>
+              Trade Accounts
+            </a>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Header -->
+      <header class="header">
+        <div class="search-bar">
+          <span>🔍</span>
+          <input type="text" class="search-input" placeholder="Search tools, materials, hardware...">
+        </div>
+        
+        <div class="header-actions">
+          <button class="cart-btn">
+            🛒
+            <span class="cart-count">3</span>
+          </button>
+          <a href="/portfolio#website-gallery" class="back-link">← Portfolio</a>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <main class="hero">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>
+              Professional <span class="highlight">Tools</span><br>
+              Industrial <span class="highlight">Strength</span>
+            </h1>
+            
+            <p class="hero-description">
+              South Africa's premier hardware depot serving contractors, builders, and DIY enthusiasts with professional-grade tools, building materials, and industrial supplies.
+            </p>
+            
+            <div class="hero-stats">
+              <div class="stat-item">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Products</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">24hr</div>
+                <div class="stat-label">Delivery</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">15yr</div>
+                <div class="stat-label">Warranty</div>
+              </div>
+            </div>
+            
+            <div class="hero-cta">
+              <a href="#categories" class="btn-primary">Shop Now</a>
+              <a href="#trade" class="btn-secondary">Trade Account</a>
+            </div>
+          </div>
+          
+          <div class="product-showcase">
+            <div class="product-carousel">
+              <div class="product-card">
+                <div class="product-icon">🔨</div>
+                <div class="product-name">Impact Drill</div>
+                <div class="product-price">R2,499</div>
+              </div>
+              <div class="product-card">
+                <div class="product-icon">⚡</div>
+                <div class="product-name">Angle Grinder</div>
+                <div class="product-price">R1,899</div>
+              </div>
+              <div class="product-card">
+                <div class="product-icon">🔩</div>
+                <div class="product-name">Bolt Set</div>
+                <div class="product-price">R299</div>
+              </div>
+              <div class="product-card">
+                <div class="product-icon">🧱</div>
+                <div class="product-name">Cement Bags</div>
+                <div class="product-price">R89</div>
+              </div>
+              <div class="product-card">
+                <div class="product-icon">🦺</div>
+                <div class="product-name">Safety Gear</div>
+                <div class="product-price">R599</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Categories Section -->
+      <section class="content" id="categories">
+        <div class="categories-grid">
+          <div class="category-card">
+            <div class="category-header">
+              <div class="category-icon">🔨</div>
+              <div class="category-title">Power Tools</div>
+              <div class="category-count">1,250+ Items</div>
+            </div>
+            <div class="category-body">
+              <ul class="category-items">
+                <li>
+                  <span class="item-name">Impact Drills</span>
+                  <span class="item-stock">In Stock</span>
+                </li>
+                <li>
+                  <span class="item-name">Angle Grinders</span>
+                  <span class="item-stock">In Stock</span>
+                </li>
+                <li>
+                  <span class="item-name">Circular Saws</span>
+                  <span class="item-stock">In Stock</span>
+                </li>
+                <li>
+                  <span class="item-name">Sanders</span>
+                  <span class="item-stock">Low Stock</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="category-card">
+            <div class="category-header">
+              <div class="category-icon">🔩</div>
+              <div class="category-title">Hardware</div>
+              <div class="category-count">5,000+ Items</div>
+            </div>
+            <div class="category-body">
+              <ul class="category-items">
+                <li>
+                  <span class="item-name">Bolts & Screws</span>
+                  <span class="item-stock">In Stock</span>
+                </li>
+                <li>
+                  <span class="item-name">Hinges</span>
+                  <span class="item-stock">In Stock</span>
+                </li>
+                <li>
+                  <span class="item-name">Locks</span>
+                  <span class="item-stock">In Stock</span>
+                </li>
+                <li>
+                  <span class="item-name">Chains</span>
+                  <span class="item-stock">In Stock</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="category-card">
+            <div class="category-header">
+              <div class="category-icon">🧱</div>
+              <div class="category-title">Building Materials</div>
+              <div class="category-count">800+ Items</div>
+            </div>
+            <div class="category-body">
+              <ul class="category-items">
+                <li>
+                  <span class="item-name">Cement</span>
+                  <span class="item-stock">In Stock</span>
+                </li>
+                <li>
+                  <span class="item-name">Bricks</span>
+                  <span class="item-stock">In Stock</span>
+                </li>
+                <li>
+                  <span class="item-name">Timber</span>
+                  <span class="item-stock">In Stock</span>
+                </li>
+                <li>
+                  <span class="item-name">Roofing</span>
+                  <span class="item-stock">In Stock</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // Interactive functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        // Menu item interactions
+        document.querySelectorAll('.menu-item').forEach(item => {
+          item.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+            this.classList.add('active');
+          });
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-input');
+        searchInput.addEventListener('focus', function() {
+          this.parentElement.style.transform = 'scale(1.02)';
+        });
+        
+        searchInput.addEventListener('blur', function() {
+          this.parentElement.style.transform = 'scale(1)';
+        });
+
+        // Cart animation
+        const cartBtn = document.querySelector('.cart-btn');
+        cartBtn.addEventListener('click', function() {
+          this.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            this.style.transform = 'scale(1)';
+          }, 150);
+        });
+
+        // Parallax effect for product showcase
+        window.addEventListener('scroll', function() {
+          const scrolled = window.pageYOffset;
+          const showcase = document.querySelector('.product-showcase');
+          if (showcase) {
+            showcase.style.transform = `translateY(${scrolled * 0.3}px)`;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

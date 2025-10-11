@@ -1,0 +1,55 @@
+<svg width="640" height="400" viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="400" rx="28" fill="url(#paint0_radial_1_2)"/>
+  <defs>
+    <radialGradient id="paint0_radial_1_2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(120 96) rotate(18.5) scale(596 420)">
+      <stop offset="0" stop-color="#FACC15" stop-opacity="0.92"/>
+      <stop offset="0.35" stop-color="#F97316" stop-opacity="0.68"/>
+      <stop offset="0.62" stop-color="#166534" stop-opacity="0.52"/>
+      <stop offset="1" stop-color="#04110A"/>
+    </radialGradient>
+  </defs>
+  <g opacity="0.55" filter="url(#filter0_f_1_2)">
+    <ellipse cx="520" cy="40" rx="220" ry="120" fill="#15803D" fill-opacity="0.28"/>
+  </g>
+  <g opacity="0.32" filter="url(#filter1_f_1_2)">
+    <ellipse cx="96" cy="324" rx="210" ry="120" fill="#F97316" fill-opacity="0.32"/>
+  </g>
+  <path d="M142 112C142 105.925 146.925 101 153 101H482C488.075 101 493 105.925 493 112V141C493 147.075 488.075 152 482 152H153C146.925 152 142 147.075 142 141V112Z" fill="rgba(15,23,42,0.55)" stroke="rgba(248,250,252,0.12)" stroke-width="1.5"/>
+  <path d="M171 187C171 180.372 176.372 175 183 175H454C460.627 175 466 180.372 466 187V200C466 206.628 460.627 212 454 212H183C176.372 212 171 206.628 171 200V187Z" fill="rgba(15,23,42,0.55)" stroke="rgba(248,250,252,0.08)" stroke-width="1.4"/>
+  <rect x="183" y="188" width="94" height="10" rx="5" fill="#F97316"/>
+  <rect x="183" y="210" width="132" height="6" rx="3" fill="rgba(255,255,255,0.3)"/>
+  <rect x="335" y="188" width="94" height="10" rx="5" fill="rgba(255,255,255,0.2)"/>
+  <rect x="335" y="210" width="126" height="6" rx="3" fill="rgba(255,255,255,0.22)"/>
+  <g filter="url(#filter2_f_1_2)">
+    <ellipse cx="354" cy="310" rx="180" ry="98" fill="#F97316" fill-opacity="0.35"/>
+  </g>
+  <path d="M210 260C210 248.954 218.954 240 230 240H486C497.046 240 506 248.954 506 260C506 271.046 497.046 280 486 280H230C218.954 280 210 271.046 210 260Z" fill="rgba(15,23,42,0.6)" stroke="rgba(248,250,252,0.1)" stroke-width="1.5"/>
+  <rect x="228" y="248" width="72" height="24" rx="12" fill="#F97316"/>
+  <rect x="314" y="248" width="72" height="24" rx="12" fill="rgba(255,255,255,0.25)"/>
+  <rect x="400" y="248" width="74" height="24" rx="12" fill="rgba(255,255,255,0.16)"/>
+  <path d="M140 320C140 303.431 153.431 290 170 290H474C490.569 290 504 303.431 504 320C504 336.569 490.569 350 474 350H170C153.431 350 140 336.569 140 320Z" fill="rgba(15,23,42,0.58)" stroke="rgba(248,250,252,0.08)" stroke-width="1.5"/>
+  <rect x="190" y="308" width="112" height="12" rx="6" fill="rgba(255,255,255,0.25)"/>
+  <rect x="190" y="330" width="84" height="6" rx="3" fill="rgba(255,255,255,0.2)"/>
+  <rect x="322" y="308" width="98" height="12" rx="6" fill="#FACC15"/>
+  <rect x="322" y="330" width="124" height="6" rx="3" fill="rgba(255,255,255,0.25)"/>
+  <circle cx="525" cy="78" r="38" fill="rgba(248,250,252,0.12)" stroke="rgba(248,250,252,0.26)"/>
+  <path d="M525 62L535 90H515L525 62Z" fill="#FACC15"/>
+  <path d="M500 88.5C500 83.8056 503.805 80 508.5 80H541.5C546.194 80 550 83.8056 550 88.5C550 93.1944 546.194 97 541.5 97H508.5C503.805 97 500 93.1944 500 88.5Z" stroke="#F8FAFC" stroke-opacity="0.35"/>
+  <defs>
+    <filter id="filter0_f_1_2" x="240" y="-140" width="560" height="360" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="30" result="effect1_foregroundBlur_1_2"/>
+    </filter>
+    <filter id="filter1_f_1_2" x="-214" y="104" width="620" height="440" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="35" result="effect1_foregroundBlur_1_2"/>
+    </filter>
+    <filter id="filter2_f_1_2" x="114" y="142" width="480" height="336" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="30" result="effect1_foregroundBlur_1_2"/>
+    </filter>
+  </defs>
+</svg>

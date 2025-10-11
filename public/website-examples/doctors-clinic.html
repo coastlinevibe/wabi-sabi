@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meridian Medical | Advanced Healthcare • Specialist Consultations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #0ea5e9;
+        --secondary: #06b6d4;
+        --accent: #f0f9ff;
+        --dark: #0f172a;
+        --light: #f8fafc;
+        --muted: #64748b;
+        --border: #e2e8f0;
+        --success: #10b981;
+        --warning: #f59e0b;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        color: var(--dark);
+        overflow-x: hidden;
+      }
+
+      /* Innovative Side Navigation */
+      .side-nav {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 280px;
+        height: 100vh;
+        background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        transform: translateX(-240px);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .side-nav:hover {
+        transform: translateX(0);
+      }
+
+      .side-nav-trigger {
+        position: absolute;
+        right: -40px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 120px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border-radius: 0 20px 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 4px 0 20px rgba(14, 165, 233, 0.3);
+      }
+
+      .side-nav-trigger::after {
+        content: '→';
+        color: white;
+        font-size: 18px;
+        transition: transform 0.3s ease;
+      }
+
+      .side-nav:hover .side-nav-trigger::after {
+        transform: rotate(180deg);
+      }
+
+      .nav-brand {
+        padding: 32px 24px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-brand h1 {
+        color: white;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .nav-brand p {
+        color: #94a3b8;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .nav-menu {
+        flex: 1;
+        padding: 24px 0;
+      }
+
+      .nav-item {
+        display: block;
+        padding: 16px 24px;
+        color: #cbd5e1;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .nav-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 100%;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        transition: width 0.3s ease;
+        z-index: -1;
+      }
+
+      .nav-item:hover {
+        color: white;
+        border-left-color: var(--primary);
+        background: rgba(14, 165, 233, 0.1);
+      }
+
+      .nav-item:hover::before {
+        width: 100%;
+      }
+
+      .nav-item.active {
+        color: white;
+        border-left-color: var(--primary);
+        background: rgba(14, 165, 233, 0.2);
+      }
+
+      .nav-footer {
+        padding: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .emergency-btn {
+        width: 100%;
+        padding: 16px;
+        background: linear-gradient(135deg, #dc2626, #ef4444);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        animation: pulse 2s infinite;
+      }
+
+      .emergency-btn:hover {
+        transform: translateY(-2px);
+      }
+
+      @keyframes pulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+        50% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+      }
+
+      /* Main Content */
+      .main-content {
+        margin-left: 40px;
+        min-height: 100vh;
+      }
+
+      .back-link {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        z-index: 999;
+        padding: 12px 20px;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--dark);
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 14px;
+        font-weight: 500;
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border);
+        transition: all 0.3s ease;
+      }
+
+      .back-link:hover {
+        background: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Hero Section with Floating Cards */
+      .hero {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        padding: 0 5vw;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 80%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
+        animation: float 20s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(5deg); }
+      }
+
+      .hero-content {
+        z-index: 2;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: linear-gradient(135deg, var(--accent), #dbeafe);
+        color: var(--primary);
+        border-radius: 50px;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 24px;
+        border: 1px solid rgba(14, 165, 233, 0.2);
+      }
+
+      .hero-badge::before {
+        content: '●';
+        color: var(--success);
+        animation: blink 2s infinite;
+      }
+
+      @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0.3; }
+      }
+
+      .hero h1 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(48px, 6vw, 84px);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 24px;
+        background: linear-gradient(135deg, var(--dark), var(--primary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero p {
+        font-size: 20px;
+        color: var(--muted);
+        line-height: 1.6;
+        margin-bottom: 32px;
+        max-width: 500px;
+      }
+
+      .hero-cta {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        padding: 16px 32px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        text-decoration: none;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(14, 165, 233, 0.4);
+      }
+
+      .btn-secondary {
+        padding: 16px 32px;
+        background: white;
+        color: var(--dark);
+        text-decoration: none;
+        border-radius: 12px;
+        font-weight: 600;
+        border: 2px solid var(--border);
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      /* Floating Cards Gallery */
+      .hero-visual {
+        position: relative;
+        height: 600px;
+      }
+
+      .floating-card {
+        position: absolute;
+        background: white;
+        border-radius: 20px;
+        padding: 24px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        border: 1px solid var(--border);
+        animation: floatCard 6s ease-in-out infinite;
+      }
+
+      .floating-card:nth-child(1) {
+        top: 10%;
+        right: 20%;
+        animation-delay: 0s;
+      }
+
+      .floating-card:nth-child(2) {
+        top: 40%;
+        right: 10%;
+        animation-delay: 2s;
+      }
+
+      .floating-card:nth-child(3) {
+        top: 70%;
+        right: 30%;
+        animation-delay: 4s;
+      }
+
+      @keyframes floatCard {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-15px) rotate(2deg); }
+      }
+
+      .card-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+        margin-bottom: 16px;
+      }
+
+      .card-title {
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: var(--dark);
+      }
+
+      .card-desc {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      /* Component Gallery Section */
+      .component-gallery {
+        padding: 120px 5vw;
+        background: white;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .section-header h2 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(36px, 5vw, 56px);
+        font-weight: 700;
+        margin-bottom: 16px;
+        color: var(--dark);
+      }
+
+      .section-header p {
+        font-size: 18px;
+        color: var(--muted);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+
+      .gallery-item {
+        background: var(--light);
+        border-radius: 24px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        border: 1px solid var(--border);
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      }
+
+      .gallery-item-header {
+        padding: 32px 32px 0;
+      }
+
+      .gallery-item-title {
+        font-weight: 700;
+        font-size: 20px;
+        margin-bottom: 8px;
+        color: var(--dark);
+      }
+
+      .gallery-item-desc {
+        color: var(--muted);
+        margin-bottom: 24px;
+        line-height: 1.5;
+      }
+
+      .gallery-item-preview {
+        height: 200px;
+        background: linear-gradient(135deg, var(--accent), #dbeafe);
+        margin: 0 32px 32px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Appointment Booking Component */
+      .booking-component {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        width: 280px;
+      }
+
+      .booking-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .booking-avatar {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+      }
+
+      .booking-info h4 {
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
+
+      .booking-info p {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .time-slots {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+
+      .time-slot {
+        padding: 8px 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        text-align: center;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .time-slot:hover, .time-slot.selected {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      .book-btn {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, var(--success), #059669);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      /* Stats Dashboard Component */
+      .stats-dashboard {
+        background: var(--dark);
+        color: white;
+        border-radius: 16px;
+        padding: 24px;
+        width: 300px;
+      }
+
+      .stats-header {
+        margin-bottom: 20px;
+      }
+
+      .stats-header h4 {
+        margin-bottom: 8px;
+      }
+
+      .stats-period {
+        font-size: 12px;
+        color: #94a3b8;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-value {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 4px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .stat-label {
+        font-size: 12px;
+        color: #94a3b8;
+      }
+
+      .progress-bar {
+        height: 4px;
+        background: #334155;
+        border-radius: 2px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        width: 75%;
+        border-radius: 2px;
+      }
+
+      /* Medical Records Component */
+      .medical-records {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        width: 320px;
+        border: 1px solid var(--border);
+      }
+
+      .record-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .record-item:last-child {
+        border-bottom: none;
+      }
+
+      .record-icon {
+        width: 32px;
+        height: 32px;
+        background: var(--accent);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 14px;
+      }
+
+      .record-info h5 {
+        font-size: 14px;
+        margin-bottom: 4px;
+      }
+
+      .record-date {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .record-status {
+        margin-left: auto;
+        padding: 4px 8px;
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--success);
+        border-radius: 4px;
+        font-size: 10px;
+        font-weight: 600;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .side-nav {
+          transform: translateX(-280px);
+        }
+        
+        .main-content {
+          margin-left: 0;
+        }
+        
+        .hero {
+          grid-template-columns: 1fr;
+          padding: 80px 5vw;
+        }
+        
+        .hero-visual {
+          height: 400px;
+          margin-top: 60px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .hero-cta {
+          flex-direction: column;
+        }
+        
+        .btn-primary, .btn-secondary {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Innovative Side Navigation -->
+    <nav class="side-nav">
+      <div class="side-nav-trigger"></div>
+      
+      <div class="nav-brand">
+        <h1>Meridian</h1>
+        <p>Medical Centre</p>
+      </div>
+      
+      <div class="nav-menu">
+        <a href="#home" class="nav-item active">🏠 Home</a>
+        <a href="#services" class="nav-item">🩺 Services</a>
+        <a href="#doctors" class="nav-item">👨‍⚕️ Our Doctors</a>
+        <a href="#appointments" class="nav-item">📅 Book Appointment</a>
+        <a href="#records" class="nav-item">📋 Medical Records</a>
+        <a href="#pharmacy" class="nav-item">💊 Pharmacy</a>
+        <a href="#insurance" class="nav-item">🛡️ Insurance</a>
+        <a href="#contact" class="nav-item">📞 Contact</a>
+      </div>
+      
+      <div class="nav-footer">
+        <button class="emergency-btn">🚨 Emergency Call</button>
+      </div>
+    </nav>
+
+    <div class="main-content">
+      <a href="/portfolio#website-gallery" class="back-link">← Back to Portfolio</a>
+
+      <!-- Hero Section with Floating Cards -->
+      <section class="hero" id="home">
+        <div class="hero-content">
+          <div class="hero-badge">
+            Available 24/7 • Emergency Ready
+          </div>
+          
+          <h1>Advanced Healthcare for Modern Life</h1>
+          
+          <p>
+            Experience premium medical care with cutting-edge technology, specialist consultations, and personalized treatment plans. Your health journey starts here.
+          </p>
+          
+          <div class="hero-cta">
+            <a href="#appointments" class="btn-primary">Book Consultation</a>
+            <a href="#services" class="btn-secondary">Explore Services</a>
+          </div>
+        </div>
+        
+        <div class="hero-visual">
+          <div class="floating-card">
+            <div class="card-icon">🩺</div>
+            <div class="card-title">General Practice</div>
+            <div class="card-desc">Comprehensive health checkups and preventive care</div>
+          </div>
+          
+          <div class="floating-card">
+            <div class="card-icon">🧠</div>
+            <div class="card-title">Specialist Care</div>
+            <div class="card-desc">Expert consultations across 15+ medical specialties</div>
+          </div>
+          
+          <div class="floating-card">
+            <div class="card-icon">🔬</div>
+            <div class="card-title">Diagnostics</div>
+            <div class="card-desc">State-of-the-art lab and imaging services</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Component Gallery Section -->
+      <section class="component-gallery" id="services">
+        <div class="section-header">
+          <h2>Interactive Healthcare Components</h2>
+          <p>Explore our digital-first approach to healthcare with intuitive interfaces designed for both patients and medical professionals.</p>
+        </div>
+        
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <div class="gallery-item-header">
+              <div class="gallery-item-title">Smart Appointment Booking</div>
+              <div class="gallery-item-desc">Real-time availability with instant confirmation and automated reminders.</div>
+            </div>
+            <div class="gallery-item-preview">
+              <div class="booking-component">
+                <div class="booking-header">
+                  <div class="booking-avatar">Dr</div>
+                  <div class="booking-info">
+                    <h4>Dr. Sarah Chen</h4>
+                    <p>Cardiologist • Available Today</p>
+                  </div>
+                </div>
+                <div class="time-slots">
+                  <div class="time-slot">09:00</div>
+                  <div class="time-slot selected">10:30</div>
+                  <div class="time-slot">14:00</div>
+                  <div class="time-slot">15:30</div>
+                </div>
+                <button class="book-btn">Confirm Appointment</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="gallery-item">
+            <div class="gallery-item-header">
+              <div class="gallery-item-title">Health Analytics Dashboard</div>
+              <div class="gallery-item-desc">Comprehensive health metrics and progress tracking for patients and doctors.</div>
+            </div>
+            <div class="gallery-item-preview">
+              <div class="stats-dashboard">
+                <div class="stats-header">
+                  <h4>Health Overview</h4>
+                  <div class="stats-period">Last 30 Days</div>
+                </div>
+                <div class="stats-grid">
+                  <div class="stat-item">
+                    <div class="stat-value">98%</div>
+                    <div class="stat-label">Health Score</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Checkups</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-value">8.2k</div>
+                    <div class="stat-label">Steps/Day</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-value">7.5h</div>
+                    <div class="stat-label">Sleep</div>
+                  </div>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="gallery-item">
+            <div class="gallery-item-header">
+              <div class="gallery-item-title">Digital Medical Records</div>
+              <div class="gallery-item-desc">Secure, accessible medical history with smart search and sharing capabilities.</div>
+            </div>
+            <div class="gallery-item-preview">
+              <div class="medical-records">
+                <div class="record-item">
+                  <div class="record-icon">🩺</div>
+                  <div class="record-info">
+                    <h5>Annual Physical</h5>
+                    <div class="record-date">March 15, 2024</div>
+                  </div>
+                  <div class="record-status">Complete</div>
+                </div>
+                <div class="record-item">
+                  <div class="record-icon">🔬</div>
+                  <div class="record-info">
+                    <h5>Blood Work</h5>
+                    <div class="record-date">March 10, 2024</div>
+                  </div>
+                  <div class="record-status">Normal</div>
+                </div>
+                <div class="record-item">
+                  <div class="record-icon">💊</div>
+                  <div class="record-info">
+                    <h5>Prescription Refill</h5>
+                    <div class="record-date">March 8, 2024</div>
+                  </div>
+                  <div class="record-status">Active</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // Add some interactive functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-item').forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
+        });
+
+        // Time slot selection
+        document.querySelectorAll('.time-slot').forEach(slot => {
+          slot.addEventListener('click', function() {
+            document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+            this.classList.add('selected');
+          });
+        });
+
+        // Parallax effect for floating cards
+        window.addEventListener('scroll', function() {
+          const scrolled = window.pageYOffset;
+          const cards = document.querySelectorAll('.floating-card');
+          cards.forEach((card, index) => {
+            const speed = 0.5 + (index * 0.1);
+            card.style.transform = `translateY(${scrolled * speed}px)`;
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

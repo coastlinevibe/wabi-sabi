@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GripLine Tyre & Fitment | Alignment • Wheels • Batteries</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: only dark;
+        --bg: #04070a;
+        --accent: #facc15;
+        --cyan: #38bdf8;
+        --burnt: #fb7185;
+        --muted: rgba(203, 213, 225, 0.78);
+        --surface: rgba(13, 18, 26, 0.82);
+        --grid: rgba(59, 130, 246, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: 'Outfit', sans-serif;
+        background:
+          radial-gradient(circle at 18% 12%, rgba(56, 189, 248, 0.15), transparent 55%),
+          radial-gradient(circle at 82% 20%, rgba(250, 204, 21, 0.14), transparent 58%),
+          linear-gradient(165deg, #030508 0%, #050a13 55%, #020409 100%);
+        color: rgba(241, 245, 249, 0.95);
+        overflow-x: hidden;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        padding: 26px 6vw 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(180deg, rgba(3, 6, 9, 0.92) 0%, rgba(3, 6, 9, 0) 100%);
+        backdrop-filter: blur(12px);
+        z-index: 24;
+      }
+
+      .brand-block {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        flex-wrap: wrap;
+      }
+
+      .crest {
+        width: 54px;
+        height: 54px;
+        border-radius: 14px;
+        background:
+          linear-gradient(140deg, rgba(59, 130, 246, 0.92), rgba(14, 165, 233, 0.92));
+        display: grid;
+        place-items: center;
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 22px;
+        letter-spacing: 0.12em;
+        color: #030509;
+        border: 1px solid rgba(59, 130, 246, 0.4);
+        box-shadow: 0 20px 36px rgba(59, 130, 246, 0.26);
+      }
+
+      .brand-copy {
+        font-family: 'Rajdhani', sans-serif;
+        letter-spacing: 0.08em;
+      }
+
+      .brand-copy .eyebrow {
+        font-size: 12px;
+        text-transform: uppercase;
+        color: rgba(148, 163, 184, 0.58);
+      }
+
+      .brand-copy .name {
+        font-size: 30px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        background: rgba(16, 24, 34, 0.56);
+        color: rgba(226, 232, 240, 0.84);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.03em;
+        transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      }
+
+      .back-link:hover {
+        transform: translateY(-1px);
+        background: rgba(20, 29, 40, 0.7);
+        border-color: rgba(59, 130, 246, 0.36);
+        color: rgba(248, 253, 255, 0.95);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+
+      nav a {
+        color: var(--muted);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        transition: color 0.25s ease;
+      }
+
+      nav a:hover {
+        color: rgba(248, 253, 255, 0.96);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 24px;
+        border-radius: 14px;
+        background: linear-gradient(120deg, rgba(248, 250, 252, 0.94), rgba(59, 130, 246, 0.94));
+        color: #030509;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 16px 34px rgba(59, 130, 246, 0.28);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 42px rgba(59, 130, 246, 0.38);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 56px;
+        padding: 96px 6vw 72px;
+        align-items: center;
+        position: relative;
+      }
+
+      .hero::after {
+        content: '';
+        position: absolute;
+        inset: 8% auto auto 58%;
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(56, 189, 248, 0.22), transparent 68%);
+        z-index: -1;
+      }
+
+      .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .badge {
+        padding: 8px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(59, 130, 246, 0.38);
+        background: rgba(59, 130, 246, 0.16);
+        color: rgba(226, 232, 240, 0.88);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        font-family: 'Rajdhani', sans-serif;
+        font-size: clamp(48px, 5.4vw, 78px);
+        line-height: 1.05;
+        letter-spacing: 0.08em;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+
+      .hero h1 span {
+        color: var(--accent);
+      }
+
+      .hero p.lead {
+        font-size: clamp(18px, 2.1vw, 22px);
+        color: rgba(224, 236, 245, 0.86);
+        line-height: 1.74;
+        margin-bottom: 34px;
+      }
+
+      .hero-media {
+        position: relative;
+        border-radius: 28px;
+        padding: 28px;
+        background: var(--surface);
+        box-shadow: 0 30px 60px rgba(3, 6, 10, 0.58);
+        overflow: hidden;
+      }
+
+      .hero-media img {
+        width: 100%;
+        border-radius: 18px;
+        object-fit: cover;
+      }
+
+      .hero-media .stamp {
+        position: absolute;
+        bottom: 28px;
+        right: 32px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: rgba(250, 204, 21, 0.82);
+        color: rgba(3, 6, 9, 0.9);
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .section {
+        padding: 80px 6vw;
+      }
+
+      .section-header {
+        max-width: 760px;
+        margin: 0 auto 52px;
+        text-align: center;
+      }
+
+      .section-header h2 {
+        font-family: 'Rajdhani', sans-serif;
+        font-size: clamp(34px, 4vw, 52px);
+        letter-spacing: 0.08em;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+      }
+
+      .section-header p {
+        color: rgba(201, 212, 226, 0.76);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 28px;
+      }
+
+      .feature-card {
+        border-radius: 22px;
+        padding: 26px 28px;
+        background: rgba(15, 22, 32, 0.7);
+        border: 1px solid rgba(59, 130, 246, 0.18);
+        box-shadow: 0 20px 42px rgba(3, 6, 10, 0.42);
+        display: grid;
+        gap: 16px;
+        min-height: 220px;
+      }
+
+      .feature-card h3 {
+        margin: 0;
+        font-size: 20px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: rgba(201, 212, 226, 0.8);
+        line-height: 1.72;
+      }
+
+      .service-grid {
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .service-card {
+        border-radius: 24px;
+        overflow: hidden;
+        background: rgba(10, 14, 20, 0.78);
+        border: 1px solid rgba(56, 189, 248, 0.16);
+        box-shadow: 0 26px 48px rgba(3, 6, 10, 0.46);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .service-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .service-card .content {
+        padding: 26px 28px 30px;
+        display: grid;
+        gap: 14px;
+      }
+s
+      .service-card h3 {
+        margin: 0;
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 22px;
+        letter-spacing: 0.08em;
+      }
+
+      .service-card ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 12px;
+        color: rgba(208, 219, 233, 0.82);
+        font-size: 15px;
+      }
+
+      .numbers-strip {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+        margin-top: 46px;
+      }
+
+      .number-tile {
+        padding: 24px;
+        border-radius: 20px;
+        background: rgba(10, 14, 20, 0.68);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        text-align: center;
+        box-shadow: 0 16px 32px rgba(3, 6, 10, 0.4);
+      }
+
+      .number-tile .value {
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 30px;
+        letter-spacing: 0.08em;
+        color: rgba(59, 130, 246, 0.9);
+        margin-bottom: 8px;
+      }
+
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 26px;
+        margin-top: 50px;
+      }
+
+      .process-card {
+        border-radius: 22px;
+        padding: 26px;
+        background: rgba(13, 17, 24, 0.72);
+        border: 1px solid rgba(250, 204, 21, 0.22);
+        display: grid;
+        gap: 12px;
+      }
+
+      .cta {
+        padding: 90px 6vw 108px;
+        text-align: center;
+        background: linear-gradient(125deg, rgba(59, 130, 246, 0.16), rgba(250, 204, 21, 0.12));
+        border-top: 1px solid rgba(148, 163, 184, 0.08);
+      }
+
+      .cta h2 {
+        font-family: 'Rajdhani', sans-serif;
+        font-size: clamp(36px, 4.2vw, 56px);
+        letter-spacing: 0.1em;
+        margin-bottom: 18px;
+        text-transform: uppercase;
+      }
+
+      .cta p {
+        color: rgba(213, 225, 235, 0.86);
+        font-size: 18px;
+        line-height: 1.78;
+        max-width: 640px;
+        margin: 0 auto 28px;
+      }
+
+      footer {
+        padding: 32px 6vw 48px;
+        background: rgba(4, 7, 11, 0.94);
+        border-top: 1px solid rgba(148, 163, 184, 0.06);
+      }
+
+      footer .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 28px;
+      }
+
+      footer h4 {
+        margin-bottom: 12px;
+        letter-spacing: 0.08em;
+        font-size: 14px;
+        color: rgba(203, 213, 225, 0.74);
+        text-transform: uppercase;
+      }
+
+      footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+        color: rgba(191, 203, 218, 0.72);
+        font-size: 14px;
+        letter-spacing: 0.03em;
+      }
+
+      @media (max-width: 720px) {
+        header {
+          padding-top: 22px;
+        }
+
+        nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero {
+          padding-top: 82px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand-block">
+        <a class="back-link" href="/portfolio#website-gallery">← Back to main site</a>
+        <div class="crest">GL</div>
+        <div class="brand-copy">
+          <div class="eyebrow">Gripline tyre + fitment</div>
+          <div class="name">Tyres • Alignment • Batteries</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#story">About</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#trade">Fleet</a>
+        <a href="#contact" class="btn-primary">Book fitment</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="story">
+      <div>
+        <div class="hero-badges">
+          <div class="badge">Alignment hub</div>
+          <div class="badge">Tyre finder</div>
+          <div class="badge">Fleet support</div>
+        </div>
+        <h1>
+          Grip guaranteed for
+          <span>every road.</span>
+        </h1>
+        <p class="lead">
+          GripLine equips passenger cars, SUVs, bakkies, and fleets with premium tyres, precise alignments, and rapid fitment. Book a
+          slot online, choose leading brands, and leave with a roadworthy report in hand.
+        </p>
+        <a href="#services" class="btn-primary">View tyre & service range</a>
+      </div>
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1400&q=80" alt="Tyre fitment" />
+        <div class="stamp">Fitment Centre</div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="section-header">
+        <h2>Services that keep you on track</h2>
+        <p>
+          Everyday drivers and national fleets rely on GripLine for tyre replacements, balancing, alignments, and battery swaps.
+          Transparent pricing, quality brands, and real-time availability are standard.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Tyre replacements</h3>
+          <p>Leading brands with mileage warranties, run-flat options, and seasonal deals across SUV, passenger, and commercial ranges.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Alignment & balancing</h3>
+          <p>Hunter laser alignment, on-car balancing, and suspension checks to extend tyre life and improve fuel efficiency.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Battery & brake checks</h3>
+          <p>Quick battery testing, replacements, and brake inspections with fitment while you wait.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Fleet contracts</h3>
+          <p>Centralised billing, tyre rotation schedules, and 24/7 tyre breakdown response within major SA cities.</p>
+        </div>
+      </div>
+
+      <div class="service-grid">
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1509453721491-c3af5961df76?auto=format&fit=crop&w=1200&q=80" alt="Tyres" />
+          <div class="content">
+            <h3>Tyre Selector</h3>
+            <ul>
+              <li>Search by size, vehicle, or brand</li>
+              <li>Bridgestone, Continental, Michelin, Dunlop</li>
+              <li>Mix-and-match specials</li>
+              <li>Reserve online, pay in-store</li>
+            </ul>
+          </div>
+        </article>
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1604147495798-57beb5d6af73?auto=format&fit=crop&w=1200&q=80" alt="Alignment" />
+          <div class="content">
+            <h3>Alignment Studio</h3>
+            <ul>
+              <li>Hunter Hawkeye Elite rigs</li>
+              <li>Camber, caster, toe corrections</li>
+              <li>Suspension and shock audits</li>
+              <li>Reports with before/after data</li>
+            </ul>
+          </div>
+        </article>
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80" alt="Battery" />
+          <div class="content">
+            <h3>Battery & Brakes</h3>
+            <ul>
+              <li>Varta, Willard, and Enertec ranges</li>
+              <li>Brake pad and disc fitment</li>
+              <li>Free electrical system test</li>
+              <li>Mobile fitment option available</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <div class="numbers-strip">
+        <div class="number-tile">
+          <div class="value">45 min</div>
+          <div>Average tyre swap with balancing and alignment.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">6 centres</div>
+          <div>Nationwide footprint with real-time booking inventory.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">24/7</div>
+          <div>Emergency tyre hotline for fleets and roadside calls.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="section-header">
+        <h2>Fitment journey mapped out</h2>
+        <p>
+          From online booking to aligned wheels, we keep you updated at each step so you’re back on the road faster.
+        </p>
+      </div>
+      <div class="process-grid">
+        <div class="process-card">
+          <h3>01 · Book</h3>
+          <p>Choose your tyres, select a centre, and lock in a fitment time. Receive confirmation with prep checklist.</p>
+        </div>
+        <div class="process-card">
+          <h3>02 · Fit</h3>
+          <p>Arrive for tyre fitment, balancing, and alignment. Enjoy free Wi-Fi and coffee while you wait.</p>
+        </div>
+        <div class="process-card">
+          <h3>03 · Verify</h3>
+          <p>Technicians run alignment reports, torque-wheel nuts, and record tyre pressures before handover.</p>
+        </div>
+        <div class="process-card">
+          <h3>04 · Follow-up</h3>
+          <p>Receive after-service care reminders, rotation alerts, and optional roadside assistance enrolment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Need a tyre fitment slot?</h2>
+      <p>
+        Tell us your vehicle, tyre size, and preferred centre. GripLine responds within one hour during business days.
+      </p>
+      <a href="mailto:bookings@gripline.co.za" class="btn-primary">Request booking</a>
+    </section>
+
+    <footer>
+      <div class="grid">
+        <div>
+          <h4>find us</h4>
+          <ul>
+            <li>GripLine Tyre & Fitment</li>
+            <li>Centres nationwide</li>
+            <li>Open Monday – Saturday</li>
+          </ul>
+        </div>
+        <div>
+          <h4>bookings</h4>
+          <ul>
+            <li>bookings@gripline.co.za</li>
+            <li>+27 87 555 9900</li>
+            <li>WhatsApp · GripLine SA</li>
+          </ul>
+        </div>
+        <div>
+          <h4>follow</h4>
+          <ul>
+            <li>Instagram · @griplinefitment</li>
+            <li>Facebook · GripLine Tyre Centres</li>
+            <li>LinkedIn · Fleet partners</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

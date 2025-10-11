@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hidden Value Audit | Wabi-Sabi Profit Quiz</title>
+  <meta name="description" content="Answer 9 quick questions to see where profit is quietly waiting inside your business — and get tailored next steps. No spam. Instant results. 100% free." />
+
+  <link rel="stylesheet" href="../css/hidden-value-quiz.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: linear-gradient(135deg, #0b1220 0%, #111827 50%, #1e293b 100%); color: #fff; font-family: Inter, sans-serif; }
+    .hero-bg { position:absolute; inset:0; z-index:1; }
+    .hero-bg video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:.6; z-index:1; }
+    .headline-gradient { background: linear-gradient(to right, #f59e0b, #fbbf24); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .reveal { opacity:0; transform:translateY(20px); transition: all .6s ease; }
+    .reveal.show { opacity:1; transform:none; }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      const obs = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
+      }, { threshold:.15 });
+      document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    });
+  </script>
+
+  <!-- Optional libs for quick PDF snapshot -->
+  <script defer src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script defer src="../js/hidden-value-quiz.js"></script>
+  <script>
+    // Hero button functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const heroBtn = document.getElementById('heroStartBtn');
+      const quizApp = document.getElementById('quizApp');
+      const heroSection = document.getElementById('quizHero');
+      
+      if (heroBtn) {
+        heroBtn.addEventListener('click', () => {
+          heroSection.style.display = 'none';
+          quizApp.style.display = 'block';
+          // Trigger the original start button click to initialize quiz
+          setTimeout(() => {
+            const startBtn = document.getElementById('startBtn');
+            if (startBtn) startBtn.click();
+          }, 100);
+        });
+      }
+    });
+  </script>
+</head>
+<body class="ws-body">
+  <a href="/" class="fixed top-6 left-6 z-50 inline-flex items-center gap-2 bg-amber-400 text-black px-5 py-2.5 rounded-lg font-bold text-sm md:text-base shadow-lg hover:bg-amber-300 transition-colors">
+    ← Back to Main
+  </a>
+  <!-- HERO SECTION -->
+  <section id="quizHero" class="relative min-h-screen flex items-center justify-center text-center px-6">
+    <div class="hero-bg">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="../video/ws2.mp4" type="video/mp4"/>
+      </video>
+      <!-- Dark overlay for text readability -->
+      <div style="position:absolute; inset:0; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)); z-index:2;"></div>
+      <!-- Fallback background image -->
+      <div class="video-fallback" style="position:absolute; inset:0; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2000&auto=format&fit=crop') center/cover; z-index:0;"></div>
+    </div>
+    <div style="position: relative; z-index: 10;" class="reveal">
+      <p class="kicker text-sm uppercase tracking-wide text-amber-400 mb-3">The Wabi-Sabi Way</p>
+      <h1 class="text-5xl md:text-6xl font-extrabold leading-tight max-w-4xl mx-auto">
+        See your <span class="headline-gradient">hidden value</span> in under 3 minutes.
+      </h1>
+      <h2 class="mt-4 text-3xl md:text-4xl font-bold text-amber-400">Small shifts, high impact, inside your systems.</h2>
+      <p class="mt-6 text-xl opacity-90 max-w-2xl mx-auto">Answer 9 questions to see where profit flows smoothly — and where small shifts can strengthen it. Instant insights. 100% free.</p>
+      <div class="mt-8 flex justify-center gap-6 flex-wrap">
+        <button id="heroStartBtn" class="bg-amber-400 text-black px-8 py-4 rounded-lg font-bold text-lg hover:bg-amber-300 transition-colors">Start the Profit Quiz →</button>
+        <button class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm border border-white/20 hover:bg-white/20 transition-colors">Just 3 Minutes</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz App -->
+  <div id="quizApp" class="ws-app" data-version="1.0" style="display: none;">
+    <!-- Start Screen -->
+    <section id="startScreen" class="ws-section" aria-labelledby="startTitle">
+      <h1 id="startTitle">See Your Hidden Value in Under 3 Minutes</h1>
+      <p id="startSub">Small shifts, high impact, hidden in your systems. Answer 9 questions to reveal where profit flows smoothly — and where it doesn't.</p>
+      <div id="startBadges" class="ws-badges" aria-hidden="true">
+        <span class="ws-badge">~3 minutes</span>
+        <span class="ws-badge">Instant insights</span>
+        <span class="ws-badge">100% free</span>
+      </div>
+      <button id="startBtn" class="ws-btn ws-btn-primary">Start the Profit Quiz →</button>
+      <p class="ws-micro mt-2">No spam. Instant results. 100% free.</p>
+    </section>
+
+    <!-- Progress Bar -->
+    <div id="progressBar" class="ws-progress" aria-label="Quiz progress" aria-live="polite" hidden>
+      <div id="progressFill"></div>
+      <span id="progressLabel">Step 1 of 9</span>
+    </div>
+
+    <!-- Question Screen -->
+    <section id="questionScreen" class="ws-section" hidden aria-labelledby="questionTitle">
+      <h2 id="questionTitle" class="sr-only">Question</h2>
+      <p id="questionText" class="ws-question">Question text will render here.</p>
+
+      <div id="answerList" class="ws-answers" role="group" aria-label="Choose one answer">
+        <!-- dynamic answers -->
+      </div>
+
+      <div class="ws-nav">
+        <button id="prevBtn" class="ws-btn ws-btn-ghost">← Back</button>
+        <button id="nextBtn" class="ws-btn ws-btn-primary">Next →</button>
+      </div>
+
+      <!-- Bonsai micro-animation container (optional) -->
+      <div id="bonsaiStage" aria-hidden="true"></div>
+    </section>
+
+    <!-- Email Capture -->
+    <section id="emailCapture" class="ws-section" hidden aria-labelledby="emailTitle">
+      <h2 id="emailTitle">Where can we send your personalized results?</h2>
+
+      <form id="emailForm" novalidate>
+        <div class="ws-grid">
+          <label class="ws-field">
+            <span class="ws-label">Your Name</span>
+            <input id="nameInput" name="name" type="text" autocomplete="name" required />
+          </label>
+
+          <label class="ws-field">
+            <span class="ws-label">Your Email</span>
+            <input id="emailInput" name="email" type="email" autocomplete="email" required />
+          </label>
+
+          <label class="ws-field">
+            <span class="ws-label">Company (optional)</span>
+            <input id="companyInput" name="company" type="text" autocomplete="organization" />
+          </label>
+        </div>
+
+        <label class="ws-check">
+          <input id="subscribeCheckbox" type="checkbox" />
+          <span>Send me Growth Insights (1–2×/month).</span>
+        </label>
+
+        <button id="sendResultsBtn" class="ws-btn ws-btn-primary" type="submit">See My Results →</button>
+      </form>
+    </section>
+
+    <!-- Result Screen -->
+    <section id="resultScreen" class="ws-section" hidden aria-labelledby="resultTitle" data-tier="">
+      <!-- result markup inserted here by JS -->
+    </section>
+  </div>
+</body>
+</html>

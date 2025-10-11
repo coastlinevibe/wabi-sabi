@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bushveld Range Restaurant | Grillhouse & Taproom</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: only dark;
+        --bg: #0d100c;
+        --bg-soft: rgba(19, 25, 17, 0.7);
+        --accent: #d97706;
+        --accent-soft: rgba(217, 119, 6, 0.22);
+        --forest: #15803d;
+        --teal: #0f766e;
+        --sand: #eab308;
+        --muted: rgba(215, 228, 214, 0.74);
+        --surface: rgba(24, 30, 23, 0.82);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: 'Manrope', sans-serif;
+        background:
+          radial-gradient(circle at 12% 8%, rgba(234, 179, 8, 0.15), transparent 55%),
+          radial-gradient(circle at 82% 12%, rgba(15, 118, 110, 0.15), transparent 58%),
+          linear-gradient(160deg, #0b0f0a 0%, #061208 55%, #0f160c 100%);
+        color: rgba(244, 249, 243, 0.96);
+        overflow-x: hidden;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        padding: 28px 6vw 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(180deg, rgba(9, 14, 9, 0.92) 0%, rgba(9, 14, 9, 0) 100%);
+        backdrop-filter: blur(14px);
+        z-index: 25;
+      }
+
+      .brand-block {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        flex-wrap: wrap;
+      }
+
+      .crest {
+        width: 52px;
+        height: 52px;
+        border-radius: 18px;
+        background:
+          linear-gradient(140deg, rgba(217, 119, 6, 0.98), rgba(234, 179, 8, 0.85));
+        display: grid;
+        place-items: center;
+        font-family: 'Vollkorn', serif;
+        font-size: 22px;
+        font-weight: 600;
+        color: #1a1106;
+        border: 1px solid rgba(234, 179, 8, 0.4);
+        box-shadow: 0 18px 32px rgba(217, 119, 6, 0.28);
+      }
+
+      .brand-copy {
+        font-family: 'Vollkorn', serif;
+        letter-spacing: 0.04em;
+      }
+
+      .brand-copy .eyebrow {
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 0.34em;
+        color: rgba(229, 239, 225, 0.52);
+      }
+
+      .brand-copy .name {
+        font-size: 30px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(226, 235, 226, 0.2);
+        background: rgba(19, 28, 19, 0.54);
+        color: rgba(233, 242, 232, 0.85);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.03em;
+        transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      }
+
+      .back-link:hover {
+        transform: translateY(-1px);
+        background: rgba(22, 32, 22, 0.7);
+        border-color: rgba(234, 179, 8, 0.36);
+        color: rgba(248, 253, 246, 0.96);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+      }
+
+      nav a {
+        color: var(--muted);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        transition: color 0.25s ease;
+      }
+
+      nav a:hover {
+        color: rgba(248, 253, 246, 0.96);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 24px;
+        border-radius: 999px;
+        background: linear-gradient(120deg, rgba(244, 225, 163, 0.95), rgba(217, 119, 6, 0.95));
+        color: #1a1106;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 16px 34px rgba(217, 119, 6, 0.32);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 40px rgba(217, 119, 6, 0.4);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 56px;
+        padding: 96px 6vw 72px;
+        align-items: center;
+        position: relative;
+      }
+
+      .hero::after {
+        content: '';
+        position: absolute;
+        inset: 10% 12% auto auto;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(15, 128, 61, 0.22), transparent 65%);
+        z-index: -1;
+      }
+
+      .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 32px;
+      }
+
+      .badge {
+        padding: 9px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(217, 119, 6, 0.38);
+        background: rgba(217, 119, 6, 0.16);
+        color: rgba(247, 232, 213, 0.9);
+        font-size: 13px;
+        letter-spacing: 0.03em;
+      }
+
+      .hero h1 {
+        font-family: 'Vollkorn', serif;
+        font-size: clamp(46px, 5.2vw, 72px);
+        line-height: 1.06;
+        margin-bottom: 24px;
+      }
+
+      .hero h1 span {
+        color: var(--sand);
+      }
+
+      .hero p.lead {
+        font-size: clamp(18px, 2.2vw, 22px);
+        color: rgba(236, 246, 236, 0.88);
+        line-height: 1.78;
+        margin-bottom: 36px;
+      }
+
+      .hero-media {
+        position: relative;
+        border-radius: 28px;
+        padding: 26px;
+        background: var(--surface);
+        box-shadow: 0 30px 60px rgba(7, 12, 9, 0.48);
+        overflow: hidden;
+      }
+
+      .hero-media img {
+        width: 100%;
+        border-radius: 18px;
+        object-fit: cover;
+        filter: saturate(1.04);
+      }
+
+      .hero-media .stamp {
+        position: absolute;
+        bottom: 26px;
+        right: 28px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: rgba(21, 128, 61, 0.78);
+        color: rgba(240, 255, 245, 0.9);
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .section {
+        padding: 80px 6vw;
+      }
+
+      .section-header {
+        max-width: 760px;
+        margin: 0 auto 54px;
+        text-align: center;
+      }
+
+      .section-header h2 {
+        font-family: 'Vollkorn', serif;
+        font-size: clamp(32px, 3.8vw, 48px);
+        margin-bottom: 16px;
+      }
+
+      .section-header p {
+        color: rgba(226, 238, 224, 0.74);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 28px;
+      }
+
+      .feature-card {
+        border-radius: 24px;
+        padding: 26px 28px;
+        background: rgba(25, 32, 24, 0.62);
+        border: 1px solid rgba(217, 228, 205, 0.12);
+        box-shadow: 0 20px 40px rgba(5, 10, 8, 0.42);
+        display: grid;
+        gap: 16px;
+        min-height: 220px;
+      }
+
+      .feature-card h3 {
+        margin: 0;
+        font-size: 20px;
+        color: rgba(240, 249, 238, 0.92);
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: rgba(226, 236, 225, 0.8);
+        line-height: 1.7;
+      }
+
+      .menu-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 32px;
+        align-items: start;
+      }
+
+      .menu-card {
+        background: rgba(22, 30, 23, 0.64);
+        border: 1px solid rgba(15, 118, 110, 0.18);
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 24px 48px rgba(7, 12, 9, 0.44);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .menu-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .menu-card .content {
+        padding: 26px 28px 32px;
+        display: grid;
+        gap: 16px;
+      }
+
+      .menu-card h3 {
+        font-family: 'Vollkorn', serif;
+        font-size: 22px;
+        margin: 0;
+      }
+
+      .menu-card ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 12px;
+        color: rgba(226, 238, 225, 0.82);
+        font-size: 15px;
+      }
+
+      .taproom-strip {
+        margin-top: 52px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 28px;
+      }
+
+      .taproom-card {
+        border-radius: 24px;
+        padding: 28px;
+        background: rgba(26, 35, 26, 0.58);
+        border: 1px solid rgba(15, 118, 110, 0.26);
+        display: grid;
+        gap: 16px;
+      }
+
+      .numbers-strip {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 24px;
+        margin-top: 48px;
+      }
+
+      .number-tile {
+        padding: 24px;
+        border-radius: 20px;
+        background: rgba(21, 29, 22, 0.62);
+        border: 1px solid rgba(217, 228, 205, 0.14);
+        text-align: center;
+        box-shadow: 0 16px 34px rgba(5, 10, 8, 0.38);
+      }
+
+      .number-tile .value {
+        font-family: 'Vollkorn', serif;
+        font-size: 32px;
+        color: rgba(234, 179, 8, 0.9);
+        margin-bottom: 8px;
+      }
+
+      .testimonial-strip {
+        margin-top: 54px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+      }
+
+      .testimonial {
+        border-radius: 20px;
+        padding: 26px;
+        background: rgba(16, 24, 17, 0.7);
+        border: 1px solid rgba(217, 119, 6, 0.18);
+      }
+
+      .testimonial p {
+        margin: 0;
+        line-height: 1.74;
+        color: rgba(232, 240, 231, 0.82);
+      }
+
+      .testimonial .name {
+        margin-top: 16px;
+        font-weight: 600;
+        color: var(--sand);
+      }
+
+      .experience-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 26px;
+      }
+
+      .experience-tile {
+        border-radius: 22px;
+        padding: 24px;
+        background: rgba(21, 128, 61, 0.18);
+        border: 1px solid rgba(21, 128, 61, 0.32);
+        color: rgba(235, 250, 239, 0.92);
+      }
+
+      .cta {
+        padding: 90px 6vw 108px;
+        text-align: center;
+        background: linear-gradient(125deg, rgba(217, 119, 6, 0.16), rgba(234, 179, 8, 0.12));
+        border-top: 1px solid rgba(226, 235, 226, 0.08);
+      }
+
+      .cta h2 {
+        font-family: 'Vollkorn', serif;
+        font-size: clamp(36px, 4.4vw, 56px);
+        margin-bottom: 18px;
+      }
+
+      .cta p {
+        color: rgba(232, 240, 231, 0.86);
+        font-size: 18px;
+        margin-bottom: 28px;
+      }
+
+      footer {
+        padding: 32px 6vw 48px;
+        background: rgba(6, 10, 7, 0.94);
+        border-top: 1px solid rgba(226, 235, 226, 0.05);
+      }
+
+      footer .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 28px;
+      }
+
+      footer h4 {
+        margin-bottom: 12px;
+        letter-spacing: 0.08em;
+        font-size: 14px;
+        color: rgba(226, 235, 226, 0.74);
+        text-transform: uppercase;
+      }
+
+      footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+        color: rgba(214, 226, 214, 0.72);
+        font-size: 14px;
+      }
+
+      @media (max-width: 720px) {
+        header {
+          padding-top: 22px;
+        }
+
+        nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero {
+          padding-top: 82px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand-block">
+        <a class="back-link" href="/portfolio#website-gallery">← Back to main site</a>
+        <div class="crest">BR</div>
+        <div class="brand-copy">
+          <div class="eyebrow">Bushveld range</div>
+          <div class="name">Restaurant & Taproom</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#story">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#taproom">Taproom</a>
+        <a href="#events">Events</a>
+        <a href="#contact" class="btn-primary">Book a table</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="story">
+      <div>
+        <div class="hero-badges">
+          <div class="badge">Bushveld flame kitchen</div>
+          <div class="badge">Craft beer & gin taps</div>
+          <div class="badge">Live music & match nights</div>
+        </div>
+        <h1>
+          Flame-fired food for
+          <span>bushveld nights.</span>
+        </h1>
+        <p class="lead">
+          Bushveld Range brings the bushveld to town: smoked steaks, potjie pies, bunny chow sliders, and charred greens served with
+          heritage sides. Sip small-batch brews, rooibos sours, or chilled chenin while local acts set the vibe.
+        </p>
+        <a href="#menu" class="btn-primary">See the grill menu</a>
+      </div>
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80" alt="Restaurant interior" />
+        <div class="stamp">Bushveld Flame</div>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="section-header">
+        <h2>Menus stoked with bushveld flavour</h2>
+        <p>
+          From farm butchers to veld-foraged herbs, our kitchen works with seasonal produce and open flames. Plates are designed for
+          gathering — shareable boards, build-your-own platters, and comfort classics.
+        </p>
+      </div>
+      <div class="menu-gallery">
+        <article class="menu-card">
+          <img src="https://images.unsplash.com/photo-1559305616-3f99cd43e353?auto=format&fit=crop&w=1200&q=80" alt="Grill platter" />
+          <div class="content">
+            <h3>Range Grill Board</h3>
+            <ul>
+              <li>Nguni sirloin · garlic basting · chilli chakalaka</li>
+              <li>Karoo lamb riblets · thyme mop sauce · roasted garlic</li>
+              <li>Boerie pinwheels · caramelised onions · smoked mustard</li>
+              <li>Roosterkoek basket · butter & apricot jam · chakalaka</li>
+            </ul>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="https://images.unsplash.com/photo-1533777419517-3e81e4475891?auto=format&fit=crop&w=1200&q=80" alt="Veg spread" />
+          <div class="content">
+            <h3>Greenfire Spread</h3>
+            <ul>
+              <li>Charred mielie salad · avo whip · lime & chilli salt</li>
+              <li>Wood-roasted butternut · toasted pumpkin seed dukkah</li>
+              <li>Smoked mushroom piri-piri buns · pickled cabbage slaw</li>
+              <li>Amarula custard tartlet · spiced oat crumble</li>
+            </ul>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="https://images.unsplash.com/photo-1574932333273-7cf57ef04c27?auto=format&fit=crop&w=1200&q=80" alt="Taproom drinks" />
+          <div class="content">
+            <h3>Taproom Flights</h3>
+            <ul>
+              <li>Limpopo lager · citrus IPA · dark bush stout</li>
+              <li>Rooibos gin fizz · grapefruit twist · ginger beer top</li>
+              <li>Smoked old fashioned · mopane bitters · orange peel</li>
+              <li>Buchu smash mocktail · pineapple shrub · crushed ice</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <div class="taproom-strip" id="taproom">
+        <div class="taproom-card">
+          <h3>Bushveld Tap Wall</h3>
+          <p>Eight rotating taps featuring regional craft breweries plus a dedicated gin-on-tap station.</p>
+        </div>
+        <div class="taproom-card">
+          <h3>Field-to-Glass</h3>
+          <p>Monthly collaborations with distilleries and winemakers for pairings, tastings, and masterclasses.</p>
+        </div>
+        <div class="taproom-card">
+          <h3>Snacks & Sliders</h3>
+          <p>Vetkoek sliders, smoked wings, and koeksister bites — perfect with a flight or game night crowd.</p>
+        </div>
+      </div>
+
+      <div class="numbers-strip">
+        <div class="number-tile">
+          <div class="value">14 taps</div>
+          <div>Craft beer, cider, and gin taps pouring small-batch South African producers.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">7 days</div>
+          <div>Kitchen fires up daily with brunch, lunch, and late-night menus.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">3 decks</div>
+          <div>Patio, rooftop, and indoor lounge — each with its own sound and lighting mood.</div>
+        </div>
+      </div>
+
+      <div class="testimonial-strip">
+        <div class="testimonial">
+          <p>
+            “Feels like a bush braai with city polish. We caught the Bokke game and tucked into that Range grill board — unreal.”
+          </p>
+          <div class="name">Sipho & Thandi · Polokwane</div>
+        </div>
+        <div class="testimonial">
+          <p>
+            “Veggie spread was addictive. Smoky, punchy, and the staff knew every pairing. The live acoustic set sealed the night.”
+          </p>
+          <div class="name">Jessica P. · Pretoria</div>
+        </div>
+        <div class="testimonial">
+          <p>
+            “Hosted our product launch here — slick AV, attentive hosts, and the taproom flights kept guests mingling all evening.”
+          </p>
+          <div class="name">Riaan M. · Johannesburg</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="events">
+      <div class="section-header">
+        <h2>Events rooted in bushveld culture</h2>
+        <p>
+          Weekly happenings keep Bushveld Range buzzing — from sport screenings to sunrise markets and conservation fundraisers.
+          We’re the local hangout with national flavour.
+        </p>
+      </div>
+      <div class="experience-grid">
+        <div class="experience-tile">
+          <h3>Friday Flame Sessions</h3>
+          <p>Local DJs and braai specials under festoon lights with limited-edition tap pours.</p>
+        </div>
+        <div class="experience-tile">
+          <h3>Big Match Lounge</h3>
+          <p>Wall-sized screens, supporter platters, and post-game karaoke for rugby and football nights.</p>
+        </div>
+        <div class="experience-tile">
+          <h3>Sunday Bush Market</h3>
+          <p>Family brunch, kids fire pit s'mores, and pop-up stalls from Limpopo artisans.</p>
+        </div>
+        <div class="experience-tile">
+          <h3>Conservation Evenings</h3>
+          <p>Guest talks from park rangers, themed tasting menus, and donations to veld projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Book your table around the hearth</h2>
+      <p>
+        Tell us about your crew, preferred session, and any dietary notes. Our reservations team replies within 12 hours with a
+        tailored confirmation, taproom add-ons, and event info.
+      </p>
+      <a href="mailto:bookings@bushveldrange.co.za" class="btn-primary">Start the booking</a>
+    </section>
+
+    <footer>
+      <div class="grid">
+        <div>
+          <h4>find us</h4>
+          <ul>
+            <li>Bushveld Range Restaurant & Taproom</li>
+            <li>Phalaborwa · Limpopo</li>
+            <li>South Africa</li>
+          </ul>
+        </div>
+        <div>
+          <h4>reservations</h4>
+          <ul>
+            <li>bookings@bushveldrange.co.za</li>
+            <li>+27 15 777 8820</li>
+            <li>Reservations 10:00 – 22:00</li>
+          </ul>
+        </div>
+        <div>
+          <h4>social</h4>
+          <ul>
+            <li>Instagram · @bushveldrange</li>
+            <li>Pinterest · Bushveld plates</li>
+            <li>Journal · Stories from the flames</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

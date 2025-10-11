@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thornveld Security Estate | Gated Living • Lifestyle Amenities</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #fafaf9;
+        --forest: #166534;
+        --slate: #475569;
+        --gold: #d97706;
+        --muted: rgba(71, 85, 105, 0.72);
+        --surface: rgba(255, 255, 255, 0.92);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: 'Montserrat', sans-serif;
+        background:
+          radial-gradient(circle at 12% 10%, rgba(22, 101, 52, 0.14), transparent 55%),
+          radial-gradient(circle at 82% 18%, rgba(217, 119, 6, 0.12), transparent 58%),
+          linear-gradient(165deg, #fefefe 0%, #f5f5f4 55%, #fafaf9 100%);
+        color: rgba(28, 25, 23, 0.92);
+        overflow-x: hidden;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        padding: 26px 6vw 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(180deg, rgba(254, 254, 254, 0.96) 0%, rgba(254, 254, 254, 0) 100%);
+        backdrop-filter: blur(10px);
+        z-index: 22;
+      }
+
+      .brand-block {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        flex-wrap: wrap;
+      }
+
+      .crest {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        background:
+          linear-gradient(140deg, rgba(22, 101, 52, 0.92), rgba(21, 128, 61, 0.92));
+        display: grid;
+        place-items: center;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 24px;
+        color: #fef3c7;
+        border: 1px solid rgba(22, 101, 52, 0.4);
+        box-shadow: 0 18px 34px rgba(22, 101, 52, 0.28);
+      }
+
+      .brand-copy {
+        font-family: 'Cormorant Garamond', serif;
+      }
+
+      .brand-copy .eyebrow {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: rgba(71, 85, 105, 0.58);
+      }
+
+      .brand-copy .name {
+        font-size: 32px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(71, 85, 105, 0.18);
+        background: rgba(255, 255, 255, 0.82);
+        color: rgba(71, 85, 105, 0.84);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.03em;
+        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      }
+
+      .back-link:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.96);
+        border-color: rgba(22, 101, 52, 0.36);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+
+      nav a {
+        color: var(--muted);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        transition: color 0.25s ease;
+      }
+
+      nav a:hover {
+        color: rgba(28, 25, 23, 0.88);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 24px;
+        border-radius: 12px;
+        background: linear-gradient(120deg, rgba(254, 252, 232, 0.96), rgba(22, 101, 52, 0.92));
+        color: #fef3c7;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 12px 28px rgba(22, 101, 52, 0.28);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 16px 34px rgba(22, 101, 52, 0.36);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 56px;
+        padding: 92px 6vw 72px;
+        align-items: center;
+        position: relative;
+      }
+
+      .hero::after {
+        content: '';
+        position: absolute;
+        inset: 12% auto auto 58%;
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(22, 101, 52, 0.22), transparent 70%);
+        z-index: -1;
+      }
+
+      .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .badge {
+        padding: 8px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(22, 101, 52, 0.28);
+        background: rgba(22, 101, 52, 0.12);
+        color: rgba(22, 101, 52, 0.88);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(46px, 5.2vw, 72px);
+        line-height: 1.06;
+        margin-bottom: 22px;
+      }
+
+      .hero h1 span {
+        color: var(--gold);
+      }
+
+      .hero p.lead {
+        font-size: clamp(18px, 2.2vw, 22px);
+        color: rgba(71, 85, 105, 0.82);
+        line-height: 1.74;
+        margin-bottom: 34px;
+      }
+
+      .hero-media {
+        position: relative;
+        border-radius: 28px;
+        padding: 28px;
+        background: var(--surface);
+        box-shadow: 0 30px 60px rgba(22, 101, 52, 0.22);
+        overflow: hidden;
+      }
+
+      .hero-media img {
+        width: 100%;
+        border-radius: 18px;
+        object-fit: cover;
+      }
+
+      .hero-media .stamp {
+        position: absolute;
+        bottom: 28px;
+        right: 32px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: rgba(22, 101, 52, 0.88);
+        color: #fef3c7;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .section {
+        padding: 80px 6vw;
+      }
+
+      .section-header {
+        max-width: 760px;
+        margin: 0 auto 52px;
+        text-align: center;
+      }
+
+      .section-header h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(34px, 4vw, 50px);
+        margin-bottom: 16px;
+      }
+
+      .section-header p {
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 26px;
+      }
+
+      .feature-card {
+        border-radius: 22px;
+        padding: 26px 28px;
+        background: rgba(255, 255, 255, 0.94);
+        border: 1px solid rgba(22, 101, 52, 0.14);
+        box-shadow: 0 16px 38px rgba(22, 101, 52, 0.18);
+        display: grid;
+        gap: 16px;
+        min-height: 210px;
+      }
+
+      .feature-card h3 {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: rgba(71, 85, 105, 0.78);
+        line-height: 1.7;
+      }
+
+      .amenity-grid {
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .amenity-card {
+        border-radius: 26px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(22, 101, 52, 0.18);
+        box-shadow: 0 24px 40px rgba(22, 101, 52, 0.2);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .amenity-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .amenity-card .content {
+        padding: 24px 26px 30px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .amenity-card h3 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 22px;
+        margin: 0;
+      }
+
+      .amenity-card ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+        color: rgba(71, 85, 105, 0.76);
+        font-size: 15px;
+      }
+
+      .numbers-strip {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+        margin-top: 48px;
+      }
+
+      .number-tile {
+        padding: 24px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(22, 101, 52, 0.16);
+        text-align: center;
+        box-shadow: 0 16px 32px rgba(22, 101, 52, 0.18);
+      }
+
+      .number-tile .value {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 30px;
+        color: rgba(22, 101, 52, 0.9);
+        margin-bottom: 8px;
+      }
+
+      .cta {
+        padding: 88px 6vw 108px;
+        text-align: center;
+        background: linear-gradient(120deg, rgba(255, 255, 255, 0.94), rgba(22, 101, 52, 0.12));
+        border-top: 1px solid rgba(22, 101, 52, 0.12);
+      }
+
+      .cta h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(34px, 4.2vw, 52px);
+        margin-bottom: 18px;
+      }
+
+      .cta p {
+        color: rgba(71, 85, 105, 0.76);
+        font-size: 18px;
+        line-height: 1.78;
+        max-width: 620px;
+        margin: 0 auto 28px;
+      }
+
+      footer {
+        padding: 32px 6vw 48px;
+        background: rgba(250, 250, 249, 0.94);
+        border-top: 1px solid rgba(22, 101, 52, 0.1);
+      }
+
+      footer .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 28px;
+      }
+
+      footer h4 {
+        margin-bottom: 12px;
+        letter-spacing: 0.08em;
+        font-size: 14px;
+        color: rgba(71, 85, 105, 0.72);
+        text-transform: uppercase;
+      }
+
+      footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+        color: rgba(71, 85, 105, 0.74);
+        font-size: 14px;
+      }
+
+      @media (max-width: 720px) {
+        header {
+          padding-top: 22px;
+        }
+
+        nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero {
+          padding-top: 82px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand-block">
+        <a class="back-link" href="/portfolio#website-gallery">← Back to main site</a>
+        <div class="crest">TS</div>
+        <div class="brand-copy">
+          <div class="eyebrow">Thornveld security estate</div>
+          <div class="name">Gated Living</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#story">About</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#security">Security</a>
+        <a href="#homes">Homes</a>
+        <a href="#contact" class="btn-primary">Book viewing</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="story">
+      <div>
+        <div class="hero-badges">
+          <div class="badge">24/7 security</div>
+          <div class="badge">Lifestyle amenities</div>
+          <div class="badge">Family-focused</div>
+        </div>
+        <h1>
+          Secure living with
+          <span>lifestyle balance.</span>
+        </h1>
+        <p class="lead">
+          Thornveld Security Estate combines gated peace of mind with resort-style amenities. Families enjoy walking trails, clubhouse
+          facilities, and 24/7 response teams while living minutes from schools, shopping, and major routes.
+        </p>
+        <a href="#amenities" class="btn-primary">Explore estate life</a>
+      </div>
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1400&q=80" alt="Estate entrance" />
+        <div class="stamp">Secure Estate</div>
+      </div>
+    </section>
+
+    <section class="section" id="amenities">
+      <div class="section-header">
+        <h2>Amenities designed for everyday living</h2>
+        <p>
+          Residents access clubhouse facilities, nature trails, and community events without leaving the estate. Lifestyle conveniences
+          meet security protocols seamlessly.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Clubhouse & gym</h3>
+          <p>Modern fitness centre, function hall, and co-working lounge with fibre connectivity.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Nature trails</h3>
+          <p>Paved walking and cycling routes through landscaped green belts and indigenous gardens.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Kids' play zones</h3>
+          <p>Supervised play areas, splash pads, and sports courts for families with young children.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Pet-friendly spaces</h3>
+          <p>Designated dog parks and walking zones with waste stations and secure fencing.</p>
+        </div>
+      </div>
+
+      <div class="amenity-grid">
+        <article class="amenity-card">
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80" alt="Gym" />
+          <div class="content">
+            <h3>Wellness Centre</h3>
+            <ul>
+              <li>24-hour gym access with cardio and weights</li>
+              <li>Yoga studio and group class schedule</li>
+              <li>Sauna and steam room facilities</li>
+              <li>Personal trainer bookings available</li>
+            </ul>
+          </div>
+        </article>
+        <article class="amenity-card">
+          <img src="https://images.unsplash.com/photo-1587582423116-ec07293f0395?auto=format&fit=crop&w=1200&q=80" alt="Trails" />
+          <div class="content">
+            <h3>Green Corridors</h3>
+            <ul>
+              <li>5km paved trail network with lighting</li>
+              <li>Indigenous plant gardens and bird hides</li>
+              <li>Outdoor fitness stations along routes</li>
+              <li>Benches and picnic spots throughout</li>
+            </ul>
+          </div>
+        </article>
+        <article class="amenity-card">
+          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80" alt="Clubhouse" />
+          <div class="content">
+            <h3>Community Hub</h3>
+            <ul>
+              <li>Function hall for events and gatherings</li>
+              <li>Co-working lounge with fibre and coffee bar</li>
+              <li>Kids' playroom and supervised activities</li>
+              <li>Resident portal for bookings and notices</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <div class="numbers-strip">
+        <div class="number-tile">
+          <div class="value">24/7</div>
+          <div>Armed response and perimeter patrols with control room monitoring.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">350 homes</div>
+          <div>Freestanding and cluster units across landscaped precincts.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">5 min</div>
+          <div>Drive to schools, medical centres, and shopping hubs.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="security">
+      <div class="section-header">
+        <h2>Security protocols built for peace of mind</h2>
+        <p>
+          Biometric access, CCTV networks, and rapid response teams ensure residents live with confidence. All systems integrate with
+          estate management for seamless monitoring.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Access control</h3>
+          <p>Biometric gates, visitor pre-approval, and vehicle tracking at all entry points.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Perimeter security</h3>
+          <p>Electric fencing, thermal cameras, and 24/7 patrol teams covering all boundaries.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Emergency response</h3>
+          <p>Panic buttons linked to control room with armed response under 3-minute arrival.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Ready to view available homes?</h2>
+      <p>
+        Schedule a private estate tour, explore show units, and meet our sales team. We'll walk you through security features, amenities,
+        and available plots.
+      </p>
+      <a href="mailto:sales@thornveldestate.co.za" class="btn-primary">Book estate tour</a>
+    </section>
+
+    <footer>
+      <div class="grid">
+        <div>
+          <h4>visit</h4>
+          <ul>
+            <li>Thornveld Security Estate</li>
+            <li>Sales office open daily</li>
+            <li>Viewing by appointment</li>
+          </ul>
+        </div>
+        <div>
+          <h4>sales</h4>
+          <ul>
+            <li>sales@thornveldestate.co.za</li>
+            <li>+27 11 555 6600</li>
+            <li>WhatsApp · Thornveld Sales</li>
+          </ul>
+        </div>
+        <div>
+          <h4>follow</h4>
+          <ul>
+            <li>Instagram · @thornveldestate</li>
+            <li>Facebook · Thornveld Living</li>
+            <li>Newsletter · Estate updates</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

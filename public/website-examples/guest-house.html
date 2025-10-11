@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tamboti Ridge Guest House | Bushveld Luxury Retreat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: only dark;
+        --bg: #0e130d;
+        --bg-alt: rgba(20, 28, 18, 0.7);
+        --accent: #fbbf24;
+        --accent-soft: rgba(251, 191, 36, 0.18);
+        --sand: rgba(216, 180, 107, 0.6);
+        --text: rgba(241, 245, 236, 0.92);
+        --muted: rgba(178, 190, 171, 0.78);
+        --surface: rgba(24, 32, 22, 0.78);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+        background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.16), transparent 55%),
+          radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.12), transparent 60%),
+          var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 28px 6vw 0;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: linear-gradient(180deg, rgba(12, 17, 31, 0.92), rgba(12, 17, 31, 0));
+        backdrop-filter: blur(12px);
+      }
+
+      .brand-block {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        flex-wrap: wrap;
+      }
+
+      .crest {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: linear-gradient(140deg, #fbbf24, rgba(234, 179, 8, 0.7));
+        display: grid;
+        place-items: center;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+        font-size: 22px;
+        color: #0e130d;
+        border: 1px solid rgba(253, 230, 138, 0.6);
+        box-shadow: 0 18px 32px rgba(251, 191, 36, 0.26);
+      }
+
+      .brand-copy {
+        font-family: 'Cormorant Garamond', serif;
+      }
+
+      .brand-copy .eyebrow {
+        font-size: 14px;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: rgba(226, 232, 240, 0.55);
+      }
+
+      .brand-copy .name {
+        font-size: 28px;
+        letter-spacing: 0.04em;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(226, 235, 216, 0.2);
+        background: rgba(28, 37, 24, 0.58);
+        color: rgba(238, 244, 232, 0.86);
+        text-decoration: none;
+        font-size: 14px;
+        letter-spacing: 0.03em;
+        transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      }
+
+      .back-link:hover {
+        transform: translateY(-1px);
+        border-color: rgba(253, 230, 138, 0.4);
+        background: rgba(28, 37, 24, 0.75);
+        color: rgba(255, 255, 245, 0.96);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+      }
+
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        transition: color 0.25s ease;
+      }
+
+      nav a:hover {
+        color: var(--text);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 22px;
+        border-radius: 999px;
+        background: linear-gradient(120deg, rgba(255, 255, 245, 0.92), rgba(253, 230, 138, 0.94));
+        color: #1f2315;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 16px 32px rgba(56, 189, 248, 0.28);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 36px rgba(253, 230, 138, 0.36);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 48px;
+        padding: 96px 6vw 64px;
+        align-items: center;
+      }
+
+      .hero h1 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(46px, 5.4vw, 72px);
+        line-height: 1.05;
+        margin-bottom: 20px;
+      }
+
+      .hero h1 span {
+        color: rgba(253, 230, 138, 0.88);
+      }
+
+      .hero p.lead {
+        font-size: clamp(18px, 2.2vw, 22px);
+        color: rgba(228, 235, 222, 0.88);
+        line-height: 1.7;
+        margin-bottom: 30px;
+        max-width: 560px;
+      }
+
+      .amenities {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+
+      .amenity {
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: rgba(251, 191, 36, 0.12);
+        border: 1px solid rgba(253, 230, 138, 0.25);
+        font-size: 13px;
+        letter-spacing: 0.03em;
+      }
+
+      .hero-media {
+        position: relative;
+        border-radius: 26px;
+        padding: 28px;
+        background: var(--surface);
+        box-shadow: 0 32px 60px rgba(12, 20, 14, 0.48);
+        overflow: hidden;
+      }
+
+      .hero-media::before {
+        content: '';
+        position: absolute;
+        inset: 18px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        pointer-events: none;
+      }
+
+      .hero-media img {
+        width: 100%;
+        border-radius: 18px;
+        object-fit: cover;
+        filter: saturate(0.98);
+      }
+
+      .section {
+        padding: 80px 6vw;
+      }
+
+      .section-header {
+        max-width: 760px;
+        margin: 0 auto 54px;
+        text-align: center;
+      }
+
+      .section-header h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(34px, 4vw, 48px);
+        margin-bottom: 16px;
+      }
+
+      .section-header p {
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 26px;
+      }
+
+      .feature-card {
+        padding: 26px 28px;
+        border-radius: 20px;
+        border: 1px solid rgba(226, 232, 240, 0.08);
+        background: rgba(27, 35, 24, 0.58);
+        box-shadow: 0 18px 36px rgba(12, 20, 14, 0.4);
+        min-height: 220px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .feature-card h3 {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: rgba(225, 232, 220, 0.8);
+        line-height: 1.7;
+      }
+
+      .suites {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 32px;
+        align-items: center;
+      }
+
+      .suite-card {
+        border-radius: 28px;
+        overflow: hidden;
+        background: rgba(26, 36, 24, 0.54);
+        border: 1px solid rgba(253, 230, 138, 0.18);
+        box-shadow: 0 26px 48px rgba(12, 20, 14, 0.42);
+      }
+
+      .suite-card img {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+      }
+
+      .suite-card .content {
+        padding: 26px;
+        display: grid;
+        gap: 14px;
+      }
+
+      .suite-card .amenity-list {
+        list-style: none;
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        color: rgba(186, 194, 178, 0.78);
+        font-size: 15px;
+      }
+
+      .testimonials {
+        margin-top: 54px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+      }
+
+      .testimonial {
+        border-radius: 18px;
+        padding: 24px;
+        background: rgba(24, 33, 23, 0.56);
+        border: 1px solid rgba(226, 235, 216, 0.1);
+      }
+
+      .testimonial p {
+        margin: 0;
+        line-height: 1.7;
+        color: rgba(225, 232, 220, 0.82);
+      }
+
+      .testimonial .name {
+        margin-top: 16px;
+        font-weight: 600;
+        color: rgba(253, 230, 138, 0.88);
+      }
+
+      .cta {
+        padding: 90px 6vw 100px;
+        text-align: center;
+        background: linear-gradient(120deg, rgba(63, 98, 18, 0.18), rgba(253, 230, 138, 0.1));
+        border-top: 1px solid rgba(226, 235, 216, 0.1);
+      }
+
+      .cta h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(36px, 4.4vw, 54px);
+        margin-bottom: 18px;
+      }
+
+      .cta p {
+        color: rgba(226, 232, 240, 0.85);
+        font-size: 19px;
+        margin-bottom: 30px;
+      }
+
+      footer {
+        padding: 32px 6vw 48px;
+        background: rgba(10, 14, 9, 0.95);
+        border-top: 1px solid rgba(226, 235, 216, 0.05);
+      }
+
+      footer .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 28px;
+      }
+
+      footer h4 {
+        margin-bottom: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 14px;
+        color: rgba(148, 163, 184, 0.8);
+      }
+
+      footer ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 10px;
+        color: rgba(172, 182, 165, 0.75);
+        font-size: 14px;
+      }
+
+      @media (max-width: 720px) {
+        header {
+          padding-top: 24px;
+        }
+
+        nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero {
+          padding-top: 80px;
+        }
+
+        .suite-card img {
+          height: 200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand-block">
+        <a class="back-link" href="/portfolio#website-gallery">← Back to main site</a>
+        <div class="crest">TR</div>
+        <div class="brand-copy">
+          <div class="eyebrow">Tamboti ridge</div>
+          <div class="name">Bushveld Guest House</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#suites">Suites</a>
+        <a href="#experiences">Experiences</a>
+        <a href="#wellness">Wellness</a>
+        <a href="#contact">Reserve</a>
+        <a href="#contact" class="btn-primary">Plan your stay</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="amenities">
+          <div class="amenity">Tamboti ridge suites</div>
+          <div class="amenity">Waterberg sunrise decks</div>
+          <div class="amenity">Private game drives</div>
+        </div>
+        <h1>
+          Bushveld serenity for
+          <span>slow, indulgent escapes.</span>
+        </h1>
+        <p class="lead">
+          Tamboti Ridge Guest House is a five-suite sanctuary tucked between marula trees and koppies. Golden hour gin tastings,
+          star-drenched spa rituals, and storytelling hosts invite guests to breathe with the bush.
+        </p>
+        <a href="#suites" class="btn-primary">Explore signature suites</a>
+      </div>
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1400&q=80" alt="Bushveld suite overlooking savannah" />
+      </div>
+    </section>
+
+    <section class="section" id="experiences">
+      <div class="section-header">
+        <h2>Every touchpoint whispers warm bushveld sophistication</h2>
+        <p>
+          From arrival drum beats and rooibos welcome infusions to sunset boma tastings, Tamboti Ridge choreographs every moment to
+          feel effortless, grounded, and distinctly Limpopo.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Signature welcome rituals</h3>
+          <p>
+            Marula fizz on arrival, oshibori towels, and a personalised scent ceremony anchored in veld botanicals.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Private dining stories</h3>
+          <p>
+            Chef-prepared courses under tamboti pergolas, paired with boutique Lowveld vintages curated by our in-house sommelier.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Bushveld spa therapies</h3>
+          <p>
+            Mopani honey massages, salt stone detox rituals, and infrared sauna sessions overlooking the savannah.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Concierge-led adventures</h3>
+          <p>
+            Guided game drives, baobab art tours, and heli transfers to private reserves and cliff-top picnics.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section suites" id="suites">
+      <div class="suite-card">
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80" alt="Tamboti Horizon Suite" />
+        <div class="content">
+          <h3>Tamboti Horizon Suite</h3>
+          <p>Panoramic glass walls, copper soaking tub, and private plunge pool facing the koppies.</p>
+          <ul class="amenity-list">
+            <li>• Butler pantry with gin botanical bar</li>
+            <li>• Handwoven mohair throws and heated floors</li>
+            <li>• Outdoor fire lounge & daybed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="suite-card">
+        <img src="https://images.unsplash.com/photo-1522708323590-8a0a70fe3d79?auto=format&fit=crop&w=1200&q=80" alt="Serenity Loft" />
+        <div class="content">
+          <h3>Serenity Loft</h3>
+          <p>Split-level loft with library snug, savannah terrace, and rainfall steam shower.</p>
+          <ul class="amenity-list">
+            <li>• Curated art and vinyl listening nook</li>
+            <li>• Writing desk overlooking sunrise wildlife</li>
+            <li>• Pillow atelier with custom selection</li>
+          </ul>
+        </div>
+      </div>
+      <div class="suite-card">
+        <img src="https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&w=1200&q=80" alt="Tamboti Residence" />
+        <div class="content">
+          <h3>Tamboti Residence</h3>
+          <p>Three-bedroom villa with chef kitchen, boma fireplace lounge, and private spa cabana.</p>
+          <ul class="amenity-list">
+            <li>• Dedicated host & field guide</li>
+            <li>• Immersive cinema lounge</li>
+            <li>• Outdoor dining boma for twelve guests</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="wellness">
+      <div class="section-header">
+        <h2>Wellness rituals designed for deep bushveld restoration</h2>
+        <p>
+          Our therapists craft sensory journeys blending marula botanicals, mindful breathwork, and movement to align with the rhythm
+          of the bush.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Morning savannah yoga</h3>
+          <p>Dawn salutations with private instructor and kudu bell sound baths beneath the acacias.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Hydrothermal circuit</h3>
+          <p>Cold plunge, aromatherapy steam, and vitality pool with sweeping bushveld vistas.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Nocturnal spa evenings</h3>
+          <p>Moonlit spa reservations with celestial-guided treatments and midnight potjie tapas.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Wellness concierge</h3>
+          <p>Personalised itineraries including naturopaths, bush medicine walks, and nutrition consults.</p>
+        </div>
+      </div>
+
+      <div class="testimonials">
+        <div class="testimonial">
+          <p>
+            “Tamboti Ridge knew when we needed quiet or celebration. The bushveld choir at dawn felt like it sang just for us.”
+          </p>
+          <div class="name">Karabo & Lindiwe · Polokwane</div>
+        </div>
+        <div class="testimonial">
+          <p>
+            “The team orchestrated a flawless proposal weekend — sunrise yoga, bespoke tasting menu, and petals strewn across our sky suite.”
+          </p>
+          <div class="name">Alistair · Johannesburg</div>
+        </div>
+        <div class="testimonial">
+          <p>
+            “We hosted clients for an executive retreat. Tamboti Ridge delivered white-glove hospitality with effortless bushveld charm.”
+          </p>
+          <div class="name">Nia · Gaborone</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Reserve your stay with our private field hosts</h2>
+      <p>
+        Share your desired dates, celebration details, and rhythm. Our reservation curator will respond within twelve hours with a
+        personalised bushveld itinerary.
+      </p>
+      <a href="mailto:stay@tambotiridge.co.za" class="btn-primary">Begin reservation</a>
+    </section>
+
+    <footer>
+      <div class="grid">
+        <div>
+          <h4>Location</h4>
+          <ul>
+            <li>Tamboti Ridge Reserve</li>
+            <li>Waterberg · Limpopo</li>
+            <li>South Africa</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>stay@tambotiridge.co.za</li>
+            <li>+27 15 777 6040</li>
+            <li>Concierge available 24/7</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Social</h4>
+          <ul>
+            <li>Instagram · @tambotiridge</li>
+            <li>Pinterest · Bushveld inspiration</li>
+            <li>Journal · Tamboti stories</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

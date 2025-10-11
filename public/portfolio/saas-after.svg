@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 810">
+  <defs>
+    <linearGradient id="saas-after-bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#032830" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="saas-after-glow" x1="0%" x2="100%" y1="0%" y2="0%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#facc15" stop-opacity="0.3" />
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="810" rx="40" fill="url(#saas-after-bg)" />
+  <g fill="none" stroke="#0f766e" stroke-width="6" opacity="0.85">
+    <polyline points="200,640 280,560 360,580 440,500 520,520 600,440 680,460" />
+    <polyline points="780,660 860,580 940,600 1020,520 1100,540 1180,460 1260,480" />
+    <polyline points="260,720 340,640 420,660 500,580 580,600 660,520 740,540" />
+    <polyline points="840,740 920,660 1000,680 1080,600 1160,620 1240,540 1320,560" />
+  </g>
+  <path d="M180 520 C 520 360 940 340 1260 300" stroke="url(#saas-after-glow)" stroke-width="16" stroke-linecap="round" opacity="0.9" />
+  <g fill="#34d399" opacity="0.95">
+    <circle cx="280" cy="540" r="20" />
+    <circle cx="560" cy="480" r="20" />
+    <circle cx="840" cy="440" r="20" />
+    <circle cx="1120" cy="400" r="20" />
+    <circle cx="1300" cy="360" r="20" />
+  </g>
+  <g fill="#facc15" opacity="0.95">
+    <circle cx="360" cy="660" r="16" />
+    <circle cx="700" cy="580" r="16" />
+    <circle cx="1020" cy="520" r="16" />
+    <circle cx="1220" cy="500" r="16" />
+  </g>
+  <text x="200" y="720" font-family="'Inter', sans-serif" font-size="52" fill="#bbf7d0" opacity="0.9">
+    Calm dashboards, clear signals.
+  </text>
+  <text x="200" y="770" font-family="'Inter', sans-serif" font-size="30" fill="#ccfbf1" opacity="0.8">
+    Weekly clarity loops, confident decisions, operations flowing.
+  </text>
+</svg>

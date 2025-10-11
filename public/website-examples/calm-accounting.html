@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calm Accounting | Trusted Financial Partners • Tax Solutions • Business Advisory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #1e3a8a;
+        --sage: #059669;
+        --cream: #fefce8;
+        --charcoal: #374151;
+        --silver: #f1f5f9;
+        --gold: #f59e0b;
+        --trust: #3b82f6;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background: 
+          linear-gradient(135deg, #fefce8 0%, #f1f5f9 50%, #e0f2fe 100%);
+        color: var(--charcoal);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Minimalist Header */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(254, 252, 232, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(30, 58, 138, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .header.scrolled {
+        background: rgba(254, 252, 232, 0.98);
+        box-shadow: 0 4px 20px rgba(30, 58, 138, 0.1);
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .logo-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, var(--navy), var(--trust));
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+        box-shadow: 0 8px 25px rgba(30, 58, 138, 0.2);
+      }
+
+      .logo-text {
+        font-family: 'Source Serif Pro', serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--navy);
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .nav-link {
+        color: var(--charcoal);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 8px 0;
+      }
+
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--navy);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .back-link {
+        padding: 12px 24px;
+        background: var(--navy);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .back-link:hover {
+        background: var(--trust);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);
+      }
+
+      /* Split-Screen Hero */
+      .hero {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        padding-top: 100px;
+      }
+
+      .hero-content {
+        padding: 80px 40px 80px 80px;
+        max-width: 600px;
+      }
+
+      .trust-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 24px;
+        background: rgba(30, 58, 138, 0.1);
+        border: 1px solid rgba(30, 58, 138, 0.2);
+        border-radius: 50px;
+        color: var(--navy);
+        font-weight: 600;
+        margin-bottom: 32px;
+        font-size: 14px;
+      }
+
+      .trust-badge::before {
+        content: '🛡️';
+        animation: shield-glow 3s ease-in-out infinite;
+      }
+
+      @keyframes shield-glow {
+        0%, 100% { filter: brightness(1); }
+        50% { filter: brightness(1.3); }
+      }
+
+      .hero h1 {
+        font-family: 'Source Serif Pro', serif;
+        font-size: clamp(48px, 6vw, 72px);
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 24px;
+        color: var(--navy);
+      }
+
+      .hero h1 .highlight {
+        color: var(--sage);
+        position: relative;
+      }
+
+      .hero h1 .highlight::after {
+        content: '';
+        position: absolute;
+        bottom: 8px;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background: linear-gradient(90deg, rgba(5, 150, 105, 0.2), rgba(5, 150, 105, 0.1));
+        z-index: -1;
+        border-radius: 4px;
+      }
+
+      .hero p {
+        font-size: 20px;
+        color: rgba(55, 65, 81, 0.8);
+        margin-bottom: 40px;
+        line-height: 1.7;
+      }
+
+      .hero-cta {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        padding: 18px 36px;
+        background: linear-gradient(135deg, var(--navy), var(--trust));
+        color: white;
+        text-decoration: none;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: all 0.4s ease;
+        box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(30, 58, 138, 0.4);
+      }
+
+      .btn-secondary {
+        padding: 18px 36px;
+        background: transparent;
+        color: var(--navy);
+        text-decoration: none;
+        border-radius: 12px;
+        border: 2px solid var(--navy);
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background: var(--navy);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Dashboard Visualization */
+      .hero-visual {
+        background: linear-gradient(135deg, var(--silver), #e2e8f0);
+        padding: 80px 40px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .dashboard-container {
+        max-width: 500px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .dashboard-header {
+        background: white;
+        border-radius: 16px 16px 0 0;
+        padding: 24px;
+        border-bottom: 1px solid #e5e7eb;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      .dashboard-title {
+        font-family: 'Source Serif Pro', serif;
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--navy);
+        margin-bottom: 8px;
+      }
+
+      .dashboard-subtitle {
+        color: rgba(55, 65, 81, 0.6);
+        font-size: 14px;
+      }
+
+      .dashboard-body {
+        background: white;
+        border-radius: 0 0 16px 16px;
+        padding: 32px 24px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-bottom: 32px;
+      }
+
+      .metric-card {
+        padding: 20px;
+        background: var(--cream);
+        border-radius: 12px;
+        border: 1px solid rgba(30, 58, 138, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .metric-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(30, 58, 138, 0.1);
+      }
+
+      .metric-value {
+        font-family: 'Source Serif Pro', serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 4px;
+      }
+
+      .metric-label {
+        font-size: 12px;
+        color: rgba(55, 65, 81, 0.6);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .chart-area {
+        height: 120px;
+        background: linear-gradient(135deg, rgba(30, 58, 138, 0.05), rgba(5, 150, 105, 0.05));
+        border-radius: 12px;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 24px;
+      }
+
+      .chart-line {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--navy), var(--sage));
+        border-radius: 1px;
+        animation: chart-grow 3s ease-in-out infinite;
+      }
+
+      @keyframes chart-grow {
+        0%, 100% { transform: scaleX(0.7); }
+        50% { transform: scaleX(1); }
+      }
+
+      .chart-dots {
+        position: absolute;
+        bottom: 15px;
+        left: 20px;
+        right: 20px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .chart-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--sage);
+        border-radius: 50%;
+        animation: dot-pulse 2s ease-in-out infinite;
+      }
+
+      .chart-dot:nth-child(2) { animation-delay: 0.5s; }
+      .chart-dot:nth-child(3) { animation-delay: 1s; }
+      .chart-dot:nth-child(4) { animation-delay: 1.5s; }
+
+      @keyframes dot-pulse {
+        0%, 100% { transform: scale(1); opacity: 0.7; }
+        50% { transform: scale(1.3); opacity: 1; }
+      }
+
+      .status-indicators {
+        display: flex;
+        gap: 16px;
+      }
+
+      .status-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--sage);
+      }
+
+      .status-dot.warning {
+        background: var(--gold);
+      }
+
+      /* Services Section */
+      .services-section {
+        padding: 120px 80px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .section-header h2 {
+        font-family: 'Source Serif Pro', serif;
+        font-size: clamp(36px, 5vw, 56px);
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--navy);
+      }
+
+      .section-header p {
+        font-size: 18px;
+        color: rgba(55, 65, 81, 0.7);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+      }
+
+      .service-card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 8px 30px rgba(30, 58, 138, 0.08);
+        border: 1px solid rgba(30, 58, 138, 0.1);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--navy), var(--sage));
+      }
+
+      .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px rgba(30, 58, 138, 0.15);
+      }
+
+      .service-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, var(--navy), var(--trust));
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        color: white;
+        margin-bottom: 24px;
+        box-shadow: 0 8px 25px rgba(30, 58, 138, 0.2);
+      }
+
+      .service-title {
+        font-family: 'Source Serif Pro', serif;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: var(--navy);
+      }
+
+      .service-desc {
+        color: rgba(55, 65, 81, 0.8);
+        line-height: 1.7;
+        margin-bottom: 24px;
+      }
+
+      .service-features {
+        list-style: none;
+      }
+
+      .service-features li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 0;
+        color: rgba(55, 65, 81, 0.7);
+        font-size: 14px;
+      }
+
+      .service-features li::before {
+        content: '✓';
+        color: var(--sage);
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      /* Trust Section */
+      .trust-section {
+        padding: 120px 80px;
+        background: linear-gradient(135deg, rgba(30, 58, 138, 0.05), rgba(5, 150, 105, 0.05));
+        text-align: center;
+      }
+
+      .trust-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .trust-stat {
+        padding: 32px 24px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 8px 25px rgba(30, 58, 138, 0.1);
+        border: 1px solid rgba(30, 58, 138, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .trust-stat:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(30, 58, 138, 0.15);
+      }
+
+      .trust-number {
+        font-family: 'Source Serif Pro', serif;
+        font-size: 48px;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 8px;
+      }
+
+      .trust-label {
+        color: rgba(55, 65, 81, 0.7);
+        font-weight: 500;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+        
+        .hero-content {
+          padding: 60px 40px;
+        }
+        
+        .hero-visual {
+          padding: 60px 40px;
+        }
+        
+        .services-section, .trust-section {
+          padding: 80px 40px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header-content {
+          padding: 15px 20px;
+          flex-direction: column;
+          gap: 20px;
+        }
+        
+        .nav-menu {
+          gap: 20px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        
+        .hero-content {
+          padding: 40px 20px;
+        }
+        
+        .hero-visual {
+          padding: 40px 20px;
+        }
+        
+        .services-section, .trust-section {
+          padding: 60px 20px;
+        }
+        
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .hero-cta {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Minimalist Header -->
+    <header class="header" id="header">
+      <div class="header-content">
+        <div class="logo">
+          <div class="logo-icon">📊</div>
+          <div class="logo-text">Calm</div>
+        </div>
+        
+        <nav class="nav-menu">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#contact" class="nav-link">Contact</a>
+          <a href="/portfolio#website-gallery" class="back-link">← Portfolio</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Split-Screen Hero -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="trust-badge">
+          Trusted by 500+ Businesses
+        </div>
+        
+        <h1>
+          Financial <span class="highlight">Clarity</span><br>
+          You Can Trust
+        </h1>
+        
+        <p>
+          Calm Accounting brings peace of mind to your financial management. Our expert team provides 
+          comprehensive accounting, tax planning, and business advisory services with transparency and precision.
+        </p>
+        
+        <div class="hero-cta">
+          <a href="#services" class="btn-primary">Get Started</a>
+          <a href="#contact" class="btn-secondary">Free Consultation</a>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="dashboard-container">
+          <div class="dashboard-header">
+            <div class="dashboard-title">Financial Overview</div>
+            <div class="dashboard-subtitle">Real-time insights • Updated daily</div>
+          </div>
+          
+          <div class="dashboard-body">
+            <div class="metrics-grid">
+              <div class="metric-card">
+                <div class="metric-value">R2.4M</div>
+                <div class="metric-label">Revenue</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">18%</div>
+                <div class="metric-label">Growth</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">R450K</div>
+                <div class="metric-label">Profit</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">98%</div>
+                <div class="metric-label">Accuracy</div>
+              </div>
+            </div>
+            
+            <div class="chart-area">
+              <div class="chart-line"></div>
+              <div class="chart-dots">
+                <div class="chart-dot"></div>
+                <div class="chart-dot"></div>
+                <div class="chart-dot"></div>
+                <div class="chart-dot"></div>
+              </div>
+            </div>
+            
+            <div class="status-indicators">
+              <div class="status-item">
+                <div class="status-dot"></div>
+                <span>Tax Compliant</span>
+              </div>
+              <div class="status-item">
+                <div class="status-dot warning"></div>
+                <span>Review Pending</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+      <div class="section-header">
+        <h2>Comprehensive Financial Solutions</h2>
+        <p>From bookkeeping to strategic planning, we handle every aspect of your financial needs with precision and care.</p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">📋</div>
+          <div class="service-title">Bookkeeping & Accounting</div>
+          <div class="service-desc">
+            Accurate record-keeping and financial reporting that gives you complete visibility into your business performance.
+          </div>
+          <ul class="service-features">
+            <li>Monthly financial statements</li>
+            <li>Bank reconciliation</li>
+            <li>Accounts payable/receivable</li>
+            <li>Cash flow management</li>
+          </ul>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">🏛️</div>
+          <div class="service-title">Tax Planning & Compliance</div>
+          <div class="service-desc">
+            Strategic tax planning and seamless compliance management to minimize your tax burden while staying compliant.
+          </div>
+          <ul class="service-features">
+            <li>Annual tax returns</li>
+            <li>VAT submissions</li>
+            <li>Tax optimization strategies</li>
+            <li>SARS correspondence</li>
+          </ul>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">📈</div>
+          <div class="service-title">Business Advisory</div>
+          <div class="service-desc">
+            Strategic guidance and insights to help your business grow, make informed decisions, and achieve financial goals.
+          </div>
+          <ul class="service-features">
+            <li>Financial forecasting</li>
+            <li>Business planning</li>
+            <li>Performance analysis</li>
+            <li>Growth strategies</li>
+          </ul>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">🔍</div>
+          <div class="service-title">Auditing & Assurance</div>
+          <div class="service-desc">
+            Independent auditing services that provide stakeholders with confidence in your financial reporting accuracy.
+          </div>
+          <ul class="service-features">
+            <li>Independent reviews</li>
+            <li>Compilation services</li>
+            <li>Internal controls assessment</li>
+            <li>Risk management</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+      <div class="section-header">
+        <h2>Trusted by Growing Businesses</h2>
+        <p>Our commitment to excellence and client success speaks through our results.</p>
+      </div>
+      
+      <div class="trust-stats">
+        <div class="trust-stat">
+          <div class="trust-number">500+</div>
+          <div class="trust-label">Happy Clients</div>
+        </div>
+        
+        <div class="trust-stat">
+          <div class="trust-number">15</div>
+          <div class="trust-label">Years Experience</div>
+        </div>
+        
+        <div class="trust-stat">
+          <div class="trust-number">99.8%</div>
+          <div class="trust-label">Accuracy Rate</div>
+        </div>
+        
+        <div class="trust-stat">
+          <div class="trust-number">24h</div>
+          <div class="trust-label">Response Time</div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Interactive functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
+        });
+
+        // Dashboard interactions
+        const metricCards = document.querySelectorAll('.metric-card');
+        metricCards.forEach(card => {
+          card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-4px) scale(1.02)';
+          });
+          
+          card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+          });
+        });
+
+        // Service card hover effects
+        document.querySelectorAll('.service-card').forEach(card => {
+          card.addEventListener('mouseenter', function() {
+            const icon = this.querySelector('.service-icon');
+            icon.style.transform = 'scale(1.1) rotate(5deg)';
+          });
+          
+          card.addEventListener('mouseleave', function() {
+            const icon = this.querySelector('.service-icon');
+            icon.style.transform = 'scale(1) rotate(0deg)';
+          });
+        });
+
+        // Animate trust stats on scroll
+        const observerOptions = {
+          threshold: 0.5,
+          rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const trustNumber = entry.target.querySelector('.trust-number');
+              const finalNumber = trustNumber.textContent;
+              let currentNumber = 0;
+              const increment = parseFloat(finalNumber.replace(/[^0-9.]/g, '')) / 50;
+              
+              const timer = setInterval(() => {
+                currentNumber += increment;
+                if (currentNumber >= parseFloat(finalNumber.replace(/[^0-9.]/g, ''))) {
+                  trustNumber.textContent = finalNumber;
+                  clearInterval(timer);
+                } else {
+                  const suffix = finalNumber.replace(/[0-9.]/g, '');
+                  trustNumber.textContent = Math.floor(currentNumber) + suffix;
+                }
+              }, 30);
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll('.trust-stat').forEach(stat => {
+          observer.observe(stat);
+        });
+      });
+    </script>
+  </body>
+</html>

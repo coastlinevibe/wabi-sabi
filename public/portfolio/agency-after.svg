@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 810">
+  <defs>
+    <linearGradient id="after-bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#022c22" />
+    </linearGradient>
+    <linearGradient id="after-glow" x1="0%" x2="100%" y1="0%" y2="0%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#facc15" stop-opacity="0.2" />
+    </linearGradient>
+  </defs>
+  <rect fill="url(#after-bg)" width="1440" height="810" rx="40" />
+  <g fill="none" stroke="#155e75" stroke-width="6" opacity="0.4">
+    <rect x="120" y="120" width="320" height="220" rx="18" />
+    <rect x="520" y="160" width="260" height="160" rx="14" />
+    <rect x="840" y="120" width="260" height="140" rx="14" />
+    <rect x="1140" y="180" width="180" height="120" rx="12" />
+  </g>
+  <g fill="none" stroke="#0f766e" stroke-width="4" opacity="0.7">
+    <rect x="200" y="420" width="360" height="220" rx="20" />
+    <rect x="620" y="420" width="320" height="220" rx="20" />
+    <rect x="980" y="420" width="200" height="220" rx="20" />
+  </g>
+  <path d="M160 500 L1280 320" stroke="url(#after-glow)" stroke-width="12" stroke-linecap="round" opacity="0.85" />
+  <g fill="#34d399" opacity="0.85">
+    <circle cx="240" cy="420" r="18" />
+    <circle cx="680" cy="360" r="18" />
+    <circle cx="980" cy="300" r="18" />
+    <circle cx="1220" cy="260" r="18" />
+  </g>
+  <g fill="#facc15" opacity="0.9">
+    <circle cx="340" cy="520" r="12" />
+    <circle cx="760" cy="460" r="12" />
+    <circle cx="1100" cy="400" r="12" />
+  </g>
+  <text x="120" y="720" font-family="'Inter', sans-serif" font-size="56" fill="#bbf7d0" opacity="0.9">
+    Calm, automated flow.
+  </text>
+  <text x="120" y="770" font-family="'Inter', sans-serif" font-size="32" fill="#ccfbf1" opacity="0.7">
+    Guided onboarding, dashboards, and a team freed for strategy.
+  </text>
+</svg>

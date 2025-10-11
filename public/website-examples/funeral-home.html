@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gift Funeral Services | Compassionate Care • Dignified Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #fafaf9;
+        --slate: #475569;
+        --navy: #1e293b;
+        --sage: #6b7280;
+        --muted: rgba(71, 85, 105, 0.72);
+        --surface: rgba(255, 255, 255, 0.92);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: 'Montserrat', sans-serif;
+        background:
+          radial-gradient(circle at 12% 10%, rgba(100, 116, 139, 0.08), transparent 55%),
+          radial-gradient(circle at 82% 18%, rgba(148, 163, 184, 0.06), transparent 58%),
+          linear-gradient(165deg, #fefefe 0%, #f8fafc 55%, #f1f5f9 100%);
+        color: rgba(28, 25, 23, 0.92);
+        overflow-x: hidden;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        padding: 26px 6vw 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(180deg, rgba(254, 254, 254, 0.96) 0%, rgba(254, 254, 254, 0) 100%);
+        backdrop-filter: blur(10px);
+        z-index: 22;
+      }
+
+      .brand-block {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        flex-wrap: wrap;
+      }
+
+      .crest {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        background:
+          linear-gradient(140deg, rgba(71, 85, 105, 0.88), rgba(100, 116, 139, 0.88));
+        display: grid;
+        place-items: center;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 24px;
+        color: #f8fafc;
+        border: 1px solid rgba(71, 85, 105, 0.3);
+        box-shadow: 0 18px 34px rgba(71, 85, 105, 0.22);
+      }
+
+      .brand-copy {
+        font-family: 'Cormorant Garamond', serif;
+      }
+
+      .brand-copy .eyebrow {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: rgba(71, 85, 105, 0.58);
+      }
+
+      .brand-copy .name {
+        font-size: 32px;
+        color: rgba(30, 41, 59, 0.92);
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        background: rgba(16, 185, 129, 0.1);
+        color: rgba(16, 185, 129, 0.9);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.03em;
+        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      }
+
+      .back-link:hover {
+        transform: translateY(-1px);
+        background: rgba(16, 185, 129, 0.2);
+        border-color: rgba(16, 185, 129, 0.5);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+
+      nav a {
+        color: var(--muted);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        transition: color 0.25s ease;
+      }
+
+      nav a:hover {
+        color: rgba(28, 25, 23, 0.88);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 24px;
+        border-radius: 12px;
+        background: linear-gradient(120deg, rgba(71, 85, 105, 0.92), rgba(30, 41, 59, 0.92));
+        color: #f8fafc;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 12px 28px rgba(71, 85, 105, 0.28);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 16px 34px rgba(71, 85, 105, 0.36);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 56px;
+        padding: 92px 6vw 72px;
+        align-items: center;
+        position: relative;
+      }
+
+      .hero::after {
+        content: '';
+        position: absolute;
+        inset: 12% auto auto 58%;
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(100, 116, 139, 0.15), transparent 70%);
+        z-index: -1;
+      }
+
+      .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .badge {
+        padding: 8px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(71, 85, 105, 0.28);
+        background: rgba(71, 85, 105, 0.08);
+        color: rgba(71, 85, 105, 0.88);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(46px, 5.2vw, 72px);
+        line-height: 1.06;
+        margin-bottom: 22px;
+        color: rgba(30, 41, 59, 0.92);
+      }
+
+      .hero h1 span {
+        color: rgba(100, 116, 139, 0.88);
+      }
+
+      .hero p.lead {
+        font-size: clamp(18px, 2.2vw, 22px);
+        color: rgba(71, 85, 105, 0.82);
+        line-height: 1.74;
+        margin-bottom: 34px;
+      }
+
+      .hero-media {
+        position: relative;
+        border-radius: 28px;
+        padding: 28px;
+        background: var(--surface);
+        box-shadow: 0 30px 60px rgba(71, 85, 105, 0.18);
+        overflow: hidden;
+      }
+
+      .hero-media img {
+        width: 100%;
+        border-radius: 18px;
+        object-fit: cover;
+      }
+
+      .hero-media .stamp {
+        position: absolute;
+        bottom: 28px;
+        right: 32px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: rgba(71, 85, 105, 0.88);
+        color: #f8fafc;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .section {
+        padding: 80px 6vw;
+      }
+
+      .section-header {
+        max-width: 760px;
+        margin: 0 auto 52px;
+        text-align: center;
+      }
+
+      .section-header h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(34px, 4vw, 50px);
+        margin-bottom: 16px;
+        color: rgba(30, 41, 59, 0.92);
+      }
+
+      .section-header p {
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 26px;
+      }
+
+      .feature-card {
+        border-radius: 22px;
+        padding: 26px 28px;
+        background: rgba(255, 255, 255, 0.94);
+        border: 1px solid rgba(71, 85, 105, 0.14);
+        box-shadow: 0 16px 38px rgba(71, 85, 105, 0.14);
+        display: grid;
+        gap: 16px;
+        min-height: 210px;
+      }
+
+      .feature-card h3 {
+        margin: 0;
+        font-size: 20px;
+        color: rgba(30, 41, 59, 0.92);
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: rgba(71, 85, 105, 0.78);
+        line-height: 1.7;
+      }
+
+      .service-grid {
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .service-card {
+        border-radius: 26px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(71, 85, 105, 0.14);
+        box-shadow: 0 24px 40px rgba(71, 85, 105, 0.16);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .service-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+      }
+
+      .service-card-body {
+        padding: 28px;
+      }
+
+      .service-card h3 {
+        margin: 0 0 14px;
+        font-size: 22px;
+        color: rgba(30, 41, 59, 0.92);
+      }
+
+      .service-card p {
+        margin: 0;
+        color: rgba(71, 85, 105, 0.78);
+        line-height: 1.7;
+      }
+
+      footer {
+        padding: 60px 6vw 40px;
+        background: linear-gradient(180deg, rgba(248, 250, 252, 0.92), rgba(241, 245, 249, 0.96));
+        border-top: 1px solid rgba(71, 85, 105, 0.12);
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-section h4 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 20px;
+        margin-bottom: 18px;
+        color: rgba(30, 41, 59, 0.92);
+      }
+
+      .footer-section p,
+      .footer-section a {
+        color: rgba(71, 85, 105, 0.78);
+        line-height: 1.8;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .footer-section a:hover {
+        color: rgba(30, 41, 59, 0.92);
+      }
+
+      .footer-bottom {
+        padding-top: 30px;
+        border-top: 1px solid rgba(71, 85, 105, 0.12);
+        text-align: center;
+        color: rgba(71, 85, 105, 0.68);
+        font-size: 14px;
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand-block">
+        <div class="crest">GF</div>
+        <div class="brand-copy">
+          <div class="eyebrow">Compassionate Care</div>
+          <div class="name">Gift Funeral Services</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="/portfolio#websites" class="back-link">
+        ← Back to Gallery
+      </a>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="hero-badges">
+          <span class="badge">24/7 Support</span>
+          <span class="badge">Family Focused</span>
+        </div>
+        <h1>
+          Honoring Lives with <span>Dignity</span> and Compassion
+        </h1>
+        <p class="lead">
+          At Serene Passages, we guide families through difficult moments with care, respect, and personalized service that celebrates the unique life of your loved one.
+        </p>
+        <a href="#contact" class="btn-primary">
+          Speak with Our Team →
+        </a>
+      </div>
+      <div class="hero-media">
+        <img
+          src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=800&q=80"
+          alt="Peaceful memorial setting"
+        />
+        <div class="stamp">Est. 1987</div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="section-header">
+        <h2>Our Services</h2>
+        <p>
+          We offer comprehensive funeral services tailored to honor your loved one's wishes and provide comfort to your family during this difficult time.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Traditional Services</h3>
+          <p>
+            Full funeral services with viewing, ceremony, and burial arrangements handled with care and attention to detail.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Cremation Services</h3>
+          <p>
+            Dignified cremation options with memorial services and personalized urn selections for your family.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Memorial Planning</h3>
+          <p>
+            Pre-planning services that ease the burden on families and ensure wishes are honored exactly as intended.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Grief Support</h3>
+          <p>
+            Ongoing support groups and counseling resources to help families navigate their journey through loss.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-grid">
+        <div class="service-card">
+          <img
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80"
+            alt="Personalized arrangements"
+          />
+          <div class="service-card-body">
+            <h3>Personalized Arrangements</h3>
+            <p>
+              Every life is unique. We work closely with families to create meaningful ceremonies that reflect the personality, values, and wishes of your loved one.
+            </p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img
+            src="https://images.unsplash.com/photo-1516733968668-dbdce39c4651?w=600&q=80"
+            alt="Family support"
+          />
+          <div class="service-card-body">
+            <h3>Family Support Portal</h3>
+            <p>
+              Our secure online portal keeps families informed throughout the arrangement process with 24/7 access to documents, updates, and next steps.
+            </p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img
+            src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&q=80"
+            alt="Memorial services"
+          />
+          <div class="service-card-body">
+            <h3>Memorial Services</h3>
+            <p>
+              Beautiful venues and compassionate staff create a peaceful atmosphere for celebrating life and finding comfort with family and friends.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about" style="background: rgba(248, 250, 252, 0.5);">
+      <div class="section-header">
+        <h2>Serving Families with Care Since 1987</h2>
+        <p>
+          For over three decades, Serene Passages has been a trusted partner to families during life's most difficult moments. Our experienced team combines traditional values with modern conveniences to provide compassionate, dignified service.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>24/7 Availability</h3>
+          <p>
+            Our caring staff is available around the clock to assist families whenever they need support and guidance.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Transparent Pricing</h3>
+          <p>
+            Clear, upfront pricing with no hidden fees ensures families can make informed decisions with confidence.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Community Focused</h3>
+          <p>
+            Deeply rooted in our community, we understand local traditions and work with all faiths and cultures.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Serene Passages Funeral Home</h4>
+          <p>
+            Providing compassionate funeral services with dignity and respect for over 35 years.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>123 Memorial Drive</p>
+          <p>Johannesburg, 2000</p>
+          <p>Phone: (011) 555-0123</p>
+          <p>Available 24/7</p>
+        </div>
+        <div class="footer-section">
+          <h4>Services</h4>
+          <a href="#services">Traditional Funerals</a>
+          <a href="#services">Cremation Services</a>
+          <a href="#services">Memorial Planning</a>
+          <a href="#services">Grief Support</a>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <a href="#">Pre-Planning Guide</a>
+          <a href="#">Grief Resources</a>
+          <a href="#">FAQs</a>
+          <a href="#">Testimonials</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Serene Passages Funeral Home. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

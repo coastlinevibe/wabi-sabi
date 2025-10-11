@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Wabi-sabi Profit — WOW Funnel</title>
+  <link rel="stylesheet" href="funnel.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: linear-gradient(135deg, #0b1220 0%, #111827 50%, #1e293b 100%); color: #fff; font-family: Inter, sans-serif; }
+    .hero-bg { position:absolute; inset:0; z-index:-1; }
+    .hero-bg video { width:100%; height:100%; object-fit:cover; opacity:.25; }
+    .headline-gradient { background: linear-gradient(to right, #f59e0b, #fbbf24); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .icon-circle { width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.15); margin-bottom:16px; font-size:1.5rem; }
+    .parallax { background-attachment: fixed; background-size: cover; background-position: center; }
+    .reveal { opacity:0; transform:translateY(20px); transition: all .6s ease; }
+    .reveal.show { opacity:1; transform:none; }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      const obs = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
+      }, { threshold:.15 });
+      document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    });
+  </script>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="relative min-h-screen flex items-center justify-center text-center px-6">
+    <div class="hero-bg">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="wasabi.mp4" type="video/mp4"/>
+      </video>
+    </div>
+    <div style="position: relative; z-index: 10;">
+      <p class="kicker text-sm uppercase tracking-wide text-amber-400 mb-3">Profit hides in plain sight</p>
+      <h1 class="text-5xl md:text-6xl font-extrabold leading-tight max-w-4xl mx-auto">
+        Like a <span class="headline-gradient">bonsai</span>, strong businesses take patience and skill to grow.
+      </h1>
+      <h2 class="mt-4 text-3xl md:text-4xl font-bold text-amber-400">Your competitors perfected it. Why not you?</h2>
+      <p class="mt-6 text-xl opacity-90 max-w-2xl mx-auto">You don't need perfection—you need clarity. We reveal hidden value in your existing systems so growth gets easier, not heavier.</p>
+      <div class="mt-8 flex justify-center gap-6 flex-wrap">
+        <a href="quiz.html" class="btn">Take the Profit Quiz</a>
+        <div class="badge">⚡ Limited to 12 businesses per quarter</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN VS CLARITY -->
+  <section class="section bg-black/40">
+    <div class="container grid md:grid-cols-2 gap-8">
+      <div class="card reveal">
+        <h2 class="text-2xl font-bold mb-4">You're working harder than you should — not smarter than you could.</h2>
+        <ul class="space-y-2 opacity-90">
+          <li class="flex items-start"><div class="icon-circle">💼</div> Busy weeks, unclear wins</li>
+          <li class="flex items-start"><div class="icon-circle">⏳</div> Manual processes leaking time & money</li>
+          <li class="flex items-start"><div class="icon-circle">📉</div> Offers that don't scale your effort</li>
+          <li class="flex items-start"><div class="icon-circle">🔄</div> Marketing without compounding systems</li>
+        </ul>
+      </div>
+      <div class="card reveal flex flex-col items-center justify-center text-center">
+        <h3 class="text-xl font-semibold mb-3">The Wabi-sabi Shift</h3>
+        <p class="opacity-90">Imperfection isn't failure—it's a signal. We find the value inside the mess and shape it into leverage.</p>
+        <a href="quiz.html" class="btn mt-6">Start the Profit Quiz</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MECHANISM -->
+  <section class="section parallax" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');">
+    <div class="container text-center">
+      <h2 class="text-3xl font-bold mb-10 reveal">The Wabi-sabi Way</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card reveal">
+          <div class="icon-circle">🌱</div>
+          <h3 class="font-semibold mb-2">Reveal Hidden Value</h3>
+          <p class="small">Find trapped profit in ops, offers, and funnels.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon-circle">⚙️</div>
+          <h3 class="font-semibold mb-2">Shape Growth</h3>
+          <p class="small">Replace grind with systems that compound.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon-circle">💡</div>
+          <h3 class="font-semibold mb-2">Profit with Clarity</h3>
+          <p class="small">Track, learn, and iterate with calm control.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-3xl font-bold mb-8 text-center reveal">Proof That It Works</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="card reveal">
+          <h4 class="font-semibold">📈 Services Firm • +42% profit</h4>
+          <p class="small mt-2">Productized core offer, automated onboarding, retention flows.</p>
+        </div>
+        <div class="card reveal">
+          <h4 class="font-semibold">🛍️ D2C Brand • +31% LTV</h4>
+          <p class="small mt-2">Retention engine + post‑purchase flows + upsells.</p>
+        </div>
+      </div>
+      <div class="text-center mt-8">
+        <div class="badge">🌍 75+ businesses • 98% profit lifts • 3M+ nurtured leads</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ ENTRY -->
+  <section class="section bg-gradient-to-r from-amber-600 to-yellow-500 text-black text-center">
+    <div class="container">
+      <h2 class="text-3xl font-bold mb-4">We can surface your hidden value in under 3 minutes.</h2>
+      <p class="opacity-90 mb-6">Answer a few questions to get your Wabi-sabi Profit Reveal.</p>
+      <a href="quiz.html" class="btn bg-black text-white">Start the Profit Quiz</a>
+      <div class="mt-4 small">⚡ Limited to 12 businesses per quarter</div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section text-center">
+    <div class="container reveal">
+      <h3 class="text-2xl font-bold mb-3">Ready to Profit with Clarity?</h3>
+      <a href="quiz.html" class="btn">Take the Profit Quiz</a>
+      <p class="small mt-3">Prefer to chat first? <a href="book.html" class="underline">Book a Growth Session</a></p>
+    </div>
+  </section>
+
+</body>
+</html>

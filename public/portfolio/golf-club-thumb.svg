@@ -1,0 +1,53 @@
+<svg width="640" height="400" viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="400" rx="28" fill="url(#paint0_radial_7_1)"/>
+  <defs>
+    <radialGradient id="paint0_radial_7_1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 90) rotate(20) scale(620 420)">
+      <stop offset="0" stop-color="#22C55E" stop-opacity="0.88"/>
+      <stop offset="0.35" stop-color="#16A34A" stop-opacity="0.72"/>
+      <stop offset="0.64" stop-color="#0F172A" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#030712"/>
+    </radialGradient>
+  </defs>
+  <g opacity="0.5" filter="url(#filter0_f_7_1)">
+    <ellipse cx="520" cy="56" rx="220" ry="120" fill="#FACC15" fill-opacity="0.32"/>
+  </g>
+  <g opacity="0.32" filter="url(#filter1_f_7_1)">
+    <ellipse cx="120" cy="320" rx="220" ry="122" fill="#0EA5E9" fill-opacity="0.3"/>
+  </g>
+  <path d="M140 132C140 119.85 149.85 110 162 110H482C494.15 110 504 119.85 504 132V158C504 170.15 494.15 180 482 180H162C149.85 180 140 170.15 140 158V132Z" fill="rgba(4,13,8,0.55)" stroke="rgba(255,255,255,0.12)" stroke-width="1.4"/>
+  <rect x="178" y="124" width="92" height="18" rx="9" fill="#22C55E"/>
+  <rect x="284" y="124" width="82" height="18" rx="9" fill="#FACC15"/>
+  <rect x="386" y="124" width="94" height="18" rx="9" fill="rgba(255,255,255,0.22)"/>
+  <g filter="url(#filter2_f_7_1)">
+    <ellipse cx="352" cy="286" rx="180" ry="102" fill="#22C55E" fill-opacity="0.38"/>
+  </g>
+  <path d="M210 210C210 197.297 220.297 187 233 187H490C502.703 187 513 197.297 513 210C513 222.703 502.703 233 490 233H233C220.297 233 210 222.703 210 210Z" fill="rgba(4,13,8,0.58)" stroke="rgba(255,255,255,0.1)" stroke-width="1.4"/>
+  <rect x="230" y="198" width="72" height="24" rx="12" fill="#22C55E"/>
+  <rect x="314" y="198" width="72" height="24" rx="12" fill="#FACC15"/>
+  <rect x="398" y="198" width="76" height="24" rx="12" fill="rgba(255,255,255,0.2)"/>
+  <path d="M150 264C150 247.431 163.431 234 180 234H470C486.569 234 500 247.431 500 264C500 280.569 486.569 294 470 294H180C163.431 294 150 280.569 150 264Z" fill="rgba(4,13,8,0.55)" stroke="rgba(255,255,255,0.08)" stroke-width="1.4"/>
+  <rect x="190" y="252" width="116" height="14" rx="7" fill="rgba(255,255,255,0.26)"/>
+  <rect x="190" y="276" width="92" height="8" rx="4" fill="rgba(255,255,255,0.18)"/>
+  <rect x="320" y="252" width="102" height="14" rx="7" fill="#FACC15"/>
+  <rect x="320" y="276" width="124" height="8" rx="4" fill="rgba(255,255,255,0.22)"/>
+  <path d="M498 312C498 296.536 510.536 284 526 284C541.464 284 554 296.536 554 312C554 327.464 541.464 340 526 340C510.536 340 498 327.464 498 312Z" fill="rgba(4,13,8,0.62)" stroke="rgba(255,255,255,0.18)" stroke-width="1.6"/>
+  <path d="M526 296L538 328H514L526 296Z" fill="#22C55E"/>
+  <path d="M500 326C500 321.029 504.029 317 509 317H543C547.971 317 552 321.029 552 326C552 330.971 547.971 335 543 335H509C504.029 335 500 330.971 500 326Z" stroke="#F8FAFC" stroke-opacity="0.35"/>
+  <defs>
+    <filter id="filter0_f_7_1" x="240" y="-124" width="560" height="360" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="30" result="effect1_foregroundBlur_7_1"/>
+    </filter>
+    <filter id="filter1_f_7_1" x="-180" y="100" width="600" height="440" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="35" result="effect1_foregroundBlur_7_1"/>
+    </filter>
+    <filter id="filter2_f_7_1" x="112" y="108" width="480" height="356" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="30" result="effect1_foregroundBlur_7_1"/>
+    </filter>
+  </defs>
+</svg>

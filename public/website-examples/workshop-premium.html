@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TorqueCraft Workshop | Industrial Precision & Power</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --steel: #2d3748;
+        --iron: #4a5568;
+        --copper: #ed8936;
+        --chrome: #e2e8f0;
+        --oil: #1a202c;
+        --spark: #ffd700;
+        --rust: #e53e3e;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Rajdhani', sans-serif;
+        background: 
+          radial-gradient(circle at 20% 20%, rgba(237, 137, 54, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+          linear-gradient(135deg, var(--oil) 0%, var(--steel) 100%);
+        color: var(--chrome);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      /* Industrial Header with Sliding Panel */
+      .industrial-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(26, 32, 44, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 2px solid var(--copper);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      }
+
+      .header-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .workshop-logo {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .logo-gear {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--copper), var(--spark));
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: var(--oil);
+        animation: rotate-gear 8s linear infinite;
+        box-shadow: 0 8px 25px rgba(237, 137, 54, 0.3);
+      }
+
+      @keyframes rotate-gear {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      .logo-text {
+        font-family: 'Orbitron', monospace;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--chrome);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .industrial-nav {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .nav-item {
+        color: var(--chrome);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-item::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--copper);
+        transition: width 0.3s ease;
+      }
+
+      .nav-item:hover::after {
+        width: 100%;
+      }
+
+      .back-btn {
+        padding: 12px 24px;
+        background: linear-gradient(135deg, var(--copper), var(--rust));
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(237, 137, 54, 0.3);
+      }
+
+      .back-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(237, 137, 54, 0.5);
+      }
+
+      /* Hero with Mechanical Animation */
+      .mechanical-hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        padding-top: 100px;
+      }
+
+      .gear-background {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0.1;
+        z-index: 1;
+      }
+
+      .gear {
+        position: absolute;
+        border: 4px solid var(--copper);
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(237, 137, 54, 0.1), transparent);
+      }
+
+      .gear-1 {
+        width: 200px;
+        height: 200px;
+        top: 20%;
+        left: 10%;
+        animation: rotate-gear 10s linear infinite;
+      }
+
+      .gear-2 {
+        width: 150px;
+        height: 150px;
+        top: 60%;
+        right: 15%;
+        animation: rotate-gear 8s linear infinite reverse;
+      }
+
+      .gear-3 {
+        width: 100px;
+        height: 100px;
+        bottom: 20%;
+        left: 20%;
+        animation: rotate-gear 6s linear infinite;
+      }
+
+      .hero-content {
+        text-align: center;
+        z-index: 2;
+        max-width: 900px;
+        padding: 0 40px;
+      }
+
+      .power-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 24px;
+        background: rgba(26, 32, 44, 0.8);
+        border: 2px solid var(--copper);
+        border-radius: 50px;
+        color: var(--spark);
+        font-weight: 600;
+        margin-bottom: 32px;
+        backdrop-filter: blur(10px);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .power-badge::before {
+        content: '⚡';
+        animation: spark 2s ease-in-out infinite;
+      }
+
+      @keyframes spark {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+      }
+
+      .hero h1 {
+        font-family: 'Orbitron', monospace;
+        font-size: clamp(48px, 8vw, 96px);
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 24px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        background: linear-gradient(135deg, var(--chrome), var(--copper), var(--spark));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 0 30px rgba(237, 137, 54, 0.3);
+      }
+
+      .hero p {
+        font-size: 24px;
+        color: rgba(226, 232, 240, 0.9);
+        margin-bottom: 40px;
+        line-height: 1.7;
+        font-weight: 500;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        padding: 18px 36px;
+        background: linear-gradient(135deg, var(--copper), var(--spark));
+        color: var(--oil);
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 30px rgba(237, 137, 54, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(237, 137, 54, 0.6);
+      }
+
+      .btn-secondary {
+        padding: 18px 36px;
+        background: transparent;
+        color: var(--chrome);
+        text-decoration: none;
+        border-radius: 8px;
+        border: 2px solid var(--chrome);
+        font-weight: 700;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background: var(--chrome);
+        color: var(--oil);
+        transform: translateY(-2px);
+      }
+
+      /* Tool Carousel Section */
+      .tool-showcase {
+        padding: 120px 5vw;
+        background: rgba(26, 32, 44, 0.3);
+      }
+
+      .showcase-header {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .showcase-header h2 {
+        font-family: 'Orbitron', monospace;
+        font-size: clamp(36px, 5vw, 64px);
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: var(--copper);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .showcase-header p {
+        font-size: 20px;
+        color: rgba(226, 232, 240, 0.8);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .tool-carousel {
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        background: rgba(26, 32, 44, 0.8);
+        border: 2px solid var(--copper);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .carousel-track {
+        display: flex;
+        animation: slide-tools 20s linear infinite;
+        gap: 40px;
+        padding: 40px;
+      }
+
+      @keyframes slide-tools {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+
+      .tool-card {
+        min-width: 300px;
+        background: rgba(45, 55, 72, 0.8);
+        border-radius: 15px;
+        padding: 30px;
+        border: 1px solid var(--iron);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .tool-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--copper), var(--spark));
+      }
+
+      .tool-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(237, 137, 54, 0.2);
+      }
+
+      .tool-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--copper), var(--spark));
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        color: var(--oil);
+        margin-bottom: 20px;
+        animation: tool-pulse 3s ease-in-out infinite;
+      }
+
+      @keyframes tool-pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+
+      .tool-name {
+        font-family: 'Orbitron', monospace;
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: var(--chrome);
+        text-transform: uppercase;
+      }
+
+      .tool-desc {
+        color: rgba(226, 232, 240, 0.8);
+        line-height: 1.6;
+      }
+
+      /* Services Grid */
+      .services-section {
+        padding: 120px 5vw;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+      }
+
+      .service-card {
+        background: rgba(26, 32, 44, 0.8);
+        border-radius: 15px;
+        padding: 40px;
+        border: 2px solid var(--iron);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(90deg, var(--copper), var(--rust), var(--spark));
+      }
+
+      .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(237, 137, 54, 0.2);
+        border-color: var(--copper);
+      }
+
+      .service-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--copper), var(--spark));
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        color: var(--oil);
+        margin-bottom: 24px;
+        animation: service-rotate 6s ease-in-out infinite;
+      }
+
+      @keyframes service-rotate {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(5deg); }
+      }
+
+      .service-title {
+        font-family: 'Orbitron', monospace;
+        font-size: 26px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: var(--chrome);
+        text-transform: uppercase;
+      }
+
+      .service-desc {
+        color: rgba(226, 232, 240, 0.8);
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+
+      .service-features {
+        list-style: none;
+      }
+
+      .service-features li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 0;
+        color: rgba(226, 232, 240, 0.7);
+      }
+
+      .service-features li::before {
+        content: '⚙️';
+        font-size: 16px;
+      }
+
+      /* Contact Section */
+      .contact-section {
+        padding: 120px 5vw;
+        text-align: center;
+        background: 
+          radial-gradient(circle at 50% 50%, rgba(237, 137, 54, 0.1) 0%, transparent 70%),
+          rgba(26, 32, 44, 0.5);
+      }
+
+      .contact-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .contact-section h2 {
+        font-family: 'Orbitron', monospace;
+        font-size: clamp(36px, 5vw, 64px);
+        font-weight: 600;
+        margin-bottom: 24px;
+        color: var(--copper);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .contact-section p {
+        font-size: 20px;
+        color: rgba(226, 232, 240, 0.9);
+        margin-bottom: 40px;
+        line-height: 1.7;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .header-content {
+          flex-direction: column;
+          gap: 20px;
+        }
+        
+        .industrial-nav {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-actions {
+          flex-direction: column;
+          align-items: center;
+        }
+        
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .carousel-track {
+          padding: 20px;
+        }
+        
+        .tool-card {
+          min-width: 250px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Industrial Header -->
+    <header class="industrial-header">
+      <div class="header-content">
+        <div class="workshop-logo">
+          <div class="logo-gear">⚙️</div>
+          <div class="logo-text">TorqueCraft</div>
+        </div>
+        
+        <nav class="industrial-nav">
+          <a href="#services" class="nav-item">Services</a>
+          <a href="#tools" class="nav-item">Equipment</a>
+          <a href="#contact" class="nav-item">Contact</a>
+          <a href="/portfolio#website-gallery" class="back-btn">← Portfolio</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mechanical Hero -->
+    <section class="mechanical-hero">
+      <div class="gear-background">
+        <div class="gear gear-1"></div>
+        <div class="gear gear-2"></div>
+        <div class="gear gear-3"></div>
+      </div>
+      
+      <div class="hero-content">
+        <div class="power-badge">
+          Industrial Precision & Power
+        </div>
+        
+        <h1>Forge. Build. Perfect.</h1>
+        
+        <p>
+          Where raw metal meets masterful craftsmanship. TorqueCraft Workshop delivers precision automotive solutions and custom fabrication with industrial-grade excellence.
+        </p>
+        
+        <div class="hero-actions">
+          <a href="#services" class="btn-primary">View Services</a>
+          <a href="#contact" class="btn-secondary">Get Quote</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tool Showcase -->
+    <section class="tool-showcase" id="tools">
+      <div class="showcase-header">
+        <h2>Industrial Arsenal</h2>
+        <p>State-of-the-art equipment and precision tools for every automotive and fabrication challenge</p>
+      </div>
+      
+      <div class="tool-carousel">
+        <div class="carousel-track">
+          <div class="tool-card">
+            <div class="tool-icon">🔧</div>
+            <div class="tool-name">Precision Lathe</div>
+            <div class="tool-desc">CNC-controlled precision turning for custom parts and engine components</div>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">⚡</div>
+            <div class="tool-name">TIG Welder</div>
+            <div class="tool-desc">Professional-grade welding for aluminum, steel, and exotic alloys</div>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">🔩</div>
+            <div class="tool-name">Hydraulic Press</div>
+            <div class="tool-desc">50-ton capacity for bearing installation and custom forming</div>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">⚙️</div>
+            <div class="tool-name">Engine Hoist</div>
+            <div class="tool-desc">Heavy-duty lifting system for complete engine rebuilds</div>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">🔨</div>
+            <div class="tool-name">Plasma Cutter</div>
+            <div class="tool-desc">High-precision cutting for steel fabrication projects</div>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">🔧</div>
+            <div class="tool-name">Precision Lathe</div>
+            <div class="tool-desc">CNC-controlled precision turning for custom parts and engine components</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section" id="services">
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🚗</div>
+          <div class="service-title">Engine Rebuilds</div>
+          <div class="service-desc">
+            Complete engine overhauls with precision machining, performance upgrades, and reliability testing.
+          </div>
+          <ul class="service-features">
+            <li>Complete teardown & inspection</li>
+            <li>Precision boring & honing</li>
+            <li>Performance camshaft installation</li>
+            <li>Dyno testing & tuning</li>
+          </ul>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">🔥</div>
+          <div class="service-title">Custom Fabrication</div>
+          <div class="service-desc">
+            Bespoke metalwork solutions from roll cages to exhaust systems, crafted to exact specifications.
+          </div>
+          <ul class="service-features">
+            <li>Roll cage construction</li>
+            <li>Custom exhaust systems</li>
+            <li>Suspension modifications</li>
+            <li>Prototype development</li>
+          </ul>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">⚡</div>
+          <div class="service-title">Diagnostic Services</div>
+          <div class="service-desc">
+            Advanced computer diagnostics and electrical troubleshooting for modern vehicle systems.
+          </div>
+          <ul class="service-features">
+            <li>OBD-II scanning</li>
+            <li>Electrical system repair</li>
+            <li>ECU programming</li>
+            <li>Performance monitoring</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="contact-content">
+        <h2>Ready to Build?</h2>
+        <p>
+          Bring your automotive vision to life with TorqueCraft's industrial precision and craftsmanship. 
+          Contact us for a consultation and detailed project quote.
+        </p>
+        <div class="hero-actions">
+          <a href="mailto:workshop@torquecraft.co.za" class="btn-primary">Get Quote</a>
+          <a href="tel:+27123456789" class="btn-secondary">Call Workshop</a>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Smooth scrolling for navigation
+      document.querySelectorAll('.nav-item').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      // Interactive service cards
+      document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.background = 'rgba(237, 137, 54, 0.1)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          this.style.background = 'rgba(26, 32, 44, 0.8)';
+        });
+      });
+
+      // Tool carousel pause on hover
+      const carousel = document.querySelector('.carousel-track');
+      carousel.addEventListener('mouseenter', function() {
+        this.style.animationPlayState = 'paused';
+      });
+      
+      carousel.addEventListener('mouseleave', function() {
+        this.style.animationPlayState = 'running';
+      });
+    </script>
+  </body>
+</html>

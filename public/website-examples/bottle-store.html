@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cellar & Co | Premium Wines • Craft Spirits • Local Brews</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: only dark;
+        --bg: #0f0a0d;
+        --burgundy: #9f1239;
+        --gold: #f59e0b;
+        --sage: #059669;
+        --muted: rgba(209, 213, 219, 0.76);
+        --surface: rgba(23, 18, 21, 0.84);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: 'Lato', sans-serif;
+        background:
+          radial-gradient(circle at 14% 10%, rgba(159, 18, 57, 0.18), transparent 55%),
+          radial-gradient(circle at 80% 18%, rgba(245, 158, 11, 0.14), transparent 58%),
+          linear-gradient(165deg, #0a0608 0%, #120d10 55%, #0f0a0d 100%);
+        color: rgba(243, 244, 246, 0.94);
+        overflow-x: hidden;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        padding: 26px 6vw 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(180deg, rgba(10, 6, 8, 0.94) 0%, rgba(10, 6, 8, 0) 100%);
+        backdrop-filter: blur(12px);
+        z-index: 22;
+      }
+
+      .brand-block {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        flex-wrap: wrap;
+      }
+
+      .crest {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 30% 30%, rgba(159, 18, 57, 0.92), rgba(127, 29, 29, 0.92));
+        display: grid;
+        place-items: center;
+        font-family: 'Cinzel', serif;
+        font-size: 24px;
+        color: #fef3c7;
+        border: 1px solid rgba(159, 18, 57, 0.4);
+        box-shadow: 0 18px 34px rgba(159, 18, 57, 0.32);
+      }
+
+      .brand-copy {
+        font-family: 'Cinzel', serif;
+        letter-spacing: 0.08em;
+      }
+
+      .brand-copy .eyebrow {
+        font-size: 12px;
+        text-transform: uppercase;
+        color: rgba(209, 213, 219, 0.54);
+      }
+
+      .brand-copy .name {
+        font-size: 32px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(209, 213, 219, 0.2);
+        background: rgba(28, 22, 25, 0.58);
+        color: rgba(229, 231, 235, 0.84);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.03em;
+        transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      }
+
+      .back-link:hover {
+        transform: translateY(-1px);
+        background: rgba(35, 28, 31, 0.72);
+        border-color: rgba(159, 18, 57, 0.36);
+        color: rgba(248, 250, 252, 0.95);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+
+      nav a {
+        color: var(--muted);
+        font-size: 14px;
+        text-decoration: none;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        transition: color 0.25s ease;
+      }
+
+      nav a:hover {
+        color: rgba(248, 250, 252, 0.96);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 24px;
+        border-radius: 14px;
+        background: linear-gradient(120deg, rgba(254, 243, 199, 0.94), rgba(245, 158, 11, 0.92));
+        color: #431407;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 16px 34px rgba(245, 158, 11, 0.28);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 42px rgba(245, 158, 11, 0.36);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 56px;
+        padding: 94px 6vw 72px;
+        align-items: center;
+        position: relative;
+      }
+
+      .hero::after {
+        content: '';
+        position: absolute;
+        inset: 10% auto auto 58%;
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(159, 18, 57, 0.22), transparent 68%);
+        z-index: -1;
+      }
+
+      .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .badge {
+        padding: 8px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(159, 18, 57, 0.38);
+        background: rgba(159, 18, 57, 0.18);
+        color: rgba(254, 243, 199, 0.88);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        font-family: 'Cinzel', serif;
+        font-size: clamp(46px, 5.2vw, 72px);
+        line-height: 1.06;
+        margin-bottom: 22px;
+      }
+
+      .hero h1 span {
+        color: var(--gold);
+      }
+
+      .hero p.lead {
+        font-size: clamp(18px, 2.1vw, 22px);
+        color: rgba(229, 231, 235, 0.86);
+        line-height: 1.74;
+        margin-bottom: 34px;
+      }
+
+      .hero-media {
+        position: relative;
+        border-radius: 28px;
+        padding: 28px;
+        background: var(--surface);
+        box-shadow: 0 30px 60px rgba(10, 6, 8, 0.56);
+        overflow: hidden;
+      }
+
+      .hero-media img {
+        width: 100%;
+        border-radius: 18px;
+        object-fit: cover;
+      }
+
+      .hero-media .stamp {
+        position: absolute;
+        bottom: 28px;
+        right: 32px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: rgba(5, 150, 105, 0.82);
+        color: #fef3c7;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .section {
+        padding: 80px 6vw;
+      }
+
+      .section-header {
+        max-width: 760px;
+        margin: 0 auto 52px;
+        text-align: center;
+      }
+
+      .section-header h2 {
+        font-family: 'Cinzel', serif;
+        font-size: clamp(34px, 4vw, 50px);
+        margin-bottom: 16px;
+      }
+
+      .section-header p {
+        color: rgba(209, 213, 219, 0.76);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 28px;
+      }
+
+      .feature-card {
+        border-radius: 22px;
+        padding: 26px 28px;
+        background: rgba(23, 18, 21, 0.72);
+        border: 1px solid rgba(159, 18, 57, 0.18);
+        box-shadow: 0 20px 42px rgba(10, 6, 8, 0.44);
+        display: grid;
+        gap: 16px;
+        min-height: 220px;
+      }
+
+      .feature-card h3 {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: rgba(209, 213, 219, 0.8);
+        line-height: 1.72;
+      }
+
+      .product-grid {
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .product-card {
+        border-radius: 26px;
+        overflow: hidden;
+        background: rgba(18, 14, 16, 0.78);
+        border: 1px solid rgba(245, 158, 11, 0.16);
+        box-shadow: 0 26px 48px rgba(10, 6, 8, 0.48);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .product-card .content {
+        padding: 26px 28px 30px;
+        display: grid;
+        gap: 14px;
+      }
+
+      .product-card h3 {
+        font-family: 'Cinzel', serif;
+        font-size: 22px;
+        margin: 0;
+      }
+
+      .product-card ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 12px;
+        color: rgba(209, 213, 219, 0.82);
+        font-size: 15px;
+      }
+
+      .numbers-strip {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+        margin-top: 48px;
+      }
+
+      .number-tile {
+        padding: 24px;
+        border-radius: 20px;
+        background: rgba(18, 14, 16, 0.68);
+        border: 1px solid rgba(159, 18, 57, 0.2);
+        text-align: center;
+        box-shadow: 0 16px 32px rgba(10, 6, 8, 0.42);
+      }
+
+      .number-tile .value {
+        font-family: 'Cinzel', serif;
+        font-size: 30px;
+        color: rgba(245, 158, 11, 0.9);
+        margin-bottom: 8px;
+      }
+
+      .cta {
+        padding: 90px 6vw 108px;
+        text-align: center;
+        background: linear-gradient(125deg, rgba(159, 18, 57, 0.16), rgba(245, 158, 11, 0.12));
+        border-top: 1px solid rgba(209, 213, 219, 0.08);
+      }
+
+      .cta h2 {
+        font-family: 'Cinzel', serif;
+        font-size: clamp(36px, 4.2vw, 56px);
+        margin-bottom: 18px;
+      }
+
+      .cta p {
+        color: rgba(209, 213, 219, 0.86);
+        font-size: 18px;
+        line-height: 1.78;
+        max-width: 640px;
+        margin: 0 auto 28px;
+      }
+
+      footer {
+        padding: 32px 6vw 48px;
+        background: rgba(8, 5, 6, 0.94);
+        border-top: 1px solid rgba(209, 213, 219, 0.06);
+      }
+
+      footer .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 28px;
+      }
+
+      footer h4 {
+        margin-bottom: 12px;
+        letter-spacing: 0.08em;
+        font-size: 14px;
+        color: rgba(209, 213, 219, 0.74);
+        text-transform: uppercase;
+      }
+
+      footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+        color: rgba(199, 203, 209, 0.72);
+        font-size: 14px;
+      }
+
+      @media (max-width: 720px) {
+        header {
+          padding-top: 22px;
+        }
+
+        nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero {
+          padding-top: 82px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand-block">
+        <a class="back-link" href="/portfolio#website-gallery">← Back to main site</a>
+        <div class="crest">C&C</div>
+        <div class="brand-copy">
+          <div class="eyebrow">Cellar & co</div>
+          <div class="name">Bottle Store</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#story">About</a>
+        <a href="#range">Range</a>
+        <a href="#tastings">Tastings</a>
+        <a href="#delivery">Delivery</a>
+        <a href="#contact" class="btn-primary">Order online</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="story">
+      <div>
+        <div class="hero-badges">
+          <div class="badge">Curated wines</div>
+          <div class="badge">Craft spirits</div>
+          <div class="badge">Local brews</div>
+        </div>
+        <h1>
+          Discover bottles worth
+          <span>celebrating.</span>
+        </h1>
+        <p class="lead">
+          Cellar & Co stocks premium wines, artisan spirits, and craft beers from South African estates and global producers. Browse
+          online, book tasting sessions, or schedule same-day delivery across major metros.
+        </p>
+        <a href="#range" class="btn-primary">Explore the cellar</a>
+      </div>
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1400&q=80" alt="Bottle store" />
+        <div class="stamp">Curated Selection</div>
+      </div>
+    </section>
+
+    <section class="section" id="range">
+      <div class="section-header">
+        <h2>Handpicked for every occasion</h2>
+        <p>
+          From everyday sippers to rare vintages, our team sources bottles that balance quality, value, and story. Filter by region,
+          varietal, or occasion to find your next favourite.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Wine cellar</h3>
+          <p>Stellenbosch, Franschhoek, and international estates with tasting notes and pairing suggestions.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Craft spirits</h3>
+          <p>Local gins, single malts, and small-batch rums with distillery stories and cocktail recipes.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Beer & cider</h3>
+          <p>Rotating taps from microbreweries, seasonal ciders, and imported favourites.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Gift hampers</h3>
+          <p>Curated sets for corporate gifting, celebrations, and seasonal occasions with custom branding.</p>
+        </div>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card">
+          <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1200&q=80" alt="Wine" />
+          <div class="content">
+            <h3>Estate Collection</h3>
+            <ul>
+              <li>Stellenbosch Cabernet · Franschhoek Chardonnay</li>
+              <li>Vintage notes and cellar recommendations</li>
+              <li>Mixed cases with 10% discount</li>
+              <li>Complimentary tasting voucher included</li>
+            </ul>
+          </div>
+        </article>
+        <article class="product-card">
+          <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80" alt="Spirits" />
+          <div class="content">
+            <h3>Artisan Spirits</h3>
+            <ul>
+              <li>Fynbos gin · Karoo single malt · Cape rum</li>
+              <li>Distillery profiles and tasting flights</li>
+              <li>Cocktail recipe cards with each bottle</li>
+              <li>Exclusive releases for members</li>
+            </ul>
+          </div>
+        </article>
+        <article class="product-card">
+          <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=1200&q=80" alt="Beer" />
+          <div class="content">
+            <h3>Craft Beer Crates</h3>
+            <ul>
+              <li>12-pack mixed brewery selection</li>
+              <li>IPAs, lagers, stouts, and seasonal specials</li>
+              <li>Brewery stories and tasting notes</li>
+              <li>Swap-out options for preferences</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <div class="numbers-strip">
+        <div class="number-tile">
+          <div class="value">500+</div>
+          <div>Bottles in stock across wine, spirits, and beer categories.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">2 hours</div>
+          <div>Same-day delivery window for metro orders placed before 14:00.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">Weekly</div>
+          <div>Tasting events with winemakers, distillers, and sommeliers.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tastings">
+      <div class="section-header">
+        <h2>Tasting sessions & events</h2>
+        <p>
+          Join us for guided tastings, launch events, and seasonal pairings. Book a private session for corporate groups or
+          celebrations.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Friday flights</h3>
+          <p>Weekly wine and spirit tastings with expert hosts, cheese pairings, and exclusive discounts.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Private bookings</h3>
+          <p>Reserve the tasting lounge for team events, birthdays, or product launches with custom menus.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Seasonal showcases</h3>
+          <p>Quarterly events featuring new releases, estate visits, and meet-the-maker sessions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Ready to stock your cellar?</h2>
+      <p>
+        Browse online, place your order, and choose pickup or delivery. Our team confirms availability and delivery slots within one
+        hour.
+      </p>
+      <a href="mailto:orders@cellarandco.co.za" class="btn-primary">Start shopping</a>
+    </section>
+
+    <footer>
+      <div class="grid">
+        <div>
+          <h4>visit</h4>
+          <ul>
+            <li>Cellar & Co Bottle Store</li>
+            <li>Open Monday – Saturday</li>
+            <li>Tasting lounge available</li>
+          </ul>
+        </div>
+        <div>
+          <h4>orders</h4>
+          <ul>
+            <li>orders@cellarandco.co.za</li>
+            <li>+27 21 555 7700</li>
+            <li>WhatsApp · Cellar & Co</li>
+          </ul>
+        </div>
+        <div>
+          <h4>follow</h4>
+          <ul>
+            <li>Instagram · @cellarandco</li>
+            <li>Facebook · Cellar & Co SA</li>
+            <li>Newsletter · Weekly picks</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

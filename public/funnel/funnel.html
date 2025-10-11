@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Wabi-sabi Profit — WOW Funnel</title>
+  <link rel="stylesheet" href="funnel.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: linear-gradient(135deg, #0b1220 0%, #111827 50%, #1e293b 100%); color: #fff; font-family: Inter, sans-serif; }
+    .hero-bg { position:absolute; inset:0; z-index:1; }
+    .hero-bg video { width:100%; height:100%; object-fit:cover; opacity:.25; position:absolute; top:0; left:0; }
+    .headline-gradient { background: linear-gradient(to right, #f59e0b, #fbbf24); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .icon-circle { width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.15); margin-bottom:16px; font-size:1.5rem; }
+    .parallax { background-attachment: fixed; background-size: cover; background-position: center; }
+    .reveal { opacity:0; transform:translateY(20px); transition: all .6s ease; }
+    .reveal.show { opacity:1; transform:none; }
+    
+    .tooltip-container {
+      /* --background: #22d3ee; */
+      position: relative;
+      background: var(--background);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 17px;
+      padding: 0.7em 1.8em;
+      margin-bottom: 0;
+      display: inline-block;
+      width: 180px; /* match tooltip width */
+      height: 110px; /* reserve space so neighbors don't overlap */
+    }
+
+    .bg {
+      position: absolute;
+      left: -30px;
+      top: 0px;
+      z-index: -2;
+    }
+
+    .tooltip {
+      position: absolute;
+      top: 20px; /* moved further down */
+      left: 50%;
+      width: 180px; /* smaller button */
+      height: 70px; /* smaller button */
+      transform: translateX(-50%);
+      padding: 0.5em 1em;
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+      transition: all 0.3s;
+      background: url("data:image/jpeg;base64,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")
+      ;
+      border-radius: 30px;
+      background-size: cover;
+      box-shadow: inset 0px 8px 9px #182218, 5px 8px 0px #314328;
+      filter: drop-shadow(60px 60px 6px #18221888);
+      border: 10px solid #3f5641ee;
+      z-index: 0;
+      animation: float 2s infinite;
+    }
+
+    .tooltip::before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      bottom: -22px;
+      left: 50%;
+      transform: translate(-50%) rotate(45deg);
+      background: #e9f6f4;
+      border: 10px solid #3f5641ee;
+      border-left: none;
+      border-top: none;
+      border-radius: 5px;
+      box-shadow: 10px 4px 0px #314328;
+    }
+
+    /* Tooltip is always visible now; no hover state needed */
+
+    .leaf1 {
+      top: -30px;
+      left: -60px;
+    }
+    .leaf2 {
+      top: -30px;
+      left: -60px;
+    }
+    .leaf3 {
+      top: -30px;
+      left: -60px;
+    }
+    .leaf4 {
+      top: -30px;
+      left: -60px;
+    }
+    /* Hover: spread the leaves from the top-left corner */
+    .tooltip-container:hover .leaf1 {
+      rotate: z 20deg;
+    }
+    .tooltip-container:hover .leaf3 {
+      rotate: z -20deg;
+    }
+    .tooltip-container:hover .leaf4 {
+      rotate: z 40deg;
+    }
+
+    .leaf {
+      width: 60px;
+      height: 40px;
+      position: absolute;
+      transform-origin: 100% 100%;
+      transition: rotate 0.5s 0.2s linear;
+      border-radius: 0 100%;
+      background-image: linear-gradient(to right, #b4c7b3, #314328);
+    }
+    .icon {
+      transform: translateX(-50%);
+      filter: drop-shadow(60px 60px 6px #18221888);
+    }
+    .text {
+      z-index: 2;
+      font-size: 22px;
+      color: #3f5641;
+      font-weight: bolder;
+      margin: auto;
+      width: fit-content;
+      padding-top: 25px;
+      transform: translateY(-18px);
+      filter: drop-shadow(0px 0px 3px #fff);
+    }
+    @keyframes float {
+      0% {
+        top: 20px;
+      }
+      50% {
+        top: 15px;
+      }
+      100% {
+        top: 20px;
+      }
+    }
+
+    /* Bonsai CTA (gold variant) */
+    .bonsai-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      overflow: hidden;
+      /* Mossy inner: layered organic patches + deep green-brown base */
+      background:
+        radial-gradient(140px 100px at 18% 32%, rgba(105,130,85,0.22), transparent 60%),
+        radial-gradient(120px 70px at 72% 42%, rgba(70,95,60,0.22), transparent 62%),
+        radial-gradient(160px 110px at 42% 78%, rgba(70,45,25,0.30), transparent 62%),
+        radial-gradient(200px 140px at 60% 18%, rgba(50,35,20,0.22), transparent 65%),
+        linear-gradient(145deg, #221a12, #2d261c);
+      border: 2px solid rgba(170, 150, 60, 0.7);
+      /* Softer, diffused golden warmth + micro bevel */
+      box-shadow:
+        0 6px 16px rgba(0,0,0,0.5), /* base lift */
+        0 0 16px rgba(255, 209, 102, 0.25), /* warm glow */
+        inset 0 1px 1px rgba(255,255,255,0.12), /* top highlight */
+        inset 0 -2px 3px rgba(0,0,0,0.35); /* bottom depth */
+      transition: all 0.3s ease-in-out;
+    }
+    .bonsai-cta .label {
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(90deg, #ffd700, #ffb400);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .bonsai-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit; /* ensure overlays follow 12px corners */
+      /* Rough, mossy crosshatch */
+      background:
+        /* subtle soil tint */
+        linear-gradient(180deg, rgba(56,44,28,0.12), rgba(26,22,16,0.12)),
+        /* faint moss patches */
+        radial-gradient(120px 80px at 20% 20%, rgba(70,95,60,0.10), transparent 60%),
+        radial-gradient(160px 100px at 80% 70%, rgba(55,38,24,0.10), transparent 60%),
+        /* fine noise grain */
+        repeating-radial-gradient(circle at 30% 40%, rgba(255,255,255,0.02) 0 0.5px, transparent 0.5px 1px),
+        repeating-radial-gradient(circle at 70% 60%, rgba(0,0,0,0.02) 0 0.5px, transparent 0.5px 1px),
+        /* crosshatch */
+        repeating-linear-gradient(45deg, rgba(0,0,0,0.08) 0 2px, rgba(0,0,0,0) 2px 4px),
+        repeating-linear-gradient(-45deg, rgba(255,255,255,0.03) 0 3px, rgba(255,255,255,0) 3px 6px);
+      opacity: 0.25;
+      pointer-events: none;
+    }
+    .bonsai-cta:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow:
+        0 12px 24px rgba(0, 0, 0, 0.6),
+        0 0 22px rgba(255, 209, 102, 0.28),
+        inset 0 1px 1px rgba(255,255,255,0.14),
+        inset 0 -2px 4px rgba(0,0,0,0.38);
+      background:
+        radial-gradient(140px 100px at 22% 30%, rgba(120,150,100,0.24), transparent 60%),
+        radial-gradient(120px 70px at 74% 44%, rgba(85,110,75,0.24), transparent 62%),
+        radial-gradient(160px 110px at 44% 76%, rgba(85,60,32,0.30), transparent 62%),
+        radial-gradient(200px 140px at 62% 20%, rgba(56,40,24,0.24), transparent 65%),
+        linear-gradient(145deg, #272016, #342b20);
+    }
+    .bonsai-cta .leaf {
+      position: absolute;
+      left: -14px;
+      width: 18px;
+      height: 18px;
+      background: radial-gradient(circle, #6fa24a, #3d6327);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-35deg);
+      z-index: 2;
+      box-shadow: 0 0 4px rgba(0,0,0,0.4);
+    }
+    /* WS Scarcity Box */
+    .ws-scarcity{
+      --ring: rgba(255, 214, 102, .6);
+      --bg: rgba(22,22,22,.65);
+      --fg: #f6f3e9;
+      --muted: rgba(246,243,233,.8);
+      --accent: #ffd766;
+      display:inline-flex; flex-direction:column; gap:4px;
+      padding:12px 16px; border-radius:14px; color:var(--fg);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.2)), var(--bg);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset, 0 6px 24px rgba(0,0,0,.35), 0 0 24px -6px var(--ring);
+      position:relative; isolation:isolate;
+    }
+    .ws-scarcity::after{ content:""; position:absolute; inset:-2px; border-radius:16px;
+      background: conic-gradient(from 30deg, rgba(255,215,102,.35), rgba(255,255,255,0), rgba(255,215,102,.35));
+      z-index:-1; filter: blur(10px); opacity:.5;
+    }
+    .ws-scarcity__main{ display:flex; align-items:center; gap:8px; font-size:.98rem; letter-spacing:.2px;}
+    .ws-scarcity__icon{ display:inline-flex; width:22px; height:22px; align-items:center; justify-content:center; color:var(--accent); }
+    .ws-scarcity__sub{ font-size:.86rem; color:var(--muted); }
+    .ws-scarcity__timer{ font-variant-numeric: tabular-nums; font-weight:600; color:var(--accent);} 
+    .ws-scarcity__tag{ font-size:.8rem; color:var(--muted); opacity:.9; }
+    @media (prefers-reduced-motion:no-preference){
+      .ws-scarcity{ animation: wsRingPulse 2.4s ease-in-out infinite;}
+      @keyframes wsRingPulse{
+        0%,100%{ box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset, 0 6px 24px rgba(0,0,0,.35), 0 0 18px -8px var(--ring);} 
+        50%{     box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset, 0 6px 24px rgba(0,0,0,.35), 0 0 28px -6px var(--ring);} 
+      }
+    }
+    .ws-scarcity.is-open .ws-scarcity__sub,
+    .ws-scarcity.is-open .ws-scarcity__timer{ color:#a1f6a1; }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      const obs = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
+      }, { threshold:.15 });
+      document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    });
+  </script>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="relative min-h-screen flex items-center justify-center text-center px-6">
+    <div class="absolute inset-0 z-0">
+      <video autoplay muted loop playsinline preload="auto" class="w-full h-full object-cover opacity-30">
+        <source src="wasabi.mp4" type="video/mp4"/>
+        Your browser does not support the video tag.
+      </video>
+      <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+    <div style="position: relative; z-index: 20;">
+      <p class="kicker text-sm uppercase tracking-wide text-amber-400 mb-3">Profit hides in plain sight</p>
+      <h1 class="text-5xl md:text-6xl font-extrabold leading-tight max-w-4xl mx-auto">
+        Like a <span class="headline-gradient">bonsai</span>, strong businesses take patience and skill to grow.
+      </h1>
+      <h2 class="mt-4 text-3xl md:text-4xl font-bold text-amber-400">Your competitors perfected it. Why not you?</h2>
+      <p class="mt-6 text-xl opacity-90 max-w-2xl mx-auto">You don't need perfection—you need clarity. We reveal hidden value in your existing systems so growth gets easier, not heavier.</p>
+      <div class="mt-8 flex items-center justify-center gap-x-16 gap-y-6 flex-wrap">
+        
+        <!-- Bonsai CTA (gold variant) -->
+        <a href="quiz.html" class="bonsai-cta gold" aria-label="Start Your Shift">
+          <span class="leaf"></span>
+          <span class="label">Start Your Shift</span>
+        </a>
+        <!-- WS: Scarcity Box (ID: ws-scarcity-box) -->
+        <div class="ws-scarcity" id="ws-scarcity-box"
+             data-seats="12"
+             data-next-opening="auto"
+             data-date=""
+             data-offset-days="90">
+          <div class="ws-scarcity__main">
+            <span class="ws-scarcity__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 2h12v3a6 6 0 0 1-3 5.196V13.8A6 6 0 0 1 18 19v3H6v-3a6 6 0 0 1 3-5.2V10.2A6 6 0 0 1 6 5V2zm2 3a4 4 0 0 0 4 4 4 4 0 0 0 4-4H8zm8 16v-1a4 4 0 0 0-4-4 4 4 0 0 0-4 4v1h8z"/>
+              </svg>
+            </span>
+            <strong><span id="ws-seats-number">12</span> Open Seats This Quarter</strong>
+          </div>
+
+          <div class="ws-scarcity__sub">
+            Next Quarter Starts In&nbsp;<span id="ws-scarcity-timer" class="ws-scarcity__timer" aria-live="polite">90d : 00h : 00m</span>
+          </div>
+          <div class="ws-scarcity__tag">Why wait for growth?</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS STRENGTH -->
+  <section class="section bg-black/40">
+    <div class="container grid md:grid-cols-2 gap-8">
+      <div class="card reveal">
+        <h2 class="text-2xl font-bold mb-6 text-white">Your efforts created a business that should run without excuses:</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <div class="w-2 h-2 bg-amber-400 rounded-full mt-2 flex-shrink-0"></div>
+            <span class="text-slate-300">Workflows that move smoothly, without bottlenecks</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-2 h-2 bg-amber-400 rounded-full mt-2 flex-shrink-0"></div>
+            <span class="text-slate-300">Teams that know their role and deliver with pride</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-2 h-2 bg-amber-400 rounded-full mt-2 flex-shrink-0"></div>
+            <span class="text-slate-300">Systems that stay reliable instead of breaking down</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-2 h-2 bg-amber-400 rounded-full mt-2 flex-shrink-0"></div>
+            <span class="text-slate-300">Always on time, customer satisfaction</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-2 h-2 bg-amber-400 rounded-full mt-2 flex-shrink-0"></div>
+            <span class="text-slate-300">Finances managed with clarity, no hidden leaks</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-2 h-2 bg-amber-400 rounded-full mt-2 flex-shrink-0"></div>
+            <span class="text-slate-300">A company admired for its consistency and trusted for its strength</span>
+          </li>
+        </ul>
+      </div>
+      <div class="card reveal flex flex-col justify-center text-center">
+        <div class="mb-6">
+          <p class="text-xl text-slate-300 mb-2">Your effort shows. Your business is proof of it.</p>
+          <p class="text-lg text-slate-400 mb-4">But does every part run as smoothly as you imagine?</p>
+          <p class="text-xl text-slate-300 mb-6">Others saw small shifts bring surprising results.</p>
+          <a href="quiz.html" class="bonsai-cta gold" aria-label="See Where You Stand">
+            <span class="leaf"></span>
+            <span class="label">See Where You Stand</span>
+          </a>
+          <p class="text-sm text-slate-400 mt-3">Just 3 minutes to see where you stand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+  (function(){
+    const box = document.getElementById('ws-scarcity-box');
+    if(!box) return;
+
+    const seatsEl = document.getElementById('ws-seats-number');
+    const timerEl = document.getElementById('ws-scarcity-timer');
+
+    const baseSeats = parseInt(box.dataset.seats || "12", 10);
+    const mode  = (box.dataset.nextOpening || "auto").toLowerCase();
+    const offsetDays = parseInt(box.dataset.offsetDays || "90", 10);
+    const explicitDate = box.dataset.date || "";
+
+    if (seatsEl) seatsEl.textContent = isNaN(baseSeats) ? "12" : String(baseSeats);
+
+    function nextQuarterStart(now = new Date()){
+      const m = now.getMonth();
+      if (m <= 2) return new Date(now.getFullYear(), 3, 1, 0, 0, 0);
+      if (m <= 5) return new Date(now.getFullYear(), 6, 1, 0, 0, 0);
+      if (m <= 8) return new Date(now.getFullYear(), 9, 1, 0, 0, 0);
+      return new Date(now.getFullYear()+1, 0, 1, 0, 0, 0);
+    }
+
+    let target;
+    if (mode === "date" && explicitDate) target = new Date(explicitDate);
+    else if (mode === "offset")          target = new Date(Date.now() + offsetDays*24*60*60*1000);
+    else                                  target = nextQuarterStart();
+
+    function two(n){ return String(Math.floor(n)).padStart(2,"0"); }
+
+    // Baseline remaining days at page load to drive weekly seat decay
+    const baselineDays = Math.max(0, Math.floor((target - new Date()) / (1000*60*60*24)));
+
+    function tick(){
+      const now = new Date();
+      const diff = target - now;
+      if (!timerEl) return;
+      if (diff <= 0){
+        timerEl.textContent = "Now Open";
+        box.classList.add('is-open');
+        clearInterval(int);
+        return;
+      }
+      const days  = Math.floor(diff / (1000*60*60*24));
+      const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      const mins  = Math.floor((diff % (1000*60*60)) / (1000*60));
+      timerEl.textContent = `${days}d : ${two(hours)}h : ${two(mins)}m`;
+
+      // Seats logic: drop 1 per week since baseline; at 80 days or less, force 0
+      if (seatsEl) {
+        let seatsNow;
+        if (days <= 80) {
+          seatsNow = 0;
+        } else {
+          const weeksElapsed = Math.max(0, Math.floor((baselineDays - days) / 7));
+          seatsNow = Math.max(0, baseSeats - weeksElapsed);
+        }
+        seatsEl.textContent = String(seatsNow);
+      }
+    }
+
+    const int = setInterval(tick, 30000);
+    tick();
+
+    window.WSScarcity = {
+      setSeats(n){ if (seatsEl) seatsEl.textContent = String(n); },
+      setMode(m, opts = {}){ 
+        box.dataset.nextOpening = m;
+        if (m === "date" && opts.date) { box.dataset.date = opts.date; }
+        if (m === "offset" && typeof opts.offsetDays === "number") { box.dataset.offsetDays = String(opts.offsetDays); }
+        location.reload();
+      }
+    };
+  })();
+  </script>
+
+  <!-- THE WABI-SABI WAY -->
+  <section class="section parallax py-20" style="background-image:url('mid.png'); background-size: cover; background-position: center;">
+    <div class="container text-center">
+      <h2 class="text-4xl font-bold mb-16 reveal text-slate-800">The Wabi-Sabi Way</h2>
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="card reveal bg-slate-800/90 border border-slate-700 rounded-2xl p-8 text-center">
+          <div class="w-12 h-12 bg-amber-400/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-2xl">🌱</span>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-white">Reveal Hidden Value</h3>
+          <p class="text-slate-300 leading-relaxed">Uncover profit hidden inside systems, offers, and flows.</p>
+        </div>
+        <div class="card reveal bg-slate-800/90 border border-slate-700 rounded-2xl p-8 text-center">
+          <div class="w-12 h-12 bg-amber-400/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-2xl">⚙️</span>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-white">Shape Growth</h3>
+          <p class="text-slate-300 leading-relaxed">Faster processes, smoother flow — more profit at less cost.</p>
+        </div>
+        <div class="card reveal bg-slate-800/90 border border-slate-700 rounded-2xl p-8 text-center">
+          <div class="w-12 h-12 bg-amber-400/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-2xl">💡</span>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-white">Profit with Clarity</h3>
+          <p class="text-slate-300 leading-relaxed">Small shifts, seen and applied, to strengthen profit flow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 reveal">Proof That It Works</h2>
+        <p class="text-lg text-slate-400 reveal">Real shifts. Real numbers. Real businesses.</p>
+      </div>
+      
+      <!-- Stats Strip -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-3xl mx-auto">
+        <div class="text-center bg-slate-800/40 rounded-lg p-4 reveal">
+          <div class="text-2xl font-semibold text-white mb-1">+42%</div>
+          <div class="text-sm text-slate-400">profit in 90 days</div>
+          <div class="text-xs text-slate-500 mt-1">Services firm</div>
+        </div>
+        <div class="text-center bg-slate-800/40 rounded-lg p-4 reveal">
+          <div class="text-2xl font-semibold text-white mb-1">+31%</div>
+          <div class="text-sm text-slate-400">LTV in 6 months</div>
+          <div class="text-xs text-slate-500 mt-1">D2C brand</div>
+        </div>
+        <div class="text-center bg-slate-800/40 rounded-lg p-4 reveal">
+          <div class="text-2xl font-semibold text-white mb-1">-28%</div>
+          <div class="text-sm text-slate-400">ops time per order</div>
+          <div class="text-xs text-slate-500 mt-1">Retail</div>
+        </div>
+        <div class="text-center bg-slate-800/40 rounded-lg p-4 reveal">
+          <div class="text-2xl font-semibold text-white mb-1">3M+</div>
+          <div class="text-sm text-slate-400">nurtured leads</div>
+          <div class="text-xs text-slate-500 mt-1">All campaigns</div>
+        </div>
+      </div>
+
+      <!-- Case Studies -->
+      <div class="grid md:grid-cols-2 gap-6 mb-8 max-w-5xl mx-auto">
+        <div class="card reveal bg-slate-800/40 rounded-lg p-6">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+            <h4 class="font-semibold text-white text-lg">Services Firm • +42% profit</h4>
+          </div>
+          <p class="text-slate-400 mb-4 italic">From busy to compounding</p>
+          <ul class="space-y-2 mb-5">
+            <li class="text-slate-300">• Productized core offer</li>
+            <li class="text-slate-300">• Automated onboarding</li>
+            <li class="text-slate-300">• Retention flows</li>
+          </ul>
+          <div class="border-t border-slate-700 pt-4">
+            <p class="text-green-400 font-medium">Result: +42% profit in 90 days</p>
+          </div>
+        </div>
+        
+        <div class="card reveal bg-slate-800/40 rounded-lg p-6">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-2 h-2 bg-amber-400 rounded-full"></div>
+            <h4 class="font-semibold text-white text-lg">D2C Brand • +31% LTV</h4>
+          </div>
+          <p class="text-slate-400 mb-4 italic">From one-off sales to lifetime value</p>
+          <ul class="space-y-2 mb-5">
+            <li class="text-slate-300">• Post-purchase flows</li>
+            <li class="text-slate-300">• Upsell ladders</li>
+            <li class="text-slate-300">• Win-back engine</li>
+          </ul>
+          <div class="border-t border-slate-700 pt-4">
+            <p class="text-amber-400 font-medium">Result: +31% LTV in 6 months</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Stats -->
+      <div class="text-center">
+        <div class="inline-flex items-center gap-4 text-sm">
+          <span class="bg-slate-800/60 border border-slate-700 text-white px-4 py-2">75+ businesses</span>
+          <span class="bg-slate-800/60 border border-slate-700 text-white px-4 py-2">98% profit lifts</span>
+          <span class="bg-slate-800/60 border border-slate-700 text-white px-4 py-2">3M+ nurtured leads</span>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="text-center mt-16">
+        <h3 class="text-2xl font-bold text-white mb-6">See what this would look like in your business.</h3>
+        <a href="quiz.html" class="bonsai-cta gold" aria-label="Get My Growth Plan">
+          <span class="leaf"></span>
+          <span class="label">Get My Growth Plan</span>
+        </a>
+        <p class="text-slate-400 mt-4">Just 3 minutes to see where you stand.</p>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-4xl mx-auto">
+        <div class="flex items-center gap-2 bg-slate-800/60 border border-slate-700 text-white px-4 py-2 text-sm">
+          <span class="text-amber-400">🌱</span>
+          <span>Growth Rooted in Clarity</span>
+        </div>
+        <div class="flex items-center gap-2 bg-slate-800/60 border border-slate-700 text-white px-4 py-2 text-sm">
+          <span class="text-blue-400">🌊</span>
+          <span>Systems That Flow Smoothly</span>
+        </div>
+        <div class="flex items-center gap-2 bg-slate-800/60 border border-slate-700 text-white px-4 py-2 text-sm">
+          <span class="text-orange-400">⏳</span>
+          <span>Less Time, More Profit</span>
+        </div>
+        <div class="flex items-center gap-2 bg-slate-800/60 border border-slate-700 text-white px-4 py-2 text-sm">
+          <span class="text-green-400">✨</span>
+          <span>Proven Shifts, Real Results</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section relative text-center py-20">
+    <div class="absolute inset-0 z-0">
+      <video autoplay muted playsinline preload="auto" class="w-full h-full object-cover opacity-60" style="object-position: center 20%;">
+        <source src="ws bottom.mp4" type="video/mp4"/>
+      </video>
+      <div class="absolute inset-0 bg-black/50"></div>
+    </div>
+    <div class="container relative z-10">
+      <h2 class="text-4xl font-bold text-white mb-6">See your hidden value in under 3 minutes.</h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">Small shifts, high impact, hidden in your systems. Let's find yours.</p>
+      <a href="quiz.html" class="bonsai-cta gold mb-4 inline-block" aria-label="Start Your 3-Minute Assessment">
+        <span class="leaf"></span>
+        <span class="label">Start Your 3-Minute Assessment</span>
+      </a>
+      <div class="flex items-center justify-center gap-2 text-amber-400 text-sm">
+        <span>⚡</span>
+        <span>Limited to 12 businesses per quarter</span>
+      </div>
+      <p class="text-slate-400 mt-4 text-sm">Prefer to chat first? <a href="#" class="text-blue-400 hover:text-blue-300 underline">Book a Growth Session</a></p>
+    </div>
+  </section>
+
+</body>
+</html>

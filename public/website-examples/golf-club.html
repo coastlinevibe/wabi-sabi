@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marula Fairways Golf Estate | Bushveld Championship Club</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: only dark;
+        --bg: #0b130d;
+        --bg-accent: rgba(18, 32, 20, 0.78);
+        --accent: #16a34a;
+        --accent-warm: #facc15;
+        --muted: rgba(198, 215, 198, 0.78);
+        --surface: rgba(19, 32, 21, 0.76);
+        --sand: rgba(219, 180, 92, 0.62);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Manrope', sans-serif;
+        background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.12), transparent 55%),
+          radial-gradient(circle at bottom right, rgba(250, 204, 21, 0.14), transparent 55%),
+          linear-gradient(160deg, rgba(8, 15, 9, 0.95), #040806);
+        color: rgba(243, 246, 240, 0.95);
+        min-height: 100vh;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 28px 6vw 0;
+        position: sticky;
+        top: 0;
+        background: linear-gradient(180deg, rgba(10, 18, 12, 0.92), rgba(10, 18, 12, 0));
+        backdrop-filter: blur(12px);
+        z-index: 20;
+      }
+
+      .header-block {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        flex-wrap: wrap;
+      }
+
+      .crest {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, rgba(34, 197, 94, 0.9), rgba(250, 204, 21, 0.85));
+        display: grid;
+        place-items: center;
+        font-family: 'Playfair Display', serif;
+        font-size: 22px;
+        font-weight: 600;
+        color: #041307;
+        border: 1px solid rgba(250, 204, 21, 0.5);
+        box-shadow: 0 20px 34px rgba(34, 197, 94, 0.22);
+      }
+
+      .brand-copy {
+        font-family: 'Playfair Display', serif;
+      }
+
+      .brand-copy .eyebrow {
+        font-size: 13px;
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+        color: rgba(210, 226, 210, 0.64);
+      }
+
+      .brand-copy .name {
+        font-size: 30px;
+        letter-spacing: 0.04em;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(209, 223, 210, 0.2);
+        background: rgba(19, 30, 21, 0.58);
+        color: rgba(234, 245, 234, 0.88);
+        text-decoration: none;
+        font-size: 14px;
+        letter-spacing: 0.03em;
+        transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      }
+
+      .back-link:hover {
+        transform: translateY(-1px);
+        background: rgba(24, 36, 26, 0.7);
+        border-color: rgba(250, 204, 21, 0.35);
+        color: rgba(255, 255, 244, 0.96);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+      }
+
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        transition: color 0.25s ease;
+      }
+
+      nav a:hover {
+        color: rgba(243, 246, 240, 0.96);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 24px;
+        border-radius: 999px;
+        background: linear-gradient(120deg, rgba(255, 255, 245, 0.94), rgba(250, 204, 21, 0.92));
+        color: #102313;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 18px 34px rgba(250, 204, 21, 0.28);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 36px rgba(250, 204, 21, 0.36);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 52px;
+        padding: 96px 6vw 64px;
+        align-items: center;
+      }
+
+      .hero h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(46px, 5.4vw, 72px);
+        line-height: 1.05;
+        margin-bottom: 22px;
+      }
+
+      .hero h1 span {
+        color: rgba(250, 204, 21, 0.88);
+      }
+
+      .hero p.lead {
+        font-size: clamp(18px, 2.2vw, 22px);
+        color: rgba(224, 236, 224, 0.88);
+        line-height: 1.7;
+        margin-bottom: 30px;
+        max-width: 560px;
+      }
+
+      .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+
+      .badge {
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: rgba(34, 197, 94, 0.15);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        color: rgba(214, 236, 214, 0.82);
+        font-size: 13px;
+        letter-spacing: 0.03em;
+      }
+
+      .hero-media {
+        position: relative;
+        border-radius: 26px;
+        padding: 28px;
+        background: var(--surface);
+        box-shadow: 0 32px 60px rgba(12, 24, 15, 0.48);
+        overflow: hidden;
+      }
+
+      .hero-media::before {
+        content: '';
+        position: absolute;
+        inset: 18px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        pointer-events: none;
+      }
+
+      .hero-media img {
+        width: 100%;
+        border-radius: 18px;
+        object-fit: cover;
+        filter: saturate(1.04);
+      }
+
+      .section {
+        padding: 80px 6vw;
+      }
+
+      .section-header {
+        max-width: 760px;
+        margin: 0 auto 54px;
+        text-align: center;
+      }
+
+      .section-header h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(34px, 4vw, 48px);
+        margin-bottom: 16px;
+      }
+
+      .section-header p {
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 26px;
+      }
+
+      .feature-card {
+        padding: 28px;
+        border-radius: 22px;
+        border: 1px solid rgba(209, 223, 210, 0.14);
+        background: rgba(22, 33, 23, 0.56);
+        box-shadow: 0 18px 36px rgba(10, 18, 12, 0.4);
+        min-height: 220px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .feature-card h3 {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: rgba(220, 233, 220, 0.82);
+        line-height: 1.7;
+      }
+
+      .course-showcase {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 32px;
+        align-items: start;
+      }
+
+      .hole-card {
+        border-radius: 28px;
+        overflow: hidden;
+        background: rgba(22, 34, 23, 0.54);
+        border: 1px solid rgba(250, 204, 21, 0.16);
+        box-shadow: 0 26px 48px rgba(10, 18, 12, 0.42);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hole-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+      }
+
+      .hole-card .content {
+        padding: 26px;
+        display: grid;
+        gap: 14px;
+      }
+
+      .hole-card .details {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        color: rgba(206, 222, 206, 0.76);
+        font-size: 14px;
+      }
+
+      .numbers-strip {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 24px;
+        margin-top: 48px;
+      }
+
+      .number-tile {
+        padding: 24px;
+        border-radius: 20px;
+        background: rgba(22, 33, 23, 0.6);
+        border: 1px solid rgba(250, 204, 21, 0.16);
+        text-align: center;
+        box-shadow: 0 16px 36px rgba(10, 18, 12, 0.38);
+      }
+
+      .number-tile .value {
+        font-family: 'Playfair Display', serif;
+        font-size: 34px;
+        color: rgba(250, 204, 21, 0.9);
+        margin-bottom: 8px;
+      }
+
+      .memberships {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 28px;
+      }
+
+      .membership-card {
+        border-radius: 24px;
+        border: 1px solid rgba(209, 223, 210, 0.18);
+        background: rgba(20, 31, 21, 0.58);
+        box-shadow: 0 20px 40px rgba(10, 18, 12, 0.42);
+        padding: 30px;
+        display: grid;
+        gap: 18px;
+      }
+
+      .membership-card h3 {
+        margin: 0;
+        font-size: 22px;
+        color: rgba(250, 204, 21, 0.88);
+      }
+
+      .membership-card ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+        color: rgba(214, 228, 214, 0.82);
+        font-size: 15px;
+      }
+
+      .testimonial-strip {
+        margin-top: 52px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+      }
+
+      .testimonial {
+        border-radius: 18px;
+        padding: 24px;
+        background: rgba(21, 33, 23, 0.58);
+        border: 1px solid rgba(209, 223, 210, 0.1);
+      }
+
+      .testimonial p {
+        margin: 0;
+        line-height: 1.7;
+        color: rgba(220, 233, 220, 0.82);
+      }
+
+      .testimonial .name {
+        margin-top: 16px;
+        font-weight: 600;
+        color: rgba(250, 204, 21, 0.88);
+      }
+
+      .cta {
+        padding: 88px 6vw 96px;
+        text-align: center;
+        background: linear-gradient(120deg, rgba(34, 197, 94, 0.16), rgba(250, 204, 21, 0.12));
+        border-top: 1px solid rgba(209, 223, 210, 0.1);
+      }
+
+      .cta h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(36px, 4.4vw, 54px);
+        margin-bottom: 18px;
+      }
+
+      .cta p {
+        color: rgba(222, 233, 222, 0.86);
+        font-size: 18px;
+        margin-bottom: 28px;
+      }
+
+      footer {
+        padding: 32px 6vw 48px;
+        background: rgba(7, 12, 8, 0.95);
+        border-top: 1px solid rgba(209, 223, 210, 0.05);
+      }
+
+      footer .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 28px;
+      }
+
+      footer h4 {
+        margin-bottom: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 14px;
+        color: rgba(188, 202, 188, 0.78);
+      }
+
+      footer ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 10px;
+        color: rgba(172, 184, 170, 0.78);
+        font-size: 14px;
+      }
+
+      @media (max-width: 720px) {
+        header {
+          padding-top: 24px;
+        }
+
+        nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero {
+          padding-top: 80px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-block">
+        <a class="back-link" href="/portfolio#website-gallery">← Back to main site</a>
+        <div class="crest">MF</div>
+        <div class="brand-copy">
+          <div class="eyebrow">Marula fairways</div>
+          <div class="name">Golf Estate</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#course">Course</a>
+        <a href="#experience">Experience</a>
+        <a href="#membership">Membership</a>
+        <a href="#contact">Visit</a>
+        <a href="#contact" class="btn-primary">Book a tee time</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="hero-badges">
+          <div class="badge">Waterberg bushveld layout</div>
+          <div class="badge">Championship par 72</div>
+          <div class="badge">Private lodge residences</div>
+        </div>
+        <h1>
+          Bushveld fairways for
+          <span>memorable rounds.</span>
+        </h1>
+        <p class="lead">
+          Marula Fairways threads through koppies, fever trees, and roaming wildlife. Each hole balances championship challenge with
+          Northern Limpopo calm — sunrise drives, gin wagons at dusk, and star-lit boma dinners after the 18th.
+        </p>
+        <a href="#course" class="btn-primary">Tour the signature holes</a>
+      </div>
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1400&q=80" alt="Bushveld golf course" />
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-header">
+        <h2>Experience the Waterberg in curated calm</h2>
+        <p>
+          Morning tee times launch from misty fairways, afternoons wind down at the spa, and evenings settle around crackling fires. Our
+          field hosts and PGA pros choreograph each stay for families, corporate retreats, and serious golfers alike.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Signature field hospitality</h3>
+          <p>
+            24-hour lodge concierges, sunset gin tastings, and wildlife trackers who guide guests between villas, spa rituals, and tee boxes.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Golf performance studio</h3>
+          <p>
+            TrackMan fittings, short game laboratory, and elite coaching clinics run by Sunshine Tour professionals.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Safari & culinary pairings</h3>
+          <p>
+            Dawn game drives followed by chef-led brunch, evening nine-hole loops paired with boma tasting menus and live storytelling.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Wellness pavilion</h3>
+          <p>
+            Outdoor hydrotherapy pools, marula oil massages, and quiet meditation decks nestled under ancient mopane trees.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="course">
+      <div class="section-header">
+        <h2>Signature holes carved into the bushveld</h2>
+        <p>
+          Each nine meanders through indigenous flora, natural rock outcrops, and shimmering dams. Strategic bunkering and risk-reward
+          carries keep every round engaging for scratch players and relaxed travelers.
+        </p>
+      </div>
+      <div class="course-showcase">
+        <div class="hole-card">
+          <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=80" alt="Hole 3" />
+          <div class="content">
+            <h3>Hole 3 — Baobab Rise</h3>
+            <p>Elevated par 3 playing across a granite ravine to a green framed by a solitary baobab.</p>
+            <div class="details">
+              <span>191m from championship tees</span>
+              <span>Prevailing crosswinds</span>
+              <span>Signature sunset hole</span>
+            </div>
+          </div>
+        </div>
+        <div class="hole-card">
+          <img src="https://images.unsplash.com/photo-1519682577862-22b62b24e493?auto=format&fit=crop&w=1200&q=80" alt="Hole 9" />
+          <div class="content">
+            <h3>Hole 9 — Marula Fork</h3>
+            <p>Dogleg par 4 hugging a meandering stream with a split fairway decision and amphitheatre green.</p>
+            <div class="details">
+              <span>Stroke 3</span>
+              <span>Risk-reward tee strategy</span>
+              <span>Halfway lodge adjacent</span>
+            </div>
+          </div>
+        </div>
+        <div class="hole-card">
+          <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80" alt="Hole 18" />
+          <div class="content">
+            <h3>Hole 18 — Savannah Finale</h3>
+            <p>Grand closing par 5 sweeping back to the clubhouse with a water-protected green beneath the boma decks.</p>
+            <div class="details">
+              <span>Championship finish</span>
+              <span>Water guarding right side</span>
+              <span>Night lighting for events</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="numbers-strip">
+        <div class="number-tile">
+          <div class="value">7 180 m</div>
+          <div>Par 72 championship layout with five tee options.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">5 *</div>
+          <div>Luxury lodges integrated along the course with private pools.</div>
+        </div>
+        <div class="number-tile">
+          <div class="value">24 hr</div>
+          <div>Field host service covering golf, safari, and dining itineraries.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="membership">
+      <div class="section-header">
+        <h2>Memberships tailored for golfers and safari families</h2>
+        <p>
+          Choose from resident, corporate, and destination memberships. Each unlocks curated golf itineraries, private lodges, and
+          conservation-led experiences.
+        </p>
+      </div>
+      <div class="memberships">
+        <div class="membership-card">
+          <h3>Resident Member</h3>
+          <ul>
+            <li>Unlimited golf with advance tee access</li>
+            <li>Dedicated locker & concierge service</li>
+            <li>Field guide-led conservation walks</li>
+          </ul>
+        </div>
+        <div class="membership-card">
+          <h3>Corporate Retreat</h3>
+          <ul>
+            <li>Quarterly retreat packages for leadership teams</li>
+            <li>Meeting lodge with hybrid AV studio</li>
+            <li>Team-building putting challenges & safari rallies</li>
+          </ul>
+        </div>
+        <div class="membership-card">
+          <h3>Destination Explorer</h3>
+          <ul>
+            <li>14-night annual stay across peak seasons</li>
+            <li>Personalised travel concierge & shuttle flights</li>
+            <li>Family-friendly safari academy for juniors</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="testimonial-strip">
+        <div class="testimonial">
+          <p>
+            “Every round feels cinematic — sable antelope grazing beside the fairway while the caddie shares local legends. Golf in the
+            bushveld hits different.”
+          </p>
+          <div class="name">Dr. Lerato Sithole · Pretoria</div>
+        </div>
+        <div class="testimonial">
+          <p>
+            “Our executive retreat blended serious golf, wellness, and safari. The team left aligned, inspired, and already asking about next year.”
+          </p>
+          <div class="name">Jacques van Dyk · Johannesburg</div>
+        </div>
+        <div class="testimonial">
+          <p>
+            “Junior coaching plus Big Five sightings — our kids can’t stop talking about it. Marula Fairways has become our family tradition.”
+          </p>
+          <div class="name">Mpho & Steph · Polokwane</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Plan your round in the heart of the bushveld</h2>
+      <p>
+        Share your ideal dates, group size, and celebration focus. Our field hosts will craft a tailored itinerary including golf,
+        dining, and safari experiences within 24 hours.
+      </p>
+      <a href="mailto:tee@marulafairways.co.za" class="btn-primary">Design my visit</a>
+    </section>
+
+    <footer>
+      <div class="grid">
+        <div>
+          <h4>Find us</h4>
+          <ul>
+            <li>Marula Fairways Golf Estate</li>
+            <li>Waterberg Biosphere · Limpopo</li>
+            <li>South Africa</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>tee@marulafairways.co.za</li>
+            <li>+27 15 603 7700</li>
+            <li>Concierge line open 24/7</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Follow</h4>
+          <ul>
+            <li>Instagram · @marulafairways</li>
+            <li>Pinterest · Bushveld golf inspiration</li>
+            <li>Journal · Field notes & conservation</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<svg width="640" height="400" viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="400" rx="28" fill="url(#paint0_radial_1_7)"/>
+  <defs>
+    <radialGradient id="paint0_radial_1_7" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(120 80) rotate(22) scale(620 420)">
+      <stop offset="0" stop-color="#FACC15" stop-opacity="0.9"/>
+      <stop offset="0.38" stop-color="#D97706" stop-opacity="0.72"/>
+      <stop offset="0.66" stop-color="#14532D" stop-opacity="0.54"/>
+      <stop offset="1" stop-color="#07120A"/>
+    </radialGradient>
+  </defs>
+  <g filter="url(#filter0_f_1_7)">
+    <ellipse cx="500" cy="60" rx="220" ry="120" fill="#22C55E" fill-opacity="0.28"/>
+  </g>
+  <g filter="url(#filter1_f_1_7)" opacity="0.32">
+    <ellipse cx="126" cy="322" rx="220" ry="120" fill="#D97706" fill-opacity="0.32"/>
+  </g>
+  <rect x="150" y="106" width="340" height="56" rx="18" fill="rgba(15,23,42,0.58)" stroke="rgba(255,255,255,0.12)" stroke-width="1.4"/>
+  <rect x="170" y="172" width="300" height="32" rx="16" fill="rgba(15,23,42,0.55)" stroke="rgba(255,255,255,0.1)" stroke-width="1.4"/>
+  <rect x="190" y="180" width="120" height="16" rx="8" fill="#38BDF8"/>
+  <rect x="330" y="180" width="96" height="16" rx="8" fill="rgba(255,255,255,0.25)"/>
+  <rect x="170" y="218" width="300" height="120" rx="24" fill="rgba(15,23,42,0.52)" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+  <rect x="198" y="234" width="84" height="12" rx="6" fill="rgba(255,255,255,0.28)"/>
+  <rect x="198" y="256" width="132" height="8" rx="4" fill="rgba(255,255,255,0.18)"/>
+  <rect x="198" y="276" width="104" height="8" rx="4" fill="rgba(255,255,255,0.14)"/>
+  <rect x="330" y="234" width="90" height="12" rx="6" fill="#F97316"/>
+  <rect x="330" y="256" width="120" height="8" rx="4" fill="rgba(255,255,255,0.2)"/>
+  <rect x="330" y="276" width="96" height="8" rx="4" fill="rgba(255,255,255,0.14)"/>
+  <rect x="214" y="308" width="212" height="18" rx="9" fill="rgba(255,255,255,0.22)"/>
+  <rect x="214" y="332" width="156" height="8" rx="4" fill="rgba(255,255,255,0.18)"/>
+  <circle cx="518" cy="88" r="34" fill="rgba(24,35,25,0.55)" stroke="rgba(255,255,255,0.18)" stroke-width="1.4"/>
+  <path d="M518 70L530 100H506L518 70Z" fill="#FACC15"/>
+  <path d="M494 98C494 92.4772 498.477 88 504 88H532C537.523 88 542 92.4772 542 98C542 103.523 537.523 108 532 108H504C498.477 108 494 103.523 494 98Z" stroke="#E0F2FE" stroke-opacity="0.4"/>
+  <defs>
+    <filter id="filter0_f_1_7" x="220" y="-120" width="560" height="360" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="30" result="effect1_foregroundBlur_1_7"/>
+    </filter>
+    <filter id="filter1_f_1_7" x="-174" y="102" width="600" height="440" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="35" result="effect1_foregroundBlur_1_7"/>
+    </filter>
+  </defs>
+</svg>

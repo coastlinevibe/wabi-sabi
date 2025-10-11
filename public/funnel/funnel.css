@@ -1,0 +1,17 @@
+/* Minimal helpers; keep Tailwind CDN in each page for speed */
+:root { --brand:#F59E0B; --ink:#0B1220; --bg:#0B1220; --card:#0f1629; }
+html,body{margin:0;padding:0;background:var(--bg);color:#fff;font-family:Inter,system-ui,Arial}
+.container{max-width:1080px;margin:0 auto;padding:24px}
+.hero{padding:96px 0}
+.badge{background:#1f2937;color:#fff;border-radius:999px;padding:6px 12px;display:inline-flex;gap:8px;align-items:center}
+.btn{background:var(--brand);color:#111;padding:14px 22px;border-radius:4px;font-weight:700;display:inline-block}
+.btn:hover{filter:brightness(1.05)}
+.section{padding:56px 0}
+.card{background:var(--card);border:1px solid #1f2937;border-radius:16px;padding:24px}
+.grid{display:grid;gap:24px}
+.grid-2{grid-template-columns:1fr 1fr}
+.sticky-cta{position:fixed;right:20px;bottom:20px;z-index:50}
+.progress{height:8px;background:#1f2937;border-radius:999px;overflow:hidden}
+.progress>div{height:100%;background:var(--brand);width:0}
+.small{opacity:.8;font-size:.95rem}
+a.reset{color:#93c5fd;text-decoration:underline}

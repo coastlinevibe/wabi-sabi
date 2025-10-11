@@ -1,0 +1,207 @@
+<svg width="640" height="400" viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="400" rx="28" fill="url(#paint0_radial_hardware)"/>
+  <defs>
+    <radialGradient id="paint0_radial_hardware" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(150 68) rotate(22) scale(620 420)">
+      <stop offset="0" stop-color="#E53E3E" stop-opacity="0.9"/>
+      <stop offset="0.35" stop-color="#DD6B20" stop-opacity="0.7"/>
+      <stop offset="0.65" stop-color="#2D3748" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#F7FAFC"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Industrial Grid Background -->
+  <g opacity="0.15">
+    <defs>
+      <pattern id="industrial-grid" width="30" height="30" patternUnits="userSpaceOnUse">
+        <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#2D3748" stroke-width="1"/>
+        <circle cx="15" cy="15" r="2" fill="#E53E3E" opacity="0.3"/>
+      </pattern>
+    </defs>
+    <rect width="640" height="400" fill="url(#industrial-grid)"/>
+  </g>
+  
+  <!-- Sidebar Navigation -->
+  <rect x="0" y="0" width="200" height="400" fill="url(#gradient_sidebar)" stroke="rgba(229,62,62,0.3)" stroke-width="2"/>
+  <rect x="198" y="0" width="4" height="400" fill="url(#gradient_accent_bar)"/>
+  
+  <!-- Sidebar Brand -->
+  <circle cx="100" cy="60" r="25" fill="url(#gradient_brand_circle)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <text x="100" y="68" text-anchor="middle" fill="white" font-size="20">⚒️</text>
+  <rect x="40" y="90" width="120" height="12" rx="6" fill="rgba(255,255,255,0.9)"/>
+  <rect x="60" y="110" width="80" height="8" rx="4" fill="rgba(160,174,192,0.8)"/>
+  
+  <!-- Menu Items -->
+  <g transform="translate(20, 140)">
+    <rect x="0" y="0" width="160" height="25" rx="4" fill="rgba(229,62,62,0.2)" stroke="rgba(229,62,62,0.4)" stroke-width="1"/>
+    <rect x="8" y="6" width="12" height="12" rx="6" fill="#E53E3E"/>
+    <rect x="28" y="8" width="80" height="8" rx="4" fill="rgba(255,255,255,0.8)"/>
+  </g>
+  
+  <g transform="translate(20, 175)">
+    <rect x="0" y="0" width="160" height="20" rx="4" fill="rgba(255,255,255,0.05)"/>
+    <rect x="8" y="4" width="12" height="12" rx="6" fill="rgba(203,213,225,0.6)"/>
+    <rect x="28" y="6" width="70" height="8" rx="4" fill="rgba(203,213,225,0.6)"/>
+  </g>
+  
+  <g transform="translate(20, 205)">
+    <rect x="0" y="0" width="160" height="20" rx="4" fill="rgba(255,255,255,0.05)"/>
+    <rect x="8" y="4" width="12" height="12" rx="6" fill="rgba(203,213,225,0.6)"/>
+    <rect x="28" y="6" width="85" height="8" rx="4" fill="rgba(203,213,225,0.6)"/>
+  </g>
+  
+  <!-- Header Section -->
+  <rect x="200" y="0" width="440" height="60" fill="rgba(255,255,255,0.95)" stroke="rgba(226,232,240,0.5)" stroke-width="1"/>
+  <rect x="200" y="56" width="440" height="4" fill="url(#gradient_header_accent)"/>
+  
+  <!-- Search Bar -->
+  <rect x="220" y="15" width="280" height="30" rx="8" fill="rgba(247,250,252,0.9)" stroke="rgba(226,232,240,0.8)" stroke-width="1"/>
+  <circle cx="235" cy="30" r="6" fill="rgba(113,128,150,0.6)"/>
+  <rect x="250" y="25" width="120" height="10" rx="5" fill="rgba(113,128,150,0.4)"/>
+  
+  <!-- Header Actions -->
+  <rect x="520" y="15" width="40" height="30" rx="6" fill="#E53E3E"/>
+  <circle cx="540" cy="30" r="8" fill="white"/>
+  <circle cx="548" cy="22" r="4" fill="#FFD700"/>
+  
+  <rect x="570" y="15" width="60" height="30" rx="6" fill="#2D3748"/>
+  
+  <!-- Main Content Area -->
+  <rect x="200" y="60" width="440" height="340" fill="rgba(247,250,252,0.8)"/>
+  
+  <!-- Hero Section -->
+  <g transform="translate(220, 80)">
+    <!-- Hero Text -->
+    <rect x="0" y="0" width="180" height="30" rx="15" fill="url(#gradient_hero_title)"/>
+    <rect x="0" y="40" width="150" height="15" rx="7" fill="rgba(26,32,44,0.8)"/>
+    <rect x="0" y="65" width="170" height="12" rx="6" fill="rgba(74,85,104,0.6)"/>
+    <rect x="0" y="85" width="140" height="12" rx="6" fill="rgba(74,85,104,0.4)"/>
+    
+    <!-- Stats Grid -->
+    <g transform="translate(0, 110)">
+      <rect x="0" y="0" width="50" height="40" rx="6" fill="white" stroke="rgba(226,232,240,0.8)" stroke-width="1"/>
+      <rect x="10" y="8" width="30" height="12" rx="6" fill="#E53E3E"/>
+      <rect x="10" y="25" width="25" height="8" rx="4" fill="rgba(113,128,150,0.6)"/>
+      
+      <rect x="60" y="0" width="50" height="40" rx="6" fill="white" stroke="rgba(226,232,240,0.8)" stroke-width="1"/>
+      <rect x="70" y="8" width="30" height="12" rx="6" fill="#E53E3E"/>
+      <rect x="70" y="25" width="25" height="8" rx="4" fill="rgba(113,128,150,0.6)"/>
+      
+      <rect x="120" y="0" width="50" height="40" rx="6" fill="white" stroke="rgba(226,232,240,0.8)" stroke-width="1"/>
+      <rect x="130" y="8" width="30" height="12" rx="6" fill="#E53E3E"/>
+      <rect x="130" y="25" width="25" height="8" rx="4" fill="rgba(113,128,150,0.6)"/>
+    </g>
+    
+    <!-- CTA Buttons -->
+    <g transform="translate(0, 170)">
+      <rect x="0" y="0" width="80" height="25" rx="8" fill="url(#gradient_cta_primary)"/>
+      <rect x="90" y="0" width="80" height="25" rx="8" fill="white" stroke="#2D3748" stroke-width="2"/>
+    </g>
+  </g>
+  
+  <!-- 3D Product Showcase -->
+  <g transform="translate(450, 100)">
+    <!-- Rotating Product Cards -->
+    <g transform="rotate(15)">
+      <rect x="0" y="0" width="60" height="80" rx="8" fill="white" stroke="rgba(226,232,240,0.8)" stroke-width="1" filter="url(#shadow_card)"/>
+      <circle cx="30" cy="25" r="12" fill="url(#gradient_product_icon)"/>
+      <rect x="10" y="45" width="40" height="8" rx="4" fill="rgba(26,32,44,0.8)"/>
+      <rect x="15" y="60" width="30" height="10" rx="5" fill="#E53E3E"/>
+    </g>
+    
+    <g transform="rotate(-10) translate(40, 20)">
+      <rect x="0" y="0" width="60" height="80" rx="8" fill="white" stroke="rgba(226,232,240,0.8)" stroke-width="1" filter="url(#shadow_card)"/>
+      <circle cx="30" cy="25" r="12" fill="url(#gradient_product_icon2)"/>
+      <rect x="10" y="45" width="40" height="8" rx="4" fill="rgba(26,32,44,0.8)"/>
+      <rect x="15" y="60" width="30" height="10" rx="5" fill="#DD6B20"/>
+    </g>
+    
+    <g transform="rotate(5) translate(-20, 30)">
+      <rect x="0" y="0" width="60" height="80" rx="8" fill="white" stroke="rgba(226,232,240,0.8)" stroke-width="1" filter="url(#shadow_card)"/>
+      <circle cx="30" cy="25" r="12" fill="url(#gradient_product_icon3)"/>
+      <rect x="10" y="45" width="40" height="8" rx="4" fill="rgba(26,32,44,0.8)"/>
+      <rect x="15" y="60" width="30" height="10" rx="5" fill="#E53E3E"/>
+    </g>
+  </g>
+  
+  <!-- Category Cards -->
+  <g transform="translate(220, 280)">
+    <rect x="0" y="0" width="120" height="100" rx="8" fill="white" stroke="rgba(226,232,240,0.8)" stroke-width="1"/>
+    <rect x="0" y="0" width="120" height="40" rx="8" fill="url(#gradient_category_header)"/>
+    <circle cx="60" cy="20" r="12" fill="#E53E3E"/>
+    <rect x="10" y="50" width="100" height="8" rx="4" fill="rgba(45,55,72,0.8)"/>
+    <rect x="10" y="65" width="80" height="6" rx="3" fill="rgba(113,128,150,0.6)"/>
+    <rect x="10" y="80" width="90" height="6" rx="3" fill="rgba(113,128,150,0.4)"/>
+    
+    <rect x="130" y="0" width="120" height="100" rx="8" fill="white" stroke="rgba(226,232,240,0.8)" stroke-width="1"/>
+    <rect x="130" y="0" width="120" height="40" rx="8" fill="url(#gradient_category_header)"/>
+    <circle cx="190" cy="20" r="12" fill="#E53E3E"/>
+    <rect x="140" y="50" width="100" height="8" rx="4" fill="rgba(45,55,72,0.8)"/>
+    <rect x="140" y="65" width="80" height="6" rx="3" fill="rgba(113,128,150,0.6)"/>
+    <rect x="140" y="80" width="90" height="6" rx="3" fill="rgba(113,128,150,0.4)"/>
+    
+    <rect x="260" y="0" width="120" height="100" rx="8" fill="white" stroke="rgba(226,232,240,0.8)" stroke-width="1"/>
+    <rect x="260" y="0" width="120" height="40" rx="8" fill="url(#gradient_category_header)"/>
+    <circle cx="320" cy="20" r="12" fill="#E53E3E"/>
+    <rect x="270" y="50" width="100" height="8" rx="4" fill="rgba(45,55,72,0.8)"/>
+    <rect x="270" y="65" width="80" height="6" rx="3" fill="rgba(113,128,150,0.6)"/>
+    <rect x="270" y="80" width="90" height="6" rx="3" fill="rgba(113,128,150,0.4)"/>
+  </g>
+  
+  <defs>
+    <linearGradient id="gradient_sidebar" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D3748"/>
+      <stop offset="100%" stop-color="#1A202C"/>
+    </linearGradient>
+    
+    <linearGradient id="gradient_accent_bar" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E53E3E"/>
+      <stop offset="100%" stop-color="#DD6B20"/>
+    </linearGradient>
+    
+    <linearGradient id="gradient_brand_circle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E53E3E"/>
+      <stop offset="100%" stop-color="#DD6B20"/>
+    </linearGradient>
+    
+    <linearGradient id="gradient_header_accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E53E3E"/>
+      <stop offset="50%" stop-color="#DD6B20"/>
+      <stop offset="100%" stop-color="#FFD700"/>
+    </linearGradient>
+    
+    <linearGradient id="gradient_hero_title" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1A202C"/>
+      <stop offset="50%" stop-color="#E53E3E"/>
+      <stop offset="100%" stop-color="#DD6B20"/>
+    </linearGradient>
+    
+    <linearGradient id="gradient_cta_primary" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E53E3E"/>
+      <stop offset="100%" stop-color="#DD6B20"/>
+    </linearGradient>
+    
+    <linearGradient id="gradient_product_icon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E53E3E"/>
+      <stop offset="100%" stop-color="#DD6B20"/>
+    </linearGradient>
+    
+    <linearGradient id="gradient_product_icon2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DD6B20"/>
+      <stop offset="100%" stop-color="#E53E3E"/>
+    </linearGradient>
+    
+    <linearGradient id="gradient_product_icon3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E53E3E"/>
+      <stop offset="100%" stop-color="#DD6B20"/>
+    </linearGradient>
+    
+    <linearGradient id="gradient_category_header" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D3748"/>
+      <stop offset="100%" stop-color="#1A202C"/>
+    </linearGradient>
+    
+    <filter id="shadow_card" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="rgba(0,0,0,0.2)"/>
+    </filter>
+  </defs>
+</svg>

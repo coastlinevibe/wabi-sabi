@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mopani Ember Catering | Bushveld Fireside Experiences</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ember: #ff6b35;
+        --flame: #ff8c42;
+        --charcoal: #2c1810;
+        --smoke: #8b7355;
+        --gold: #d4af37;
+        --earth: #8b4513;
+        --night: #0a0a0a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Cormorant Garamond', serif;
+        background: 
+          radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.12) 0%, transparent 50%),
+          linear-gradient(135deg, var(--night) 0%, var(--charcoal) 100%);
+        color: #f5f1eb;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      header {
+        padding: 32px 6vw 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        background: linear-gradient(180deg, rgba(11, 16, 27, 0.92), rgba(11, 16, 27, 0));
+        backdrop-filter: blur(12px);
+        z-index: 20;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-family: 'Playfair Display', serif;
+        letter-spacing: 0.04em;
+      }
+
+      .brand-mark {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: var(--gradient);
+        display: grid;
+        place-items: center;
+        font-weight: 600;
+        color: var(--accent);
+        border: 1px solid rgba(249, 115, 22, 0.22);
+        box-shadow: 0 18px 32px rgba(249, 115, 22, 0.18);
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(248, 250, 252, 0.16);
+        background: rgba(24, 34, 24, 0.55);
+        color: rgba(228, 241, 228, 0.85);
+        text-decoration: none;
+        font-size: 14px;
+        letter-spacing: 0.03em;
+        transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      }
+
+      .back-link:hover {
+        transform: translateY(-1px);
+        background: rgba(15, 23, 42, 0.65);
+        border-color: rgba(248, 250, 252, 0.32);
+        color: #f8fafc;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+      }
+
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        transition: color 0.25s ease, transform 0.25s ease;
+      }
+
+      nav a:hover {
+        color: #f8fafc;
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(120deg, #f59f0b, #f97316);
+        color: #0b101b;
+        font-weight: 600;
+        border-radius: 999px;
+        padding: 14px 24px;
+        text-decoration: none;
+        box-shadow: 0 16px 30px rgba(245, 158, 11, 0.25);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 35px rgba(245, 158, 11, 0.35);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 48px;
+        padding: 96px 6vw 64px;
+        align-items: center;
+      }
+
+      .hero-copy h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(42px, 5vw, 68px);
+        letter-spacing: 0.04em;
+        margin-bottom: 18px;
+        line-height: 1.08;
+      }
+
+      .hero-copy h1 span {
+        background: linear-gradient(120deg, #fde68a, #fbbf24);
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+
+      .hero-copy p.lead {
+        font-size: clamp(18px, 2.3vw, 22px);
+        color: rgba(248, 250, 252, 0.86);
+        line-height: 1.7;
+        max-width: 580px;
+        margin-bottom: 28px;
+      }
+
+      .hero-badges {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+
+      .badge {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(248, 250, 252, 0.12);
+        background: rgba(15, 23, 42, 0.45);
+        color: rgba(248, 250, 252, 0.8);
+        font-size: 13px;
+        letter-spacing: 0.03em;
+      }
+
+      .hero-media {
+        position: relative;
+        border-radius: 24px;
+        padding: 24px;
+        background: var(--surface);
+        box-shadow: 0 30px 60px rgba(14, 22, 40, 0.45);
+        overflow: hidden;
+      }
+
+      .hero-media::before {
+        content: '';
+        position: absolute;
+        inset: 18px;
+        border-radius: 18px;
+        border: 1px solid rgba(248, 250, 252, 0.06);
+        pointer-events: none;
+      }
+
+      .hero-media img {
+        width: 100%;
+        border-radius: 16px;
+        object-fit: cover;
+        box-shadow: 0 22px 45px rgba(14, 22, 40, 0.55);
+      }
+
+      .section {
+        padding: 80px 6vw;
+      }
+
+      .section-header {
+        max-width: 760px;
+        margin: 0 auto 54px;
+        text-align: center;
+      }
+
+      .section-header h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(32px, 4vw, 46px);
+        margin-bottom: 16px;
+      }
+
+      .section-header p {
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.7;
+      }
+
+      .feature-grid {
+        display: grid;
+        gap: 26px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+
+      .feature-card {
+        padding: 26px 28px;
+        border-radius: 20px;
+        border: 1px solid rgba(248, 250, 252, 0.08);
+        background: rgba(15, 23, 42, 0.55);
+        box-shadow: 0 16px 35px rgba(13, 19, 33, 0.35);
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        min-height: 220px;
+      }
+
+      .feature-icon {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: rgba(245, 159, 11, 0.16);
+        color: #fb923c;
+        font-size: 20px;
+      }
+
+      .feature-card h3 {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: rgba(226, 232, 240, 0.76);
+        line-height: 1.7;
+      }
+
+      .menu-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 40px;
+        align-items: center;
+      }
+
+      .menu-card {
+        border-radius: 26px;
+        background: rgba(15, 23, 42, 0.5);
+        padding: 36px;
+        border: 1px solid rgba(248, 250, 252, 0.08);
+        box-shadow: 0 26px 48px rgba(11, 18, 33, 0.35);
+      }
+
+      .menu-card h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 26px;
+        margin-bottom: 18px;
+      }
+
+      .menu-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 18px;
+      }
+
+      .menu-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+        color: rgba(248, 250, 252, 0.84);
+        border-bottom: 1px dashed rgba(248, 250, 252, 0.14);
+        padding-bottom: 10px;
+      }
+
+      .menu-item span {
+        color: rgba(148, 163, 184, 0.7);
+        font-size: 14px;
+      }
+
+      .testimonial-strip {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+        margin-top: 32px;
+      }
+
+      .testimonial {
+        border-radius: 18px;
+        padding: 24px 26px;
+        background: rgba(14, 20, 34, 0.58);
+        border: 1px solid rgba(248, 250, 252, 0.06);
+      }
+
+      .testimonial p {
+        margin: 0;
+        line-height: 1.8;
+        color: rgba(226, 232, 240, 0.8);
+      }
+
+      .testimonial .name {
+        margin-top: 16px;
+        font-weight: 600;
+        color: #fbbf24;
+      }
+
+      .cta {
+        padding: 90px 6vw 100px;
+        text-align: center;
+        background: linear-gradient(135deg, rgba(245, 159, 11, 0.16), rgba(22, 163, 74, 0.1));
+        backdrop-filter: blur(14px);
+        border-top: 1px solid rgba(248, 250, 252, 0.08);
+      }
+
+      .cta h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(36px, 4.6vw, 56px);
+        margin-bottom: 18px;
+      }
+
+      .cta p {
+        color: rgba(248, 250, 252, 0.85);
+        font-size: 19px;
+        margin-bottom: 32px;
+      }
+
+      footer {
+        padding: 32px 6vw 50px;
+        background: rgba(8, 12, 21, 0.9);
+        border-top: 1px solid rgba(248, 250, 252, 0.05);
+      }
+
+      footer .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 28px;
+      }
+
+      footer h4 {
+        font-size: 16px;
+        letter-spacing: 0.05em;
+        color: rgba(248, 250, 252, 0.75);
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+
+      footer ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 10px;
+        color: rgba(148, 163, 184, 0.75);
+        font-size: 14px;
+      }
+
+      @media (max-width: 720px) {
+        header {
+          padding: 24px 6vw 0;
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero {
+          padding-top: 80px;
+        }
+
+        .menu-card {
+          padding: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div style="display: flex; align-items: center; gap: 32px; flex-wrap: wrap">
+        <a class="back-link" href="/portfolio#website-gallery">← Back to main site</a>
+        <div class="brand">
+          <div class="brand-mark">ME</div>
+          <div>
+            <div style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.38em; color: rgba(228, 241, 228, 0.6)">
+              Mopani Ember
+            </div>
+            <div style="font-size: 22px; font-weight: 600">Bushveld Catering Studio</div>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <a href="#services">Our fires</a>
+        <a href="#menus">Bushveld menus</a>
+        <a href="#events">Gatherings</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn-primary">Plan a boma feast</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <div class="hero-badges">
+          <div class="badge">Bushveld chef collective</div>
+          <div class="badge">Limpopo organic farmers</div>
+          <div class="badge">Boma feasts · Safari weddings</div>
+        </div>
+        <h1>
+          Bushveld fire for<br />
+          <span>memorable gatherings.</span>
+        </h1>
+        <p class="lead">
+          Mopani Ember brings northern South African terroir to smoke-kissed life. Think cast-iron potjie theatrics, marula-glazed
+          game, and sunset gin infusions curated with mopane wood fire rituals. We choreograph every detail from first ember to last
+          lantern.
+        </p>
+        <a href="#menus" class="btn-primary">Browse bushveld tasting menus</a>
+      </div>
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1400&q=80" alt="Bushveld catering experience" />
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="section-header">
+        <h2>Bushveld service, choreographed like moonlight theatre</h2>
+        <p>
+          Our chef collective partners with Limpopo foragers, lowveld beekeepers, and botanical distillers to translate your story
+          into every flame-grilled course. From intimate safari elopements to vast corporate retreats, we deliver calm precision.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔥</div>
+          <h3>Firepit tasting journeys</h3>
+          <p>
+            Six-course tasting menus guided by seasonal game, mopani salt, and ancestral spice blends paired with boutique bushveld wines.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🪵</div>
+          <h3>Experiential staging</h3>
+          <p>
+            Thornwood tablescapes, handwoven textiles, and kiaat lantern installations that glow beneath the acacia canopy.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧑‍🍳</div>
+          <h3>Chef & service team</h3>
+          <p>
+            Michelin-honed chefs, sangoma-guided mixologists, and storytellers who serve with warmth and effortless grace.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📋</div>
+          <h3>Event production</h3>
+          <p>
+            Mobile field kitchens, solar chillers, and logistics orchestrated across your bush retreat with real-time comms.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section menu-section" id="menus">
+      <div>
+        <div class="section-header" style="margin-bottom: 32px; text-align: left; padding: 0">
+          <h2>Menus rooted in Limpopo soil and bushveld skies</h2>
+          <p>
+            We source from regenerative Mopani farms, Tzaneen orchards, and private game reserves. Menus evolve with rain cycles and
+            moon phases, designed to pair with craft amarula and gin infusions.
+          </p>
+        </div>
+        <div class="testimonial-strip">
+          <div class="testimonial">
+            <p>
+              “Our bush wedding dinner was poetry. Flame-seared nyala, wild rosemary smoke, and lantern-lit dessert stations had
+              guests enchanted. Mopani Ember handled every detail from boma styling to dawn coffee ceremony.”
+            </p>
+            <div class="name">Thandeka & Ruan · Hoedspruit</div>
+          </div>
+          <div class="testimonial">
+            <p>
+              “We trusted them with a 200-guest product launch on the reserve. The service was seamless, the menu visionary, and
+              every client left with a story to share.”
+            </p>
+            <div class="name">Fortune Nkosi · Savannah Events</div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <h3>Mopani Fireside tasting</h3>
+        <ul class="menu-list">
+          <li class="menu-item">
+            Rooibos smoked trout <span>kumquat atchar, charred fennel pollen</span>
+          </li>
+          <li class="menu-item">
+            Ember roasted butternut agnolotti <span>burnt sage butter, pecan praline</span>
+          </li>
+          <li class="menu-item">
+            Marula lacquered guinea fowl <span>stone fruit chutney, chilli mielie ash</span>
+          </li>
+          <li class="menu-item">
+            Flame-seared beef fillet <span>madumbe coffee rub, marrow potjie jus</span>
+          </li>
+          <li class="menu-item">
+            Molten amarula crème brûlée <span>baobab leather, cocoa nib tuile</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="events">
+      <div class="section-header">
+        <h2>Experiences we elevate in the bushveld</h2>
+        <p>
+          Intimate kopje suppers, brand immersions under the stars, or black-tie celebrations— our team shapes bushveld atmosphere
+          from invitation to final ember.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">💍</div>
+          <h3>Safari weddings</h3>
+          <p>
+            Elegant tasting stations, coursed dinners, and fire desserts tailored to your signature bushveld moments.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏢</div>
+          <h3>Corporate immersions</h3>
+          <p>
+            Brand storytelling through veld-inspired cuisine. Product launches, media nights, and investor events with theatre-led plating.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏡</div>
+          <h3>Private chef tables</h3>
+          <p>
+            Eleven-course dinners in safari villas, lodges, and bush homes. Mixology and sommelier pairings included.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Let’s choreograph an unforgettable bushveld feast</h2>
+      <p>
+        Share your date, lodge location, and guest list. Our concierge will design a bespoke tasting within 48 hours and arrange a
+        fireside tasting at our Hoedspruit studio.
+      </p>
+      <a href="mailto:hello@mopaniember.co.za" class="btn-primary">Book a tasting</a>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <h4>Studio Hours</h4>
+          <ul>
+            <li>Mon – Fri · 09:00 – 18:00</li>
+            <li>Sat · Tastings by appointment</li>
+            <li>Closed Sundays</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>hello@mopaniember.co.za</li>
+            <li>+27 15 555 9080</li>
+            <li>Hoedspruit · Limpopo</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Follow our fire</h4>
+          <ul>
+            <li>Instagram · @mopaniember</li>
+            <li>Pinterest · Mopani Ember</li>
+            <li>Journal · Seasonal stories</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
