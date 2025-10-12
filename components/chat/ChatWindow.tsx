@@ -4,7 +4,6 @@ import { supabase } from '@/lib/supabase';
 import { Message } from '@/lib/supabase';
 import MessageBubble from './MessageBubble';
 import MessageInput from './MessageInput';
-import PromptButtons from './PromptButtons';
 import { Loader2 } from 'lucide-react';
 
 export default function ChatWindow({
@@ -16,8 +15,17 @@ export default function ChatWindow({
   const [isLoading, setIsLoading] = useState(true);
   const [isSending, setIsSending] = useState(false);
   const [sessionId, setSessionId] = useState<string>("");
-  const [currentPrompts, setCurrentPrompts] = useState<string[]>([]);
+  const [initialMessage, setInitialMessage] = useState<string>("");
   const chatRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Get initial message from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const prefillMsg = urlParams.get('msg');
+    if (prefillMsg) {
+      setInitialMessage(decodeURIComponent(prefillMsg));
+    }
+  }, []);
 
   useEffect(() => {
     // Generate unique session ID for this chat session
@@ -86,8 +94,6 @@ export default function ChatWindow({
   const handleSend = async (text: string) => {
     if (!sessionId) return; // Wait for session to be initialized
 
-    // Clear any existing prompts when user sends a message
-    setCurrentPrompts([]);
 
     setIsSending(true);
     try {
@@ -150,10 +156,6 @@ export default function ChatWindow({
           };
           setMessages(prev => [...prev, aiMessage]);
 
-          // Set prompts for the next interaction
-          if (result.prompts && result.prompts.length > 0) {
-            setCurrentPrompts(result.prompts);
-          }
         }
 
       } catch (aiError) {
@@ -170,8 +172,6 @@ export default function ChatWindow({
         };
         setMessages(prev => [...prev, fallbackMessage]);
         
-        // Set default prompts
-        setCurrentPrompts(["How can I help you today?", "What services interest you?"]);
         
         // Still insert into database for persistence
         await supabase
@@ -190,10 +190,6 @@ export default function ChatWindow({
     }
   };
 
-  const handlePromptClick = (prompt: string) => {
-    // Send the prompt as a message
-    handleSend(prompt);
-  };
 
   if (isLoading) {
     return (
@@ -241,15 +237,7 @@ export default function ChatWindow({
           messages.map((msg, i) => (
             <div key={i}>
               <MessageBubble text={msg.text} sender={msg.type} />
-              {/* Show prompts after the last AI message */}
-              {msg.type === 'ai' && i === messages.length - 1 && currentPrompts.length > 0 && (
-                <PromptButtons 
-                  prompts={currentPrompts} 
-                  onPromptClick={handlePromptClick}
-                  disabled={isSending}
-                />
-              )}
-            </div>
+                </div>
           ))
         )}
         
@@ -268,7 +256,7 @@ export default function ChatWindow({
       </div>
 
       {/* Message Input */}
-      <MessageInput onSend={handleSend} />
+      <MessageInput onSend={handleSend} initialMessage={initialMessage} />
     </div>
   );
 }

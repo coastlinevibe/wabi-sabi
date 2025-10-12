@@ -3,19 +3,33 @@ import { Send } from "lucide-react";
 
 export default function MessageInput({
   onSend,
+  initialMessage,
 }: {
   onSend: (text: string) => void;
+  initialMessage?: string;
 }) {
   const [text, setText] = useState("");
 
   // Check for pre-filled message from URL on component mount
   useEffect(() => {
+    // First try the prop
+    if (initialMessage) {
+      console.log('Using initial message prop:', initialMessage);
+      setText(initialMessage);
+      return;
+    }
+
+    // Fallback to URL params
     const urlParams = new URLSearchParams(window.location.search);
     const prefillMsg = urlParams.get('msg');
+    console.log('URL params:', window.location.search);
+    console.log('Prefill message:', prefillMsg);
     if (prefillMsg) {
-      setText(decodeURIComponent(prefillMsg));
+      const decodedMsg = decodeURIComponent(prefillMsg);
+      console.log('Decoded message:', decodedMsg);
+      setText(decodedMsg);
     }
-  }, []);
+  }, [initialMessage]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
