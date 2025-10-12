@@ -94,7 +94,6 @@ export default function ChatWindow({
   const handleSend = async (text: string) => {
     if (!sessionId) return; // Wait for session to be initialized
 
-
     setIsSending(true);
     try {
       // Generate a guest user ID if no user is logged in

@@ -188,6 +188,7 @@ export const WABI_SABI_KNOWLEDGE_BASE = {
 
   process: {
     discovery: "Free discovery session to assess current systems",
+    consultation: "**30-minute consultation** - Book a quick call to discuss your needs at https://cal.com/riegal-du-toit/30min",
     assessment: "Deep dive into profit flows and friction points",
     design: "Custom system design based on business needs",
     implementation: "30-90 day implementation with team training",
@@ -243,20 +244,6 @@ RESPONSE FORMATTING:
 - Structure responses clearly with paragraphs and line breaks
 - Format service levels, pricing, and contact info prominently
 
-CONTEXTUAL PROMPTS:
-- Always include 2-4 relevant follow-up questions or topics
-- Adapt prompts based on what the user just asked
-- Make prompts conversational and natural
-- Focus on the most logical next steps in their journey
-- Return prompts as an array in the JSON response
-
-AVAILABLE PROMPT CATEGORIES:
-- General: "What services do you offer?", "How does Wabi-Sabi work?"
-- Services: "Tell me about pricing", "What's included in Foundation level?"
-- About: "What's your success rate?", "Can you share client testimonials?"
-- Contact: "How can I get started?", "Can I book a discovery call?"
-- Technical: "What components do you have?", "Tell me about your chat system"
-
 Key knowledge areas:
 - Company: Wabi-Sabi, revealing hidden income flows, Cape Town-based
 - Services: Foundation (R50k+, 30 days), Growth (R100k+, 60 days), Scale (R250k+, 90 days)
@@ -277,6 +264,7 @@ Guidelines:
 - For component questions, provide specific details about capabilities
 - For service questions, explain the investment levels clearly
 - **Use markdown formatting**: Bold key terms, use bullet points for lists, format important information clearly
+- **Offer 30-minute consultations** for quick discussions about business needs - always include the calendar link: https://cal.com/riegal-du-toit/30min
 
 Available services summary:
 - **Foundation**: Basic automation, client database, payments, clarity dashboard
@@ -288,22 +276,11 @@ Component categories:
 - **Core**: CTASection, CaseStudyPage, ClientLogos, Footer, Hero3DCarousel, HeroSection, InlineCaseStudyGallery, Navbar, PortfolioPreview, PricingAndOffer, PricingTable, ServicesPreview, StatsSection, TechStack, TestimonialsCarousel, ThemeProvider, WhatsAppFloat
 - **Chat**: ChatWindow, MessageBubble, MessageInput
 
-RESPONSE FORMAT:
-Return your response as a JSON object with exactly two properties:
-- "response": A string containing your main response text with clean markdown formatting
-- "prompts": An array of 2-4 strings with follow-up questions
-
 IMPORTANT: 
-- Use proper markdown: **bold**, *italic*, - bullet points
-- Do NOT duplicate words or add extra asterisks
-- Keep markdown clean and properly formatted
-- Ensure the JSON is valid
-
-Example format:
-{
-  "response": "**Wabi-Sabi Services**\n\nWe offer three levels:\n- **Foundation** (R50k+): Basic automation\n- **Growth** (R100k+): CRM systems\n- **Scale** (R250k+): Full analytics\n\n*Contact us at +27 71 432 9190*",
-  "prompts": ["Tell me about pricing", "What's included in Foundation?", "How do I get started?"]
-}
+- Provide a natural, conversational response
+- Do NOT return JSON or structured data
+- Just respond with the text answer directly
+- Keep responses concise: maximum 5 lines total
 `;
 
     const messages = [
@@ -324,7 +301,7 @@ Example format:
       body: JSON.stringify({
         model: 'gpt-4',
         messages: messages,
-        max_tokens: 800,
+        max_tokens: 250,
         temperature: 0.3,
         presence_penalty: 0.1,
         frequency_penalty: 0.1,
@@ -336,23 +313,12 @@ Example format:
     }
 
     const data = await response.json();
-    const rawResponse = data.choices[0]?.message?.content || '{"response": "I apologize, but I couldn\'t generate a response. Please try again or contact our team directly.", "prompts": ["How can I help you today?", "What services interest you?"]}';
+    const aiResponse = data.choices[0]?.message?.content || "I apologize, but I couldn't generate a response. Please try again or contact our team directly.";
 
-    // Parse the JSON response
-    try {
-      const parsed = JSON.parse(rawResponse);
-      return {
-        response: parsed.response || rawResponse,
-        prompts: parsed.prompts || ["How can I help you today?", "What services interest you?"]
-      };
-    } catch (parseError) {
-      // Fallback if JSON parsing fails
-      console.error('JSON parse error:', parseError);
-      return {
-        response: rawResponse,
-        prompts: ["How can I help you today?", "What services interest you?"]
-      };
-    }
+    return {
+      response: aiResponse,
+      prompts: ["Foundation level?", "Growth services?", "Book consultation?", "Get started?"]
+    };
 
   } catch (error) {
     console.error('OpenAI API error:', error);

@@ -1,14 +1,41 @@
+"use client";
 import ChatWindow from "@/components/chat/ChatWindow";
-import { Metadata } from "next";
-
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: `Chat with Wabi-Sabi Business | Wabi-Sabi`,
-    description: `AI-powered chat with comprehensive knowledge about Wabi-Sabi services, components, and business solutions. Get detailed information about our investment levels, components, and approach.`,
-  };
-}
 
 export default function WabiSabiBusinessChatPage() {
+  const suggestedQuestions = [
+    "Hidden value?",
+    "Pricing?",
+    "Book discovery?",
+    "Automate operations?",
+    "Training programs?"
+  ];
+
+  const handleSuggestedQuestion = (question: string) => {
+    const input = document.querySelector('input[placeholder*="Type your message"]') as HTMLInputElement;
+    if (input) {
+      // Use the native setter to ensure React detects the change
+      const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
+      if (nativeInputValueSetter) {
+        nativeInputValueSetter.call(input, question);
+      } else {
+        input.value = question;
+      }
+
+      input.focus();
+
+      // Trigger events in the correct order
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+
+      // Force React to re-render
+      const forceUpdate = () => {
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+      };
+      setTimeout(forceUpdate, 0);
+      setTimeout(forceUpdate, 10);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex flex-col items-center justify-center p-3 sm:p-6">
       {/* Header */}
@@ -34,8 +61,29 @@ export default function WabiSabiBusinessChatPage() {
       </div>
 
       {/* Chat Window */}
-      <div className="w-full max-w-sm sm:max-w-lg lg:max-w-2xl">
+      <div className="w-full max-w-lg sm:max-w-2xl lg:max-w-5xl">
         <ChatWindow businessId="wabi-sabi-business" />
+      </div>
+
+      {/* Separator */}
+      <div className="w-full max-w-lg sm:max-w-2xl lg:max-w-5xl mt-6 mb-6">
+        <div className="h-px bg-gradient-to-r from-transparent via-slate-600/30 to-transparent"></div>
+      </div>
+
+      {/* Suggested Questions */}
+      <div className="max-w-lg sm:max-w-2xl lg:max-w-5xl">
+        <p className="text-xs text-slate-400 text-center mb-4">Try asking:</p>
+        <div className="flex flex-wrap gap-2 justify-center">
+          {suggestedQuestions.map((question, index) => (
+            <button
+              key={index}
+              onClick={() => handleSuggestedQuestion(question)}
+              className="bg-transparent hover:bg-slate-800/30 text-slate-300 hover:text-white text-xs px-3 py-2 rounded-[9px] border border-slate-600/30 hover:border-slate-500/50 transition-colors"
+            >
+              {question}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Footer */}
@@ -52,18 +100,24 @@ export default function WabiSabiBusinessChatPage() {
         </p>
       </div>
 
-      {/* Pre-fill message script */}
+      {/* Pre-fill message script - only if no URL param */}
       <script
         dangerouslySetInnerHTML={{
           __html: `
             window.addEventListener('load', () => {
-              setTimeout(() => {
-                const input = document.querySelector('input[placeholder*="Type your message"]');
-                if (input) {
-                  input.value = "Tell me about your services";
-                  input.focus();
-                }
-              }, 500);
+              const urlParams = new URLSearchParams(window.location.search);
+              const hasMsgParam = urlParams.has('msg');
+              if (!hasMsgParam) {
+                setTimeout(() => {
+                  const input = document.querySelector('input[placeholder*="Type your message"]');
+                  if (input && !input.value.trim()) {
+                    input.value = "Tell me about your services";
+                    input.focus();
+                    const event = new Event('input', { bubbles: true });
+                    input.dispatchEvent(event);
+                  }
+                }, 500);
+              }
             });
           `,
         }}

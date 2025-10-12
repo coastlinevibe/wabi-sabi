@@ -38,23 +38,11 @@ export default function MessageInput({
     setText("");
   };
 
-  const promptButtons = [
-    "Hi! I'm interested in discovering hidden value in my business.",
-    "Can you tell me about your pricing?",
-    "I'd like to book a discovery session.",
-    "How can you help automate my operations?",
-    "What's included in your training programs?"
-  ];
-
-  const handlePromptClick = (prompt: string) => {
-    setText(prompt);
-  };
-
   return (
     <div className="border-t border-slate-200/50 bg-white/80 backdrop-blur-sm">
       <form
         onSubmit={handleSubmit}
-        className="flex items-center p-3 sm:p-4"
+        className="flex items-center p-2 sm:p-3"
       >
         <input
           value={text}
@@ -70,21 +58,6 @@ export default function MessageInput({
           <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
         </button>
       </form>
-      
-      {/* Prompt Buttons */}
-      <div className="px-3 sm:px-4 pb-3 sm:pb-4">
-        <div className="flex flex-wrap gap-2">
-          {promptButtons.map((prompt, index) => (
-            <button
-              key={index}
-              onClick={() => handlePromptClick(prompt)}
-              className="text-xs sm:text-sm px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full border border-slate-200 transition-all duration-200 hover:shadow-sm"
-            >
-              {prompt}
-            </button>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }
