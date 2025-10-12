@@ -9,7 +9,7 @@ export const WABI_SABI_KNOWLEDGE_BASE = {
     location: "**Cape Town, South Africa**",
     contact: {
       phone: "**+27 71 432 9190**",
-      email: "**admin@giftai.co.za**",
+      email: "**wabisabiclick2025@gmail.com**",
       whatsapp: "**+27 714 329 190**"
     },
     stats: {
@@ -257,7 +257,7 @@ Guidelines:
 - Always be helpful and professional
 - Focus on our services, components, and business philosophy
 - Direct to appropriate team members for complex inquiries
-- Mention contact details when relevant: +27 71 432 9190, admin@giftai.co.za
+- Mention contact details when relevant: +27 71 432 9190, wabisabiclick2025@gmail.com
 - Use our terminology (hidden income flows, clarity views, etc.)
 - Keep responses concise but informative
 - End with a call-to-action when appropriate
@@ -323,7 +323,7 @@ IMPORTANT:
   } catch (error) {
     console.error('OpenAI API error:', error);
     return {
-      response: "Thanks for your message! 🌿 I'm experiencing a technical issue right now. Please call us at +27 71 432 9190 or email admin@giftai.co.za - we'd love to help you discover hidden income flows in your business.",
+      response: "Thanks for your message! 🌿 I'm experiencing a technical issue right now. Please call us at +27 71 432 9190 or email wabisabiclick2025@gmail.com - we'd love to help you discover hidden income flows in your business.",
       prompts: ["How can I help you today?", "What services interest you?"]
     };
   }

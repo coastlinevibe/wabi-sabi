@@ -85,7 +85,7 @@ We offer three levels:
 - **Growth** (R100k+): CRM systems and customer portals
 - **Scale** (R250k+): Multi-department workflows
 
-*Contact us at +27 71 432 9190 or admin@giftai.co.za for a free discovery call!*"
+*Contact us at +27 71 432 9190 or wabisabiclick2025@gmail.com for a free discovery call!*"
             sender="ai"
           />
           <PromptButtons
