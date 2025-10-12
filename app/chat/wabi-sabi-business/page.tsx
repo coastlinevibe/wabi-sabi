@@ -72,13 +72,12 @@ export default function WabiSabiBusinessChatPage() {
 
       {/* Suggested Questions */}
       <div className="max-w-lg sm:max-w-2xl lg:max-w-5xl">
-        <p className="text-xs text-slate-400 text-center mb-4">Try asking:</p>
         <div className="flex flex-wrap gap-2 justify-center">
           {suggestedQuestions.map((question, index) => (
             <button
               key={index}
               onClick={() => handleSuggestedQuestion(question)}
-              className="bg-transparent hover:bg-slate-800/30 text-slate-300 hover:text-white text-xs px-3 py-2 rounded-[9px] border border-slate-600/30 hover:border-slate-500/50 transition-colors"
+              className="button text-xs"
             >
               {question}
             </button>
