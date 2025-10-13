@@ -21,18 +21,18 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://wabi-sabi.analytics'),
+  metadataBase: new URL('https://wabi-sabi.click'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'Wabi-sabi Analytics - Growth Begins Here',
     description: 'Embracing imperfection to find perfect growth. Mindful analytics and patient transformation for sustainable business success.',
-    url: 'https://wabi-sabi.analytics',
+    url: 'https://wabi-sabi.click',
     siteName: 'Wabi Sabi',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/images/thumbnail.png',
         width: 1200,
         height: 630,
         alt: 'Wabi Sabi - Growth Begins Here',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Wabi-sabi Analytics - Growth Begins Here',
     description: 'Embracing imperfection to find perfect growth through mindful analytics.',
-    images: ['/twitter-image.jpg'],
+    images: ['/images/thumbnail.png'],
   },
   robots: {
     index: true,
