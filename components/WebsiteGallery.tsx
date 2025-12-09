@@ -1,6 +1,6 @@
 'use client'
 
-import Image from 'next/image'
+import { useState } from 'react'
 
 const websites = [
   { name: 'Blue Wave Zone', portfolio: 'bluewavezone' },
@@ -9,9 +9,23 @@ const websites = [
   { name: 'OnSite', portfolio: 'onsite' },
   { name: 'WorkSite Solutions', portfolio: 'worksitesolutions' },
   { name: 'A2Z Sellr', portfolio: 'a2zsellr' },
+  { name: 'Day1 Health', portfolio: 'day1health' },
+  { name: 'Khambi', portfolio: 'khambi' },
 ]
 
 export function WebsiteGallery() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % websites.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + websites.length) % websites.length)
+  }
+
+  const currentSite = websites[currentIndex]
+
   return (
     <section id="website-gallery" className="py-16 bg-slate-950/90">
       <div className="max-w-7xl mx-auto px-6">
@@ -24,7 +38,8 @@ export function WebsiteGallery() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-12">
           {websites.map((site) => (
             <div key={site.portfolio} className="flex items-center justify-center h-96 relative">
               {/* Laptop */}
@@ -38,11 +53,59 @@ export function WebsiteGallery() {
                 <img
                   src={`/popup-intro-imgs/${site.portfolio}-phone.png`}
                   alt={`${site.name} phone`}
-                  className="absolute max-h-48 max-w-24 object-contain -left-8 -bottom-4 transform -rotate-12"
+                  className="absolute max-h-48 max-w-24 object-contain -left-2 top-12 transform -rotate-12"
                 />
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Mobile Carousel */}
+        <div className="md:hidden">
+          <div className="flex items-center justify-center h-96 relative">
+            <div className="relative w-full h-full flex items-center justify-center">
+              <img
+                src={`/popup-intro-imgs/${currentSite.portfolio}-laptop.png`}
+                alt={`${currentSite.name} laptop`}
+                className="max-h-64 max-w-xs object-contain"
+              />
+              <img
+                src={`/popup-intro-imgs/${currentSite.portfolio}-phone.png`}
+                alt={`${currentSite.name} phone`}
+                className="absolute max-h-48 max-w-24 object-contain -left-2 top-12 transform -rotate-12"
+              />
+            </div>
+          </div>
+
+          <div className="text-center -mt-4">
+            <h3 className="text-xl font-light text-white">{currentSite.name}</h3>
+          </div>
+
+          <div className="flex items-center justify-center gap-4">
+            <button
+              onClick={prevSlide}
+              className="bg-slate-800 hover:bg-slate-700 text-white p-2 rounded-full transition"
+            >
+              ←
+            </button>
+            <div className="flex gap-2">
+              {websites.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-2 h-2 rounded-full transition ${
+                    index === currentIndex ? 'bg-white' : 'bg-slate-600'
+                  }`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={nextSlide}
+              className="bg-slate-800 hover:bg-slate-700 text-white p-2 rounded-full transition"
+            >
+              →
+            </button>
+          </div>
         </div>
       </div>
     </section>

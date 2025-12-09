@@ -167,12 +167,12 @@ export function SwiperGallery() {
                     )}
                   </div>
                   <div className="card-content animate-active">
-                    <div className="card-sub-title" style={{ '--color': slide.id === 1 ? '#553d36' : slide.id === 2 || slide.id === 3 || slide.id === 6 ? '#ffffff' : slide.id === 4 ? '#f58327' : slide.id === 5 ? '#0066ff' : slide.buttonColor } as any}>{slide.subTitle}</div>
-                    <h2 className="card-title" data-text={slide.title} style={{ '--color': slide.id === 1 ? '#553d36' : slide.id === 2 || slide.id === 3 || slide.id === 6 ? '#ffffff' : slide.id === 4 ? '#f58327' : slide.id === 5 ? '#0066ff' : '#fff' } as any}>{slide.title}</h2>
-                    <p className="card-description" style={{ '--color': slide.id === 1 ? '#553d36' : slide.id === 2 || slide.id === 3 || slide.id === 6 ? '#ffffff' : slide.id === 4 ? '#f58327' : slide.id === 5 ? '#0066ff' : '#fff' } as any}>{slide.description}</p>
+                    <div className="card-sub-title" style={{ '--color': slide.id === 1 || slide.id === 8 ? '#553d36' : slide.id === 2 || slide.id === 3 || slide.id === 6 ? '#ffffff' : slide.id === 4 ? '#f58327' : slide.id === 5 || slide.id === 7 ? '#0066ff' : slide.buttonColor } as any}>{slide.subTitle}</div>
+                    <h2 className="card-title" data-text={slide.title} style={{ '--color': slide.id === 1 || slide.id === 8 ? '#553d36' : slide.id === 2 || slide.id === 3 || slide.id === 6 ? '#ffffff' : slide.id === 4 ? '#f58327' : slide.id === 5 || slide.id === 7 ? '#0066ff' : '#fff' } as any}>{slide.title}</h2>
+                    <p className="card-description" style={{ '--color': slide.id === 1 || slide.id === 8 ? '#553d36' : slide.id === 2 || slide.id === 3 || slide.id === 6 ? '#ffffff' : slide.id === 4 ? '#f58327' : slide.id === 5 || slide.id === 7 ? '#0066ff' : '#fff' } as any}>{slide.description}</p>
                     <div className="card-cta animate-active"><a href="/portfolio" className="cta-button" style={{ '--color': slide.buttonColor } as any}>See the full site</a></div>
                   </div>
-                  <div className="card-ghost-info animate-active" style={{ color: slide.id === 1 ? '#553d36' : '#ffffff' }}>
+                  <div className="card-ghost-info animate-active" style={{ color: slide.id === 1 || slide.id === 8 ? '#553d36' : slide.id === 7 ? '#00cc00' : '#ffffff' }}>
                     <span style={{ '--color': slide.infoColor } as any}></span>
                     <div className="ghost-name">{slide.ghostName}</div>
                     <div>{slide.ghostTitle}</div>
