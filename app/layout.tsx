@@ -5,7 +5,7 @@ import { ThemeProvider } from '@/components/ThemeProvider'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { ChatFloat } from '@/components/WhatsAppFloat'
-import { PrelaunchGallery } from '@/components/PrelaunchGallery'
+import { SwiperGallery } from '@/components/SwiperGallery'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -93,7 +93,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex flex-col min-h-screen">
-            <PrelaunchGallery />
+            <SwiperGallery />
             <Navbar />
             <main className="flex-grow">
               {children}

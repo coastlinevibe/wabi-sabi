@@ -16,6 +16,7 @@ export default function ChatWindow({
   const [isSending, setIsSending] = useState(false);
   const [sessionId, setSessionId] = useState<string>("");
   const [initialMessage, setInitialMessage] = useState<string>("");
+  const [welcomeSent, setWelcomeSent] = useState<boolean>(false);
   const chatRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -40,7 +41,13 @@ export default function ChatWindow({
 
     // Start with empty messages for new session (privacy)
     setMessages([]);
+    setWelcomeSent(false); // Reset welcome flag for new session
     setIsLoading(false);
+
+    // Send initial AI welcome message after a brief delay
+    setTimeout(() => {
+      sendInitialWelcomeMessage(currentSessionId);
+    }, 1000);
 
     // Note: We don't load old messages for privacy - each session is fresh
 
@@ -90,6 +97,42 @@ export default function ChatWindow({
       chatRef.current.scrollTop = chatRef.current.scrollHeight;
     }
   }, [messages]);
+
+  // Send initial welcome message from AI
+  const sendInitialWelcomeMessage = async (sessionId: string) => {
+    if (welcomeSent) return; // Prevent duplicates
+    
+    const welcomeMessage = `Hi! 👋 I help businesses discover hidden income flows - those overlooked opportunities quietly adding to your bottom line.
+
+What brings you here today? 🌿`;
+
+    try {
+      // Add welcome message to local state immediately
+      const aiWelcomeMessage = {
+        id: `welcome-${Date.now()}`,
+        conversation_id: sessionId,
+        sender_id: 'ai-system',
+        text: welcomeMessage,
+        type: 'ai' as const,
+        created_at: new Date().toISOString()
+      };
+      setMessages(prev => [...prev, aiWelcomeMessage]);
+      setWelcomeSent(true); // Mark as sent to prevent duplicates
+
+      // Insert welcome message into database
+      await supabase
+        .from("messages")
+        .insert([{
+          conversation_id: sessionId,
+          sender_id: "ai-system",
+          text: welcomeMessage,
+          type: "ai"
+        }]);
+
+    } catch (error) {
+      console.error("Error sending welcome message:", error);
+    }
+  };
 
   const handleSend = async (text: string) => {
     if (!sessionId) return; // Wait for session to be initialized

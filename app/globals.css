@@ -213,8 +213,8 @@ body {
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --background: 216 32% 11%;
+    --foreground: 0 0% 98%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
@@ -299,51 +299,41 @@ body {
 }
 
 /* Bubble button style */
-.button {
+.bubble-button {
   position: relative;
-  padding: 10px 22px;
-  border-radius: 6px;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  background-color: #ff6600;
-  transition: all 0.2s ease;
+  z-index: 1;
 }
 
-.button:active {
-  transform: scale(0.96);
-}
-
-.button:before,
-.button:after {
+.bubble-button::before,
+.bubble-button::after {
   position: absolute;
   content: "";
   width: 150%;
   left: 50%;
   height: 100%;
   transform: translateX(-50%);
-  z-index: 1;
+  z-index: -1;
   background-repeat: no-repeat;
 }
 
-.button:hover:before {
+.bubble-button:hover::before {
   top: -70%;
-  background-image: radial-gradient(circle, #ff6600 20%, transparent 20%),
-    radial-gradient(circle, transparent 20%, #ff6600 20%, transparent 30%),
-    radial-gradient(circle, #ff6600 20%, transparent 20%),
-    radial-gradient(circle, #ff6600 20%, transparent 20%),
-    radial-gradient(circle, transparent 10%, #ff6600 15%, transparent 20%),
-    radial-gradient(circle, #ff6600 20%, transparent 20%),
-    radial-gradient(circle, #ff6600 20%, transparent 20%),
-    radial-gradient(circle, #ff6600 20%, transparent 20%),
-    radial-gradient(circle, #ff6600 20%, transparent 20%);
+  background-image: radial-gradient(circle, var(--bubble-color) 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, var(--bubble-color) 20%, transparent 30%),
+    radial-gradient(circle, var(--bubble-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--bubble-color) 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, var(--bubble-color) 15%, transparent 20%),
+    radial-gradient(circle, var(--bubble-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--bubble-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--bubble-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--bubble-color) 20%, transparent 20%);
   background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
     10% 10%, 18% 18%;
   background-position: 50% 120%;
-  animation: greentopBubbles 0.6s ease;
+  animation: bubbletopAnimation 0.6s ease;
 }
 
-@keyframes greentopBubbles {
+@keyframes bubbletopAnimation {
   0% {
     background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
       40% 90%, 55% 90%, 70% 90%;
@@ -361,21 +351,21 @@ body {
   }
 }
 
-.button:hover::after {
+.bubble-button:hover::after {
   bottom: -70%;
-  background-image: radial-gradient(circle, #ff6600 20%, transparent 20%),
-    radial-gradient(circle, #ff6600 20%, transparent 20%),
-    radial-gradient(circle, transparent 10%, #ff6600 15%, transparent 20%),
-    radial-gradient(circle, #ff6600 20%, transparent 20%),
-    radial-gradient(circle, #ff6600 20%, transparent 20%),
-    radial-gradient(circle, #ff6600 20%, transparent 20%),
-    radial-gradient(circle, #ff6600 20%, transparent 20%);
+  background-image: radial-gradient(circle, var(--bubble-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--bubble-color) 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, var(--bubble-color) 15%, transparent 20%),
+    radial-gradient(circle, var(--bubble-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--bubble-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--bubble-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--bubble-color) 20%, transparent 20%);
   background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
   background-position: 50% 0%;
-  animation: greenbottomBubbles 0.6s ease;
+  animation: bubblebottomAnimation 0.6s ease;
 }
 
-@keyframes greenbottomBubbles {
+@keyframes bubblebottomAnimation {
   0% {
     background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
       70% -10%, 70% 0%;

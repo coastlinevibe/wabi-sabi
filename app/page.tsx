@@ -10,7 +10,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="overflow-hidden bg-slate-950">
+    <div className="overflow-hidden bg-slate-900">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center text-center px-6">
         <div className="hero-bg absolute inset-0 z-1">

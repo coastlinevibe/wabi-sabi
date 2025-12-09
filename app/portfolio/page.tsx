@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
 import InlineCaseStudyGallery, { InlineGalleryItem } from '@/components/InlineCaseStudyGallery'
+import { WebsiteGallery } from '@/components/WebsiteGallery'
 import { Stethoscope, PawPrint, Building2 } from 'lucide-react'
 import { Hero3DCarousel, HeroCarouselSlide } from '@/components/Hero3DCarousel'
 import { websiteShowcases, type WebsiteShowcase } from '@/data/websiteShowcases'
@@ -197,27 +198,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Website Gallery */}
-      <section id="website-gallery" className="py-16 bg-slate-950/90">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-light text-white mb-4 tracking-wide font-sora">
-              Websites we’ve launched lately
-            </h2>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto font-light opacity-80">
-              Organic shapes, high-converting flows, and calm automation baked in from the start.
-            </p>
-          </div>
-
-          <InlineCaseStudyGallery
-            items={websiteGalleryItems}
-            title="Website Gallery"
-            subtitle="Browse a few recent builds. Hover to peek, tap to open the live experience."
-            searchPlaceholder="Search websites"
-            ctaLabel="View project"
-          />
-        </div>
-      </section>
+      <WebsiteGallery />
 
       {/* Video Testimonials Section */}
       <section className="py-16 bg-slate-900">
@@ -334,3 +315,5 @@ export default function PortfolioPage() {
     </div>
   )
 }
+
+
