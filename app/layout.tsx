@@ -6,6 +6,7 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { ChatFloat } from '@/components/WhatsAppFloat'
 import { SwiperGallery } from '@/components/SwiperGallery'
+import { ScrollToTop } from '@/components/ScrollToTop'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -92,6 +93,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ScrollToTop />
           <div className="flex flex-col min-h-screen">
             <SwiperGallery />
             <Navbar />
