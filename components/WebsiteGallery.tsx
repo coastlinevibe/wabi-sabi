@@ -11,6 +11,7 @@ const websites = [
   { name: 'A2Z Sellr', portfolio: 'a2zsellr' },
   { name: 'Day1 Health', portfolio: 'day1health' },
   { name: 'Khambi', portfolio: 'khambi' },
+  { name: 'Eubiosis', portfolio: 'eubiosis' },
 ]
 
 export function WebsiteGallery() {

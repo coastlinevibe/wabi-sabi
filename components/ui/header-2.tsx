@@ -83,13 +83,14 @@ export function Header() {
             className="h-8 w-8"
             priority
           />
+          <span className="text-lg font-semibold"><span className="text-orange-500">Wabi</span> Sabi</span>
         </Link>
 
         <div className="hidden items-center gap-2 md:flex">
           {links.map((link, i) => (
             <Link
               key={i}
-              className={buttonVariants({ variant: 'ghost' })}
+              className={cn(buttonVariants({ variant: 'ghost' }), 'hover:bg-orange-500 hover:text-white')}
               href={link.href}
             >
               {link.label}

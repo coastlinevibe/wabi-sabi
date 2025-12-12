@@ -268,38 +268,26 @@ body,
 
 .card.slide-1 {
 	background: #ffffff;
-	background: linear-gradient(331deg, #ffffff 0%, #f5f5f5 100%);
 }
 
 .card.slide-2 {
-	background-color: #000000;
-	background-image: 
-		linear-gradient(90deg, #0a0a0a 48%, #1a1a1a 48%, #1a1a1a 52%, #0a0a0a 52%),
-		linear-gradient(0deg, #0a0a0a 48%, #1a1a1a 48%, #1a1a1a 52%, #0a0a0a 52%),
-		linear-gradient(90deg, #0f0f0f 48%, #151515 48%, #151515 52%, #0f0f0f 52%),
-		linear-gradient(0deg, #0f0f0f 48%, #151515 48%, #151515 52%, #0f0f0f 52%);
-	background-size: 80px 80px, 80px 80px, 160px 160px, 160px 160px;
-	background-position: 0 0, 0 0, 40px 40px, 40px 40px;
-	background-repeat: repeat;
+	background: #ffffff;
 }
 
 .card.slide-3 {
-	background: #f58327;
-	background: linear-gradient(331deg, #f58327 0%, #1a1a1a 100%);
+	background: #ffffff;
 }
 
 .card.slide-4 {
-	background: #f58327;
-	background: linear-gradient(331deg, #f58327 0%, #ffffff 100%);
+	background: #ffffff;
 }
 
 .card.slide-5 {
 	background: #ffffff;
-	background: linear-gradient(331deg, #ffffff 0%, #0066ff 100%);
 }
 
 .card.slide-6 {
-	background: #00cc00;
+	background: #ffffff;
 }
 
 .card.slide-7 {
@@ -307,6 +295,10 @@ body,
 }
 
 .card.slide-8 {
+	background: #ffffff;
+}
+
+.card.slide-9 {
 	background: #ffffff;
 }
 
@@ -580,7 +572,20 @@ body,
 }
 
 .slide-2 .cta-button {
-	color: #000000;
+	background-color: #1a1a1a;
+	color: #ffffff;
+}
+
+.slide-2 .slider-svg-arrow {
+	fill: #ffffff;
+}
+
+.slide-2 .slider-svg-line {
+	stroke: #ffffff;
+}
+
+.slide-2 circle {
+	stroke: #ffffff;
 }
 
 .slide-1-eye {
