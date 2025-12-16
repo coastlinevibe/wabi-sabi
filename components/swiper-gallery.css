@@ -133,7 +133,7 @@ body,
 .slider-button circle {
 	transition: 0.5s;
 	stroke-width: 2px;
-	stroke: var(--progress-color);
+	stroke: #ff6600;
 	fill: none;
 	stroke-dasharray: 1;
 	stroke-dashoffset: 1;
@@ -143,7 +143,7 @@ body,
 
 .slider-button .slider-svg-arrow {
 	transition: 0.5s;
-	fill: var(--progress-color);
+	fill: #ff6600;
 	transform: rotateY(180deg) translate(-55px, 36.1px) scale(1.75);
 }
 
@@ -170,7 +170,7 @@ body,
 
 .slider-button .slider-svg-line {
 	transition: 0.5s;
-	stroke: var(--progress-color);
+	stroke: #ff6600;
 	stroke-width: 2;
 	transform: translate(50px, 42px);
 }
@@ -213,14 +213,14 @@ body,
 }
 
 .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
-	background: #fff;
+	background: #ff6600;
 	width: 25px;
 }
 
 .swiper-pagination .swiper-pagination-bullet {
 	height: 6px;
 	width: 12px;
-	background: rgba(255, 255, 255, 0.8);
+	background: rgba(255, 102, 0, 0.5);
 	color: transparent;
 	border-radius: 10px;
 	overflow: hidden;
@@ -577,15 +577,15 @@ body,
 }
 
 .slide-2 .slider-svg-arrow {
-	fill: #ffffff;
+	fill: #ff6600;
 }
 
 .slide-2 .slider-svg-line {
-	stroke: #ffffff;
+	stroke: #ff6600;
 }
 
 .slide-2 circle {
-	stroke: #ffffff;
+	stroke: #ff6600;
 }
 
 .slide-1-eye {

@@ -3,15 +3,15 @@
 import { useState } from 'react'
 
 const websites = [
-  { name: 'Blue Wave Zone', portfolio: 'bluewavezone' },
-  { name: 'Chatspear', portfolio: 'chatsphear' },
-  { name: 'Growithus', portfolio: 'growithus' },
-  { name: 'OnSite', portfolio: 'onsite' },
-  { name: 'WorkSite Solutions', portfolio: 'worksitesolutions' },
-  { name: 'A2Z Sellr', portfolio: 'a2zsellr' },
-  { name: 'Day1 Health', portfolio: 'day1health' },
-  { name: 'Khambi', portfolio: 'khambi' },
-  { name: 'Eubiosis', portfolio: 'eubiosis' },
+  { name: 'Blue Wave Zone', portfolio: 'bluewavezone', url: 'https://bluewavezone.co.za/' },
+  { name: 'Chatspear', portfolio: 'chatsphear', url: 'https://chatsphearsolutions.framer.website/' },
+  { name: 'Growithus', portfolio: 'growithus', url: 'https://growithus11.framer.website/' },
+  { name: 'OnSite', portfolio: 'onsite', url: 'https://onsite-theta.vercel.app/' },
+  { name: 'WorkSite Solutions', portfolio: 'worksitesolutions', url: 'https://worksitesolutions.vercel.app/' },
+  { name: 'A2Z Sellr', portfolio: 'a2zsellr', url: 'https://www.a2zsellr.life/' },
+  { name: 'Day1 Health', portfolio: 'day1health', url: 'https://www.day1health.co.za/' },
+  { name: 'Khambi', portfolio: 'khambi', url: '#' },
+  { name: 'Eubiosis', portfolio: 'eubiosis', url: 'https://www.eubiosis.pro/' },
 ]
 
 export function WebsiteGallery() {
@@ -42,7 +42,7 @@ export function WebsiteGallery() {
         {/* Desktop Grid */}
         <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-12">
           {websites.map((site) => (
-            <div key={site.portfolio} className="flex items-center justify-center h-96 relative">
+            <a key={site.portfolio} href={site.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center h-96 relative cursor-pointer hover:opacity-80 transition-opacity">
               {/* Laptop */}
               <div className="relative w-full h-full flex items-center justify-center">
                 <img
@@ -57,13 +57,13 @@ export function WebsiteGallery() {
                   className="absolute max-h-48 max-w-24 object-contain -left-2 top-12 transform -rotate-12"
                 />
               </div>
-            </div>
+            </a>
           ))}
         </div>
 
         {/* Mobile Carousel */}
         <div className="md:hidden">
-          <div className="flex items-center justify-center h-96 relative">
+          <a href={currentSite.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center h-96 relative cursor-pointer hover:opacity-80 transition-opacity block">
             <div className="relative w-full h-full flex items-center justify-center">
               <img
                 src={`/popup-intro-imgs/${currentSite.portfolio}-laptop.png`}
@@ -76,7 +76,7 @@ export function WebsiteGallery() {
                 className="absolute max-h-48 max-w-24 object-contain -left-2 top-12 transform -rotate-12"
               />
             </div>
-          </div>
+          </a>
 
           <div className="text-center -mt-4">
             <h3 className="text-xl font-light text-white">{currentSite.name}</h3>

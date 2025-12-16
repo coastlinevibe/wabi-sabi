@@ -1,7 +1,7 @@
 export const swiperSlides = [
   {
     id: 1,
-    progressColor: '#553d36',
+    progressColor: '#ff6600',
     bgColor: '#ffffff',
     subTitle: 'OUR PURPOSE',
     title: 'BLUE WAVE ZONE',
@@ -14,7 +14,7 @@ export const swiperSlides = [
   },
   {
     id: 2,
-    progressColor: '#1a1a1a',
+    progressColor: '#ff6600',
     bgColor: '#000000',
     subTitle: 'CHATBOT DEVELOPMENT',
     title: 'CHATSPEAR',
@@ -27,7 +27,7 @@ export const swiperSlides = [
   },
   {
     id: 3,
-    progressColor: '#f58327',
+    progressColor: '#ff6600',
     bgColor: '#f58327',
     subTitle: 'BOTS & LEADS',
     title: 'GROWITHUS',
@@ -36,11 +36,11 @@ export const swiperSlides = [
     ghostName: 'Growithus',
     ghostTitle: 'Bot Experts',
     infoColor: '#f58327',
-    portfolio: 'growithus',
+    portfolio: 'worksitesolutions',
   },
   {
     id: 4,
-    progressColor: '#f25c05',
+    progressColor: '#ff6600',
     bgColor: '#f58327',
     subTitle: 'FEWER TAPS MORE JOBS',
     title: 'FROM LEAD TO PAID',
@@ -53,7 +53,7 @@ export const swiperSlides = [
   },
   {
     id: 5,
-    progressColor: '#1875ff',
+    progressColor: '#ff6600',
     bgColor: '#ffffff',
     subTitle: 'COMPREHENSIVE SOLUTIONS',
     title: 'FINANCIAL SERVICES',
@@ -62,11 +62,11 @@ export const swiperSlides = [
     ghostName: 'WorkSite Solutions',
     ghostTitle: 'Insurance & More',
     infoColor: '#1875ff',
-    portfolio: 'worksitesolutions',
+    portfolio: 'growithus',
   },
   {
     id: 6,
-    progressColor: '#22c55e',
+    progressColor: '#ff6600',
     bgColor: '#00cc00',
     subTitle: 'BE SEEN SHOW & SELL',
     title: 'A2Z SELLR',
@@ -79,7 +79,7 @@ export const swiperSlides = [
   },
   {
     id: 7,
-    progressColor: '#16a34a',
+    progressColor: '#ff6600',
     bgColor: '#ffffff',
     subTitle: 'HEALTHCARE THAT WORKS FOR YOU',
     title: 'DAY1 HEALTH',
@@ -92,7 +92,7 @@ export const swiperSlides = [
   },
   {
     id: 8,
-    progressColor: '#b48b49',
+    progressColor: '#ff6600',
     bgColor: '#ffffff',
     subTitle: 'DIGNIFIED FUNERAL SERVICES',
     title: 'KHAMBI',
@@ -105,7 +105,7 @@ export const swiperSlides = [
   },
   {
     id: 9,
-    progressColor: '#3a9e92',
+    progressColor: '#ff6600',
     bgColor: '#ffffff',
     subTitle: 'NATURAL GUT HEALTH',
     title: 'EUBIOSIS-S',
