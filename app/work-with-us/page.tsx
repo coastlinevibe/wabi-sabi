@@ -1,3 +1,5 @@
+'use client'
+
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { Clock } from 'lucide-react'
@@ -44,8 +46,6 @@ function shouldShowCheck(
 export default function WorkWithUsPage() {
   return <WorkWithUsPageClient />
 }
-
-'use client'
 
 function WorkWithUsPageClient() {
   const [mounted, setMounted] = useState(false)
