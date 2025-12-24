@@ -1,8 +1,3 @@
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import { Hero3DCarousel, HeroCarouselSlide } from '@/components/Hero3DCarousel'
-import { Bot, Workflow, Sparkles } from 'lucide-react'
 import { Metadata } from 'next'
 import { generateSEOMetadata } from '@/lib/seo'
 
@@ -19,6 +14,12 @@ export default function Training() {
 }
 
 'use client'
+
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { Hero3DCarousel, HeroCarouselSlide } from '@/components/Hero3DCarousel'
+import { Bot, Workflow, Sparkles } from 'lucide-react'
 
 function TrainingClient() {
   const [mounted, setMounted] = useState(false)

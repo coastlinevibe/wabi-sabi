@@ -1,11 +1,3 @@
-import { motion } from 'framer-motion'
-import { useCallback, useEffect, useState } from 'react'
-import Link from 'next/link'
-import InlineCaseStudyGallery, { InlineGalleryItem } from '@/components/InlineCaseStudyGallery'
-import { WebsiteGallery } from '@/components/WebsiteGallery'
-import { Stethoscope, PawPrint, Building2 } from 'lucide-react'
-import { Hero3DCarousel, HeroCarouselSlide } from '@/components/Hero3DCarousel'
-import { websiteShowcases, type WebsiteShowcase } from '@/data/websiteShowcases'
 import { Metadata } from 'next'
 import { generateSEOMetadata } from '@/lib/seo'
 
@@ -22,6 +14,15 @@ export default function PortfolioPage() {
 }
 
 'use client'
+
+import { motion } from 'framer-motion'
+import { useCallback, useEffect, useState } from 'react'
+import Link from 'next/link'
+import InlineCaseStudyGallery, { InlineGalleryItem } from '@/components/InlineCaseStudyGallery'
+import { WebsiteGallery } from '@/components/WebsiteGallery'
+import { Stethoscope, PawPrint, Building2 } from 'lucide-react'
+import { Hero3DCarousel, HeroCarouselSlide } from '@/components/Hero3DCarousel'
+import { websiteShowcases, type WebsiteShowcase } from '@/data/websiteShowcases'
 
 function PortfolioPageClient() {
   const [mounted, setMounted] = useState(false)

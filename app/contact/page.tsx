@@ -1,6 +1,3 @@
-import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle, Calendar, Leaf } from 'lucide-react'
 import { Metadata } from 'next'
 import { generateSEOMetadata } from '@/lib/seo'
 
@@ -19,6 +16,10 @@ export default function ContactPage() {
 }
 
 'use client'
+
+import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle, Calendar, Leaf } from 'lucide-react'
 
 function ContactPageClient() {
   useEffect(() => {

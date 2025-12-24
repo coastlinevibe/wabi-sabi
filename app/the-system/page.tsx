@@ -1,7 +1,3 @@
-import { motion } from 'framer-motion'
-import { useEffect } from 'react'
-import Link from 'next/link'
-import { CTASection } from '@/components/CTASection'
 import { Metadata } from 'next'
 import { generateSEOMetadata } from '@/lib/seo'
 
@@ -18,6 +14,11 @@ export default function TheSystemPage() {
 }
 
 'use client'
+
+import { motion } from 'framer-motion'
+import { useEffect } from 'react'
+import Link from 'next/link'
+import { CTASection } from '@/components/CTASection'
 
 function TheSystemPageClient() {
   useEffect(() => {

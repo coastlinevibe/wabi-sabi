@@ -1,6 +1,3 @@
-import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
-import { Clock } from 'lucide-react'
 import { Metadata } from 'next'
 import { generateSEOMetadata } from '@/lib/seo'
 
@@ -11,6 +8,16 @@ export const metadata: Metadata = generateSEOMetadata({
   keywords: ['business growth', 'profit optimization', 'business systems', 'growth packages', 'business consulting'],
   ogType: 'business.business',
 })
+
+export default function WorkWithUsPage() {
+  return <WorkWithUsPageClient />
+}
+
+'use client'
+
+import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { Clock } from 'lucide-react'
 
 // Simple CheckIcon component since @heroicons might not be installed
 const CheckIcon = ({ className }: { className?: string }) => (
@@ -40,12 +47,6 @@ function shouldShowCheck(
   if (included === "foundation" && (level === "foundation" || level === "growth" || level === "scale")) return true
   return false
 }
-
-export default function WorkWithUsPage() {
-  return <WorkWithUsPageClient />
-}
-
-'use client'
 
 function WorkWithUsPageClient() {
   const [mounted, setMounted] = useState(false)
