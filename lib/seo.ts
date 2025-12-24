@@ -18,7 +18,7 @@ interface SEOProps {
   path?: string
   keywords?: string[]
   ogImage?: string
-  ogType?: 'website' | 'article' | 'business.business'
+  ogType?: 'website' | 'article'
 }
 
 export function generateSEOMetadata({
@@ -58,7 +58,7 @@ export function generateSEOMetadata({
       title: fullTitle,
       description,
       url,
-      type: ogType,
+      type: ogType as 'website' | 'article',
       siteName: 'Wabi Sabi',
       locale: 'en_ZA',
       images: [
