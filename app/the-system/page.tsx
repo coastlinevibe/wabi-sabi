@@ -1,5 +1,3 @@
-'use client'
-
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import Link from 'next/link'
@@ -16,6 +14,12 @@ export const metadata: Metadata = generateSEOMetadata({
 })
 
 export default function TheSystemPage() {
+  return <TheSystemPageClient />
+}
+
+'use client'
+
+function TheSystemPageClient() {
   useEffect(() => {
     document.title = 'The System | Wabi-Sabi'
   }, [])

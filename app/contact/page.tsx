@@ -1,5 +1,3 @@
-'use client'
-
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, Calendar, Leaf } from 'lucide-react'
@@ -15,6 +13,14 @@ export const metadata: Metadata = generateSEOMetadata({
 })
 
 export default function ContactPage() {
+  return (
+    <ContactPageClient />
+  )
+}
+
+'use client'
+
+function ContactPageClient() {
   useEffect(() => {
     document.title = 'Reveal Hidden Income | Wabi-Sabi'
     const metaDescription = document.querySelector('meta[name="description"]')
