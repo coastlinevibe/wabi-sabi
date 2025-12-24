@@ -1,24 +1,13 @@
-import { Metadata } from 'next'
-import { generateSEOMetadata } from '@/lib/seo'
-
-export const metadata: Metadata = generateSEOMetadata({
-  title: 'The Wabi-Sabi System - Business Growth Framework',
-  description: 'Discover the Wabi-Sabi system for sustainable business growth. Reveal hidden value, shape growth wisely, and profit with clarity through our proven framework.',
-  path: '/the-system',
-  keywords: ['business system', 'growth framework', 'profit optimization', 'business methodology', 'sustainable growth'],
-  ogType: 'website',
-})
-
-export default function TheSystemPage() {
-  return <TheSystemPageClient />
-}
-
 'use client'
 
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import Link from 'next/link'
 import { CTASection } from '@/components/CTASection'
+
+export default function TheSystemPage() {
+  return <TheSystemPageClient />
+}
 
 function TheSystemPageClient() {
   useEffect(() => {

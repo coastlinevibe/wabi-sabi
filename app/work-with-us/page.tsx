@@ -1,18 +1,3 @@
-import { Metadata } from 'next'
-import { generateSEOMetadata } from '@/lib/seo'
-
-export const metadata: Metadata = generateSEOMetadata({
-  title: 'Work With Us - Business Growth Systems',
-  description: 'Discover how Wabi-Sabi helps businesses unlock hidden profit flows through mindful systems and patient transformation. Foundation, Growth, and Scale packages available.',
-  path: '/work-with-us',
-  keywords: ['business growth', 'profit optimization', 'business systems', 'growth packages', 'business consulting'],
-  ogType: 'business.business',
-})
-
-export default function WorkWithUsPage() {
-  return <WorkWithUsPageClient />
-}
-
 'use client'
 
 import { motion } from 'framer-motion'
@@ -46,6 +31,10 @@ function shouldShowCheck(
   if (included === "growth" && (level === "growth" || level === "scale")) return true
   if (included === "foundation" && (level === "foundation" || level === "growth" || level === "scale")) return true
   return false
+}
+
+export default function WorkWithUsPage() {
+  return <WorkWithUsPageClient />
 }
 
 function WorkWithUsPageClient() {
