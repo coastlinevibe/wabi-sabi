@@ -1,5 +1,3 @@
-'use client'
-
 import { motion } from 'framer-motion'
 import { useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
@@ -22,6 +20,8 @@ export const metadata: Metadata = generateSEOMetadata({
 export default function PortfolioPage() {
   return <PortfolioPageClient />
 }
+
+'use client'
 
 function PortfolioPageClient() {
   const [mounted, setMounted] = useState(false)

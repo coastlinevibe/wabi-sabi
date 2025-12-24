@@ -1,5 +1,3 @@
-'use client'
-
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -19,6 +17,8 @@ export const metadata: Metadata = generateSEOMetadata({
 export default function Training() {
   return <TrainingClient />
 }
+
+'use client'
 
 function TrainingClient() {
   const [mounted, setMounted] = useState(false)
