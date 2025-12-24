@@ -5,6 +5,16 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Hero3DCarousel, HeroCarouselSlide } from '@/components/Hero3DCarousel'
 import { Bot, Workflow, Sparkles } from 'lucide-react'
+import { Metadata } from 'next'
+import { generateSEOMetadata } from '@/lib/seo'
+
+export const metadata: Metadata = generateSEOMetadata({
+  title: 'Training & Empowerment - Business Growth',
+  description: 'Learn AI essentials, workflow automation, and business systems. Empower your team with training that drives sustainable growth and profit optimization.',
+  path: '/training',
+  keywords: ['training', 'business education', 'AI essentials', 'workflow automation', 'team empowerment'],
+  ogType: 'website',
+})
 
 export default function Training() {
   const [mounted, setMounted] = useState(false)

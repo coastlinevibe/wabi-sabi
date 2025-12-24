@@ -8,6 +8,16 @@ import { WebsiteGallery } from '@/components/WebsiteGallery'
 import { Stethoscope, PawPrint, Building2 } from 'lucide-react'
 import { Hero3DCarousel, HeroCarouselSlide } from '@/components/Hero3DCarousel'
 import { websiteShowcases, type WebsiteShowcase } from '@/data/websiteShowcases'
+import { Metadata } from 'next'
+import { generateSEOMetadata } from '@/lib/seo'
+
+export const metadata: Metadata = generateSEOMetadata({
+  title: 'Portfolio - Case Studies & Projects',
+  description: 'Explore our portfolio of successful business transformations. See how we help dentists, veterinarians, real estate agents, and more unlock hidden profit flows.',
+  path: '/portfolio',
+  keywords: ['portfolio', 'case studies', 'business transformation', 'success stories', 'project showcase'],
+  ogType: 'website',
+})
 
 export default function PortfolioPage() {
   const [mounted, setMounted] = useState(false)

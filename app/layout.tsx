@@ -7,13 +7,14 @@ import { Footer } from '@/components/Footer'
 import { ChatFloat } from '@/components/WhatsAppFloat'
 import { SwiperGallery } from '@/components/SwiperGallery'
 import { ScrollToTop } from '@/components/ScrollToTop'
+import { StructuredData } from '@/components/StructuredData'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Wabi Sabi - Growth Begins Here',
   description: 'Embracing imperfection to find perfect growth. We help businesses discover their natural path to sustainable success through mindful analytics and patient transformation.',
-  keywords: 'business growth, analytics, wabi-sabi, mindful business, sustainable growth, Cape Town, South Africa, business transformation',
+  keywords: 'wabi sabi, business growth, analytics, mindful business, sustainable growth, Cape Town, South Africa, business transformation, profit optimization, business systems',
   authors: [{ name: 'Wabi Sabi' }],
   creator: 'Wabi Sabi',
   publisher: 'Wabi Sabi',
@@ -26,12 +27,24 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   openGraph: {
     title: 'Wabi-sabi Analytics - Growth Begins Here',
     description: 'Embracing imperfection to find perfect growth. Mindful analytics and patient transformation for sustainable business success.',
     url: 'https://wabi-sabi.click',
     siteName: 'Wabi Sabi',
     images: [
+      {
+        url: '/favicon.svg',
+        width: 1200,
+        height: 1200,
+        alt: 'Wabi Sabi - Growth Begins Here',
+        type: 'image/svg+xml',
+      },
       {
         url: '/images/thumbnail.png',
         width: 1200,
@@ -46,7 +59,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Wabi-sabi Analytics - Growth Begins Here',
     description: 'Embracing imperfection to find perfect growth through mindful analytics.',
-    images: ['/images/thumbnail.png'],
+    images: ['/favicon.svg'],
+    creator: '@wabisabi',
   },
   robots: {
     index: true,
@@ -72,19 +86,22 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
         <link rel="manifest" href="/manifest.json" />
+        <link rel="sitemap" href="/sitemap.xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet" />
         <meta name="theme-color" content="#00d4ff" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Wabi-Sabis.dev" />
+        <meta name="apple-mobile-web-app-title" content="Wabi-Sabi" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-TileColor" content="#00d4ff" />
         <meta name="msapplication-tap-highlight" content="no" />
+        <StructuredData />
       </head>
       <body className={`${inter.className} antialiased`}>
         <ThemeProvider
