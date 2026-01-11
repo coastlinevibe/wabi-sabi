@@ -12,6 +12,7 @@ const websites = [
   { name: 'Day1 Health', portfolio: 'day1health', url: 'https://www.day1health.co.za/' },
   { name: 'Khambi', portfolio: 'khambi', url: '#' },
   { name: 'Eubiosis', portfolio: 'eubiosis', url: 'https://www.eubiosis.pro/' },
+  { name: 'Majestic Cars', portfolio: 'majestic-cars', url: 'https://majesticars.com/' },
 ]
 
 export function WebsiteGallery() {

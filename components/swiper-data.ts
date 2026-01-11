@@ -116,4 +116,17 @@ export const swiperSlides = [
     infoColor: '#3a9e92',
     portfolio: 'eubiosis',
   },
+  {
+    id: 10,
+    progressColor: '#ff6600',
+    bgColor: '#000000',
+    subTitle: 'HONEST CAR DEALERSHIP',
+    title: 'MAJESTIC CARS',
+    description: 'Simple, honest, stress-free car buying. 100% inspected vehicles, fair pricing, and transparent service. Building trust one customer at a time with old-school values.',
+    buttonColor: '#ff8c00',
+    ghostName: 'Majestic Cars',
+    ghostTitle: 'Modern Dealership',
+    infoColor: '#ff8c00',
+    portfolio: 'majestic-cars',
+  },
 ]
