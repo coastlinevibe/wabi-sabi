@@ -10,7 +10,7 @@ const websites = [
   { name: 'WorkSite Solutions', portfolio: 'worksitesolutions', url: 'https://worksitesolutions.vercel.app/' },
   { name: 'A2Z Sellr', portfolio: 'a2zsellr', url: 'https://www.a2zsellr.life/' },
   { name: 'Day1 Health', portfolio: 'day1health', url: 'https://www.day1health.co.za/' },
-  { name: 'Khambi', portfolio: 'khambi', url: '#' },
+  { name: 'Khambi', portfolio: 'khambi', url: 'https://khambifunerals.com/' },
   { name: 'Eubiosis', portfolio: 'eubiosis', url: 'https://www.eubiosis.pro/' },
   { name: 'Majestic Cars', portfolio: 'majestic-cars', url: 'https://majesticars.com/' },
 ]

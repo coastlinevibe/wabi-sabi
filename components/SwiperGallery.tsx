@@ -170,7 +170,10 @@ export function SwiperGallery() {
                     <div className="card-sub-title" style={{ '--color': slide.id === 1 ? '#553d36' : slide.id === 2 ? '#1a1a1a' : slide.id === 3 ? '#f58327' : slide.id === 4 ? '#f25c05' : slide.id === 5 ? '#1875ff' : slide.id === 6 ? '#22c55e' : slide.id === 7 ? '#16a34a' : slide.id === 8 ? '#b48b49' : slide.id === 9 ? '#3a9e92' : slide.buttonColor } as any}>{slide.subTitle}</div>
                     <h2 className="card-title" data-text={slide.title} style={{ '--color': slide.id === 1 ? '#553d36' : slide.id === 2 ? '#1a1a1a' : slide.id === 3 ? '#f58327' : slide.id === 4 ? '#f25c05' : slide.id === 5 ? '#1875ff' : slide.id === 6 ? '#22c55e' : slide.id === 7 ? '#16a34a' : slide.id === 8 ? '#b48b49' : slide.id === 9 ? '#3a9e92' : '#fff' } as any}>{slide.title}</h2>
                     <p className="card-description" style={{ '--color': slide.id === 1 ? '#553d36' : slide.id === 2 ? '#1a1a1a' : slide.id === 3 ? '#f58327' : slide.id === 4 ? '#f25c05' : slide.id === 5 ? '#1875ff' : slide.id === 6 ? '#22c55e' : slide.id === 7 ? '#16a34a' : slide.id === 8 ? '#b48b49' : slide.id === 9 ? '#3a9e92' : '#fff' } as any}>{slide.description}</p>
-                    <div className="card-cta animate-active"><a href="/portfolio" className="cta-button" style={{ '--color': slide.buttonColor } as any}>View Portfolio</a></div>
+                    <div className="card-cta animate-active">
+                      <a href="/portfolio" className="cta-button" style={{ '--color': slide.buttonColor } as any}>View Portfolio</a>
+                      <a href={slide.url} target="_blank" rel="noopener noreferrer" className="cta-button" style={{ '--color': slide.buttonColor } as any}>View Site</a>
+                    </div>
                   </div>
                   <div className="card-ghost-info animate-active" style={{ color: slide.id === 1 ? '#553d36' : slide.id === 2 ? '#1a1a1a' : slide.id === 3 ? '#f58327' : slide.id === 4 ? '#f25c05' : slide.id === 5 ? '#1875ff' : slide.id === 6 ? '#22c55e' : slide.id === 7 ? '#16a34a' : slide.id === 8 ? '#b48b49' : slide.id === 9 ? '#3a9e92' : '#ffffff' }}>
                     <span style={{ '--color': slide.infoColor } as any}></span>

@@ -11,6 +11,7 @@ export const swiperSlides = [
     ghostTitle: 'Biotech Innovation',
     infoColor: '#553d36',
     portfolio: 'bluewavezone',
+    url: 'https://bluewavezone.co.za/',
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ export const swiperSlides = [
     ghostTitle: 'Bot Builders',
     infoColor: '#1a1a1a',
     portfolio: 'chatsphear',
+    url: 'https://chatsphearsolutions.framer.website/',
   },
   {
     id: 3,
@@ -36,7 +38,8 @@ export const swiperSlides = [
     ghostName: 'Growithus',
     ghostTitle: 'Bot Experts',
     infoColor: '#f58327',
-    portfolio: 'worksitesolutions',
+    portfolio: 'growithus',
+    url: 'https://growithus11.framer.website/',
   },
   {
     id: 4,
@@ -50,6 +53,7 @@ export const swiperSlides = [
     ghostTitle: 'Business Simplified',
     infoColor: '#f25c05',
     portfolio: 'onsite',
+    url: 'https://onsite-theta.vercel.app/',
   },
   {
     id: 5,
@@ -62,7 +66,8 @@ export const swiperSlides = [
     ghostName: 'WorkSite Solutions',
     ghostTitle: 'Insurance & More',
     infoColor: '#1875ff',
-    portfolio: 'growithus',
+    portfolio: 'worksitesolutions',
+    url: 'https://worksitesolutions.vercel.app/',
   },
   {
     id: 6,
@@ -76,6 +81,7 @@ export const swiperSlides = [
     ghostTitle: 'Seller Platform',
     infoColor: '#22c55e',
     portfolio: 'a2zsellr',
+    url: 'https://www.a2zsellr.life/',
   },
   {
     id: 7,
@@ -89,6 +95,7 @@ export const swiperSlides = [
     ghostTitle: 'Healthcare Coverage',
     infoColor: '#16a34a',
     portfolio: 'day1health',
+    url: 'https://www.day1health.co.za/',
   },
   {
     id: 8,
@@ -102,6 +109,7 @@ export const swiperSlides = [
     ghostTitle: 'Funeral Services',
     infoColor: '#b48b49',
     portfolio: 'khambi',
+    url: 'https://khambifunerals.com/',
   },
   {
     id: 9,
@@ -115,6 +123,7 @@ export const swiperSlides = [
     ghostTitle: 'Gut Health Supplement',
     infoColor: '#3a9e92',
     portfolio: 'eubiosis',
+    url: 'https://www.eubiosis.pro/',
   },
   {
     id: 10,
@@ -128,5 +137,6 @@ export const swiperSlides = [
     ghostTitle: 'Modern Dealership',
     infoColor: '#ff8c00',
     portfolio: 'majestic-cars',
+    url: 'https://majesticars.com/',
   },
 ]

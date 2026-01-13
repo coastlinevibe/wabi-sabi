@@ -498,6 +498,9 @@ body,
 
 .card-cta {
 	margin-top: 30px;
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
 }
 
 .cta-button {
