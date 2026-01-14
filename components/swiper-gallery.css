@@ -692,7 +692,7 @@ body,
 
 @media (max-width: 900px) {
 	.swiper {
-		top: 10vh;
+		top: 5vh;
 	}
 
 	.slide svg {
@@ -749,15 +749,25 @@ body,
 
 	.card-cta {
 		margin-top: 10px;
+		display: flex !important;
+		flex-direction: row !important;
+		justify-content: center;
+		align-items: center;
+		gap: 6px;
+		flex-wrap: nowrap;
 	}
 
 	.cta-button {
-		scale: 0.7;
+		scale: 0.6;
+		flex-shrink: 0;
+		width: 140px;
+		height: 70px;
+		font-size: 10px;
 	}
 
 	.card-cta .cta-button {
-		margin-left: auto;
-		margin-right: auto;
+		margin-left: 0;
+		margin-right: 0;
 	}
 
 	.card-ghost-info {
