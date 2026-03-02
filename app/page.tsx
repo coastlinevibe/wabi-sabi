@@ -34,7 +34,7 @@ export default function Home() {
           </h1>
           <h2 className="mt-4 text-2xl md:text-3xl font-bold text-amber-400">Progress comes from clarity, not perfection.</h2>
           <p className="mt-6 text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-Hidden value flows quietly through your business, waiting to be discovered and shaped with care.
+We specialize in business automation optimization and hidden revenue discovery for Cape Town SMEs. We replace inefficient systems that quietly drain profit.
           </p>
           <div className="mt-8 flex justify-center gap-6 flex-wrap">
             <Link href="/funnel/quiz.html" className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-xl hover:from-amber-600 hover:to-orange-600 transition-all">
