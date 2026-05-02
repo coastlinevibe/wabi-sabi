@@ -13,6 +13,9 @@ const websites = [
   { name: 'Khambi', portfolio: 'khambi', url: 'https://khambifunerals.com/' },
   { name: 'Eubiosis', portfolio: 'eubiosis', url: 'https://www.eubiosis.pro/' },
   { name: 'Majestic Cars', portfolio: 'majestic-cars', url: 'https://majesticars.com/' },
+  { name: 'Plus1 Rewards', portfolio: 'plus1rewards', url: 'https://plus1rewards.co.za/' },
+  { name: 'ShiftUp', portfolio: 'shiftup', url: 'https://shiftup.co.za/' },
+  { name: 'Gripps', portfolio: 'gripps', url: 'https://gripps.co.za/' },
 ]
 
 export function WebsiteGallery() {
@@ -43,7 +46,7 @@ export function WebsiteGallery() {
         {/* Desktop Grid */}
         <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-12">
           {websites.map((site) => (
-            <a key={site.portfolio} href={site.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center h-96 relative cursor-pointer hover:opacity-80 transition-opacity">
+            <div key={site.portfolio} className="flex items-center justify-center h-96 relative">
               {/* Laptop */}
               <div className="relative w-full h-full flex items-center justify-center">
                 <img
@@ -58,13 +61,13 @@ export function WebsiteGallery() {
                   className="absolute max-h-48 max-w-24 object-contain -left-2 top-12 transform -rotate-12"
                 />
               </div>
-            </a>
+            </div>
           ))}
         </div>
 
         {/* Mobile Carousel */}
         <div className="md:hidden">
-          <a href={currentSite.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center h-96 relative cursor-pointer hover:opacity-80 transition-opacity block">
+          <div className="flex items-center justify-center h-96 relative block">
             <div className="relative w-full h-full flex items-center justify-center">
               <img
                 src={`/popup-intro-imgs/${currentSite.portfolio}-laptop.png`}
@@ -77,7 +80,7 @@ export function WebsiteGallery() {
                 className="absolute max-h-48 max-w-24 object-contain -left-2 top-12 transform -rotate-12"
               />
             </div>
-          </a>
+          </div>
 
           <div className="text-center -mt-4">
             <h3 className="text-xl font-light text-white">{currentSite.name}</h3>
