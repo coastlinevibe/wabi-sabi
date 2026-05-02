@@ -132,14 +132,14 @@ export function SwiperGallery() {
         </div>
 
         {/* Navigation - Bottom Center with Dots - Half In/Half Out */}
-        <div className="absolute -bottom-2 sm:-bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2.5 sm:gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-600 bg-white/90 backdrop-blur-md px-4 sm:px-4 py-2.5 sm:py-2.5 rounded-[11px] shadow-2xl z-50 border border-slate-200">
+        <div className="absolute -bottom-2 sm:-bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2.5 sm:gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-600 bg-white/95 backdrop-blur-md px-4 sm:px-4 py-2.5 sm:py-2.5 rounded-[11px] shadow-2xl z-50 border border-blue-200">
           {/* Previous Arrow */}
           <button
             onClick={prevSlide}
             disabled={isAnimating}
-            className="w-9 h-9 sm:w-9 sm:h-9 flex items-center justify-center bg-white hover:bg-slate-50 rounded-full shadow-md transition-all duration-300 hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed border border-slate-200 hover:border-orange-500 group"
+            className="w-9 h-9 sm:w-9 sm:h-9 flex items-center justify-center bg-white hover:bg-blue-50 rounded-full shadow-md transition-all duration-300 hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed border border-blue-200 hover:border-green-500 group"
           >
-            <ChevronLeft className="w-5 h-5 sm:w-5 sm:h-5 text-slate-700 group-hover:text-orange-500 transition-colors" />
+            <ChevronLeft className="w-5 h-5 sm:w-5 sm:h-5 text-slate-700 group-hover:text-green-500 transition-colors" />
           </button>
 
           {/* Pagination Dots */}
@@ -151,8 +151,8 @@ export function SwiperGallery() {
                 disabled={isAnimating}
                 className={`rounded-full transition-all duration-300 disabled:cursor-not-allowed ${
                   index === currentIndex 
-                    ? 'bg-orange-500 w-6 sm:w-6 h-2.5 sm:h-2.5 shadow-md shadow-orange-500/50' 
-                    : 'bg-slate-300 hover:bg-slate-400 w-2.5 sm:w-2.5 h-2.5 sm:h-2.5 hover:scale-125'
+                    ? 'bg-green-500 w-6 sm:w-6 h-2.5 sm:h-2.5 shadow-md shadow-green-500/50' 
+                    : 'bg-blue-300 hover:bg-blue-400 w-2.5 sm:w-2.5 h-2.5 sm:h-2.5 hover:scale-125'
                 }`}
               />
             ))}
@@ -162,9 +162,9 @@ export function SwiperGallery() {
           <button
             onClick={nextSlide}
             disabled={isAnimating}
-            className="w-9 h-9 sm:w-9 sm:h-9 flex items-center justify-center bg-white hover:bg-slate-50 rounded-full shadow-md transition-all duration-300 hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed border border-slate-200 hover:border-orange-500 group"
+            className="w-9 h-9 sm:w-9 sm:h-9 flex items-center justify-center bg-white hover:bg-blue-50 rounded-full shadow-md transition-all duration-300 hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed border border-blue-200 hover:border-green-500 group"
           >
-            <ChevronRight className="w-5 h-5 sm:w-5 sm:h-5 text-slate-700 group-hover:text-orange-500 transition-colors" />
+            <ChevronRight className="w-5 h-5 sm:w-5 sm:h-5 text-slate-700 group-hover:text-green-500 transition-colors" />
           </button>
         </div>
       </div>
