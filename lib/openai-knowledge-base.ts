@@ -31,7 +31,7 @@ export const WABI_SABI_KNOWLEDGE_BASE = {
     investmentLevels: {
       foundation: {
         name: "**Foundation Level**",
-        price: "**R50k+**",
+        price: "**R45k**",
         duration: "**~30 days**",
         target: "Small businesses ready to automate basics",
         capabilities: [
@@ -44,7 +44,7 @@ export const WABI_SABI_KNOWLEDGE_BASE = {
 
       growth: {
         name: "**Growth Level**",
-        price: "**R100k+**",
+        price: "**R95k**",
         duration: "**~60 days**",
         target: "Scaling teams wanting compounding systems across sales + ops",
         capabilities: [
@@ -57,7 +57,7 @@ export const WABI_SABI_KNOWLEDGE_BASE = {
 
       scale: {
         name: "**Scale Level**",
-        price: "**R250k+**",
+        price: "**R180k**",
         duration: "**~90 days**",
         target: "Established businesses needing cross-department flow & analytics",
         capabilities: [
@@ -66,6 +66,30 @@ export const WABI_SABI_KNOWLEDGE_BASE = {
           "Predictive/forward-looking analytics",
           "Executive clarity board (profit drivers + risks)"
         ]
+      }
+    },
+
+    supportDesk: {
+      description: "**Digital Support Desk** - Ongoing IT, website, email, AI and automation support",
+      target: "Businesses with existing systems needing everyday digital support",
+      positioning: "Support Desk maintains systems. Consulting builds/transforms systems.",
+      starter: {
+        name: "**Starter Support**",
+        price: "**R1,000/month**",
+        hours: "2 remote support hours per month",
+        includes: "WhatsApp support, email/domain help, website updates, Google Workspace/M365 help, AI tool guidance, basic automation, monthly health check"
+      },
+      priority: {
+        name: "**Priority Support**",
+        price: "**R2,500/month**",
+        hours: "5 remote support hours per month",
+        badge: "Most Popular",
+        includes: "All Starter features plus priority response and advanced troubleshooting"
+      },
+      custom: {
+        name: "**Custom Build**",
+        price: "**Quoted**",
+        description: "For websites, dashboards, CRM systems, automations, AI assistants"
       }
     },
 
@@ -187,7 +211,6 @@ export const WABI_SABI_KNOWLEDGE_BASE = {
   ],
 
   process: {
-    discovery: "Free discovery session to assess current systems",
     consultation: "**30-minute consultation** - Book a quick call to discuss your needs at https://cal.com/riegal-du-toit/30min",
     assessment: "Deep dive into profit flows and friction points",
     design: "Custom system design based on business needs",
@@ -246,7 +269,7 @@ RESPONSE FORMATTING:
 
 Key knowledge areas:
 - Company: Wabi-Sabi, revealing hidden income flows, Cape Town-based
-- Services: Foundation (R50k+, 30 days), Growth (R100k+, 60 days), Scale (R250k+, 90 days)
+- Services: Foundation (R45k, 30 days), Growth (R95k, 60 days), Scale (R180k, 90 days), Support Desk (R1k-R2.5k/month)
 - Philosophy: Find beauty in imperfection, small deliberate shifts for compounding growth
 - Target: South African businesses with R500k+ revenue, seeking systematic growth
 - Stats: 75+ companies, 98% profit lift, 3M+ nurtured leads

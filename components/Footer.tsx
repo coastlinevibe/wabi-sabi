@@ -11,7 +11,7 @@ export function Footer() {
     navigation: [
       { name: 'The System', href: '/' },
       { name: 'Portfolio', href: '/portfolio' },
-      { name: 'Training', href: '/training' },
+      { name: 'Support Desk', href: '/support-desk' },
       { name: 'Work With Us', href: '/work-with-us' },
       { name: 'Contact Us', href: '/contact' },
       { name: 'Components / Apps', href: '/components-or-apps' },
@@ -20,7 +20,7 @@ export function Footer() {
       { name: 'Take the Profit Quiz', href: '/funnel/quiz.html' },
       { name: 'Growth Insights', href: '/blog' },
       { name: 'Case Studies', href: '/portfolio' },
-      { name: 'Training Resources', href: '/training' },
+      { name: 'Support Services', href: '/support-desk' },
       { name: 'Philosophy', href: '/about' },
       { name: 'Privacy Policy', href: '/privacy' },
     ]

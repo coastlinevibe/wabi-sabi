@@ -99,24 +99,7 @@ function WorkWithUsPageClient() {
             className="flex flex-col sm:flex-row gap-4 items-center justify-center mb-6"
           >
             <MagneticButton className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
-              <a href="#discovery">Book a Discovery Session</a>
-            </MagneticButton>
-            <MagneticButton 
-              onClick={() => {
-                const pricingSection = document.getElementById('premium-oto-section');
-                if (pricingSection) {
-                  pricingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } else {
-                  // Trigger the OTO to show first
-                  const foundationButton = document.querySelector('[data-foundation-trigger]') as HTMLButtonElement;
-                  if (foundationButton) {
-                    foundationButton.click();
-                  }
-                }
-              }}
-              className="bg-slate-800 border-2 border-amber-500/50 text-amber-400 px-8 py-4 rounded-xl font-bold text-lg hover:bg-amber-500/10 transition-all duration-300 cursor-pointer"
-            >
-              Your One-Time Offer
+              <a href="#levels">View Investment Levels</a>
             </MagneticButton>
           </motion.div>
           
@@ -278,6 +261,33 @@ function WorkWithUsPageClient() {
                   </span>
                 </div>
               </div>
+            </div>
+          </motion.div>
+
+          {/* Support Desk Cross-Link */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-12"
+          >
+            <div className="bg-slate-900/50 border border-slate-700/50 rounded-xl p-6 text-center">
+              <p className="text-slate-300 mb-4">
+                <strong className="text-white">Not quite at R500k revenue yet?</strong> Or just need ongoing digital support?
+              </p>
+              <p className="text-slate-400 mb-4 text-sm">
+                Our Support Desk offers everyday IT, website, email, and automation help from R1,000/month.
+              </p>
+              <a
+                href="/support-desk"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800 border border-slate-600 text-slate-300 font-medium rounded-lg hover:bg-slate-700 hover:border-slate-500 hover:text-white transition-all"
+              >
+                Explore Support Desk
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
             </div>
           </motion.div>
         </div>
@@ -632,17 +642,20 @@ function WorkWithUsPageClient() {
               {
                 id: 1,
                 testimonial: "One small shift in our payment system doubled our cash flow in 8 weeks. Clients pay faster, we stress less.",
-                author: "Thabo M. - Construction Company Owner"
+                author: "Thabo M. - Construction Company Owner",
+                imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=128&h=128&fit=crop&crop=faces"
               },
               {
                 id: 2,
                 testimonial: "A simple follow-up automation brought back 40% of our lost customers. Small change, massive reputation boost.", 
-                author: "Annelie V. - Bakery Owner"
+                author: "Annelie V. - Bakery Owner",
+                imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=128&h=128&fit=crop&crop=faces"
               },
               {
                 id: 3,
                 testimonial: "We tweaked our delivery tracker and suddenly customers started referring friends. Profits up 65% in 3 months.",
-                author: "Sipho K. - Fresh Produce Supplier"
+                author: "Sipho K. - Fresh Produce Supplier",
+                imageUrl: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=128&h=128&fit=crop&crop=faces"
               }
             ]} />
           </motion.div>

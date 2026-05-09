@@ -3,13 +3,19 @@
 import { motion } from 'framer-motion'
 import { MessageCircle, X } from 'lucide-react'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
+import { WHATSAPP_MESSAGES } from '@/lib/constants'
 
 export function ChatFloat() {
   const [isOpen, setIsOpen] = useState(false)
-  const defaultMessage = 'Hi! I\'m interested in discussing hidden income flows with Wabi-Sabi'
-  const [isScheduling, setIsScheduling] = useState(false)
+  const pathname = usePathname()
   const router = useRouter()
+  const [isScheduling, setIsScheduling] = useState(false)
+  
+  // Use Support Desk message if on support-desk page, otherwise use general message
+  const defaultMessage = pathname === '/support-desk' 
+    ? WHATSAPP_MESSAGES.supportDesk 
+    : WHATSAPP_MESSAGES.general
 
   const handleChatClick = () => {
     const encodedMessage = encodeURIComponent(defaultMessage)

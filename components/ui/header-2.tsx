@@ -8,6 +8,7 @@ import { BubbleButton } from '@/components/ui/bubble-button';
 import { cn } from '@/lib/utils';
 import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
 import { useScroll } from '@/components/ui/use-scroll';
+import { getWhatsAppLink, WHATSAPP_MESSAGES } from '@/lib/constants';
 
 export function Header() {
   const [open, setOpen] = React.useState(false);
@@ -27,8 +28,8 @@ export function Header() {
       href: '/work-with-us',
     },
     {
-      label: 'Training',
-      href: '/training',
+      label: 'Support Desk',
+      href: '/support-desk',
     },
     {
       label: 'Contact',
@@ -54,6 +55,8 @@ export function Header() {
       document.body.style.overflow = '';
     };
   }, [open]);
+
+  const whatsappLink = getWhatsAppLink(WHATSAPP_MESSAGES.general);
 
   return (
     <header
@@ -97,7 +100,9 @@ export function Header() {
             </Link>
           ))}
           <Button variant="outline">Sign In</Button>
-          <BubbleButton>Get Started</BubbleButton>
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+            <BubbleButton>Get Started</BubbleButton>
+          </a>
         </div>
 
         <Button
@@ -142,7 +147,9 @@ export function Header() {
             <Button variant="outline" className="w-full">
               Sign In
             </Button>
-            <BubbleButton className="w-full">Get Started</BubbleButton>
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="w-full">
+              <BubbleButton className="w-full">Get Started</BubbleButton>
+            </a>
           </div>
         </div>
       </div>

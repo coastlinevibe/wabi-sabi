@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { CheckIcon, ArrowRightIcon } from "@radix-ui/react-icons"
 import NumberFlow from "@number-flow/react"
+import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/constants"
 
 export type PlanLevel = "starter" | "pro" | "all" | string
 
@@ -52,6 +53,8 @@ export function PricingTable({
     setSelectedPlan(plan)
     onPlanSelect?.(plan)
   }
+
+  const whatsappLink = getWhatsAppLink(WHATSAPP_MESSAGES.general)
 
   return (
     <section
@@ -180,15 +183,17 @@ export function PricingTable({
         </div>
 
         <div className="mt-8 text-center">
-          <Button
-            className={cn(
-              "w-full sm:w-auto bg-blue-500 hover:bg-blue-600 px-8 py-2 rounded-xl",
-              buttonClassName,
-            )}
-          >
-            Get started with {plans.find((p) => p.level === selectedPlan)?.name}
-            <ArrowRightIcon className="w-4 h-4 ml-2" />
-          </Button>
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+            <Button
+              className={cn(
+                "w-full sm:w-auto bg-blue-500 hover:bg-blue-600 px-8 py-2 rounded-xl",
+                buttonClassName,
+              )}
+            >
+              Get started with {plans.find((p) => p.level === selectedPlan)?.name}
+              <ArrowRightIcon className="w-4 h-4 ml-2" />
+            </Button>
+          </a>
         </div>
       </div>
     </section>

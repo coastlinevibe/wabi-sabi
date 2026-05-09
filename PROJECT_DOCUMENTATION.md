@@ -6,7 +6,7 @@
 
 **Core Value Proposition:** Reveal hidden value in existing business systems, shape growth wisely through small strategic shifts, and build lasting profit through clarity and discipline.
 
-**Target Audience:** Business owners and leaders generating R500k+ annual revenue who feel stretched thin despite success, seeking sustainable growth without adding complexity.
+**Target Audience:** Business owners and leaders generating R500k+ annual revenue who feel stretched thin despite success, seeking sustainable growth without adding complexity. Also serves smaller businesses needing ongoing digital support through the Support Desk service (from R1k/month).
 
 ---
 
@@ -63,18 +63,18 @@
 **Purpose:** Primary sales page presenting service tiers and driving bookings.
 
 **Key Sections:**
-- **Hero Section:** "By now, you know what we stand for" with two CTAs: "Book a Discovery Session" and "Your One-Time Offer"
+- **Hero Section:** "By now, you know what we stand for" with CTA: "View Investment Levels"
 - **Testimonials Columns:** Social proof section with client success stories
 - **Are We a Fit Section:** Two-column comparison (✅ We're a Fit If / ❌ We're Not a Fit If) with specific criteria (R500k+ revenue, 2-3 hours/week commitment, ready to invest in transformation)
 - **Urgency Box:** "Limited to 12 businesses per quarter" scarcity messaging
 - **Investment Levels:** Three tiers presented as vision cards:
-  - **Foundation** (~30 days, from R240k): Client database, auto-invoicing, payment flows, ROI clarity view
-  - **Growth** (~60 days, most popular): CRM automations, customer portal, upsell flows, team dashboards
-  - **Scale** (~90 days): Multi-department workflows, inventory systems, predictive analytics, executive board
+  - **Foundation** (~30 days, R45k): Client database, auto-invoicing, payment flows, ROI clarity view
+  - **Growth** (~60 days, R95k, most popular): CRM automations, customer portal, upsell flows, team dashboards
+  - **Scale** (~90 days, R180k): Multi-department workflows, inventory systems, predictive analytics, executive board
 - **Capability Comparison Table:** Interactive table showing which features are included in each tier
 - **Proof Metrics:** Average R240k+ hidden profit found, 67% efficiency improvement, 30-day first results
 
-**Conversion Goal:** Convert qualified leads into booked discovery sessions or OTO purchases.
+**Conversion Goal:** Convert qualified leads into booked consultation calls.
 
 ---
 
@@ -96,8 +96,26 @@
 
 ---
 
-### 6. **Training Page** (`/training`)
-**Purpose:** Promote AI and business systems training programs.
+### 6. **Support Desk Page** (`/support-desk`)
+**Purpose:** Sell ongoing digital support retainer service for small businesses.
+
+**Key Sections:**
+- **Hero Section:** "Your Digital Support Desk" with WhatsApp CTAs
+- **Positioning Statement:** Clarifies Support Desk maintains systems; Consulting builds/transforms
+- **Problem Section:** 6 tech pain points
+- **Main Offer:** Starter Support R1,000/month (2 hours)
+- **Packages:** Starter (R1k), Priority (R2.5k), Custom (quoted)
+- **Transformation Cross-Link:** Links to Consulting for full system builds
+- **Final CTA:** WhatsApp booking
+
+**Conversion Goal:** Monthly support retainers or guide to consulting
+
+---
+
+## REMOVED PAGES
+
+### Training Page (REMOVED)
+The training page and all training-related content has been removed as it's no longer part of the active service offering.
 
 **Key Sections:**
 - **Hero Section:** "Learn With Us — Find the Small Shifts, Shape Them Yourself" with 3D carousel of training branches
@@ -211,8 +229,8 @@ Accountants, Architects, Auto Repair Shops, Butcheries, Cafes, Chiropractors, Cl
 1. **Awareness:** Homepage hero + portfolio showcase
 2. **Interest:** Case studies + system explanation
 3. **Consideration:** Work With Us page with tier comparison
-4. **Decision:** Profit Quiz (lead magnet) or Discovery Session booking
-5. **Action:** OTO (One-Time Offer) for premium tier
+4. **Decision:** Profit Quiz (lead magnet) or Consultation booking
+5. **Action:** Choose investment level (Foundation, Growth, or Scale)
 
 **Lead Magnets:**
 - Profit Quiz (external: `/funnel/quiz.html`)
@@ -221,8 +239,8 @@ Accountants, Architects, Auto Repair Shops, Butcheries, Cafes, Chiropractors, Cl
 
 **Primary CTAs:**
 - "Take the Profit Quiz"
-- "Book a Discovery Session"
-- "Your One-Time Offer"
+- "Book a Consultation"
+- "View Investment Levels"
 - "Begin a Conversation"
 
 ---
@@ -244,14 +262,15 @@ Accountants, Architects, Auto Repair Shops, Butcheries, Cafes, Chiropractors, Cl
 **What Wabi-Sabi Sells:**
 
 1. **Consulting Services** (Primary Revenue):
-   - Foundation Tier: ~R240k (30 days)
-   - Growth Tier: Higher pricing (60 days, most popular)
-   - Scale Tier: Premium pricing (90 days)
+   - Foundation Tier: R45,000 (30 days)
+   - Growth Tier: R95,000 (60 days, most popular)
+   - Scale Tier: R180,000 (90 days)
+   - Optional hybrid retainers available
 
-2. **Training Programs**:
-   - AI Essentials: From R12k
-   - Growth in Operations: From R35k
-   - Leadership Development: From R25k
+2. **Support Desk Services** (Recurring Revenue):
+   - Starter Support: R1,000/month (2 hours)
+   - Priority Support: R2,500/month (5 hours)
+   - Custom Build: Quoted
 
 3. **Software Applications** (Recurring Revenue):
    - KPI Dashboard
